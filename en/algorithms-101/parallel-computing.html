@@ -1,0 +1,561 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Parallel computing | AP CSP (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Parallel computing | AP CSP (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">One way to speed up some types of algorithms is to use <strong>parallel computing</strong> to spread the algorithm across multiple processors running simultaneously.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Sequential computing</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The standard programming model is <strong>sequential computing</strong>: the computer executes each operation of the program in order, one at a time.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Consider this program that process images and reports how many are cats:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>images ← [ "pet1.jpg", "pet2.jpg", "pet3.jpg", "pet4.jpg"]
+numCats ← 0
+FOR EACH image IN images
+{
+    foundCat ← detectCat(image)
+    IF foundCat
+    {
+      numCats ← numCats + 1
+    }
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">The program begins with a list of filenames and a variable to store the number of images of cats, initialized to 0. A loop iterates through the list, repeatedly calling a function that detects whether the image has a cat and updating the variable.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Here's a visualization of the program executing on 4 images:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;!doctype html&gt;
+&lt;!-- An example for the AP CSP parallel computing article --&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Sequential cat detection simulation&lt;/title&gt;
+    &lt;link href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;style&gt;
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Lato, sans-serif;
+}
+.button-container {
+    margin-bottom: 10px;
+}
+#report {
+    font-size: 14px;
+}
+.image-container {
+    display: inline-block;
+    position: relative;
+    height: 150px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+.image {
+    height: 100%;
+    width: auto;
+    max-width: 224px;
+}
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 50px;
+  text-align: center;
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 5px #000;
+  color: white;
+}
+.overlay-yes {
+    color: rgb(0, 255, 111);
+    font-size: 92px;
+    line-height: 0.9em;
+}
+.overlay-no {
+    color: rgb(255, 92, 92);
+}
+&lt;/style&gt;
+&lt;!-- Credit: https://projects.lukehaas.me/css-loaders/ --&gt;
+&lt;style&gt;
+.loader {
+  margin: 20px auto;
+  font-size: 15px;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-animation: load5 1.1s infinite ease;
+  animation: load5 1.1s infinite ease;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@-webkit-keyframes load5 {
+  0%,
+  100% {
+    box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.5), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
+  }
+  12.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7), 1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
+  }
+  25% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7), 2.5em 0em 0 0em #ffffff, 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  37.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5), 2.5em 0em 0 0em rgba(255, 255, 255, 0.7), 1.75em 1.75em 0 0em #ffffff, 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.5), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7), 0em 2.5em 0 0em #ffffff, -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  62.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5), 0em 2.5em 0 0em rgba(255, 255, 255, 0.7), -1.8em 1.8em 0 0em #ffffff, -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  75% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.5), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7), -2.6em 0em 0 0em #ffffff, -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  87.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5), -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
+  }
+}
+@keyframes load5 {
+  0%,
+  100% {
+    box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.5), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
+  }
+  12.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7), 1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
+  }
+  25% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7), 2.5em 0em 0 0em #ffffff, 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  37.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5), 2.5em 0em 0 0em rgba(255, 255, 255, 0.7), 1.75em 1.75em 0 0em #ffffff, 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.5), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7), 0em 2.5em 0 0em #ffffff, -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  62.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5), 0em 2.5em 0 0em rgba(255, 255, 255, 0.7), -1.8em 1.8em 0 0em #ffffff, -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  75% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.5), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7), -2.6em 0em 0 0em #ffffff, -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  87.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5), -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
+  }
+}
+&lt;/style&gt;
+&lt;!-- WonderBlocks buttons --&gt;
+&lt;style&gt;
+button.primary {
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    margin: 0px !important;
+    position: relative !important;
+    display: -webkit-inline-box !important;
+    display: -moz-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: -webkit-inline-flex !important;
+    display: inline-flex !important;
+    -webkit-align-items: center !important;
+    align-items: center !important;
+    -webkit-justify-content: center !important;
+    justify-content: center !important;
+    height: 40px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    border: none !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    outline: none !important;
+    text-decoration: none !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    -ms-touch-action: manipulation !important;
+    touch-action: manipulation !important;
+    background: #1865f2 !important;
+    color: #ffffff !important;
+    margin-right: 10px !important;
+}
+button.primary:hover {
+    box-shadow: 0 0 0 1px #FFF, 0 0 0 3px #1865f2;
+}
+button.primary span {
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    font-family: Lato, sans-serif !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -webkit-flex !important;
+    display: flex !important;
+    -webkit-align-items: center !important;
+    align-items: center !important;
+    font-weight: bold !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    pointer-events: none !important;
+}
+&lt;/style&gt;
+&lt;body&gt;
+&lt;div class="button-container"&gt;
+    &lt;button class="primary" id="run-button"&gt;&lt;span&gt;Detect cats&lt;/span&gt;&lt;/button&gt;
+    &lt;span id="report"&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="image-container"&gt;
+    &lt;img class="image"  src="https://www.kasandbox.org/programming-images/animals/retriever.png"&gt;
+    &lt;div id="pet1" class="overlay"&gt;?&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="image-container"&gt;
+    &lt;img class="image" src="https://www.kasandbox.org/programming-images/animals/rabbit.png"&gt;
+    &lt;div id="pet2" class="overlay"&gt;?&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="image-container"&gt;
+    &lt;img class="image" src="https://www.kasandbox.org/programming-images/animals/cat.png"&gt;
+    &lt;div id="pet3" class="overlay"&gt;?&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="image-container"&gt;
+    &lt;img class="image"  src="https://www.kasandbox.org/programming-images/animals/birds_rainbow-lorakeets.png"&gt;
+    &lt;div id="pet4" class="overlay"&gt;?&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function markLoading(overlayNode) {
+    overlayNode.className = "overlay overlay-loading";
+    overlayNode.innerHTML = "&lt;div class='loader'&gt;&lt;/div&gt;";
+}
+function markTrue(overlayNode) {
+    overlayNode.className = "overlay overlay-yes";
+    overlayNode.innerHTML = "▢";
+}
+function markFalse(overlayNode) {
+    overlayNode.className = "overlay overlay-no";
+    overlayNode.innerHTML = "✗";
+}
+
+var overlay1 = document.getElementById("pet1");
+var overlay2 = document.getElementById("pet2");
+var overlay3 = document.getElementById("pet3");
+var overlay4 = document.getElementById("pet4");
+
+var SECOND = 200;
+
+
+function runProgram() {
+    
+window.setTimeout(function() {
+    markLoading(overlay1);
+}, 4 * SECOND);
+window.setTimeout(function() {
+    markFalse(overlay1);
+    markLoading(overlay2);
+}, 18 * SECOND);
+window.setTimeout(function() {
+    markFalse(overlay2);
+    markLoading(overlay3);
+}, 32 * SECOND);
+window.setTimeout(function() {
+    markTrue(overlay3);
+    markLoading(overlay4);
+}, 46 * SECOND);
+window.setTimeout(function() {
+    markFalse(overlay4);
+    document.getElementById("report").innerHTML = "&lt;code&gt;numCats&lt;/code&gt;: &lt;code&gt;1&lt;/code&gt;"
+}, 60 * SECOND);
+}
+
+document.getElementById("run-button").addEventListener("click", runProgram);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Now let's analyze the program further, by annotating each operation with how many seconds it takes and how many times it's called:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">Time</th><th scope="col">Calls</th><th scope="col">Operation</th></tr></thead><tbody><tr><td>3</td><td>1</td><td><code>images ← [ "pet1.jpg", "pet2.jpg", "pet3.jpg", "pet4.jpg"]</code></td></tr><tr><td>1</td><td>1</td><td><code>numCats ← 0</code></td></tr><tr><td>1</td><td>4</td><td><code>FOR EACH image IN images</code></td></tr><tr><td>10</td><td>4</td><td><code>     foundCat ← detectCat(image)</code></td></tr><tr><td>1</td><td>4</td><td><code>     IF foundCat</code></td></tr><tr><td>2</td><td>4</td><td><code>     numCats ← numCats + 1</code></td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><em>Note: the values in the time column are made up, the actual time would vary based on the implementation of this pseudocode and the hardware running it.</em> </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">We can calculate the total time taken by multiplying the number of seconds for each operation by the number of calls and summing the results. For this program, that'd be:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><div class="perseus-block-math"><div class="perseus-block-math-inner" style="overflow: auto hidden; padding-top: 10px; padding-bottom: 10px; margin-top: -10px; margin-bottom: -10px;"><span><span></span><span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>×</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>×</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>×</mo><mn>4</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>10</mn><mo>×</mo><mn>4</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>×</mo><mn>4</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>2</mn><mo>×</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">(3 \times 1) + (1 \times 1) + (1 \times 4) + (10 \times 4) + (1 \times 4) + (2 \times 4) = 60</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">0</span></span></span></span></span><span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">left parenthesis, 3, times, 1, right parenthesis, plus, left parenthesis, 1, times, 1, right parenthesis, plus, left parenthesis, 1, times, 4, right parenthesis, plus, left parenthesis, 10, times, 4, right parenthesis, plus, left parenthesis, 1, times, 4, right parenthesis, plus, left parenthesis, 2, times, 4, right parenthesis, equals, 60</span></span></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">This timeline visualizes the time taken by the computer:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 547px; max-height: 83px;"><img alt="A timeline of program execution that starts at 0 seconds and ends at 60 seconds. There are markers where each loop iteration begins- at 4 seconds, 18 seconds, 32 seconds, and 46 seconds." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/666b11be875fa9ee158a61633d0adb8c1b876ca4.svg" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A timeline of program execution that starts at 0 seconds and ends at 60 seconds. There are markers where each loop iteration begins- at 4 seconds, 18 seconds, 32 seconds, and 46 seconds.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Parallel computing</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The sequential model assumes that only one operation can be executed at a time, and that is true of a single computer with a single processor. However, most modern computers have multi-core processors, where each core can independently execute an operation.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Multi-core processors can take advantage of <strong>parallel computing</strong>, a computational model that breaks programs into smaller sequential operations and performs those smaller operations in parallel.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Can we modify the cat detection program so that some of its operations can be executed in parallel? Only if there are operations that are <em>not</em> dependent on each other. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🤔 Take a look at the program again and see if you can identify operations that don't need to happen sequentially.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">For this program, we could parallelize the operations inside the loop, since the <code>detectCat</code> function does <em>not</em> depend on the results from other calls to <code>detectCat</code>. That means telling the computer that these lines of code can be executed in parallel:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>    foundCat ← detectCat(image)
+    IF foundCat
+    {
+      numCats ← numCats + 1
+    }</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">The exact mechanisms for parallelizing a program depend on the particular programming language and computing environment, which we won't dive into here.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Here's a visualization of the program executing those operations in parallel:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;!doctype html&gt;
+&lt;!-- An example for the AP CSP parallel computing article
+This is just a visualization,
+see the working demo here:
+https://pamelafox.github.io/parallel-demo/
+--&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Parallel cat detection simulation&lt;/title&gt;
+    &lt;link href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;style&gt;
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Lato, sans-serif;
+}
+.button-container {
+    margin-bottom: 10px;
+}
+#report {
+    font-size: 18px;
+}
+.image-container {
+    display: inline-block;
+    position: relative;
+    height: 150px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+.image {
+    height: 100%;
+    width: auto;
+    max-width: 224px;
+}
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 50px;
+  text-align: center;
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 5px #000;
+  color: white;
+}
+.overlay-yes {
+    color: rgb(0, 255, 111);
+    font-size: 92px;
+    line-height: 0.9em;
+}
+.overlay-no {
+    color: rgb(255, 92, 92);
+}
+&lt;/style&gt;
+&lt;!-- Credit: https://projects.lukehaas.me/css-loaders/ --&gt;
+&lt;style&gt;
+.loader {
+  margin: 20px auto;
+  font-size: 15px;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-animation: load5 1.1s infinite ease;
+  animation: load5 1.1s infinite ease;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@-webkit-keyframes load5 {
+  0%,
+  100% {
+    box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.5), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
+  }
+  12.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7), 1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
+  }
+  25% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7), 2.5em 0em 0 0em #ffffff, 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  37.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5), 2.5em 0em 0 0em rgba(255, 255, 255, 0.7), 1.75em 1.75em 0 0em #ffffff, 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.5), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7), 0em 2.5em 0 0em #ffffff, -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  62.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5), 0em 2.5em 0 0em rgba(255, 255, 255, 0.7), -1.8em 1.8em 0 0em #ffffff, -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  75% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.5), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7), -2.6em 0em 0 0em #ffffff, -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  87.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5), -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
+  }
+}
+@keyframes load5 {
+  0%,
+  100% {
+    box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.5), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
+  }
+  12.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7), 1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
+  }
+  25% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7), 2.5em 0em 0 0em #ffffff, 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  37.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5), 2.5em 0em 0 0em rgba(255, 255, 255, 0.7), 1.75em 1.75em 0 0em #ffffff, 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.5), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7), 0em 2.5em 0 0em #ffffff, -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  62.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5), 0em 2.5em 0 0em rgba(255, 255, 255, 0.7), -1.8em 1.8em 0 0em #ffffff, -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  75% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.5), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7), -2.6em 0em 0 0em #ffffff, -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+  }
+  87.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5), -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
+  }
+}
+&lt;/style&gt;
+&lt;!-- WonderBlocks buttons --&gt;
+&lt;style&gt;
+button.primary {
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    margin: 0px !important;
+    position: relative !important;
+    display: -webkit-inline-box !important;
+    display: -moz-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: -webkit-inline-flex !important;
+    display: inline-flex !important;
+    -webkit-align-items: center !important;
+    align-items: center !important;
+    -webkit-justify-content: center !important;
+    justify-content: center !important;
+    height: 40px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    border: none !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    outline: none !important;
+    text-decoration: none !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    -ms-touch-action: manipulation !important;
+    touch-action: manipulation !important;
+    background: #1865f2 !important;
+    color: #ffffff !important;
+    margin-right: 10px !important;
+}
+button.primary:hover {
+    box-shadow: 0 0 0 1px #FFF, 0 0 0 3px #1865f2;
+}
+button.primary span {
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    font-family: Lato, sans-serif !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -webkit-flex !important;
+    display: flex !important;
+    -webkit-align-items: center !important;
+    align-items: center !important;
+    font-weight: bold !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    pointer-events: none !important;
+}
+&lt;/style&gt;
+&lt;body&gt;
+&lt;div class="button-container"&gt;
+    &lt;button class="primary" id="run-button"&gt;&lt;span&gt;Detect cats&lt;/span&gt;&lt;/button&gt;
+    &lt;span id="report"&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="image-container"&gt;
+    &lt;img class="image"  src="https://www.kasandbox.org/programming-images/animals/retriever.png"&gt;
+    &lt;div id="pet1" class="overlay"&gt;?&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="image-container"&gt;
+    &lt;img class="image" src="https://www.kasandbox.org/programming-images/animals/rabbit.png"&gt;
+    &lt;div id="pet2" class="overlay"&gt;?&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="image-container"&gt;
+    &lt;img class="image" src="https://www.kasandbox.org/programming-images/animals/cat.png"&gt;
+    &lt;div id="pet3" class="overlay"&gt;?&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="image-container"&gt;
+    &lt;img class="image"  src="https://www.kasandbox.org/programming-images/animals/birds_rainbow-lorakeets.png"&gt;
+    &lt;div id="pet4" class="overlay"&gt;?&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function markLoading(overlayNode) {
+    overlayNode.className = "overlay overlay-loading";
+    overlayNode.innerHTML = "&lt;div class='loader'&gt;&lt;/div&gt;";
+}
+function markTrue(overlayNode) {
+    overlayNode.className = "overlay overlay-yes";
+    overlayNode.innerHTML = "▢";
+}
+function markFalse(overlayNode) {
+    overlayNode.className = "overlay overlay-no";
+    overlayNode.innerHTML = "✗";
+}
+
+var overlay1 = document.getElementById("pet1");
+var overlay2 = document.getElementById("pet2");
+var overlay3 = document.getElementById("pet3");
+var overlay4 = document.getElementById("pet4");
+
+var SECOND = 200;
+
+function runProgram() {
+    window.setTimeout(function() {
+        markLoading(overlay1);
+        markLoading(overlay2);
+        markLoading(overlay3);
+        markLoading(overlay4);
+    }, 4 * SECOND);
+    window.setTimeout(function() {
+        markFalse(overlay1);
+        markFalse(overlay2);
+        markTrue(overlay3);
+        markFalse(overlay4);
+        document.getElementById("report").innerHTML = "&lt;code&gt;numCats&lt;/code&gt;: &lt;code&gt;1&lt;/code&gt;";
+    }, 18 * SECOND);
+}
+
+document.getElementById("run-button").addEventListener("click", runProgram);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Now how long will the program take to execute? Remember the analysis from before:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">Time</th><th scope="col">Calls</th><th scope="col">Operation</th></tr></thead><tbody><tr><td>3</td><td>1</td><td><code>images ← [ "pet1.jpg", "pet2.jpg", "pet3.jpg", "pet4.jpg"]</code></td></tr><tr><td>1</td><td>1</td><td><code>numCats ← 0</code></td></tr><tr><td>1</td><td>4</td><td><code>FOR EACH image IN images</code></td></tr><tr><td>10</td><td>4</td><td><code>     foundCat ← detectCat(image)</code></td></tr><tr><td>1</td><td>4</td><td><code>     IF foundCat</code></td></tr><tr><td>2</td><td>4</td><td><code>     numCats ← numCats + 1</code></td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">The non-parallelized operations take the same amount of time as before:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><div class="perseus-block-math"><div class="perseus-block-math-inner" style="overflow: auto hidden; padding-top: 10px; padding-bottom: 10px; margin-top: -10px; margin-bottom: -10px;"><span><span></span><span aria-describedby="katex-uid--2-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>×</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>×</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">(3 \times 1) + (1 \times 1) = 4</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span></span><span id="katex-uid--2-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">left parenthesis, 3, times, 1, right parenthesis, plus, left parenthesis, 1, times, 1, right parenthesis, equals, 4</span></span></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">The time taken by the parallelized operations depends on the number of parallel processors executing operations at once. If I run this program on a computer with 4 cores, then each core can process one of the 4 images, so the parallel portion will only take as long as a single images takes:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><div class="perseus-block-math"><div class="perseus-block-math-inner" style="overflow: auto hidden; padding-top: 10px; padding-bottom: 10px; margin-top: -10px; margin-bottom: -10px;"><span><span></span><span aria-describedby="katex-uid--3-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mn>10</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>2</mn><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">1 + 10 + 1 + 2 = 14</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">4</span></span></span></span></span><span id="katex-uid--3-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">1, plus, 10, plus, 1, plus, 2, equals, 14</span></span></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">This timeline visualizes the time taken by a computer that splits the program across 4 processes:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 241px; max-height: 317px;"><div style="padding-bottom: 131.54%;"></div><img alt="A timeline of program execution that starts at 0 seconds and ends at 30 seconds. A marker at 4 seconds indicates when the parallel processes start detecting cats." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/5837c4c85e0dd088e5cf9fa16c0990a295f28d46.svg" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A timeline of program execution that starts at 0 seconds and ends at 30 seconds. A marker at 4 seconds indicates when the parallel processes start detecting cats.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Comparing sequential vs. parallel execution</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">One way to evaluate the benefits of parallelizing a program is to measure the <strong>speedup</strong>: the ratio of the time taken to run the program sequentially to the time taken to run the parallelized program. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Our example cat detection program takes <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--4-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn></mrow><annotation encoding="application/x-tex">60</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">0</span></span></span></span></span><span id="katex-uid--4-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">60</span></span><span></span></span> seconds to run sequentially. When run in parallel on four processors, with each image requiring <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--5-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>14</mn></mrow><annotation encoding="application/x-tex">14</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">4</span></span></span></span></span><span id="katex-uid--5-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">14</span></span><span></span></span> seconds, the program takes <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--6-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>18</mn></mrow><annotation encoding="application/x-tex">18</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">8</span></span></span></span></span><span id="katex-uid--6-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">18</span></span><span></span></span> seconds to run. We calculate the speedup by dividing <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--7-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn></mrow><annotation encoding="application/x-tex">60</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">0</span></span></span></span></span><span id="katex-uid--7-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">60</span></span><span></span></span> by <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--8-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>18</mn></mrow><annotation encoding="application/x-tex">18</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">8</span></span></span></span></span><span id="katex-uid--8-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">18</span></span><span></span></span>: </div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><div class="perseus-block-math"><div class="perseus-block-math-inner" style="overflow: auto hidden; padding-top: 10px; padding-bottom: 10px; margin-top: -10px; margin-bottom: -10px;"><span><span></span><span aria-describedby="katex-uid--9-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn><mi mathvariant="normal">/</mi><mn>18</mn><mo>=</mo><mn>3.</mn><mover accent="true"><mn>33</mn><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">60/18 = 3.\overline{33}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">6</span><span class="mord">0</span><span class="mord">/</span><span class="mord">1</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8444400000000001em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">.</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8444400000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span><span class="mord">3</span></span></span><span style="top:-3.76444em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span></span><span id="katex-uid--9-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">60, slash, 18, equals, 3, point, start overline, 33, end overline</span></span></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">We do not achieve a speedup of exactly <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--10-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span></span><span id="katex-uid--10-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">4</span></span><span></span></span>, despite using that many processors. The initial sequential portion still takes the same amount of time even if we have infinitely many processors. So, this initial sequential portion limits the maximum speedup of parallel computing. </div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Parallelized programs typically run on input sizes in the thousands or millions. If we ran this program on thousands of images, the initial sequential part would take a tiny fraction of time compared to the parallelized part. </div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Check your understanding</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">When run in parallel on two processors, with each image requiring <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--11-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>14</mn></mrow><annotation encoding="application/x-tex">14</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">4</span></span></span></span></span><span id="katex-uid--11-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">14</span></span><span></span></span> seconds, the program takes <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--12-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>32</mn></mrow><annotation encoding="application/x-tex">32</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">2</span></span></span></span></span><span id="katex-uid--12-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">32</span></span><span></span></span> seconds. What is the speedup?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCAx" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-normal" spellcheck="false" type="text" value=""/></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCAx"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Your answer should be</strong></li><li>an integer, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--13-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span></span><span id="katex-uid--13-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">6</span></span><span></span></span></li><li>a <em>simplified proper</em> fraction, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--14-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">3/5</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord">/</span><span class="mord">5</span></span></span></span></span><span id="katex-uid--14-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">3, slash, 5</span></span><span></span></span></li><li>a <em>simplified improper</em> fraction, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--15-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">7/4</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord">/</span><span class="mord">4</span></span></span></span></span><span id="katex-uid--15-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">7, slash, 4</span></span><span></span></span></li><li>a mixed number, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--16-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext> </mtext><mn>3</mn><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1\ 3/4</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mspace"> </span><span class="mord">3</span><span class="mord">/</span><span class="mord">4</span></span></span></span></span><span id="katex-uid--16-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">1, space, 3, slash, 4</span></span><span></span></span></li><li>an <em>exact</em> decimal, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--17-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.75</mn></mrow><annotation encoding="application/x-tex">0.75</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">7</span><span class="mord">5</span></span></span></span></span><span id="katex-uid--17-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, point, 75</span></span><span></span></span></li><li>a multiple of pi, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--18-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mtext> pi</mtext></mrow><annotation encoding="application/x-tex">12\ \text{pi}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mspace"> </span><span class="mord text"><span class="mord">pi</span></span></span></span></span></span><span id="katex-uid--18-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">12, space, start text, p, i, end text</span></span><span></span></span> or <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--19-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi mathvariant="normal">/</mi><mn>3</mn><mtext> pi</mtext></mrow><annotation encoding="application/x-tex">2/3\ \text{pi}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord">/</span><span class="mord">3</span><span class="mspace"> </span><span class="mord text"><span class="mord">pi</span></span></span></span></span></span><span id="katex-uid--19-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">2, slash, 3, space, start text, p, i, end text</span></span><span></span></span></li></ul></div></div></div></div></div></div></span></div></div></div></div></div><p></p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Check</span></button><button class="_112g8fo" tabindex="0">Explain</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Variable execution times</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The operations inside the parallelized program segments may not always take the same amount of time, especially if they process program input.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">For example, the <code>detectCat</code> function in our example may be using an algorithm whose time varies based on the image size or complexity. The operation may only take <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--20-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span></span><span id="katex-uid--20-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">10</span></span><span></span></span> seconds on one image but <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--21-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>22</mn></mrow><annotation encoding="application/x-tex">22</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">2</span></span></span></span></span><span id="katex-uid--21-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">22</span></span><span></span></span> seconds on another. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">This timeline visualizes that situation:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 394px; max-height: 315px;"><img alt="A timeline of program execution that starts at 0 seconds and ends at 30 seconds. A marker at 4 seconds indicates when the parallel processes start detecting cats. Most processes end at 18 seconds, but the third process ends at 30 seconds." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/5441e2f665d4d82b1f141f6837eaa5d6aa959b43.svg" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A timeline of program execution that starts at 0 seconds and ends at 30 seconds. A marker at 4 seconds indicates when the parallel processes start detecting cats. Most processes end at 18 seconds, but the third process ends at 30 seconds.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">The total time taken has now increased to 30 seconds, as the parallel portion takes as long as the <em>longest</em> of the parallelized operations.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Check your understanding</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">The original fully sequential program took 60 seconds. If the parallelized program takes 30 seconds, what is the speedup?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCAx" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-normal" spellcheck="false" type="text" value=""/></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCAx"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Your answer should be</strong></li><li>an integer, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--22-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span></span><span id="katex-uid--22-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">6</span></span><span></span></span></li><li>a <em>simplified proper</em> fraction, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--23-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">3/5</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord">/</span><span class="mord">5</span></span></span></span></span><span id="katex-uid--23-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">3, slash, 5</span></span><span></span></span></li><li>a <em>simplified improper</em> fraction, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--24-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">7/4</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord">/</span><span class="mord">4</span></span></span></span></span><span id="katex-uid--24-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">7, slash, 4</span></span><span></span></span></li><li>a mixed number, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--25-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext> </mtext><mn>3</mn><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1\ 3/4</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mspace"> </span><span class="mord">3</span><span class="mord">/</span><span class="mord">4</span></span></span></span></span><span id="katex-uid--25-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">1, space, 3, slash, 4</span></span><span></span></span></li><li>an <em>exact</em> decimal, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--26-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.75</mn></mrow><annotation encoding="application/x-tex">0.75</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">7</span><span class="mord">5</span></span></span></span></span><span id="katex-uid--26-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, point, 75</span></span><span></span></span></li><li>a multiple of pi, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--27-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mtext> pi</mtext></mrow><annotation encoding="application/x-tex">12\ \text{pi}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mspace"> </span><span class="mord text"><span class="mord">pi</span></span></span></span></span></span><span id="katex-uid--27-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">12, space, start text, p, i, end text</span></span><span></span></span> or <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--28-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi mathvariant="normal">/</mi><mn>3</mn><mtext> pi</mtext></mrow><annotation encoding="application/x-tex">2/3\ \text{pi}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord">/</span><span class="mord">3</span><span class="mspace"> </span><span class="mord text"><span class="mord">pi</span></span></span></span></span></span><span id="katex-uid--28-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">2, slash, 3, space, start text, p, i, end text</span></span><span></span></span></li></ul></div></div></div></div></div></div></span></div></div></div></div></div><p></p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Check</span></button><button class="_112g8fo" tabindex="0">Explain</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">To compensate for the fact that there's often variation in execution times, the program can be clever about how it sends work to processors. Instead of pre-allocating tasks to processes, it can just send the next task to whichever process is ready and waiting.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">For example, imagine we ran the cat detection program on seven images and the <code>detectCat()</code> operation took a long time on the third image. The program doesn't need to wait on that to complete before it analyzes the seventh image; it can send that image to a free process instead:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 420px; max-height: 320px;"><img alt="A timeline of program execution that starts at 0 seconds and ends at 30 seconds. A marker at 4 seconds indicates when the parallel processes start detecting cats. Three processes end at 18 seconds and start again on another image until 32 seconds. The third process ends at 30 seconds." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/92cbb7a4b9f3001a2f6acf60021ac80f71b43b57.svg" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A timeline of program execution that starts at 0 seconds and ends at 30 seconds. A marker at 4 seconds indicates when the parallel processes start detecting cats. Three processes end at 18 seconds and start again on another image until 32 seconds. The third process ends at 30 seconds.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Check your understanding</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">When run on seven images, the sequential program takes 102 seconds. If the parallelized program takes 32 seconds, what is the speedup?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><em>(You can enter the speedup as a fraction)</em></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCAx" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-normal" spellcheck="false" type="text" value=""/></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCAx"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Your answer should be</strong></li><li>an integer, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--29-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span></span><span id="katex-uid--29-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">6</span></span><span></span></span></li><li>a <em>simplified proper</em> fraction, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--30-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">3/5</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord">/</span><span class="mord">5</span></span></span></span></span><span id="katex-uid--30-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">3, slash, 5</span></span><span></span></span></li><li>a <em>simplified improper</em> fraction, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--31-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">7/4</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord">/</span><span class="mord">4</span></span></span></span></span><span id="katex-uid--31-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">7, slash, 4</span></span><span></span></span></li><li>a mixed number, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--32-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext> </mtext><mn>3</mn><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1\ 3/4</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mspace"> </span><span class="mord">3</span><span class="mord">/</span><span class="mord">4</span></span></span></span></span><span id="katex-uid--32-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">1, space, 3, slash, 4</span></span><span></span></span></li><li>an <em>exact</em> decimal, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--33-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.75</mn></mrow><annotation encoding="application/x-tex">0.75</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">7</span><span class="mord">5</span></span></span></span></span><span id="katex-uid--33-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, point, 75</span></span><span></span></span></li><li>a multiple of pi, like <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--34-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mtext> pi</mtext></mrow><annotation encoding="application/x-tex">12\ \text{pi}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mspace"> </span><span class="mord text"><span class="mord">pi</span></span></span></span></span></span><span id="katex-uid--34-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">12, space, start text, p, i, end text</span></span><span></span></span> or <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--35-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi mathvariant="normal">/</mi><mn>3</mn><mtext> pi</mtext></mrow><annotation encoding="application/x-tex">2/3\ \text{pi}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord">/</span><span class="mord">3</span><span class="mspace"> </span><span class="mord text"><span class="mord">pi</span></span></span></span></span></span><span id="katex-uid--35-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">2, slash, 3, space, start text, p, i, end text</span></span><span></span></span></li></ul></div></div></div></div></div></div></span></div></div></div></div></div><p></p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Check</span></button><button class="_112g8fo" tabindex="0">Explain</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer—just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

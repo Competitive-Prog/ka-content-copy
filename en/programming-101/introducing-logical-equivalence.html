@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Introducing logical equivalence | AP CSP (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Introducing logical equivalence | AP CSP (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Logic is both an essential part of computer science and of our everyday interactions, and logical expressions help us make decisions both in our programs and our lives.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Take, for example, this statement:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><blockquote><div class="paragraph"><em>You cannot go to the park if your sister is awake</em></div></blockquote></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">This is a logical expression that declares the criteria for going to the park. It's fairly simple since it only requires a single condition (your sister being awake) to be true.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">To make more informed decisions and handle more possibilities, we can combine multiple logical expressions: Consider this compound statement:</div></div><div class="paragraph" data-perseus-paragraph-index="5"><blockquote><div class="paragraph"><em>You cannot go to the park if your sister is awake OR your room is dirty</em></div></blockquote></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">That tells us when we cannot go to the park, but we might prefer to think about it in terms of when we <em>can</em> go to the park:</div></div><div class="paragraph" data-perseus-paragraph-index="7"><blockquote><div class="paragraph"><em>You can go to the park if your sister is NOT awake AND your room is NOT dirty</em></div></blockquote></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Or even simpler:</div></div><div class="paragraph" data-perseus-paragraph-index="9"><blockquote><div class="paragraph"><em>You can go to the park if your sister is asleep AND your room is clean</em></div></blockquote></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">All of the above three statements are considered <strong>logically equivalent</strong>. If one of them is true, the others are true. If one of them is false, the other is false.</div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph"><strong>Logical equivalence</strong> is the idea that more than one expression can have the same meaning, but have a different form (often a form that helps make the meaning more clear).</div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">Imagine that your parent is a computer scientist and wants to both test your responsibility <em>and</em> your understanding of logical equivalence. Such a parent might respond to your question, “Can I go to the park?”, with the following statement:</div></div><div class="paragraph" data-perseus-paragraph-index="13"><blockquote><div class="paragraph"><em>You cannot go to the park if there is NOT more than one parent home AND if your sister is NOT asleep OR NOT at least one parent is home</em></div></blockquote></div><div class="paragraph" data-perseus-paragraph-index="14"><div class="paragraph">Even with just two conditions (the number of parents home and your sister's sleep status) and a few logical operators (<em>NOT</em>, <em>AND</em>, <em>OR</em>), it's become very difficult to figure out when you can go to the park. 
+Here's a statement that's logically equivalent but much clearer:</div></div><div class="paragraph" data-perseus-paragraph-index="15"><div class="paragraph"><em>You can go to the park if both parents are home OR if your sister is asleep AND at least one parent is home</em></div></div><div class="paragraph" data-perseus-paragraph-index="16"><div class="paragraph">Now we have the freedom to go to the park and understand an otherwise cryptic rule. This idea of logical equivalence is very important not just in rules for life, but in computer science where logic and rules are at the heart of creating useful tools.</div></div><div class="paragraph" data-perseus-paragraph-index="17"><div class="paragraph">Next we'll explore the many ways of making logically equivalent expressions in code, using:</div></div><div class="paragraph" data-perseus-paragraph-index="18"><ul><li>Simple boolean expressions</li><li>Compound boolean expressions</li><li>If/else conditions</li><li>Everything combined!</li></ul></div></div></div></div>
+</div>
+</body>
+</html>

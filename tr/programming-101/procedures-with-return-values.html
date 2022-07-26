@@ -1,0 +1,87 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Dönüş değerleri | olan prosedürler AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Dönüş değerleri | olan prosedürler AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Yordamlar, dönüş değerlerini geri göndererek programın geri kalanının kullanacağı <strong>değerleri</strong> hesaplayabilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Dönüş değerlerine duyulan ihtiyaç</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Şimdiye kadarki örnek prosedürlerimizin hepsinin <strong>yan etkileri oldu</strong>. Bu, ortamlarını bir şekilde etkiledikleri anlamına gelir, örneğin ekranda çıktıyı görüntüleme şekli <code>println()</code> .</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><pre><code>var score  = (numCorrect/30) * 100;
+println(score);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Çoğu zaman, ekranda hemen bir değer görüntülemek istemeyiz. Bunun yerine, bir hesaplamanın sonucunu hatırlamak ve gelecekte bir şekilde kullanmak istiyoruz. Bu durumda, yordama, onu çağıran koda bir değer <strong>döndürmesini</strong> söyleriz.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">JavaScript dilinde, bir işlevden değerleri ve ardından döndürülecek bir ifade yazarak <code>return</code> döndürebiliriz.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>function calcScore(numCorrect) {
+   var score  = (numCorrect/30) * 100;
+   return score;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Artık işlev bir değer döndürdüğüne göre, sonucunu aşağıdaki gibi bir değişkende depolamayı kullanabiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><pre><code>var sallyScore = calcScore(27);
+var wilburScore = calcScore(24);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">İşlevi doğrudan diğer işlevlerin içinde de çağırabiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="9"><pre><code>println(calcScore(27));
+println(calcScore(24));</code></pre></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">Veya işlevi daha büyük bir ifadenin içinde çağırabiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="11"><pre><code>println("Sally earned: " + calcScore(27));
+println("Wilbur earned: " + calcScore(24));</code></pre></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/_cgk_VBd_pCEwdGA6-WkuIJj7D8i2peUCpJZScDQAq4/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20return%20values%3A%20Score%20reporter&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresReturnValuesScoreReporter" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph">Çağrımız <code>calcScore()</code> her zaman bir değer döndürür, böylece bir değer bekleyen <em>her yerde</em> kullanabiliriz. Burası bir sürü yer!</div></div><div class="paragraph" data-perseus-paragraph-index="14"><div class="paragraph">Aslında, matematik ve dize işlemleri gibi değerleri döndüren bir dizi yerleşik yordamı zaten kullanıyoruz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="15"><pre><code>var maxNum = Math.max(33, 100);
+var firstName = "Harry Potter".substr(0, 5);
+var yell = "im hungry".toUpperCase();`</code></pre></div><div class="paragraph" data-perseus-paragraph-index="16"><div class="paragraph">Şimdi, <em>kendi</em> prosedürlerimizi dönüş değerleriyle nasıl tanımlayacağımızı biliyoruz ve programımızın ihtiyaçları için değerleri hesaplayan yararlı prosedürlerden oluşan bir kütüphane oluşturabiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="17"><div class="paragraph">✏️ Aşağıdaki program, ay veya özgürlük heykeli gibi belirli yüksekliklere ulaşmak için kaç "ben" istiflenmesi gerektiğini hesaplamaktadır. Bunun yerine "siz" sayısını hesaplamak için değiştirin ve Everest Dağı veya güneş gibi başka bir yapı ekleyin.</div></div><div class="paragraph" data-perseus-paragraph-index="18"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>İnçleri metre
+işlevine dönüştürür inçToMetreler (inç) {
+    dönüş inçleri * 0,0254;
+}
+
+Nesne fonksiyonu towerOfMe(myHeightM, objHeightM) {
+    return objHeightM / myHeightM;
+}
+
+nesne 
+fonksiyonunun yüksekliğine eşit olacak şekilde benim sayımı hesaplar var myHeightM = inchesToMeters(68);
+
+var moonDistM = 384400000;
+println(towerOfMe(myHeightM, moonDistM));
+
+var statueLibertyM = 93;
+println(towerOfMe(myHeightM, statueLibertyM));
+
+var tallestBuildingM = 830;
+println(towerOfMe(myHeightM, tallestBuildingM));
+
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="19"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/73W-5UHYy4b9I42Hwm8G1cVqPNPzQw8pUIcXrUHUIZI/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20return%20values%3A%20Tower%20of%20me&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresReturnValuesTowerOfMe" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Erken iadelere dikkat edin</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Aşağıdaki kod bitinde bir hata vardır:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><pre><code>function calcLineSlope(x1, y1, x2, y2) {
+    var yDiff = y2 - y1;
+    var xDiff = x2 - x1;
+    return slope;
+    var slope = yDiff / xDiff;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Ne olduğunu görüyor musun? İşte bir ipucu: bilgisayar bir <code>return</code> deyim yürüttüğünde, işlevden hemen çıkar. İşlevden çıktıktan sonra, işlevde daha fazla kod yürütmez.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bu, bilgisayarın yalnızca şu kodu yürüttüğü anlamına gelir:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>function calcLineSlope(x1, y1, x2, y2) {
+    var yDiff = y2 - y1;
+    var xDiff = x2 - x1;
+    return slope;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Eğimi hesaplayan çizgiye asla ulaşmaz, bu nedenle onu çağıran kişiye tanımsız bir değer döndürür. Ondan sonraki kod satırı "ölü kod", asla yürütülmeyecek koddur.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Kodun doğru sürümünde, return deyimi işlevdeki son satırdır:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code>function calcLineSlope(x1, y1, x2, y2) {
+    var yDiff = y2 - y1;
+    var xDiff = x2 - x1;    
+    var slope = yDiff / xDiff;
+    return slope;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/pJ4TwGpFbKEapayk5dPiKGk7crV9kfBBrsP2FUa0GGY/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20return%20values%3A%20Slope%20calculator&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresReturnValuesSlopeCalculator" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Sözde kodda değerler döndür</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Sözde kod nedir?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu sözde kod, adlandırılmış <code>parameter1</code> iki parametre alan ve , programlama yönergelerini içeren ve <code>parameter2</code>ardından <code>expression</code>.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>PROCEDURE name (parameter1, parameter2)
+{
+     &lt;instructions&gt;
+    RETURN (expression)
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">İşte yordam ve çağrılar <code>calcLineSlope</code> için sözde kod:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>PROCEDURE calcLineSlope (x1, y1, x2, y2) 
+{
+    yDiff ← y2 - y1
+    xDiff ← x2 - x1    
+    slope ← yDiff / xDiff
+    RETURN slope
+}
+
+slope1 ← calcLineSlope(1, 2, 4, 5)
+slope2 ← calcLineSlope(0, -1, 3, 10)</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

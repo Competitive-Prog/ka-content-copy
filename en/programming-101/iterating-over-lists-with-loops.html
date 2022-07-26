@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Iteration over lists | AP CSP (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Iteration over lists | AP CSP (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">In programming, we use lists to store sequences of related data. We often want to perform the same operation on every element in a list, like displaying each element or manipulating them mathematically. To do that, we can use a loop to <strong>iterate</strong> over each element, repeating the same code for each element.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>The need for iteration</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Let's make a program to tell the world how to make a Peanut Butter &amp; Banana sandwich, and store the recipe steps in a list.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Here's what that could look like in JavaScript:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>var  steps = ["Slice bread", "Smear peanut butter on bread", "Place sliced bananas on bread"];
+println(steps[0]);
+println(steps[1]);
+println(steps[2]);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">What if we then add a very important fourth step to the list, drizzling honey on top?</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>var  steps = ["Slice bread", "Smear peanut butter on bread", "Place sliced bananas on bread", "Drizzle honey on top"];</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">We would then need to add another line of code at the end to display it:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><pre><code>println(steps[3]);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">In fact, every time we add a new step, we'd need to add another line of code to display that step! </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Fortunately, there's a better way: <strong>iterating over the list with a loop</strong>.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Here's what that looks like in JavaScript, using a <code>for</code> loop:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><pre><code>for (var i = 0; i &lt; steps.length; i++) {
+  println(steps[i]);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">That code will display <em>every single element of the list</em>, no matter how many there are. Let's break down how it works.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">The 3-part loop header controls how many times it repeats:</div></div><div class="paragraph" data-perseus-paragraph-index="5"><ul><li><code>var i = 0</code>: This initializes the counter variable <code>i</code> to 0. In JavaScript, the first element in an array has an index of 0, so that is always the start value for a loop that iterates through an array from start to finish.</li><li><code>i &lt; steps.length</code>: This condition checks to make sure that the counter variable <code>i</code> is less than the length of the <code>steps</code> array. Programming languages always provide a way to find out the length of the array, and in JavaScript, you can find out with the <code>array.length</code> property.</li><li><code>i++</code> : This is executed after each iteration of the loop, and adds one to the counter variable. If we added two, we'd only process every other element. Adding one ensures we process <em>every</em> element once.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">The body of the <code>for</code> loop contains the code that will be run for each iteration. In this case, it's a single line of code that displays the current element: </div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><pre><code>println(steps[i]);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">There's one really important thing to notice about this line of code: the index inside the brackets isn't a number like 0 or 1 or 2. Instead, it's the counter variable <code>i</code>. That means that the index will change each time this code is run, starting with 0, then 1, then 2. Imagine what would happen if we accidentally wrote steps[0] instead: we'd just be slicing lots of bread! Not so tasty.</div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">✏️ The program below embeds that code and loop. Add more steps to my recipe, or make it a recipe for something completely different. 🌮🍔🥗</div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var  steps = ["Slice bread", "Smear peanut butter on bread", "Place sliced bananas on bread", "Drizzle honey on top"];
+
+for (var i = 0; i &lt; steps.length; i++) {
+  println(steps[i]);
+}
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">📝 See similar code in: 
+<a class="_8gcxk83" href="https://studio.code.org/projects/applab/P0J9xgTVjdbfx3NdCFRPD5SIDNtrH963d4X3Uue-GAY/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | 
+<a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=List%20iteration%3A%20Sandwich&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | 
+<a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ListIterationSandwich" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Iteration with computation</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Of course, we can do much more than simply display the elements in a list!</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">For example, we can compute new values based on all the values in the list.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">This code computes a total price based on a list of prices of individual products:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>var totalPrice = 0;
+var prices = [1.75, 3.50, 4.99, 2.50];
+for (var i = 0; i &lt; prices.length; i++) {
+   totalPrice += prices[i];
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">⬈ <a class="_8gcxk83" href="/computer-programming/ap-cs-p-example-iteration-to-compute-new-value/4782500430643200" rel="noopener noreferrer" tabindex="0" target="_blank">Run code</a> | 📝 See similar code in: 
+<a class="_8gcxk83" href="https://studio.code.org/projects/applab/_WSxC1ASvbnVecW2TksjpH9Bpv0ClvwFfSU1sty9kvI/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | 
+<a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=List%20iteration%3A%20Total%20price&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | 
+<a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ListIterationTotalPrice" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Let's get a bit fancier: we can use conditionals inside a loop to compute values based on which elements satisfy a condition.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">This code computes the number of freezing temperatures in a list of temperatures from a 10-day period:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code>var numFreezing = 0;
+var temps = [29, 33, 31, 30, 28, 33, 35, 34, 32, 28];
+for (var i = 0; i &lt; temps.length; i++) {
+   if (temps[i] &lt;= 32) {
+      numFreezing++;
+   }
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">⬈ <a class="_8gcxk83" href="/computer-programming/ap-cs-p-example-iteration-over-list-with-conditional/5546559207800832" rel="noopener noreferrer" tabindex="0" target="_blank">Run code</a> | 
+📝 See similar code in: 
+<a class="_8gcxk83" href="https://studio.code.org/projects/applab/y0wxctct-nKdHhoLqGqnZLzCb3ZB-3aYnuv4JBR-kbc/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | 
+<a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=List%20iteration%3A%20Count%20freezing&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | 
+<a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ListIterationCountFreezing" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">We could even create an entirely new list while iterating through a list.</div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">This code processes a list of prices as well, like the first example, but it instead calculates the discounted price of each item (25% off) and adds that price to a new list:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="12"><pre><code>var prices = [39.99, 29.99, 19.99];
+var discountedPrices = [];
+for (var i = 0; i &lt; prices.length; i++) {
+    var newPrice = prices[i] * 0.75;
+    discountedPrices.push(newPrice);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph">⬈ <a class="_8gcxk83" href="/computer-programming/ap-cs-p-example-iteration-over-list-to-make-new-list/4807472200974336" rel="noopener noreferrer" tabindex="0" target="_blank">Run code</a> |
+📝 See similar code in: 
+<a class="_8gcxk83" href="https://studio.code.org/projects/applab/0WVNknmODnOQHD460uE_6j6iue_mRP76BPlFa10tVjk/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | 
+<a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=List%20iteration%3A%20Discounted%20prices&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | 
+<a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ListIterationDiscountedPrices" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Out of bounds</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Consider a list with 8 elements, like this one storing the planets of our solar system:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><pre><code>var planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];</code></pre></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">In JavaScript (and any language that uses 0-based indexing), the first element is <code>planets[0]</code> and the eighth element is <code>planets[7]</code>. </div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">What would this code display, then?</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>println(planets[8]);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">In JavaScript, it displays <code>undefined</code>. In many languages, it causes a runtime error, preventing the rest of the code from running. In Python, you'll see a "list index out of range" error and in Java, you'll see "java.lang.ArrayIndexOutOfBoundsException". </div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">We never want to cause an out of bounds error in any language, so as programmers, we need to be make sure we specify in-bounds indices for our lists.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Here's a <code>for</code> loop with an out of bounds error:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="9"><pre><code>for (var i = 0; i &lt;= planets.length; i++) {
+  println(planets[i]);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">It looks very similar to the correct <code>for</code> loop from before, but there's one tiny but crucial difference. Do you see it?</div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">The condition in the header uses <code>&lt;=</code> instead of <code>&lt;</code> when comparing <code>i</code> to <code>planets.length</code>. That means the loop <em>will</em> execute when <code>i</code> equals <code>planets.length</code>. In this case, that's when <code>i</code> equals 8. However, as we've just discussed, <code>planets[8]</code> is <code>undefined</code>. In languages with 0-based indices, the highest index is <code>array.length - 1</code>, <em>not</em> <code>array.length</code>.</div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">To prevent programmers from causing an out of bounds error, many programming languages provide specialized <code>for</code> loops designed just for iterating through lists, known as <code>for-each</code> loops. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>List iteration in pseudocode</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[What's pseudocode?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">This pseudocode represents iterating through each element in a list:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>FOR EACH value IN list
+{
+   &lt;instructions&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Notice that there is no index in this <code>FOR EACH</code> loop, since the <code>value</code> of each element is directly available. That means we don't need to worry about out of bounds errors in our pseudocode for list iteration. Phew!</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Here's the pseudocode equivalent for displaying each of the 8 planets:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="6"><pre><code>planets ← ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+
+FOR EACH planet IN planets
+{
+    DISPLAY(planet)
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">This pseudocode computes the total price from a list of prices:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code class="markdown-code-`">totalPrice ← 0
+prices ← [1.75, 3.50, 4.99, 2.50]
+FOR EACH price IN prices
+{ 
+   totalPrice ← totalPrice + price
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">This pseudocode counts the number of freezing temperatures:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="10"><pre><code>numFreezing ← 0
+temps ← [29, 33, 31, 30, 28, 33, 35, 34, 32, 28]
+FOR EACH temp IN temps
+{
+    IF ( temp ≤ 32) 
+    {
+        numFreezing ← numFreezing + 1
+    }
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">This pseudocode creates a new list of discounted prices:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="12"><pre><code>prices ← [39.99, 29.99, 19.99]
+discountedPrices ← []
+FOR EACH price IN prices
+{
+    newPrice ← price * 0.75
+    APPEND(discountedPrices, newPrice)
+}</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer— just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

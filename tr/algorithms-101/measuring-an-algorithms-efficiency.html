@@ -1,0 +1,1789 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Bir algoritmanın verimliliğini ölçme | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Bir algoritmanın verimliliğini ölçme | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">İyi bir algoritma doğrudur, ancak harika bir algoritma hem doğru hem de <strong>verimlidir</strong>. En verimli algoritma, doğru bir cevap verirken mümkün olan en az yürütme süresi ve bellek kullanımı gerektiren algoritmadır.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>İşlemleri sayma</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir algoritmanın verimliliğini ölçmenin bir yolu, farklı giriş boyutlarında cevabı bulmak için kaç işleme ihtiyaç duyduğunu saymaktır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir listede bir değer bulan <strong>doğrusal arama</strong> algoritmasını ölçerek başlayalım. Algoritma, listedeki her bir öğeye bakar ve hedef değere eşit olup olmadığını görmek için her birini kontrol eder. Değeri bulursa, dizini hemen döndürür. Her liste öğesini denetledikten sonra değeri hiçbir zaman bulamazsa, -1 değerini döndürür. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">İşte bu algoritmanın sözde kodda nasıl göründüğü:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>PROCEDURE searchList(numbers, targetNumber) {
+  index ← 1
+  REPEAT UNTIL (index &gt; LENGTH(numbers)) {
+    IF (numbers[index] = targetNumber) {
+      RETURN index
+    }
+    index ← index + 1
+  }
+  RETURN -1
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Bu sözde kodun listeler için 1 tabanlı bir dizin varsaydığını unutmayın. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu örnek giriş için algoritmayı gözden geçirelim:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>searchList([3, 37, 45, 57, 93, 120], 45)</code></pre></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Algoritma, değişkeni <code>index</code> 1'e başlatarak başlar. Daha sonra döngüye başlar.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Yineleme #1:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><ul><li>'den <code>LENGTH(numbers)</code>büyük olup olmadığını <code>index</code> kontrol eder. 1, 6'dan büyük <em>olmadığından</em>, kodu döngünün içinde yürütür.</li><li>İle karşılaştırılır <code>numbers[index]</code> <code>targetNumber</code>. 3, 45'e eşit <em>olmadığından</em> , koşullu içindeki kodu <em>yürütmez</em> .</li><li>1 artar <code>index</code> , bu nedenle şimdi 2'yi depolar.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Yineleme #2:</div></div><div class="paragraph" data-perseus-paragraph-index="6"><ul><li>'den <code>LENGTH(numbers)</code>büyük olup olmadığını <code>index</code> kontrol eder. 2, 6'dan büyük <em>olmadığından</em>, döngünün içindeki kodu yürütür.</li><li>İle karşılaştırılır <code>numbers[index]</code> <code>targetNumber</code>. 37, 45'e eşit olmadığından <em>,</em> koşullu içindeki kodu <em>yürütmez</em> .</li><li>1 artar <code>index</code> , bu nedenle şimdi 3'ü depolar.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Yineleme #3:</div></div><div class="paragraph" data-perseus-paragraph-index="8"><ul><li>'den <code>LENGTH(numbers)</code>büyük olup olmadığını <code>index</code> kontrol eder. 3, 6'dan büyük <em>olmadığından</em>, döngünün içindeki kodu yürütür.</li><li>İle karşılaştırılır <code>numbers[index]</code> <code>targetNumber</code>. 45, 45'e eşit olduğundan <em>,</em> kodu koşullu içindeki kodu yürütür.</li><li>Geçerli , 3'ü <code>index</code>döndürür.</li></ul></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Şimdi, doğrusal arama algoritmasının bu değeri bulmak için ihtiyaç duyduğu işlem sayısını, her işlem türünün ne sıklıkta çağrıldığını sayarak sayalım.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">operasyon</th><th scope="col"> # zaman</th></tr></thead><tbody><tr><td>Dizini 1'e başlat</td><td>1</td></tr><tr><td>Şu değerden büyük olup olmadığını <code>index</code> kontrol edin <code>LENGTH(numbers)</code></td><td>3</td></tr><tr><td>Eşit olup olmadığını <code>numbers[index]</code> kontrol edin <code>targetNumber</code></td><td>3</td></tr><tr><td>Dönmek <code>index</code></td><td>1</td></tr><tr><td>1 artışla <code>index</code></td><td>2</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu, 3'ün endeksinde bulmak <code>targetNumber</code> için toplam 10 işlemdir. 3 numarasına bağlantıyı fark ettiniz mi? Döngü 3 kez tekrarlandı ve her seferinde 3 işlem yürüttü. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Anlayışınızı kontrol edin</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Listede 1. sırada yer alan 3 numarayı bulmak için kaç işlem gereklidir?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCAx" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-normal" spellcheck="false" type="text" value=""></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCAx"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Cevabınız şöyle olmalıdır:</strong></li><li>6 6 6 <span style="white-space: nowrap;">6 6 gibi<span></span><span><span></span><span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> bir tamsayı
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li><span style="white-space: nowrap;">3/5 3<span>/5 3/<span aria-describedby="katex-uid--2-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn>3<mn></mn><mi mathvariant="normal">/</mi>5
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--2-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 5</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygun bir kesir</em></li><li><span style="white-space: nowrap;">7/4 7/4 7/<span><span aria-describedby="katex-uid--3-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn> <mn>7</mn><mi mathvariant="normal">/</mi>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--3-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 4</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygunsuz bir kesir</em></li><li>1 3/4 1\ 3/4 1 <span style="white-space: nowrap;">3/4 1, boşluk, 3, eğik çizgi, 4 gibi<span></span> <span><span></span><span aria-describedby="katex-uid--4-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mn></mn><mi mathvariant="normal"></mi><mn></mn>karışık bir sayı <mtext> </mtext>
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--4-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li>0,75 <em></em> <span style="white-space: nowrap;">0,75 0 gibi<span></span> tam ondalık<span>.<span></span><span aria-describedby="katex-uid--5-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span> <span class="mord">7</span><span class="mord">5</span>
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--5-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, puan, 75</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li><li>pi'nin katı, örneğin 12 pi 12\ \text{pi}1 2 pi 12, boşluk, başlangıç metni, <span style="white-space: nowrap;"><span><span id="katex-uid--6-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">p, i, bitiş metni</span> <span aria-describedby="katex-uid--6-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>veya 2/3 pi 2/3\ \text{pi}<span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span>2/3 pi 2 <span class="mspace"> </span>
+        
+        
+        
+        
+        
+      </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mtext> </mtext>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span>
+      
+      
+    </span></span>, eğik çizgi, 3, boşluk,<span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span aria-describedby="katex-uid--7-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi><mn></mn><mtext> </mtext>
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span><span id="katex-uid--7-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"> başlangıç metni, p, i, bitiş metni</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li></ul></div></div></div></div></div></div></span></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Listede 2. sırada yer alan 37 sayısını bulmak için kaç işlem gereklidir?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCAx" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-normal" spellcheck="false" type="text" value=""></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCAx"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Cevabınız şöyle olmalıdır:</strong></li><li>6 6 6 <span style="white-space: nowrap;">6 6 gibi<span></span><span><span></span><span aria-describedby="katex-uid--8-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--8-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> bir tamsayı
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li><span style="white-space: nowrap;">3/5 3<span>/5 3/<span aria-describedby="katex-uid--9-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn>3<mn></mn><mi mathvariant="normal">/</mi>5
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--9-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 5</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygun bir kesir</em></li><li><span style="white-space: nowrap;">7/4 7/4 7/<span><span aria-describedby="katex-uid--10-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn> <mn>7</mn><mi mathvariant="normal">/</mi>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--10-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 4</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygunsuz bir kesir</em></li><li>1 3/4 1\ 3/4 1 <span style="white-space: nowrap;">3/4 1, boşluk, 3, eğik çizgi, 4 gibi<span></span> <span><span></span><span aria-describedby="katex-uid--11-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mn></mn><mi mathvariant="normal"></mi><mn></mn>karışık bir sayı <mtext> </mtext>
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--11-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li>0,75 <em></em> <span style="white-space: nowrap;">0,75 0 gibi<span></span> tam ondalık<span>.<span></span><span aria-describedby="katex-uid--12-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span> <span class="mord">7</span><span class="mord">5</span>
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--12-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, puan, 75</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li><li>pi'nin katı, örneğin 12 pi 12\ \text{pi}1 2 pi 12, boşluk, başlangıç metni, <span style="white-space: nowrap;"><span><span id="katex-uid--13-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">p, i, bitiş metni</span> <span aria-describedby="katex-uid--13-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>veya 2/3 pi 2/3\ \text{pi}<span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span>2/3 pi 2 <span class="mspace"> </span>
+        
+        
+        
+        
+        
+      </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mtext> </mtext>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span>
+      
+      
+    </span></span>, eğik çizgi, 3, boşluk,<span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span aria-describedby="katex-uid--14-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi><mn></mn><mtext> </mtext>
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span><span id="katex-uid--14-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"> başlangıç metni, p, i, bitiş metni</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li></ul></div></div></div></div></div></div></span></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Listedeki konumuna <code>targetNumber</code> göre gerekli işlem sayısının bir tablosunu yapalım.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Boşlukları doldurup dolduramayacağınıza bakın:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><table class='table'><thead><tr><th scope="col">listedeki konum</th><th scope="col"># operasyonların</th></tr></thead><tbody><tr><td>Listedeki 1. öğe</td><td><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCAx" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-small" spellcheck="false" type="text" value=""></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCAx"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Cevabınız şöyle olmalıdır:</strong></li><li>6 6 6 <span style="white-space: nowrap;">6 6 gibi<span></span><span><span></span><span aria-describedby="katex-uid--15-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--15-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> bir tamsayı
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li><span style="white-space: nowrap;">3/5 3<span>/5 3/<span aria-describedby="katex-uid--16-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn>3<mn></mn><mi mathvariant="normal">/</mi>5
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--16-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 5</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygun bir kesir</em></li><li><span style="white-space: nowrap;">7/4 7/4 7/<span><span aria-describedby="katex-uid--17-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn> <mn>7</mn><mi mathvariant="normal">/</mi>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--17-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 4</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygunsuz bir kesir</em></li><li>1 3/4 1\ 3/4 1 <span style="white-space: nowrap;">3/4 1, boşluk, 3, eğik çizgi, 4 gibi<span></span> <span><span></span><span aria-describedby="katex-uid--18-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mn></mn><mi mathvariant="normal"></mi><mn></mn>karışık bir sayı <mtext> </mtext>
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--18-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li>0,75 <em></em> <span style="white-space: nowrap;">0,75 0 gibi<span></span> tam ondalık<span>.<span></span><span aria-describedby="katex-uid--19-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span> <span class="mord">7</span><span class="mord">5</span>
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--19-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, puan, 75</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li><li>pi'nin katı, örneğin 12 pi 12\ \text{pi}1 2 pi 12, boşluk, başlangıç metni, <span style="white-space: nowrap;"><span><span id="katex-uid--20-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">p, i, bitiş metni</span> <span aria-describedby="katex-uid--20-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>veya 2/3 pi 2/3\ \text{pi}<span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span>2/3 pi 2 <span class="mspace"> </span>
+        
+        
+        
+        
+        
+      </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mtext> </mtext>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span>
+      
+      
+    </span></span>, eğik çizgi, 3, boşluk,<span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span aria-describedby="katex-uid--21-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi><mn></mn><mtext> </mtext>
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span><span id="katex-uid--21-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"> başlangıç metni, p, i, bitiş metni</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li></ul></div></div></div></div></div></div></span></div></div></td></tr><tr><td>Listedeki 2. madde</td><td><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCAy" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-small" spellcheck="false" type="text" value=""></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCAy"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Cevabınız şöyle olmalıdır:</strong></li><li>6 6 6 <span style="white-space: nowrap;">6 6 gibi<span></span><span><span></span><span aria-describedby="katex-uid--22-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--22-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> bir tamsayı
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li><span style="white-space: nowrap;">3/5 3<span>/5 3/<span aria-describedby="katex-uid--23-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn>3<mn></mn><mi mathvariant="normal">/</mi>5
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--23-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 5</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygun bir kesir</em></li><li><span style="white-space: nowrap;">7/4 7/4 7/<span><span aria-describedby="katex-uid--24-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn> <mn>7</mn><mi mathvariant="normal">/</mi>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--24-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 4</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygunsuz bir kesir</em></li><li>1 3/4 1\ 3/4 1 <span style="white-space: nowrap;">3/4 1, boşluk, 3, eğik çizgi, 4 gibi<span></span> <span><span></span><span aria-describedby="katex-uid--25-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mn></mn><mi mathvariant="normal"></mi><mn></mn>karışık bir sayı <mtext> </mtext>
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--25-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li>0,75 <em></em> <span style="white-space: nowrap;">0,75 0 gibi<span></span> tam ondalık<span>.<span></span><span aria-describedby="katex-uid--26-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span> <span class="mord">7</span><span class="mord">5</span>
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--26-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, puan, 75</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li><li>pi'nin katı, örneğin 12 pi 12\ \text{pi}1 2 pi 12, boşluk, başlangıç metni, <span style="white-space: nowrap;"><span><span id="katex-uid--27-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">p, i, bitiş metni</span> <span aria-describedby="katex-uid--27-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>veya 2/3 pi 2/3\ \text{pi}<span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span>2/3 pi 2 <span class="mspace"> </span>
+        
+        
+        
+        
+        
+      </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mtext> </mtext>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span>
+      
+      
+    </span></span>, eğik çizgi, 3, boşluk,<span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span aria-describedby="katex-uid--28-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi><mn></mn><mtext> </mtext>
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span><span id="katex-uid--28-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"> başlangıç metni, p, i, bitiş metni</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li></ul></div></div></div></div></div></div></span></div></div></td></tr><tr><td>Listedeki 3. madde</td><td>10</td></tr><tr><td>Listedeki 4. madde</td><td><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCAz" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-small" spellcheck="false" type="text" value=""></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCAz"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Cevabınız şöyle olmalıdır:</strong></li><li>6 6 6 <span style="white-space: nowrap;">6 6 gibi<span></span><span><span></span><span aria-describedby="katex-uid--29-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--29-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> bir tamsayı
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li><span style="white-space: nowrap;">3/5 3<span>/5 3/<span aria-describedby="katex-uid--30-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn>3<mn></mn><mi mathvariant="normal">/</mi>5
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--30-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 5</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygun bir kesir</em></li><li><span style="white-space: nowrap;">7/4 7/4 7/<span><span aria-describedby="katex-uid--31-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn> <mn>7</mn><mi mathvariant="normal">/</mi>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--31-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 4</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygunsuz bir kesir</em></li><li>1 3/4 1\ 3/4 1 <span style="white-space: nowrap;">3/4 1, boşluk, 3, eğik çizgi, 4 gibi<span></span> <span><span></span><span aria-describedby="katex-uid--32-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mn></mn><mi mathvariant="normal"></mi><mn></mn>karışık bir sayı <mtext> </mtext>
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--32-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li>0,75 <em></em> <span style="white-space: nowrap;">0,75 0 gibi<span></span> tam ondalık<span>.<span></span><span aria-describedby="katex-uid--33-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span> <span class="mord">7</span><span class="mord">5</span>
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--33-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, puan, 75</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li><li>pi'nin katı, örneğin 12 pi 12\ \text{pi}1 2 pi 12, boşluk, başlangıç metni, <span style="white-space: nowrap;"><span><span id="katex-uid--34-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">p, i, bitiş metni</span> <span aria-describedby="katex-uid--34-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>veya 2/3 pi 2/3\ \text{pi}<span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span>2/3 pi 2 <span class="mspace"> </span>
+        
+        
+        
+        
+        
+      </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mtext> </mtext>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span>
+      
+      
+    </span></span>, eğik çizgi, 3, boşluk,<span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span aria-describedby="katex-uid--35-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi><mn></mn><mtext> </mtext>
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span><span id="katex-uid--35-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"> başlangıç metni, p, i, bitiş metni</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li></ul></div></div></div></div></div></div></span></div></div></td></tr><tr><td>Listedeki 5. madde</td><td><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCA0" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-small" spellcheck="false" type="text" value=""></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCA0"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Cevabınız şöyle olmalıdır:</strong></li><li>6 6 6 <span style="white-space: nowrap;">6 6 gibi<span></span><span><span></span><span aria-describedby="katex-uid--36-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--36-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> bir tamsayı
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li><span style="white-space: nowrap;">3/5 3<span>/5 3/<span aria-describedby="katex-uid--37-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn>3<mn></mn><mi mathvariant="normal">/</mi>5
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--37-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 5</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygun bir kesir</em></li><li><span style="white-space: nowrap;">7/4 7/4 7/<span><span aria-describedby="katex-uid--38-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn> <mn>7</mn><mi mathvariant="normal">/</mi>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--38-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 4</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygunsuz bir kesir</em></li><li>1 3/4 1\ 3/4 1 <span style="white-space: nowrap;">3/4 1, boşluk, 3, eğik çizgi, 4 gibi<span></span> <span><span></span><span aria-describedby="katex-uid--39-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mn></mn><mi mathvariant="normal"></mi><mn></mn>karışık bir sayı <mtext> </mtext>
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--39-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li>0,75 <em></em> <span style="white-space: nowrap;">0,75 0 gibi<span></span> tam ondalık<span>.<span></span><span aria-describedby="katex-uid--40-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span> <span class="mord">7</span><span class="mord">5</span>
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--40-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, puan, 75</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li><li>pi'nin katı, örneğin 12 pi 12\ \text{pi}1 2 pi 12, boşluk, başlangıç metni, <span style="white-space: nowrap;"><span><span id="katex-uid--41-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">p, i, bitiş metni</span> <span aria-describedby="katex-uid--41-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>veya 2/3 pi 2/3\ \text{pi}<span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span>2/3 pi 2 <span class="mspace"> </span>
+        
+        
+        
+        
+        
+      </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mtext> </mtext>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span>
+      
+      
+    </span></span>, eğik çizgi, 3, boşluk,<span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span aria-describedby="katex-uid--42-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi><mn></mn><mtext> </mtext>
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span><span id="katex-uid--42-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"> başlangıç metni, p, i, bitiş metni</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li></ul></div></div></div></div></div></div></span></div></div></td></tr><tr><td>Listedeki 6. madde</td><td><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCA1" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-small" spellcheck="false" type="text" value=""></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCA1"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Cevabınız şöyle olmalıdır:</strong></li><li>6 6 6 <span style="white-space: nowrap;">6 6 gibi<span></span><span><span></span><span aria-describedby="katex-uid--43-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--43-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> bir tamsayı
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li><span style="white-space: nowrap;">3/5 3<span>/5 3/<span aria-describedby="katex-uid--44-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn>3<mn></mn><mi mathvariant="normal">/</mi>5
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--44-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 5</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygun bir kesir</em></li><li><span style="white-space: nowrap;">7/4 7/4 7/<span><span aria-describedby="katex-uid--45-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn> <mn>7</mn><mi mathvariant="normal">/</mi>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--45-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 4</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygunsuz bir kesir</em></li><li>1 3/4 1\ 3/4 1 <span style="white-space: nowrap;">3/4 1, boşluk, 3, eğik çizgi, 4 gibi<span></span> <span><span></span><span aria-describedby="katex-uid--46-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mn></mn><mi mathvariant="normal"></mi><mn></mn>karışık bir sayı <mtext> </mtext>
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--46-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li>0,75 <em></em> <span style="white-space: nowrap;">0,75 0 gibi<span></span> tam ondalık<span>.<span></span><span aria-describedby="katex-uid--47-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span> <span class="mord">7</span><span class="mord">5</span>
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--47-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, puan, 75</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li><li>pi'nin katı, örneğin 12 pi 12\ \text{pi}1 2 pi 12, boşluk, başlangıç metni, <span style="white-space: nowrap;"><span><span id="katex-uid--48-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">p, i, bitiş metni</span> <span aria-describedby="katex-uid--48-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>veya 2/3 pi 2/3\ \text{pi}<span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span>2/3 pi 2 <span class="mspace"> </span>
+        
+        
+        
+        
+        
+      </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mtext> </mtext>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span>
+      
+      
+    </span></span>, eğik çizgi, 3, boşluk,<span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span aria-describedby="katex-uid--49-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi><mn></mn><mtext> </mtext>
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span><span id="katex-uid--49-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"> başlangıç metni, p, i, bitiş metni</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li></ul></div></div></div></div></div></div></span></div></div></td></tr></tbody></table></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bir algoritma için <strong>en iyi durum</strong> , en az sayıda işlem gerektiren durumdur. Bu tabloya göre, doğrusal arama için en iyi durum, listedeki ilk öğenin ne zaman <code>targetNumber</code> olduğudur. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Peki ya en <strong>kötü durum</strong>? Bu tabloya göre, en kötü durum, listedeki en son öğenin ne zaman <code>targetNumber</code> olduğudur, çünkü bu, listedeki her öğe için 3 döngü işleminin tekrarlanmasını gerektirir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Aslında biraz daha kötü bir kötü durum var: listede hiç olmayan <code>targetNumber</code> durum. Bu, döngü durumunu kontrol etmek ve -1'i döndürmek için birkaç ekstra işlem gerektirecektir. Bununla birlikte, ekstra bir döngü tekrarı gerektirmez, bu yüzden o kadar da kötü değildir. Doğrusal arama için kullanım örneğimize bağlı olarak, en kötü durum çok sık ortaya çıkabilir veya neredeyse hiç ortaya çıkmayabilir.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><strong>Ortalama durum</strong>, listenin ortasında olduğu zamandır<code>targetNumber</code>. Başladığımız örnek buydu ve bu, 6 maddelik liste için döngünün 3 tekrarını gerektiriyordu.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Verimliliği n n <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--50-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--50-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> öğelerinin<span></span>
+    
+    
+    
+  </span><span></span> bir listesi için daha genel terimlerle tanımlayalım.<span></span>
+  
+  
+  
+</span> Ortalama durum, değişken başlatma için 1 1 <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--51-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex">1</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> 1 <span id="katex-uid--51-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">1</span> işlem, daha sonra n / 2 n / 2 n / 2 n, eğik çizgi, 2 döngü tekrarı, 3 ile gerektirir<span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--52-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi></mi><mi mathvariant="normal"></mi><mn></mn>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord mathdefault"></span><span class="mord"></span><span class="mord"></span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--52-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span><span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--53-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow> <annotation encoding="application/x-tex">3</annotation>
+        
+        
+      </semantics></math></span> adet <span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3 Döngü</span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> başına <span id="katex-uid--53-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">3</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> işlem. Bu 1+3(n/2)1 + 3(n/2)<span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--54-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mo></mo><mn></mn><mo stretchy="false"></mo><mi></mi><mi mathvariant="normal"></mi><mn></mn><mo stretchy="false"></mo>1
+          
+          
+          
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span>3(n/2)<span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span>
+          
+          
+          
+          
+          
+        </span><span class="base"><span class="mord"></span><span class="mopen"></span><span class="mclose"></span><span class="mord"></span><span class="mord"></span><span class="mord mathdefault"></span>1, artı, 3, sol parantez, n, eğik çizgi, 2, sağ parantezdir.<span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+          
+          
+          
+          
+          
+          
+          
+        </span>
+        
+        
+      </span>
+      
+      
+    </span></span><span id="katex-uid--54-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span><span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span></div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu tabloda, liste boyutlarını artırmaya yönelik işlem sayısı gösterilmektedir:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><table class='table'><thead><tr><th scope="col">liste boyutu</th><th scope="col"># işlem sayısı</th></tr></thead><tbody><tr><td>6</td><td>10</td></tr><tr><td>60</td><td>91</td></tr><tr><td>600</td><td>901</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bunu bir grafik olarak görelim:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 425px; max-height: 225px;"><img alt="Graph that goes from 0 to 700 on the x axis, labeled n, and from 0 to 1000 on the y axis. Points are plotted at (6, 10), (60, 91), and (600, 901), with lines connecting them." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/85da3f48910da785aaad5e30f38b43d6f956b2f4.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ </svg><span class="graphie-label" data-math-formula="\small{100}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 14.5816%; top: 91.9191%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>100</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{100}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{200}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 27.8376%; top: 91.9191%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>200</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{200}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{300}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 41.0936%; top: 91.9191%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>300</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{300}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">3</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{400}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 54.3496%; top: 91.9191%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>400</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{400} </annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">4</span><span class="mord"></span> 0 <span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{500}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 67.6056%; top: 91.9191%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>500</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{500}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">5</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{600}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 80.8616%; top: 91.9191%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>600</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{600}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">6</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{200}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 1.3256%; top: 75.7578%; fill: none; font-size: 100%; margin-left: -33px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>200</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{200}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord"> 2</span><span class="mord"></span> 0 <span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{400}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 1.3256%; top: 59.596%; fill: none; font-size: 100%; margin-left: -33px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>400</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{400}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">4</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{600}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 1.3256%; top: 43.4344%; fill: none; font-size: 100%; margin-left: -33px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>600</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{600}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">6</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{800}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 1.3256%; top: 27.2727%; fill: none; font-size: 100%; margin-left: -33px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>800</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{800}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">8 </span><span class="mord"></span> 0 <span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="n" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 94.1176%; top: 91.9191%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"> n n <span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><annotation encoding="application/x-tex"></annotation><mrow><mi>n</mi></mrow>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">n</span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde 0'dan 700'e giden, n etiketli ve y ekseninde 0'dan 1000'e giden grafik. Noktalar (6, 10), (60, 91) ve (600, 901) değerlerinde çizilir ve bunları birbirine bağlayan çizgiler bulunur.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Genel olarak, listedeki öğelerin sayısı ile algoritmanın gerektirdiği işlem sayısı arasında "doğrusal" bir ilişki olduğunu söyleyebiliriz. Madde sayısı arttıkça, işlem sayısı da orantılı olarak artar. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Ampirik ölçümler</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">İşlem sayısı bize bir bilgisayarın bir algoritmayı gerçekten çalıştırmak için ne kadar zaman alacağını <em>söylemez</em> . Çalışma süresi, bilgisayarın hızı, programlama dili ve dilin makine koduna çevirisi gibi uygulama ayrıntılarına bağlıdır. Bu nedenle verimliliği genellikle operasyon sayısı olarak tanımlarız.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bununla birlikte, bir programcının uygulanan bir algoritmanın çalışma süresini ölçmeyi yararlı bulduğu zamanlar hala vardır. Belki de belirli bir işlem şaşırtıcı derecede uzun zaman alır veya belki de programlama dilinin bir algoritmayı yavaşlatan bir yönü vardır.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Çalışma süresini ölçmek için, algoritmayı çalıştırılabilir hale getirmeliyiz; bunu gerçek bir programlama dilinde uygulamalıyız.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">İşte sözde koddan JavaScript'e bir çeviri:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>function searchList(numbers, targetNumber) {
+    for (var index = 0; index &lt; numbers.length; index++) {
+        if (numbers[index] === targetNumber) {
+            return index;
+        }
+    }
+    return -1;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Aşağıdaki program altı sayıdan oluşan listeyi çağırır <code>searchList()</code> ve milisaniye cinsinden geçen süreyi bildirir.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var searchList = function(numbers, targetNumber) {for (var index = 0; index &lt; numbers.length; index++) {if (numbers[index] === targetNumber) {
+    
+        
+            return index;
+        }}
+    
+    dönüş -1;};
+
+
+var startMS = milis();
+
+searchList([3, 37, 45, 57, 93, 120], 45);
+
+var endMS = milis();
+println(endMS - startMS);</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bilgisayarınız benimki kadar hızlıysa, 0 milisaniyenin raporlandığını görürsünüz. Bunun nedeni, bu <em>algoritmanın</em> bir milisaniyeden çok daha az zaman almasıdır. Bununla birlikte, JavaScript ortamımız milisaniyeden daha kısa birimler halinde zamanı ölçemez.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bunun yerine deneyeceğimiz şey şu: 100.000 kez arayacağız <code>searchList()</code> , kaç milisaniye sürdüğünü kaydedeceğiz ve çağrı başına nanosaniye sayısını yaklaşık olarak böleceğiz. Bu programın yaptığı şey budur:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var searchList = function(numbers, targetNumber) {for (var index = 0; index &lt; numbers.length; index++) {if (numbers[index] === targetNumber) {
+    
+        
+            return index;
+        }}
+    
+    dönüş -1;};
+
+
+var startMS = milis();
+for (var i = 0; i &lt; 100000; i++) {
+    searchList([3, 37, 45, 57, 93, 120], 45);
+}
+var endMS = milis();
+var msPerCall = (endMS - startMS)/100000;
+println(msPerCall * 1000000);
+
+random();
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bilgisayarımda, bu yaklaşık 150 nanosaniye rapor ediyor. Saniyede 1.000.000.000 nanosaniye var, bu yüzden bu gerçekten oldukça hızlı. Daha hızlı bir dilde, ortamda veya bilgisayarda, daha da hızlı olabilir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu bize yalnızca 6 sayıdan oluşan bir listede ortalama çalışma süresini <code>searchList()</code> söyler. Bununla birlikte, giriş boyutu arttıkça çalışma süresinin nasıl arttığına daha fazla önem veriyoruz. Yukarıdaki analizimizin öngördüğü gibi doğrusal olarak artmaya devam ediyor mu?</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Aşağıdaki program, 6 sayı, 60 sayı ve 600 sayıdan oluşan listeler için çalışma zamanını bildirmektedir.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var searchList = function(numbers, targetNumber) {for (var index = 0; index &lt; numbers.length; index++) {if (numbers[index] === targetNumber) {
+    
+        
+            return index;
+        }}
+    
+    dönüş -1;};
+
+
+numCalls çağrılarını arama yaparBoyut listesiyle listeListe
+// Arama başına
+yaklaşık nanosaniye sayısını döndürür var measureRunTime = function(listSize, numCalls) {
+    // Gerekli boyuttaki
+    var numaralarının sıralanmış listesini hazırlama = [];
+    for (var i = 1; i &lt; (listSize + 1); i++) {
+        numbers.push(i);
+    }
+    Liste
+    var targetNumber = numbers[floor(random(0, listSize)]];
+    Milisaniye
+    cinsinden kayıt başlangıç zamanı var startMS = milis();
+    for (var i = 0; i &lt; numCalls; i++) {
+        searchList(numbers, targetNumber);
+    }
+    Bitiş süresini milisaniye
+    cinsinden kaydedin var endMS = milis();
+    Arama çağrısı başına milisaniyeyi hesaplayınList
+    var msPerCall = (endMS - startMS)/numCalls;
+    Dönüş nanosaniye başına çağrı
+    println(msPerCall * 1000000);};
+
+
+measureRunTime(6, 100000);
+measureRunTime(60, 100000);
+measureRunTime(600, 100000);
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">İşte bilgisayarımda bir çalıştırmanın sonuçları:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">liste boyutu</th><th scope="col">nanosaniye</th></tr></thead><tbody><tr><td>6</td><td>50</td></tr><tr><td>60</td><td>420</td></tr><tr><td>600</td><td>3430</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu grafik şu noktaları çizer:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 425px; max-height: 225px;"><img alt="Graph that goes from 0 to 700 on the x axis, labeled n, and from 0 to 4000 on the y axis. Points are plotted at (6,50), (60, 420), and (600, 430), with lines connecting them." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/9cdffcab49dc0ba6df21f37b5c192595e3885b76.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ </svg><span class="graphie-label" data-math-formula="\small{100}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 15.6863%; top: 92.0987%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>100</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{100}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{200}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 28.7581%; top: 92.0987%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>200</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{200}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{300}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 41.8301%; top: 92.0987%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>300</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{300}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">3</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{400}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 54.9019%; top: 92.0987%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>400</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{400} </annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">4</span><span class="mord"></span> 0 <span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{500}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 67.9739%; top: 92.0987%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>500</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{500}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">5</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{600}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 81.0456%; top: 92.0987%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>600</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{600}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">6</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{1000}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 2.61438%; top: 72.3458%; fill: none; font-size: 100%; margin-left: -39px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>1000</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{1000}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"> <span class="mord">1</span><span class="mord"></span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span>0 0 0 <span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{2000}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 2.61438%; top: 52.5924%; fill: none; font-size: 100%; margin-left: -39px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>2000</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{2000}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span>3000<span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{3000}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 2.61438%; top: 32.8395%; fill: none; font-size: 100%; margin-left: -39px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn></mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{3000}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">3</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{4000}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 2.61438%; top: 13.0864%; fill: none; font-size: 100%; margin-left: -39px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>4000</mn></mstyle></mrow><annotation encoding="application/x-tex">\ küçük{4000}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">4</span><span class="mord">0</span><span class="mord">0 0</span><span class="mord"></span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span>n n n <span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="n" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 94.1176%; top: 92.0987%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi></mi></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">n</span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde 0'dan 700'e giden, n etiketli ve y ekseninde 0'dan 4000'e giden grafik. Noktalar (6,50), (60, 420) ve (600, 430) olarak çizilir ve bunları birbirine bağlayan çizgiler bulunur.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Tahmin edildiği gibi, noktalar arasındaki ilişki kabaca doğrusaldır. İşlem sayısı 10 kat arttıkça, nanosaniyeler neredeyse aynı 10 faktöründe artar. Kesin sayılar, operasyon sayılarımız kadar temiz değildir, ancak bu beklenen bir durumdur, çünkü her türlü gerçek dünya faktörü bir bilgisayardaki gerçek çalışma süresini etkileyebilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Verimliliği artırma</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Birden fazla algoritma aynı sorunu doğru bir şekilde çözebilir, ancak farklı verimliliklerle. İşte o zaman algoritmik verimliliği ölçmek, daha verimli algoritmayı seçmemize yardımcı olmak için gerçekten önemlidir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Doğrusal arama algoritması doğrusal zamanda bir sonuç bulabilir, ki bu oldukça iyidir – peki ya daha verimli bir algoritma olsaydı? Aslında, en azından <em>sıralanmış</em> bir liste için var.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><strong>İkili arama</strong> algoritması, sıralanmış bir listede bir değeri verimli bir şekilde bulabilir. Algoritma, hedef değerin listenin orta değerinden daha yüksek veya daha düşük olup olmadığını denetleyerek başlar. Daha yüksekse, listenin ilk yarısında olamayacağını bilir. Daha düşükse, listenin ikinci yarısında olamayacağını bilir. Algoritma daha sonra hedef değeri tekrar tekrar kalan listenin orta değeriyle karşılaştırır ve değeri bulana kadar listeyi her seferinde yarıya indirir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sözde kodda şöyle görünür:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>PROCEDURE searchList(numbers, targetNumber) {
+  minIndex ← 1
+  maxIndex ← LENGTH(numbers)
+  REPEAT UNTIL (minIndex &gt; maxIndex) {
+    middleIndex ← FLOOR((minIndex+maxIndex)/2)
+    IF (targetNumber = numbers[middleIndex]) {
+      RETURN middleIndex
+    } ELSE {
+       IF (targetNumber &gt; numbers[middleIndex]) {
+         minIndex ← middleIndex + 1
+       } ELSE {
+         maxIndex ← middleIndex - 1
+       }
+     }
+  }
+  RETURN -1
+}</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu algoritmayı adım adım inceleyelim. Doğrusal arama örneği sıralanmış bir liste kullandığından, bu algoritmayı aynı listede deneyebiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>searchList([3, 37, 45, 57, 93, 120], 45)</code></pre></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Algoritma 1 ve <code>maxIndex</code> 6'ya başlatılarak <code>minIndex</code> başlar.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Yineleme #1:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><ul><li>(1)'in (6)'dan <code>maxIndex</code> büyük olup olmadığını <code>minIndex</code> kontrol eder. Olmadığı için, döngünün içindeki kodu yürütür.</li><li>Ortalamaya <code>minIndex</code> ayarlanır <code>middleIndex</code> ve <code>maxIndex</code>, aşağı yuvarlanır. <code>FLOOR((1+6)/2)</code>Yani, <code>middleIndex</code> mağazalar 3.</li><li>'ye <code>numbers[middleIndex]</code>eşit olup olmadığını <code>targetNumber</code> kontrol eder. <code>targetNumber</code> Her ikisi de 45 olduğundan<code>numbers[3]</code>, bu koşullu doğrudur ve dizin 3'ü döndürür.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Vay canına, bu ikili arama algoritması ilk döngüyü buldu <code>targetNumber</code> . Bu, başlatma adımı için 2 ve döngü için 3 işlem olmak üzere yalnızca 5 işlem aldı. Görünüşe göre, bu algoritma için en iyi durum budur: hedef değerin listenin ortasında olduğu durum.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Peki ya en kötü durumda, değer listede hiç olmadığında? Aynı listede 13 sayısını bulmayı deneyelim.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Algoritma 1 ve <code>maxIndex</code> 6'ya başlatılarak <code>minIndex</code> başlar.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Yineleme #1:</div></div><div class="paragraph" data-perseus-paragraph-index="9"><ul><li>(1)'in (6)'dan <code>maxIndex</code> büyük olup olmadığını <code>minIndex</code> kontrol eder. Olmadığı için, döngünün içindeki kodu yürütür.</li><li>Olarak ayarlanır<code>middleIndex</code>, böylece <code>middleIndex</code> 3'ü <code>FLOOR((1+6)/2)</code>depolar.</li><li>(13)'ün (45)'e <code>numbers[middleIndex]</code> eşit olup olmadığını <code>targetNumber</code> kontrol eder. Eşit değiller, bu yüzden bir sonraki koşula devam ediyor.</li><li>'den <code>numbers[middleIndex]</code>büyük olup olmadığını <code>targetNumber</code> kontrol eder. Değildir, bu yüzden devam eder <code>ELSE</code>.</li><li>Ayarlanır <code>maxIndex</code> <code>middleIndex - 1</code>, yani <code>maxIndex</code> şimdi 2'dir.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">Yineleme #2:</div></div><div class="paragraph" data-perseus-paragraph-index="11"><ul><li>(1)'in (2)'den <code>maxIndex</code> büyük olup olmadığını <code>minIndex</code> kontrol eder. Olmadığı için, döngünün içindeki kodu yürütür.</li><li>, olarak ayarlanır <code>middleIndex</code> <code>FLOOR((1+2)/2)</code>, böylece <code>middleIndex</code> 1'i depolar.</li><li>(13)'ün (3)'e <code>numbers[middleIndex]</code> eşit olup olmadığını <code>targetNumber</code> kontrol eder. Eşit değiller, bu yüzden bir sonraki koşula devam ediyor.</li><li>'den <code>numbers[middleIndex]</code>büyük olup olmadığını <code>targetNumber</code> kontrol eder. Daha büyük <em>olduğu</em> için, şimdi <code>minIndex</code> 2 olarak ayarlanır<code>middleIndex + 1</code><code>minIndex</code>.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">Yineleme #3:</div></div><div class="paragraph" data-perseus-paragraph-index="13"><ul><li>(2)'nin (2)'den <code>maxIndex</code> büyük olup olmadığını <code>minIndex</code> kontrol eder. Olmadığı için, döngünün içindeki kodu yürütür.</li><li>Olarak ayarlanır<code>middleIndex</code>, böylece <code>middleIndex</code> 2'yi <code>FLOOR((2+2)/2)</code>depolar.</li><li>(13)'ün (37)'ye <code>numbers[middleIndex]</code> eşit olup olmadığını <code>targetNumber</code> kontrol eder. Eşit değiller, bu yüzden bir sonraki koşula devam ediyor.</li><li>'den <code>numbers[middleIndex]</code>büyük olup olmadığını <code>targetNumber</code> kontrol eder.  Değildir, bu yüzden devam eder <code>ELSE</code>.</li><li>Olarak ayarlanır <code>maxIndex</code> <code>middleIndex - 1</code>, yani <code>maxIndex</code> şimdi 1'dir.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="14"><div class="paragraph">Yineleme #4:</div></div><div class="paragraph" data-perseus-paragraph-index="15"><ul><li>(2)'nin (1)'den <code>maxIndex</code> büyük olup olmadığını <code>minIndex</code> kontrol eder. Daha büyük <em>olduğu</em> için, döngünün içinde ilerlemez.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="16"><div class="paragraph">Algoritma sonunda -1 değerini döndürür ve değerin bulunamadığını gösterir.</div></div><div class="paragraph" data-perseus-paragraph-index="17"><div class="paragraph">Bu, ikili arama algoritması için en kötü durumdu ve yine de, döngü başına yaklaşık 4 işlemle döngünün yalnızca 3 tam tekrarını gerektiriyordu. 6 sayıdan oluşan bir listede doğrusal arama için en kötü durumu hatırlıyor musunuz? Her sayı arasında döngü yapmak zorundaydı, bu yüzden tam 6 tekrar gerektiriyordu.</div></div><div class="paragraph" data-perseus-paragraph-index="18"><div class="paragraph">İkili aramanın güzelliği budur: her döngü arama alanını ikiye böler, böylece algoritmanın bakması gereken daha az sayı vardır.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu tabloda, en kötü durumda, çeşitli liste boyutları için gereken döngü tekrarlarının sayısı gösterilmektedir:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">liste boyutuDöngü</th><th scope="col"> tekrarlarının #</th></tr></thead><tbody><tr><td>6</td><td>3</td></tr><tr><td>60</td><td>6</td></tr><tr><td>600</td><td>10</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">İkili arama ile, 600 öğeden oluşan bir liste sadece 10 döngü tekrarı gerektirir! Doğrusal arama ile, aynı liste 600 döngü tekrarı gerektirir.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">İşte grafik biçimindeki bu tablo:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 425px; max-height: 225px;"><img alt="Graph that goes from 0 to 700 on the x axis, labeled n, and from 0 to 40 on the y axis. Points are plotted at (6,3), (60, 6), and (600, 10), with lines connecting them." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/6d132e3f900391d48e6777ad44047425a84b2db5.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ </svg><span class="graphie-label" data-math-formula="\small{200}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 28.7581%; top: 94.4444%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>200</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{200}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{400}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 54.9019%; top: 94.4444%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>400</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{400}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">4</span><span class="mord">0 0</span><span class="mord"></span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{600}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 81.0456%; top: 94.4444%; fill: none; font-size: 100%; margin-left: -16px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>600</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{600}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">6</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{10}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 2.61438%; top: 66.6667%; fill: none; font-size: 100%; margin-left: -27px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>10</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{10} </annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">1</span><span class="mord">0</span>
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{20}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 2.61438%; top: 38.8889%; fill: none; font-size: 100%; margin-left: -27px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>20</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{20}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span>
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="n" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 94.1176%; top: 94.4444%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"> n n n <span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi></mi></mrow><annotation encoding="application/x-tex">n</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde 0'dan 700'e giden, n etiketli ve y ekseninde 0'dan 40'a giden grafik. Noktalar (6,3), (60, 6) ve (600, 10) olarak çizilir ve bunları birbirine bağlayan çizgiler bulunur.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Gördüğünüz gibi, ikili arama, özellikle liste boyutu büyüdükçe, doğrusal aramadan çok daha verimlidir. Matematiksel olarak, liste boyutu ile ikili arama işlemleri arasındaki ilişkiyi, doğrusal aramanın doğrusal ilişkisinden çok daha yavaş bir büyüme oranı olan "logaritmik" olarak tanımlayabiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Anlayışınızı kontrol edin</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Programınızın en düşükten en yükseğe doğru sıralanmış 10.000 sayıdan oluşan bir listesi vardır ve bu listede bir sayının olup olmadığını görmeniz gerekir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Hangi algoritmayı kullanıyorsunuz?</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">1 cevap seçin:</legend><div class="instructions _125m8j1">1 cevap seçin:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-0" name="perseus_radio_9" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Doğrusal arama</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-1" name="perseus_radio_9" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">İkili arama</div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

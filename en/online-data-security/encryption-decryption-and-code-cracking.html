@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Encryption, decryption, and cracking (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Encryption, decryption, and cracking (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">One of the earliest encryption techniques is the <strong>Caesar Cipher</strong>, invented by Julius Caesar more than two thousand years ago to communicate messages to his allies.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The Caesar Cipher is a great introduction to encryption,  decryption, and code cracking, thanks to its simplicity.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Encrypting a message</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Imagine Caesar wants to send this message:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><div class="paragraph"><code>SECRET MEETING AT THE PALACE</code></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Here's what that might look like encrypted:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><div class="paragraph"><code>YKIXKZ SKKZOTM GZ ZNK VGRGIK</code></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">That looks an awfully lot like gobbledygook at first, but this encrypted message is actually <em>very</em> related to the original text.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">The Caesar Cipher is a simple substitution cipher which replaces each original letter with a different letter in the alphabet by shifting the alphabet by a certain amount. </div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">To make the encrypted message above, I shifted the alphabet by 6 and used this substitution table:</div></div><div class="paragraph" data-perseus-paragraph-index="8"><table class='table'><thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th><th scope="col">E</th><th scope="col">F</th><th scope="col">G</th><th scope="col">H</th><th scope="col">I</th><th scope="col">J</th><th scope="col">K</th><th scope="col">L</th><th scope="col">M</th><th scope="col">N</th><th scope="col">O</th><th scope="col">P</th><th scope="col">Q</th><th scope="col">R</th><th scope="col">S</th><th scope="col">T</th><th scope="col">U</th><th scope="col">V</th><th scope="col">W</th><th scope="col">X</th><th scope="col">Y</th><th scope="col">Z</th></tr></thead><tbody><tr><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">S shifts 6 letters over to Y, E shifts 6 letters over to K, etc. Here's the first word and its shifts:</div></div><div class="paragraph" data-perseus-paragraph-index="10"><table class='table'><thead><tr><th scope="col">S</th><th scope="col">E</th><th scope="col">C</th><th scope="col">R</th><th scope="col">E</th><th scope="col">T</th></tr></thead><tbody><tr><td>Y</td><td>K</td><td>I</td><td>X</td><td>K</td><td>Z</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Check your understanding</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Now imagine Caesar wants to send the following message, with the same shift of 6:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><div class="paragraph"><code>ALEXANDRIA SOON</code></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">What would be the encrypted message?</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">Choose 1 answer:</legend><div class="instructions _125m8j1">Choose 1 answer:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-0" name="perseus_radio_9" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CNGZCPFTKC UQQP</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-1" name="perseus_radio_9" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>HSLEHUKYPH ZVVU</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-2" name="perseus_radio_9" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>EPIBERHVME WSSR</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-3" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-3" name="perseus_radio_9" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice D)</div><div aria-hidden="true">D</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>GRKDGTJXOG YUUT</code></div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p></p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Check</span></button><button class="_112g8fo" tabindex="0">Explain</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Decrypting a message</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">According to historical records, Caesar always used a shift of 3. As long as his message recipient knew the shift amount, it was trivial for them to decode the message.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Imagine Caesar sends this message to a comrade:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><div class="paragraph"><code>EHZDUH EUXWXV</code></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">The comrade uses this substitution table, where the alphabet is shifted by 3:</div></div><div class="paragraph" data-perseus-paragraph-index="5"><table class='table'><thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th><th scope="col">E</th><th scope="col">F</th><th scope="col">G</th><th scope="col">H</th><th scope="col">I</th><th scope="col">J</th><th scope="col">K</th><th scope="col">L</th><th scope="col">M</th><th scope="col">N</th><th scope="col">O</th><th scope="col">P</th><th scope="col">Q</th><th scope="col">R</th><th scope="col">S</th><th scope="col">T</th><th scope="col">U</th><th scope="col">V</th><th scope="col">W</th><th scope="col">X</th><th scope="col">Y</th><th scope="col">Z</th></tr></thead><tbody><tr><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td><td>A</td><td>B</td><td>C</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">They can then decode the message with certainty. The first letter "E" was shifted by 3 from "B", the second letter "H" was shifted by 3 from "E", etc. The result is this ominous message:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><div class="paragraph"><code>BEWARE BRUTUS</code></div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Check your understanding</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Here's another message Caesar might send:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><div class="paragraph"><code>FURVV WKH UXELFRQ</code></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Assuming Caesar's usual shift of 3, what does that decrypt to?</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">Choose 1 answer:</legend><div class="instructions _125m8j1">Choose 1 answer:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-0" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CHECK THE RACEWAY</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-1" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CHECK THE RANSOMS</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-2" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CROSS THE RACEWAY</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-3" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-3" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice D)</div><div aria-hidden="true">D</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CROSS THE RUBICON</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-4" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-4" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice E)</div><div aria-hidden="true">E</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CRUSH THE RAMPART</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-5" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-5" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice F)</div><div aria-hidden="true">F</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CRUSH THE RAGERS</code></div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p></p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Check</span></button><button class="_112g8fo" tabindex="0">Explain</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Cracking the cipher</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Imagine that a very literate and savvy enemy intercepts one of Caesar's messages.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><div class="paragraph"><code>RZ VMZ WMDIBDIB VGG AJMXZN OJ EJDI RDOC XGZJKVOMV OJ YZAZVO OCZ ZIZHT LPZZI VO OCZ IDGZ YZGOV</code></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">That enemy does not know that Caesar always uses a shift of 3, so he must attempt to "crack" the cipher without knowing the shift.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">There are three main techniques he could use: frequency analysis, known plaintext, and brute force.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><h3>Frequency analysis</h3></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Human languages tend to use some letters more than others. For example, "E" is the most popular letter in the English language. We can analyze the frequency of the characters in the message and identify the most likely "E" and narrow down the possible shift amounts based on that. </div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Try it out yourself! Paste the message in the text area below and analyze the frequency graph to identify a possible "E":</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- 
+Type text in the textarea and click "Analyze" to see the frequency of letters. This is helpful for cracking ciphers!
+Learn more @ 
+https://www.khanacademy.org/computing/computer-science/cryptography#crypt
+--&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Frequency analysis&lt;/title&gt;
+    &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+    &lt;style&gt;
+    body {
+        font-family: "Lato", sans-serif;
+        max-width: 600px;
+    }
+    button.primary {
+        -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        margin: 0px !important;
+        position: relative !important;
+        display: -webkit-inline-box !important;
+        display: -moz-inline-box !important;
+        display: -ms-inline-flexbox !important;
+        display: -webkit-inline-flex !important;
+        display: inline-flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        -webkit-justify-content: center !important;
+        justify-content: center !important;
+        height: 40px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        border: none !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        outline: none !important;
+        text-decoration: none !important;
+        -moz-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        -ms-touch-action: manipulation !important;
+        touch-action: manipulation !important;
+        background: #1865f2 !important;
+        color: #ffffff !important;
+        margin-right: 10px !important;
+    }
+    button.primary:hover {
+        box-shadow: 0 0 0 1px #FFF, 0 0 0 3px #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        font-family: Lato, sans-serif !important;
+        font-size: 16px !important;
+        line-height: 20px !important;
+        display: -webkit-box !important;
+        display: -moz-box !important;
+        display: -ms-flexbox !important;
+        display: -webkit-flex !important;
+        display: flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        font-weight: bold !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        pointer-events: none !important;
+    }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;textarea id="input" style="width: 100%; height: 50px; margin-bottom: 10px;"&gt;&lt;/textarea&gt;
+  
+  &lt;button id="analyze" class="primary"&gt;&lt;span&gt;Analyze&lt;/span&gt;&lt;/button&gt;
+  &lt;div id="chart"&gt;&lt;/div&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+var drawChart = function(letterCounts) {
+    const data = {
+        labels: alphabet,
+        datasets: [{
+            values: letterCounts
+        }]
+    }
+
+    const chart = new frappe.Chart("#chart", {
+        data: data,
+        type: 'bar',
+        height: 250
+    });
+}
+
+var analyzeButton = document.getElementById("analyze");
+analyzeButton.addEventListener("click", function() {
+    var inputText = document.getElementById("input").value;
+    var lettersSeen = {};
+    for (var i = 0; i &lt; alphabet.length; i++) {
+        lettersSeen[alphabet[i]] = 0;
+    }
+    for (var i = 0; i &lt; inputText.length; i++) {
+        var currentLetter = inputText.charAt(i).toUpperCase();
+        if (lettersSeen[currentLetter] &gt;= 0) {
+            lettersSeen[currentLetter]++;
+        }
+    }
+    drawChart(Object.values(lettersSeen));
+});
+&lt;/script&gt;
+
+  &lt;/body&gt;
+  &lt;/html&gt;</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Known plaintext</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Another term for the original unencrypted message is <strong>plaintext</strong>. If the enemy already knew some part of the plaintext, it will be easier for them to crack the rest of the encrypted version.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">For example, messages tend to start with similar beginnings. In WWII, encrypted German messages always started with a weather forecast, which ultimately made them easier for British mathematician Alan Turing to crack. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Do you think Julius started this message in a common way?</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Brute force</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">There are only 25 possible shifts (not 26 — why not?). The enemy could take some time to try out each of them and find one that yielded a sensible message. They wouldn't even need to try the shifts on the entire message, just the first word or two. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Try it yourself below:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- 
+Type text that's been encrypted with a Caesar Cipher in the textbox. Then select a shift amount and click Decrypt to see the text decrypted according to that shift.
+Learn more @ 
+https://www.khanacademy.org/computing/computer-science/cryptography#crypt
+--&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Caesar Cipher Decrypter&lt;/title&gt;
+    &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+    &lt;style&gt;
+    body {
+        font-family: "Lato", sans-serif;
+        max-width: 600px;
+    }
+    button.primary {
+        -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        margin: 0px !important;
+        position: relative !important;
+        display: -webkit-inline-box !important;
+        display: -moz-inline-box !important;
+        display: -ms-inline-flexbox !important;
+        display: -webkit-inline-flex !important;
+        display: inline-flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        -webkit-justify-content: center !important;
+        justify-content: center !important;
+        height: 40px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        border: none !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        outline: none !important;
+        text-decoration: none !important;
+        -moz-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        -ms-touch-action: manipulation !important;
+        touch-action: manipulation !important;
+        background: #1865f2 !important;
+        color: #ffffff !important;
+        margin-right: 10px !important;
+    }
+    button.primary:hover {
+        box-shadow: 0 0 0 1px #FFF, 0 0 0 3px #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        font-family: Lato, sans-serif !important;
+        font-size: 16px !important;
+        line-height: 20px !important;
+        display: -webkit-box !important;
+        display: -moz-box !important;
+        display: -ms-flexbox !important;
+        display: -webkit-flex !important;
+        display: flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        font-weight: bold !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        pointer-events: none !important;
+    }
+    table, table td {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+    }
+    table td {
+        text-align: center;
+        width: 3%;
+    }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;textarea id="input" style="width: 100%; height: 50px; margin-bottom: 10px;"&gt;&lt;/textarea&gt;
+  &lt;div style="margin-bottom:10px;"&gt;
+  &lt;label&gt;Assuming shift of 
+  &lt;span id="amount" style="font-weight:bold;"&gt;&lt;/span&gt;
+  &lt;input id="shiftSlider" type="range" min="1" max="25" value="14" step="1" style="width:70%"&gt;
+  &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div id="shiftedAlphabet" style="margin-bottom: 20px;"&gt;
+  &lt;/div&gt;
+  &lt;button id="decryptButton" class="primary"&gt;&lt;span&gt;Decrypt&lt;/span&gt;&lt;/button&gt;
+  &lt;div id="output"&gt;
+      
+  &lt;/div&gt;
+  &lt;script&gt;
+var button = document.getElementById("decryptButton");
+var slider = document.getElementById("shiftSlider");
+var alpha = document.getElementById("shiftedAlphabet");
+var amount = document.getElementById("amount");
+var input = document.getElementById("input");
+var output = document.getElementById("output");
+var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+var updateAmount = function() {
+    var shiftAmount = parseInt(slider.value, 10);
+    amount.innerHTML = shiftAmount;
+    var table = document.createElement("table");
+    var tbody = document.createElement("tbody");
+    var topRow = document.createElement("tr");
+    var bottomRow = document.createElement("tr");
+    var letterCell = document.createElement("td");
+    letterCell.innerHTML = "Original";
+    topRow.appendChild(letterCell);
+    var letterCell = document.createElement("td");
+    letterCell.innerHTML = "Shifted";
+    bottomRow.appendChild(letterCell);
+    for (var i = 0; i &lt; alphabet.length; i++) {
+        var letterCell = document.createElement("td");
+        letterCell.innerHTML = alphabet[i];
+        topRow.appendChild(letterCell);
+        var letter2Cell = document.createElement("td");
+        var shiftedIndex = (i + shiftAmount) % 26;
+        letter2Cell.innerHTML = alphabet[shiftedIndex];
+        bottomRow.appendChild(letter2Cell);
+    }
+    tbody.appendChild(topRow);
+    tbody.appendChild(bottomRow);
+    table.appendChild(tbody);
+    alpha.innerHTML = "";
+    alpha.appendChild(table);
+}
+slider.addEventListener("change", function(evt) {
+    updateAmount();
+});
+
+button.addEventListener("click", function() {
+    var shiftAmount = parseInt(slider.value, 10);
+    var input = document.getElementById("input").value;
+    var decrypted = "";
+    for (var i = 0; i &lt; input.length; i++) {
+        var currentLetter = input.charAt(i).toUpperCase();
+        var alphaIndex = alphabet.indexOf(currentLetter);
+        if (alphaIndex &gt; -1) {
+            var unshiftedIndex = (alphaIndex - shiftAmount);
+            if (unshiftedIndex &lt; 0) {
+                unshiftedIndex = alphabet.length + unshiftedIndex;
+            }
+            var unshiftedLetter = alphabet[unshiftedIndex];
+            decrypted += unshiftedLetter;
+        } else {
+            decrypted += currentLetter;
+        }
+    }
+    output.innerHTML = decrypted;
+});
+updateAmount();
+  &lt;/script&gt;
+
+  &lt;/body&gt;
+  &lt;/html&gt;</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Caesar's enemy wouldn't have a computer to help them, but it likely would take them less than an hour if they understood the idea of the Caesar Cipher. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Have you managed to crack the code and decrypt the message?
+Click below for the big reveal!</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Reveal the message]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Encryption, decryption, and cracking</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Thanks to this exploration of the Caesar Cipher, we now understand the three key aspects of data encryption:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><ul><li>Encryption: scrambling the data according to a secret key (in this case, the alphabet shift).</li><li>Decryption: recovering the original data from scrambled data by using the secret key.</li><li>Code cracking: uncovering the original data without knowing the secret, by using a variety of clever techniques.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Whenever we consider a possible encryption technique, we need to think about all those aspects: how easy is it to encrypt? how easy is it to decrypt? And most importantly, how easy is it for a nefarious individual to crack the code?</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">We can no longer use the Caesar Cipher to secure our data, as it is far too easy to crack, but understanding the Cipher prepares us for understanding modern encryption techniques.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">If you'd like, you can dive deeper into the Caesar Cipher in our Khan Academy tutorial on <a class="_8gcxk83" href="/computing/computer-science/cryptography/crypt/v/intro-to-cryptography" rel="noopener noreferrer" tabindex="0" target="_blank">Ancient Cryptography</a>.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[References]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer—just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

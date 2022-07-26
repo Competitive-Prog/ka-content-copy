@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Programming a simple simulation | AP CSP (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Programming a simple simulation | AP CSP (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Ever heard the fable about the tortoise and the hare? </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">A hare makes fun of a tortoise for moving so slowly and challenges the tortoise to a race. The hare speeds ahead in the race, but then seeing that he's so far ahead, he takes a nap. The hare wakes up to discover that the tortoise had slowly but surely overcome him. 🐢&gt; 🐇 !</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 639px; max-height: 480px;"><img alt="An illustration of a tortoise walking past a hare that is asleep in the bushes." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/7ad0aa68014f570e70fc2c092a25b12e057d3e52.jpg" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">An illustration of a tortoise walking past a hare that is asleep in the bushes.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Illustration from a children's book. <em>Image source: <a class="_8gcxk83" href="https://commons.wikimedia.org/wiki/File:The_Tortoise_and_the_Hare_-_Project_Gutenberg_etext_19993.jpg" rel="noopener noreferrer" tabindex="0" target="_blank">Project Gutenberg</a></em></div></div></div></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">The fable has inspired people to run actual races between tortoises and hares. I don't have any such animals handy, but I am curious to see if it's really possible: can a tortoise beat a sleepy hare? How fast does must the tortoise be and how sleepy must the hare be? </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Let's investigate the questions by programming a simulation. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Starting simple</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">We'll begin by simulating a race between a tortoise and a hare that <em>doesn't</em> take naps. I think we both know the results of that race, but when we're programming, it helps to start with a simpler problem and then add complexity after.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">First we need to establish some initial conditions:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><ul><li>The length of the race</li><li>The average speed of the tortoise</li><li>The average speed of the hare</li></ul></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">We also need to keep track of some values that vary during the race:</div></div><div class="paragraph" data-perseus-paragraph-index="5"><ul><li>The current position of the tortoise</li><li>The current position of the hare</li></ul></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">We can store both the initial conditions and the varying values in variables.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Here's JavaScript code that initializes those variables:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code>var tortoiseSpeed = 1;
+var hareSpeed = 2;
+var raceDistance = 350;
+
+var tortoisePos = 0;
+var harePos = 0;</code></pre></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">Then we can use a loop that updates the position of the tortoise and the hare and only stops once one of them reaches the finish line.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="10"><pre><code>while (tortoisePos &lt; raceDistance &amp;&amp; harePos &lt; raceDistance) {
+    tortoisePos += tortoiseSpeed;
+    harePos += hareSpeed;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">Here's the running simulation with that code:</div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var tortoiseSpeed = 1;
+var hareSpeed = 2;
+var raceDistance = 350;
+
+var tortoisePos = 0;
+var harePos = 0;
+
+while (tortoisePos &lt; raceDistance &amp;&amp; harePos &lt; raceDistance) {
+    tortoisePos += tortoiseSpeed;
+    harePos += hareSpeed;
+}
+
+println("Tortoise position: " + tortoisePos);
+println("Hare position: " + harePos);
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/RznDBdQKUi0GLiCX7lVlZvd5mFtI6G0_HMTrUAGJ7VU/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snap/snap.html#present:Username=pamela-ka&amp;ProjectName=Simple%20simulation%3A%20Tortoise%20vs.%20Hare%20No%20Naps&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/SimpleSimulationTortoiseHareNoNaps" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="14"><div class="paragraph">As long as the hare is faster than the tortoise, it <em>will</em> win that race. Now that we've got that working, it's time to make it more interesting.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Adding complexity</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Our simulation needs to model the behavior of a lazy hare. We can start by establishing some initial properties about his laziness:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><ul><li>How long is he typically awake between naps?</li><li>When he does nap, how long are the naps?</li></ul></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Here's JavaScript code that stores those properties as variables:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>var minsBetweenNaps = 30; 
+var napLength = 20;</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">To figure out when to stop the hare for naptime, we need to also keep track of some values:</div></div><div class="paragraph" data-perseus-paragraph-index="6"><ul><li>How long has it been since the last nap?</li><li>If he's currently napping, how long has it been since the nap started?</li></ul></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">This code stores initial values for those variables:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code>var minsSinceLastNap = 0;
+var minsSinceNapStart = 0;</code></pre></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">The hare starts off awake and running, so both variables start at 0.</div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">Finally, we need to add logic inside the loop to make the hare take naps. </div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">If the hare doesn't need to nap yet, the code updates the hare position (like before) and increments <code>minsSinceLastNap</code>:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="12"><pre><code>if (minsSinceLastNap &lt;= minsBetweenNaps) {
+    harePos += hareSpeed;
+    minsSinceLastNap++;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph">If the hare should be napping, the code increments <code>minsSinceNapStart</code>, and once the hare has finished napping, the code resets <code>minsSinceLastNap</code> and <code>minsSinceNapStart</code> to 0:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="14"><pre><code>else {
+     if (minsSinceNapStart &lt; napLength) {
+          minsSinceNapStart++;
+      } else {
+          minsSinceLastNap = 0;
+          minsSinceNapStart = 0;
+      }
+}</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Check out the code all together in the running simulation below. Which racer wins? How can you change the parameters to make the other racer win instead?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var tortoiseSpeed = 1;
+var hareSpeed = 2;
+var raceDistance = 350;
+var minsBetweenNaps = 30; 
+var napLength = 20;
+
+var tortoisePos = 0;
+var harePos = 0;
+var minsSinceLastNap = 0;
+var minsSinceNapStart = 0;
+
+while (tortoisePos &lt; raceDistance &amp;&amp; harePos &lt; raceDistance) {
+    tortoisePos += tortoiseSpeed;
+    if (minsSinceLastNap &lt;= minsBetweenNaps) {
+        harePos += hareSpeed;
+        minsSinceLastNap++;
+    } else {
+         if (minsSinceNapStart &lt; napLength) {
+              minsSinceNapStart++;
+          } else {
+              minsSinceLastNap = 0;
+              minsSinceNapStart = 0;
+          }
+    }
+}
+
+println("Tortoise position: " + tortoisePos);
+println("Hare position: " + harePos);
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/K_V_nKnRWs-RaDeIAdgZjFmWYMHfffhnMuWp35OL6v8/edit" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snap/snap.html#present:Username=pamela-ka&amp;ProjectName=Simple%20simulation%3A%20Tortoise%20vs.%20Hare%20With%20Naps&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/SimpleSimulationTortoiseHairNaps" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Visualizing the changes</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">A simulation does <em>not</em> have to have a visual output; it may just have a textual or numeric output like the simulations above. However, a visualization can help the users of a simulation gain a more intuitive understanding of the output.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">The way in which we add a visual component to a computer simulation depends on the language we're using and what libraries we have available. In the Khan Academy coding environment, we can use the ProcessingJS library to draw and animate shapes onto the screen, so that's a great fit for visualizing this simulation.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">This simulation runs the same logic as before but adds a visualization:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>/*
+Each frame represents one "minute" and each pixel represents one "meter"
+*/
+frameRate(30);
+
+// Initial conditions
+var tortoiseSpeed = 1;
+var hareSpeed = 2;
+var raceDistance = 350;
+var minsBetweenNaps = 30;
+var napLength = 20;
+
+// Tracking state during the race
+var tortoisePos = 20;
+var harePos = 20;
+var minsSinceLastNap = 0;
+var minsSinceNapStart = 0;
+
+// This code is called every frame
+draw = function() {
+
+    if (tortoisePos &lt; raceDistance &amp;&amp; harePos &lt; raceDistance) {
+        tortoisePos += tortoiseSpeed;
+        if (minsSinceLastNap &lt;= minsBetweenNaps) {
+            harePos += hareSpeed;
+            minsSinceLastNap++;
+        } else {
+            if (minsSinceNapStart &lt; napLength) {
+                minsSinceNapStart++;
+             } else {
+                minsSinceLastNap = 0;
+                minsSinceNapStart = 0;
+            }
+        }
+    }
+    
+    // Draw scenery
+    background(194, 160, 101);
+    noStroke();
+    fill(255, 247, 0);
+    rect(0, 9, width, 15);
+    fill(0, 0, 0);
+    text("START", 181, 21);
+    noStroke();
+    fill(255, 247, 0);
+    rect(0, 341, width, 15);
+    fill(0, 0, 0);
+    text("FINISH", 181, 352);
+    
+    // Draw racers
+    fill(0, 255, 72);
+    text("🐢", 156, tortoisePos);
+    fill(0, 255, 72);
+    text("🐇", 228, harePos);
+};
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/mG1ALBLYfmCLBcCoyUjpdaodEtFpBzoqOl_efYh8hGE/edit" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snap/snap.html#present:Username=pamela-ka&amp;ProjectName=Simple%20simulation%3A%20Tortoise%20vs.%20Hare%20Visualized&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/TortoiseHareSimulationTurtleVisualized" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Adding variability</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The real world is full of variation. Tortoises and hares vary in their speeds; the slowest tortoise moves at 0.3 km/hr while the fastest moves at 5 km/hr.  Plus, within a race, the tortoise and hare won't move at exactly the same speed the whole time; they'll have their fast moments and slow moments.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">One way to add variation to a simulation is to generate random numbers. We can find out the expected ranges of a value in the real world and generate values within those ranges.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Try to find all the places that use randomly generated numbers in this version of the simulation, and then restart to see what changes:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>/*
+We consider each frame to be one "minute" and each pixel to be one "meter"
+*/
+frameRate(30);
+
+/* Initial conditions */
+var tortoiseSpeed = random(0.5, 5);
+var hareSpeed = random(30, 50); 
+var raceDistance = 350; 
+var minsBetweenNaps = 30; 
+var napLength = 20;
+
+/* Tracking state during the race */
+var tortoisePos = 20;
+var harePos = 20;
+var minsSinceLastNap = 0;
+var minsSinceNapStart = 0;
+
+draw = function() {
+
+    if (tortoisePos &lt; raceDistance &amp;&amp; harePos &lt; raceDistance) {
+        tortoisePos += tortoiseSpeed + random(-1, 1);
+        if (minsSinceLastNap &lt;= minsBetweenNaps) {
+            harePos += hareSpeed + random(-2, 2);
+            minsSinceLastNap++;
+        } else {
+            if (minsSinceNapStart &lt; napLength) {
+                minsSinceNapStart++;
+             } else {
+                minsSinceLastNap = 0;
+                minsSinceNapStart = 0;
+            }
+        }
+    }
+    
+    // Scenery
+    background(194, 160, 101);
+    noStroke();
+    fill(255, 247, 0);
+    rect(0, 9, width, 15);
+    fill(0, 0, 0);
+    text("START", 181, 21);
+    noStroke();
+    fill(255, 247, 0);
+    rect(0, 341, width, 15);
+    fill(0, 0, 0);
+    text("FINISH", 181, 352);
+    
+    // Racers
+    fill(0, 255, 72);
+    text("🐢", 156, tortoisePos);
+    fill(0, 255, 72);
+    text("🐇", 228, harePos);
+};
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/stsFsk0SmgxsxPEWCMHD50Pq8Wt9y-G0lUaaINWxPXA/edit" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snap/snap.html#present:Username=pamela-ka&amp;ProjectName=Simple%20simulation%3A%20Tortoise%20vs.%20Hare%20Randomized&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/TortoiseHareSimulationTurtleRandomized" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Note that this simulation uses more realistic numbers for the speed of the hare versus the tortoise, so you might be a bit shocked by the results. Play around with the nap parameters to see if you can give the tortoise a shot at winning the race.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>What's excluded?</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">This simulation is an abstraction of a real world scenario. It attempts to include the most significant parameters about the scenario, but it cannot include everything.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Here are some ideas for excluded details that might affect the race:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><ul><li>whether each racer moves in a straight path or meanders</li><li>whether each racer has the calories necessary to keep racing</li><li>whether either racer risks overheating during the race</li></ul></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">🤔 What else is the simulation missing? How could the simulation be more realistic? What parameters would let us investigate more possibilities?  <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Discuss]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer—just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

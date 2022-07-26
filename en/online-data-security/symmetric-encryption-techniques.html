@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Symmetric encryption (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Symmetric encryption (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A <strong>symmetric encryption</strong> is any technique where the same key is used to both encrypt and decrypt the data. The Caesar Cipher is one of the simplest symmetric encryption techniques, and of course, one of the easiest to crack. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Since then, cryptologists have invented many more symmetric encryption techniques, including the ones used today to encrypt data like passwords.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Vigenère Cipher</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">French cryptologists invented the Vigenère Cipher in the mid 1500s. The cipher was considered especially strong, and author Lewis Caroll even called it “unbreakable” in 1868. It was indeed much stronger than the Caesar Cipher, but as we’ll see, it can definitely be cracked.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><h4>Encryption</h4></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">The Vigenère cipher uses an entire word as the shift key, as opposed to the Caesar Cipher’s single shift amount. </div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Imagine that we want to encrypt the phrase <code>VERSAILLES</code> and use a shift key of <code>CHEESE</code>.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">First, we need to repeat the shift key to line up with each of the letters in the phrase:</div></div><div class="paragraph" data-perseus-paragraph-index="6"><table class='table'><thead><tr><th scope="col">Original</th><th scope="col">V</th><th scope="col">E</th><th scope="col">R</th><th scope="col">S</th><th scope="col">A</th><th scope="col">I</th><th scope="col">L</th><th scope="col">L</th><th scope="col">E</th><th scope="col">S</th></tr></thead><tbody><tr><td>Shift key</td><td>C</td><td>H</td><td>E</td><td>E</td><td>S</td><td>E</td><td>C</td><td>H</td><td>E</td><td>E</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Now we replace each letter of the original text according to the Vigenère table:</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- 
+This Vigenere table can help you encrypt a message using the Vigenere cipher.
+
+Learn more @ 
+https://www.khanacademy.org/computing/computer-science/cryptography/crypt/v/polyalphabetic-cipher
+--&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Vigenere Table&lt;/title&gt;
+    &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+    &lt;style&gt;
+    body {
+        font-family: "Lato", sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    table, table td, table th {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+    }
+    table td {
+        font-size: 2.9vw;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    table tr td:first-child, table thead td {
+        font-weight: bold;
+        background-color: #eee;
+        
+    }
+    
+    table tr.selected td, table tr td.selected {
+        background-color: yellow;
+    }
+    
+    table td.selected.encrypted {
+        background-color: rgb(167, 235, 162);
+    }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  
+  &lt;div id="output"&gt;
+      
+  &lt;/div&gt;
+  &lt;script&gt;
+
+var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+
+var selectRow = function(evt) {
+    var selectedCell = evt.target;
+    var parentRow = selectedCell.parentNode;
+    var parentTbody = parentRow.parentNode;
+    var parentTable = parentTbody.parentNode;
+    // Remove class name from everything relevant
+    var tableCells = parentTable.querySelectorAll("td");
+    for (var i = 0; i &lt; tableCells.length; i++) {
+        tableCells[i].classList.remove("selected");
+        tableCells[i].classList.remove("encrypted");
+    }
+    // Add class name to selected row
+    var selectedRowCells = parentRow.querySelectorAll("td");
+    for (var i = 0; i &lt; selectedRowCells.length; i++) {
+        selectedRowCells[i].classList.add("selected");
+    }
+    var colIndex = selectedCell.getAttribute("data-index");
+    if (colIndex &gt; 0) {
+        // Select the relevant column
+        var bodyRows = parentTable.querySelectorAll("tr");
+        for (var i = 0; i &lt; bodyRows.length; i++) {
+            bodyRows[i].childNodes[colIndex].classList.add("selected");
+        }
+        // Select the exact cell
+        selectedCell.classList.add("encrypted");
+    }
+};
+
+var table = document.createElement("table");
+
+// Header row
+var thead = document.createElement("thead");
+var theadR = document.createElement("tr");
+var hCell = document.createElement("th");
+hCell.innerHTML = " ";
+theadR.appendChild(hCell);
+for (var i = 0; i &lt; alphabet.length; i++) {
+    var hCell = document.createElement("td");
+    hCell.innerHTML = alphabet[i];
+    theadR.appendChild(hCell);
+}
+thead.appendChild(theadR);
+table.appendChild(thead);
+
+// Body Rows
+var tbody = document.createElement("tbody");
+for (var i = 0; i &lt; alphabet.length; i++) {
+    var tbodyR = document.createElement("tr");
+    var rowStart = document.createElement("td");
+    rowStart.innerHTML = alphabet[i];
+    rowStart.addEventListener("mouseover", selectRow);
+    rowStart.addEventListener("click", selectRow);
+    tbodyR.appendChild(rowStart);
+    for (var j = 0; j &lt; alphabet.length; j++) {
+        var rowCell = document.createElement("td");
+        rowCell.innerHTML = alphabet[(j + i) % 26];
+        rowCell.setAttribute("data-index", j + 1);
+        rowCell.addEventListener("mouseover", selectRow);
+        rowCell.addEventListener("click", selectRow);
+        tbodyR.appendChild(rowCell);
+    }
+    tbody.appendChild(tbodyR);
+}
+
+table.appendChild(tbody);
+document.body.appendChild(table);
+
+  &lt;/script&gt;
+
+  &lt;/body&gt;
+  &lt;/html&gt;</pre></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">For the first letter "V", we select the row that starts with "V". Then since the corresponding shift key letter is "C", we move to the column that has a header of "C". The letter at the intersection of the "V" row and "C" column is "X". Thus, we encrypt "V" as "X".</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">Original</th><th scope="col">V</th><th scope="col">E</th><th scope="col">R</th><th scope="col">S</th><th scope="col">A</th><th scope="col">I</th><th scope="col">L</th><th scope="col">L</th><th scope="col">E</th><th scope="col">S</th></tr></thead><tbody><tr><td>Shift key</td><td>C</td><td>H</td><td>E</td><td>E</td><td>S</td><td>E</td><td>C</td><td>H</td><td>E</td><td>E</td></tr><tr><td>Encrypted</td><td>X</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">The letter at the intersection of the "E" row and "H" column is "L", so we encrypt "E" as "L".</div></div><div class="paragraph" data-perseus-paragraph-index="3"><table class='table'><thead><tr><th scope="col">Original</th><th scope="col">V</th><th scope="col">E</th><th scope="col">R</th><th scope="col">S</th><th scope="col">A</th><th scope="col">I</th><th scope="col">L</th><th scope="col">L</th><th scope="col">E</th><th scope="col">S</th></tr></thead><tbody><tr><td>Shift key</td><td>C</td><td>H</td><td>E</td><td>E</td><td>S</td><td>E</td><td>C</td><td>H</td><td>E</td><td>E</td></tr><tr><td>Encrypted</td><td>X</td><td>L</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">If we keep going, we'll end up with the encrypted text "XLVWSMNSIW".</div></div><div class="paragraph" data-perseus-paragraph-index="5"><table class='table'><thead><tr><th scope="col">Original</th><th scope="col">V</th><th scope="col">E</th><th scope="col">R</th><th scope="col">S</th><th scope="col">A</th><th scope="col">I</th><th scope="col">L</th><th scope="col">L</th><th scope="col">E</th><th scope="col">S</th></tr></thead><tbody><tr><td>Shift key</td><td>C</td><td>H</td><td>E</td><td>E</td><td>S</td><td>E</td><td>C</td><td>H</td><td>E</td><td>E</td></tr><tr><td>Encrypted</td><td>X</td><td>L</td><td>V</td><td>W</td><td>S</td><td>M</td><td>N</td><td>S</td><td>I</td><td>W</td></tr></tbody></table></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Check your understanding</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">If we want to use a different shift key of "PIZZA" to encrypt "VERSAILLES", what will the first letter "V" be encrypted as?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">Choose 1 answer:</legend><div class="instructions _125m8j1">Choose 1 answer:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-0" name="perseus_radio_9" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-1" name="perseus_radio_9" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">K</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-2" name="perseus_radio_9" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">P</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-3" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-3" name="perseus_radio_9" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice D)</div><div aria-hidden="true">D</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-4" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-4" name="perseus_radio_9" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice E)</div><div aria-hidden="true">E</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">T</div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p></p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Check</span></button><button class="_112g8fo" tabindex="0">Explain</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h4>Decryption</h4></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Imagine that we receive the encrypted message "NVYZJI" from our ally, and we know they've used a Vigenère cipher with a shift key of "CHEESE".</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Once again, we line the encrypted message up with the shift key:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><table class='table'><thead><tr><th scope="col">Encrypted</th><th scope="col">N</th><th scope="col">V</th><th scope="col">Y</th><th scope="col">Z</th><th scope="col">J</th><th scope="col">I</th></tr></thead><tbody><tr><td>Shift key</td><td>C</td><td>H</td><td>E</td><td>E</td><td>S</td><td>E</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Now we can do a reverse substitution according to the table:</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- 
+This Vigenere table can help you encrypt a message using the Vigenere cipher.
+
+Learn more @ 
+https://www.khanacademy.org/computing/computer-science/cryptography/crypt/v/polyalphabetic-cipher
+--&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Vigenere Table&lt;/title&gt;
+    &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+    &lt;style&gt;
+    body {
+        font-family: "Lato", sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    table, table td, table th {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+    }
+    table td {
+        font-size: 2.9vw;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    table tr td:first-child, table thead td {
+        font-weight: bold;
+        background-color: #eee;
+        
+    }
+    
+    table tr.selected td, table tr td.selected {
+        background-color: yellow;
+    }
+    
+    table td.selected.encrypted {
+        background-color: rgb(167, 235, 162);
+    }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  
+  &lt;div id="output"&gt;
+      
+  &lt;/div&gt;
+  &lt;script&gt;
+
+var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+
+var selectRow = function(evt) {
+    var selectedCell = evt.target;
+    var parentRow = selectedCell.parentNode;
+    var parentTbody = parentRow.parentNode;
+    var parentTable = parentTbody.parentNode;
+    // Remove class name from everything relevant
+    var tableCells = parentTable.querySelectorAll("td");
+    for (var i = 0; i &lt; tableCells.length; i++) {
+        tableCells[i].classList.remove("selected");
+        tableCells[i].classList.remove("encrypted");
+    }
+    // Add class name to selected row
+    var selectedRowCells = parentRow.querySelectorAll("td");
+    for (var i = 0; i &lt; selectedRowCells.length; i++) {
+        selectedRowCells[i].classList.add("selected");
+    }
+    var colIndex = selectedCell.getAttribute("data-index");
+    if (colIndex &gt; 0) {
+        // Select the relevant column
+        var bodyRows = parentTable.querySelectorAll("tr");
+        for (var i = 0; i &lt; bodyRows.length; i++) {
+            bodyRows[i].childNodes[colIndex].classList.add("selected");
+        }
+        // Select the exact cell
+        selectedCell.classList.add("encrypted");
+    }
+};
+
+var table = document.createElement("table");
+
+// Header row
+var thead = document.createElement("thead");
+var theadR = document.createElement("tr");
+var hCell = document.createElement("th");
+hCell.innerHTML = " ";
+theadR.appendChild(hCell);
+for (var i = 0; i &lt; alphabet.length; i++) {
+    var hCell = document.createElement("td");
+    hCell.innerHTML = alphabet[i];
+    theadR.appendChild(hCell);
+}
+thead.appendChild(theadR);
+table.appendChild(thead);
+
+// Body Rows
+var tbody = document.createElement("tbody");
+for (var i = 0; i &lt; alphabet.length; i++) {
+    var tbodyR = document.createElement("tr");
+    var rowStart = document.createElement("td");
+    rowStart.innerHTML = alphabet[i];
+    rowStart.addEventListener("mouseover", selectRow);
+    rowStart.addEventListener("click", selectRow);
+    tbodyR.appendChild(rowStart);
+    for (var j = 0; j &lt; alphabet.length; j++) {
+        var rowCell = document.createElement("td");
+        rowCell.innerHTML = alphabet[(j + i) % 26];
+        rowCell.setAttribute("data-index", j + 1);
+        rowCell.addEventListener("mouseover", selectRow);
+        rowCell.addEventListener("click", selectRow);
+        tbodyR.appendChild(rowCell);
+    }
+    tbody.appendChild(tbodyR);
+}
+
+table.appendChild(tbody);
+document.body.appendChild(table);
+
+  &lt;/script&gt;
+
+  &lt;/body&gt;
+  &lt;/html&gt;</pre></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">We start by selecting the row for the first letter in the shift key "C". Then we scan down that row until we find the first encrypted letter "N". Once we find the "N", we look up to see the header for that column, "L". Thus, the decryption of "N" is "L".</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">Encrypted</th><th scope="col">N</th><th scope="col">V</th><th scope="col">Y</th><th scope="col">Z</th><th scope="col">J</th><th scope="col">I</th></tr></thead><tbody><tr><td>Shift key</td><td>C</td><td>H</td><td>E</td><td>E</td><td>S</td><td>E</td></tr><tr><td>Original</td><td>L</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">For the next letter, we select the "H" row, find the "V" in the row, and look up to see we're in column "O".</div></div><div class="paragraph" data-perseus-paragraph-index="3"><table class='table'><thead><tr><th scope="col">Encrypted</th><th scope="col">N</th><th scope="col">V</th><th scope="col">Y</th><th scope="col">Z</th><th scope="col">J</th><th scope="col">I</th></tr></thead><tbody><tr><td>Shift key</td><td>C</td><td>H</td><td>E</td><td>E</td><td>S</td><td>E</td></tr><tr><td>Original</td><td>L</td><td>O</td><td>?</td><td>?</td><td>?</td><td>?</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">If we do that for each shift key and encrypted letter, we decrypt the entire phrase as "LOUVRE".</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Check your understanding</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">If we receive a new message "NVSO" that's encrypted with the same shift key of "CHEESE", what was the original text?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">Choose 1 answer:</legend><div class="instructions _125m8j1">Choose 1 answer:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-0" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">LOVE</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-1" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">LOOK</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-2" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">LONE</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-3" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-3" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice D)</div><div aria-hidden="true">D</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">LOSE</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-4" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-4" name="perseus_radio_10" type="radio"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice E)</div><div aria-hidden="true">E</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">LOOT</div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p></p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Check</span></button><button class="_112g8fo" tabindex="0">Explain</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h4>Cracking the cipher</h4></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The  Vigenère Cipher is a type of polyalphabetic cipher, and it's a harder code to crack than the Caesar Cipher due to the use of an entire shift word.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">If an intercepter had no idea what the shift key was and wanted to brute force their way to a decryption, they would need to try out all the possible shift words in the world, and perhaps even made-up words! For a mere mortal, that could take a lifetime. That's much more work than brute forcing the Caesar Cipher, where we just had to check 26 different shift amounts. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">What about frequency analysis? Do messages encrypted with the Vigenere cipher have a special pattern in their distribution of letters?</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Try it out for yourself! Encrypt the message below, and you'll see a frequency analysis of the original message and the encrypted message.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- 
+Type text into the textbox. Then select a shift amount and click Encrypt to see the text encrypted with the Vigenere according to that shift. 
+
+Also check out the frequency analysis of both the original and encrypted text. You'll notice that the letter frequency of the encrypted text has less variance than the original test. That makes it harder to use frequency analysis to crack the code (but not impossible!).
+
+Learn more in the AP Computer Science Principles course:
+https://www.khanacademy.org/computing/ap-computer-science-principles/the-internet/tls-secure-data-transport/a/symmetric-encryption-techniques
+OR in the Cryptography course:
+https://www.khanacademy.org/computing/computer-science/cryptography#crypt
+Also see the Vigenere table:
+https://www.khanacademy.org/computer-programming/vigenere-table/4787408025059328
+--&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Vigenere Encrypter&lt;/title&gt;
+    &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+    &lt;style&gt;
+    body {
+        font-family: "Lato", sans-serif;
+    }
+    button.primary {
+        -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        margin: 0px !important;
+        position: relative !important;
+        display: -webkit-inline-box !important;
+        display: -moz-inline-box !important;
+        display: -ms-inline-flexbox !important;
+        display: -webkit-inline-flex !important;
+        display: inline-flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        -webkit-justify-content: center !important;
+        justify-content: center !important;
+        height: 40px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        border: none !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        outline: none !important;
+        text-decoration: none !important;
+        -moz-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        -ms-touch-action: manipulation !important;
+        touch-action: manipulation !important;
+        background: #1865f2 !important;
+        color: #ffffff !important;
+        margin-right: 10px !important;
+    }
+    button.primary:hover {
+        box-shadow: 0 0 0 1px #FFF, 0 0 0 3px #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        font-family: Lato, sans-serif !important;
+        font-size: 16px !important;
+        line-height: 20px !important;
+        display: -webkit-box !important;
+        display: -moz-box !important;
+        display: -ms-flexbox !important;
+        display: -webkit-flex !important;
+        display: flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        font-weight: bold !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        pointer-events: none !important;
+    }
+    table, table td {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+    }
+    table td {
+        text-align: center;
+        width: 3%;
+    }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;textarea id="input" style="width: 100%; height: 50px; margin-bottom: 10px;"&gt;If an intercepter had no idea what the shift key was and wanted to brute force their way to a decryption, they would need to try out all the possible shift words in the world, and perhaps even made-up words! For a mere mortal, that could take a lifetime. That's much more work than brute forcing the Caesar Cipher, where we just had to check 26 different shift amounts.
+&lt;/textarea&gt;
+  &lt;div style="margin-bottom:10px;"&gt;
+  &lt;label&gt;Shift key: &lt;input id="shiftKey" type="text" value="CHEESE"&gt;
+  &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;button id="encryptButton" class="primary"&gt;&lt;span&gt;Encrypt&lt;/span&gt;&lt;/button&gt;
+  
+  &lt;div id="output" style="margin-top:10px; color: purple; word-wrap:break-word; font-size: 9px;"&gt;
+      
+  &lt;/div&gt;
+  &lt;div id="chart"&gt;&lt;/div&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+
+var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var vigTable = {}
+
+for (var i = 0; i &lt; alphabet.length; i++) {
+    for (var j = 0; j &lt; alphabet.length; j++) {
+        vigTable[alphabet[i] + alphabet[j]] = alphabet[(i + j) % 26];
+    }
+}
+
+var drawChart = function(originalCounts, encryptedCounts) {
+    const data = {
+        labels: alphabet,
+        datasets: [{
+            name: "Original",
+            values: originalCounts
+        },
+        {
+            name: "Encrypted",
+            values: encryptedCounts
+        }]
+    }
+
+    const chart = new frappe.Chart("#chart", {
+        data: data,
+        type: 'bar',
+        height: 250,
+        colors: ['#333', 'purple'],
+    });
+};
+
+// Returns array of letter counts, sorted alphabetically
+var countLetters = function(message) {
+    var lettersSeen = {};
+    for (var i = 0; i &lt; alphabet.length; i++) {
+        lettersSeen[alphabet[i]] = 0;
+    }
+    for (var i = 0; i &lt; message.length; i++) {
+        var currentLetter = message.charAt(i).toUpperCase();
+        if (lettersSeen[currentLetter] &gt;= 0) {
+            lettersSeen[currentLetter]++;
+        }
+    }
+    return Object.values(lettersSeen);
+};
+
+document.getElementById("encryptButton").addEventListener("click", function() {
+    var shiftKey = document.getElementById("shiftKey").value.toUpperCase();
+    var input = document.getElementById("input").value.toUpperCase();
+    var encrypted = "";
+    for (var i = 0; i &lt; input.length; i++) {
+        var currentLetter = input.charAt(i);
+        var shiftLetter = shiftKey[(i % shiftKey.length)];
+        var encryptedLetter = vigTable[shiftLetter + currentLetter];
+        if (encryptedLetter) {
+            encrypted += encryptedLetter;
+        }
+    }
+    var output = document.getElementById("output");
+    output.innerHTML = encrypted;
+    drawChart(countLetters(input), countLetters(encrypted));
+});
+  &lt;/script&gt;
+
+  &lt;/body&gt;
+  &lt;/html&gt;</pre></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Notice that the frequency analysis of the original message is exactly what we'd expect for an English-language message: "E" is the most popular letter, and there is huge variance in the frequency of the letters. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The frequencies of the encrypted message are more similar to each other. We can't identify an obvious "E", since the letter "E" gets encrypted into different letters at different points in the message.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">In the 1800s, people finally figured out different ways to use frequency analysis to crack the cipher. For example, in a long message, a short word like "THE" may get translated to the same three encrypted letters multiple times (just not every time), and that reveals possible lengths for the shift key.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Now that we have the use of powerful computers, the   Vigenère Cipher is relatively easy to decipher, because a computer can quickly test out millions of words, and it can easily find the leaked information in the frequency analysis.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Modern ciphers</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">In the age of computers, ciphers can't just be hard to crack by an enterprising human; they have to be hard to crack by a computer that can do trillions of calculations per second.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Fortunately, cryptologists have invented encryption techniques that are secure in the digital world, and are continuing to improve them every year.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">One of the most common encryption standards is AES-128, a block cipher approved by the federal government and used often for secure file transfer.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">What makes it so secure? </div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">One reason is that each key is always 128 bits long. That means there are <span style="white-space: nowrap;"><span></span><span><span></span><span aria-hidden="false" style="white-space: nowrap;"></span><span style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span></span><span></span></span> possible keys. That's this many:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="6"><div class="perseus-block-math"><div class="perseus-block-math-inner" style="overflow: auto hidden; padding-top: 10px; padding-bottom: 10px; margin-top: -10px; margin-bottom: -10px;"><span><span></span><span aria-hidden="false" style="white-space: nowrap;"></span><span style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span></span></div></div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Wow! But wait, there's more: the AES cipher requires applying a  sequence of 10 mathematical operations for <em>each</em> bit of the key. Multiply that number above by 10, and that's the number of calculations a computer would need to do.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">The fastest computer can calculate around <span style="white-space: nowrap;"><span></span><span><span></span><span aria-hidden="false" style="white-space: nowrap;"></span><span style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span></span><span></span></span> operations per second. That's this many:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="9"><div class="perseus-block-math"><div class="perseus-block-math-inner" style="overflow: auto hidden; padding-top: 10px; padding-bottom: 10px; margin-top: -10px; margin-bottom: -10px;"><span><span></span><span aria-hidden="false" style="white-space: nowrap;"></span><span style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span></span></div></div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">The fastest computer would still take 500 trillion years to try every possible 128-bit key! </div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">What about frequency analysis? It won't work. The AES cipher does not reveal any information about the original text, thanks to the multi-step sequence of operations on blocks of bits.</div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">The AES ciphers, and other modern ciphers, may not be secure forever. Security researchers spend their time trying to find clever ways to break the cipher, and present findings in blogs and conference talks. </div></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph">Cryptography research is done in the open, with the hope that the public finds out about a security breach <em>before</em> a malicious cybercriminal discovers one.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[References]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer—just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

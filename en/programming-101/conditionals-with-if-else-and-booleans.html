@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Conditionals with if/else & Booleans | AP CSP (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Conditionals with if/else & Booleans | AP CSP (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">As humans, we make decisions every day, like what to eat for lunch or whether to wear a raincoat. When we make those decisions, we consider many conditions of our world, like the contents of our fridge for the lunch decision, or the weather outside for the raincoat decision.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Computer programs also make decisions, using <strong>Boolean expressions</strong> (true/false) inside <strong>conditionals</strong> (if/else). Thanks to conditionals, programs can respond differently based on different inputs and parameters.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>A simple conditional</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Imagine we're writing a program to help us decide what to wear outside each day. There are a lot of conditions we can come up with this program, but let's start simple: if the temperature is below freezing, the program should warn us to wear a snow jacket.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Here's that logic in a flowchart:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt='Flowchart that starts with diamond that says "Is temperature less than or equal to 32?". Diamond has arrow labeled "TRUE" that leads to rectangle that says "Display: "Wear a snow jacket!".' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/80448a77385ce822e4ca230445302ed8f1ee924e.svg" tabindex="0"/><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Flowchart that starts with diamond that says "Is temperature less than or equal to 32?". Diamond has arrow labeled "TRUE" that leads to rectangle that says "Display: "Wear a snow jacket!".</div></div></div></span></div></div>
+<div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[How do you read a flowchart?]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">We can program that flow in JavaScript using an <strong>if statement</strong>:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>if (temperature &lt; 32) {
+  println("Wear a snow jacket!");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Let's breakdown that syntax. The general structure of every if statement looks like this:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>if (&lt;condition&gt;) {
+  &lt;instructions&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">The condition and instructions are what differ; that's where the magic happens.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">The condition is a <strong>Boolean expression</strong>: an expression that evaluates to either <code>true</code> or <code>false</code>. Boolean values are another type of data type in programming languages, and they can only ever hold true or false. <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Remember bits?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">For example, we can store the results of that Boolean expression in a variable:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><pre><code>var belowFreezing = temperature &lt; 32;</code></pre></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Depending on the current value of <code>temperature</code>, the <code>belowFreezing</code> variable will now store either <code>true</code> or <code>false</code>.</div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">We can even substitute the condition with the variable:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="10"><pre><code>var belowFreezing = temperature &lt; 32;
+if (belowFreezing) {
+  println("Wear a snow jacket!");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">However we code it, the condition needs to evaluate to either <code>true</code> or <code>false</code>, because that tells the computer whether to execute the instructions inside the curly brackets or not.</div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">The instructions can be <em>anything</em> your program is capable of doing, and they can be as long as necessary.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">✏️ Try changing the value of <code>temperature</code> in the program below and see what happens. You can also change the condition or the instructions.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var temperature = 30;
+if (temperature &lt; 32) {
+    println("BRRR its cold out there!");
+    println("Do you want to make a snowman?");
+    println("☃☃☃☃☃☃☃☃");
+    println("Or eat some snowflake slushies?");
+    println("❄ ❆ ❄ ❄ ❄ ❆ ❅ ❄");
+}
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/QLJt1JoQDiq32hVSMfZSD4W3oaoN1mdi7_TNLsIsY20/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditionals%3A%20Freezing%20Temp&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalsFreezingTemp" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Note: typically, a program like this would read the value of <code>temperature</code> from a sensor or other input device, but for simplicity, we're hardcoding the value into the program.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Comparison operators</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Our Boolean expression above used the comparison operator <code>&lt;=</code> to determine whether one number is less than or equal to another number. There are many comparison operators in programming languages to determine different relationships between values, especially numbers.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Here are the relational operators in JavaScript:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><table class='table'><thead><tr><th scope="col">Operator</th><th scope="col">Meaning</th><th scope="col">True expressions</th><th scope="col"><span style="white-space: nowrap;"><span></span><span><span></span><span aria-hidden="false" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext> </mtext></mrow><annotation encoding="application/x-tex">\,</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span></span></span></span></span><span style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span></span><span></span></span></th></tr></thead><tbody><tr><td><code>&gt;</code></td><td>Greater than</td><td><code>60 &gt; 32</code></td><td></td></tr><tr><td><code>&gt;=</code></td><td>Greater than or equal</td><td><code>60 &gt;= 32</code></td><td><code>32 &gt;= 32</code></td></tr><tr><td><code>&lt;</code></td><td>Less than</td><td><code>20 &lt; 32</code></td><td></td></tr><tr><td><code>&lt;=</code></td><td>Less than or equal</td><td><code>20 &lt;= 32</code></td><td><code>32 &lt;= 32</code></td></tr><tr><td><code>===</code></td><td>Strict equality</td><td><code>32 === 32</code></td><td></td></tr><tr><td><code>==</code></td><td>Equality</td><td><code>32 == 32</code></td><td><code>"32" == 32</code></td></tr><tr><td><code>!==</code></td><td>Strict inequality</td><td><code>30 !== 32</code></td><td><code>"32" !== 32</code></td></tr><tr><td><code>!=</code></td><td>Inequality</td><td><code>30 != 32</code></td><td></td></tr></tbody></table></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">JavaScript is a bit of a tricky language here, because it has both equality operators and "strict" equality operators. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The equality operators will first try to force both sides of the expression to be the same type (like by converting them both to numbers), and <em>then</em> check for equality. The strict equality operator will see that two values are different types and immediately decide they can't possibly equal each other. We recommend using the strict operators because they lead to more predictable code.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Most programming languages do not have both types of equality operators, but you may encounter other differences in the way that languages decide if two variables are equal.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">✏️ The program below displays all sorts of messages based on the <code>yourAge</code> variable. Try changing that to different values to see what output is displayed. You can also add more <code>if</code> statements to the program.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var yourAge = 15;
+
+if (yourAge &gt;= 0) {
+    println("Congrats, you were born!");
+}
+
+if (yourAge === 0) {
+    println("You're just a baby!");
+}
+
+if (yourAge &lt; 3) {
+    println("You can't even speak yet! How can you code?");
+}
+
+if (yourAge === 5) {
+    println("Get ready for your first ever day of school!");
+}
+
+if (yourAge &gt;= 16) {
+    println("You can drive! Maybe! Check your state laws.");
+}
+
+if (yourAge &gt;= 18) {
+    println("You can vote!");
+}
+
+if (yourAge &gt;= 21) {
+    println("You're eligible for public office!");
+}
+
+if (yourAge &gt;= 35) {
+    println("You can run for president now!");
+}
+
+if (yourAge &gt;= 65) {
+    println("You can retire now!");
+}</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/MwRa_nh0DEaRIqzRr-ZLayFioW0FDkQH-1Z5MbtlbOE/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditionals%3A%20Age&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalsAge" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>The else statement</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">With if statements, our programs can execute a set of instructions only if the condition is true. If we want our programs to execute a <em>different</em> set of instructions when the condition is false, then we can use an <strong>else statement</strong>.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Imagine a super simple password checking program. The logic flow looks like this:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 428px; max-height: 321px;"><img alt="Flowchart that starts with diamond that says &quot;Is password equal to TOPSECRET?&quot;. First arrow is labeled &quot;TRUE&quot; and leads from diamond to rectangle that says &quot;Display: 'You got it!'&quot;. Second arrow is labeled &quot;FALSE&quot; and leads from diamond to rectangle that says &quot;Display: 'Try again!'&quot;." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/86b8339692d40c121dddc83808c1f3fac5be57fa.svg" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Flowchart that starts with diamond that says "Is password equal to TOPSECRET?". First arrow is labeled "TRUE" and leads from diamond to rectangle that says "Display: 'You got it!'". Second arrow is labeled "FALSE" and leads from diamond to rectangle that says "Display: 'Try again!'".</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">We can program that using an <code>if</code> statement followed by an <code>else</code> statement:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>if (password === "TOPSECRET") {
+   println("You got it!");
+} else {
+   println("Try again!");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/OesN3TTxw4ac9NWFkBjG30dkeEGm8elum_qskSz2lBw/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditionals%3A%20Password%20checker&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalsPasswordChecker" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Our program is guaranteed to always go down one of the two paths: either the condition is true and it goes down the first path, or it's false and it goes down the second path.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">✏️ The program below builds on the earlier age checking program, adding <code>else</code> statements everywhere. Now you can easily see what you <em>can</em> and <em>cannot</em> do at any age. Fiddle with the <code>yourAge</code> variable and see how the output changes.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var yourAge = 15;
+
+if (yourAge &gt;= 0) {
+    println("Congrats, you were born!");
+} else {
+    println("You don't exist yet :(");
+}
+
+if (yourAge &lt; 3) {
+    println("You can't even speak yet! How can you code?");
+} else {
+    println("Yay, you can walk and talk!");
+}
+
+if (yourAge &gt;= 16) {
+    println("You can drive! Maybe! Check your state laws.");
+} else {
+    println("Sorrrry, no driving for you yet.");
+}
+
+if (yourAge &gt;= 18) {
+    println("You can vote!");
+} else {
+    println("No voting yet, maybe you can influence your parents.");
+}
+
+if (yourAge &gt;= 21) {
+    println("You're eligible for public office!");
+} else {
+    println("You can't run for public office yet, sorry!");
+}
+
+if (yourAge &gt;= 35) {
+    println("You can run for president now!");
+} else {
+    println("No running for president for you, sadface!");
+}
+
+if (yourAge &gt;= 65) {
+    println("You can retire now!");
+} else {
+    println("You're not at retirement age yet, alas!");   
+}</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/FtBunIX13Q83rX8IIRLxt2O1ejtIVgGuIVDN8mnMvDk/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditionals%3A%20Age%20Else&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalsAgeElse" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Conditionals in pseudocode</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[What's pseudocode?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">This pseudocode represents a single <code>if</code> statement:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>IF (&lt;condition&gt;)
+{
+     &lt;instructions&gt;
+} </code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">This pseudocode includes an <code>else</code> statement with a second set of instructions that can be executed instead:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>IF (&lt;condition&gt;)
+{
+     &lt;instructions 1&gt;
+} 
+ELSE 
+{
+     &lt;instructions 2&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">These are the relational operators in pseudocode:</div></div><div class="paragraph" data-perseus-paragraph-index="7"><table class='table'><thead><tr><th scope="col">Operator</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td><code>a = b</code></td><td>Equality</td></tr><tr><td><code>a ≠ b</code></td><td>Inequality</td></tr><tr><td><code>a &gt; b</code></td><td>Greater than</td></tr><tr><td><code>a &lt; b</code></td><td>Less than</td></tr><tr><td><code>a ≥ b</code></td><td>Greater than or equal</td></tr><tr><td><code>a ≤ b</code></td><td>Less than or equal</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Here's the password checker logic in pseudocode:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="9"><pre><code>IF (password = "TOPSECRET")
+{
+   DISPLAY("You got it!")
+}
+ELSE {
+   DISPLAY("Try again!");
+}</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer— just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

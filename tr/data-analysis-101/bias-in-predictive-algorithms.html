@@ -1,0 +1,410 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Tahmine dayalı algoritmalarda önyargı (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Tahmine dayalı algoritmalarda önyargı (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bir makine öğrenimi algoritması, eğitildiği geçmiş verilere dayanarak gelecek hakkında bir tahminde bulunabilir.  Ancak bu eğitim verileri eşitsizliklerle dolu bir dünyadan geldiğinde, algoritma bu eşitsizlikleri yaymaya nasıl devam edeceğini öğreniyor olabilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Ceza adaleti</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Ceza adaleti sisteminde, bir risk değerlendirme puanı, bir suçla suçlanan birinin başka bir suç işlemesinin muhtemel olup olmadığını tahmin eder. Düşük riskli bir sanığın başka bir suç işleme olasılığı düşükken, yüksek riskli bir sanığın başka bir suç işleme olasılığı çok yüksek kabul edilir. Risk değerlendirmeleri, tahvil tutarlarının atanmasından cümlelerin belirlenmesine kadar sistemde çeşitli aşamalarda kullanılmaktadır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bilgisayar algoritmaları, risk değerlendirme puanlarını bulmak için giderek daha fazla kullanılmaktadır, çünkü bir bilgisayar algoritmasının kullanılması bir insandan daha ucuzdur ve çok daha fazla veriye dayanabilir.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 617px; max-height: 184px;"><img alt="Diagram of a risk assessment algorithm which takes an input of information about a defendant and outputs either low, medium, or high risk." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/db8ae567a8b116c6e43ae4363b7b0d5ecb13f558.svg" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bir sanık hakkında bilgi girişi alan ve düşük, orta veya yüksek risk veren bir risk değerlendirme algoritmasının diyagramı.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">2016 yılında, araştırma ajansı ProPublica, Florida'da iki yıllık bir süre boyunca 7.000 kişi üzerinde kullanılan bir algoritmanın puanlarını analiz etti ve bu kişilerin gerçekten sonraki suçları işleyip işlemediklerini kontrol etti. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>1</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^1</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> başlangıç üst simgesi, <span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">1, bitiş üst simgesi</span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Algoritmanın, beyaz sanıkların yeniden suç işleme olasılığını <em>hafife</em> aldığını, ancak Siyah sanıkların olasılığını <em>abarttığını</em> keşfettiler:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><table class='table'><thead><tr><th scope="col"></th><th scope="col">Beyaz</th><th scope="col">Siyah</th></tr></thead><tbody><tr><td>Daha yüksek risk olarak etiketlendi, ancak yeniden rahatsız edilmedi</td><td>23.5%</td><td>44.9%</td></tr><tr><td>Düşük risk olarak etiketlendi, ancak yeniden suç işledi</td><td>47.7%</td><td>28.0%</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Risk değerlendirme algoritması, sanıkların ırkını içeren veriler üzerinde eğitilmedi, ancak ırksal bir önyargıya sahip olmayı öğrendi. Nasıl?</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Söz konusu algoritmanın kodu doğrudan denetlenemez, çünkü birçok makine öğrenme algoritması gibi yakından korunan bir şirket sırrıdır. Bununla birlikte, Stanford araştırmacıları sonuçları tersine çevirdi ve iki ana faktöre dayanarak benzer tahminlerde bulundu: sanığın yaşı ve daha önce işlenen suçların sayısı. <span style="white-space: nowrap;">
+  <span></span>
+  <span>
+    <span></span>
+    <span aria-describedby="katex-uid--2-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex">
+      <span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics>
+        <mrow><msup>
+          <mrow></mrow>
+          <mn>2</mn>
+        </msup></mrow>
+        <annotation encoding="application/x-tex">^2</annotation>
+      </semantics></math></span>
+      <span aria-hidden="true" class="katex-html"><span class="base">
+        <span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span>
+        <span class="mord">
+          <span></span>
+          <span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;">
+            <span class="pstrut" style="height:2.7em;"></span>
+            <span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span>
+          </span></span></span></span></span>
+        </span>
+      </span></span>
+    </span></span>
+    <span id="katex-uid--2-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">kare</span>
+  
+</span><span></span></span></div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Amerika'da, Siyah insanlar, kentsel alanlarda artan polislik gibi faktörler nedeniyle, tarihsel olarak beyazlardan daha yüksek bir oranda tutuklanmıştır. Örneğin, ACLU, esrar kullanım oranları karşılaştırılabilir olsa da, Siyah insanların 2010 yılında beyaz insanlardan esrar bulundurmak için tutuklanma olasılığının 3.7 kat daha fazla olduğunu buldu. <span style="white-space: nowrap;">
+  <span></span>
+  <span>
+    <span></span>
+    <span aria-describedby="katex-uid--3-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex">
+      <span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics>
+        <mrow><msup>
+          <mrow></mrow>
+          <mn>3</mn>
+        </msup></mrow>
+        <annotation encoding="application/x-tex">^3</annotation>
+      </semantics></math></span>
+      <span aria-hidden="true" class="katex-html"><span class="base">
+        <span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span>
+        <span class="mord">
+          <span></span>
+          <span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;">
+            <span class="pstrut" style="height:2.7em;"></span>
+            <span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span>
+          </span></span></span></span></span>
+        </span>
+      </span></span>
+    </span></span>
+    <span id="katex-uid--3-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">küp küp</span>
+  
+</span><span></span></span></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 460px; max-height: 300px;"><img alt="A chart of the following data on marijuana possession arrest rates per 100,000 people:
+
+State | Black arrests | White arrests
+- | - | -
+Iowa | 1454 | 174
+D.C. | 1489 | 185
+Minnesota | 835 | 107
+Illinois | 1526 | 202
+Wisconsin | 1285 | 215
+Kentucky | 697 | 117
+Pennsylvania | 606 | 117" aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/acab27378f7d5682ec0986c06c33b90f95979def.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ 0 0 0 500 500 5 0 0 </svg><span class="graphie-label" data-math-formula="0" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 13.0435%; top: 80%; fill: none; font-size: 100%; margin-left: -21px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span>1000 1000 1 0 0 0 1500 1500 1 5 0 0<span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="500" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 13.0435%; top: 65%; fill: none; font-size: 100%; margin-left: -35px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span>
+      
+      
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="1000" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 13.0435%; top: 50%; fill: none; font-size: 100%; margin-left: -42px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span>
+      
+      
+      
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="1500" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 13.0435%; top: 35%; fill: none; font-size: 100%; margin-left: -42px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span>
+      
+      
+      
+      
+      
+    </span></span> 
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+ 2000 </span><span class="graphie-label" data-math-formula="2000" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 13.0435%; top: 20%; fill: none; font-size: 100%; margin-left: -42px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex">2000</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">2</span><span class="mord"></span><span class="mord"></span><span class="mord"></span>
+      
+      
+      
+      
+      
+    </span></span>
+    
+    
+  </span></span> 0 0 0 0 <span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 20.7862%; top: 80%; margin-left: -13px; margin-top: 0px; fill: none; font-size: 100%;"><center>O</center></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 32.698%; top: 80%; margin-left: -18px; margin-top: 0px; fill: none; font-size: 100%;"><center>DC.</center></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 44.6098%; top: 80%; margin-left: -19px; margin-top: 0px; fill: none; font-size: 100%;"><center>MN</center></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 56.5217%; top: 80%; margin-left: -12px; margin-top: 0px; fill: none; font-size: 100%;"><center>VE</center></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 68.4337%; top: 80%; margin-left: -16px; margin-top: 0px; fill: none; font-size: 100%;"><center>Wİ</center></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 80.3454%; top: 80%; margin-left: -16px; margin-top: 0px; fill: none; font-size: 100%;"><center>KY</center></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 92.2574%; top: 80%; margin-left: -15px; margin-top: 0px; fill: none; font-size: 100%;"><center>VE</center></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 56.5217%; top: 88.3333%; margin-left: -26px; margin-top: 0px; fill: none; font-size: 100%; font-weight: bold;">Esrar bulundurma tutuklamaları Devletler</span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 1.08696%; top: 50%; margin-left: -68px; margin-top: -17px; fill: none; font-size: 100%; font-weight: bold; transform: rotate(-90deg);">100.000 Beyaz tutuklama</span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 69.9076%; top: 31.5833%; margin-left: 0px; margin-top: -17px; fill: none; font-size: 100%;">başına tutuklamalar</span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 69.9076%; top: 23.7833%; margin-left: 0px; margin-top: -17px; fill: none; font-size: 100%;">Siyah tutuklama oranları</span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 47.8261%; top: 6%; margin-left: -95px; margin-top: 0px; fill: none; font-size: 16px; font-weight: bold;"> </span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">100.000 kişi başına esrar bulundurma tutuklama oranları hakkında aşağıdaki verilerin bir grafiği:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">Eyalet</th><th scope="col">Siyahı tutukladı</th><th scope="col">Beyaz tutuklamalar</th></tr></thead><tbody><tr><td>Iowa</td><td>1454</td><td>174</td></tr><tr><td>D.C.</td><td>1489</td><td>185</td></tr><tr><td>Minnesota</td><td>835</td><td>107</td></tr><tr><td>Illinois</td><td>1526</td><td>202</td></tr><tr><td>Wisconsin</td><td>1285</td><td>215</td></tr><tr><td>Kentucky</td><td>697</td><td>117</td></tr><tr><td>Pennsylvania</td><td>606</td><td>117</td></tr></tbody></table></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Mevcut tutuklama verileri üzerinde eğitilmiş bir makine öğrenme algoritması, geçmiş suçlarına dayanarak sanıklara karşı önyargılı olmayı öğrenir, çünkü bu geçmiş tutuklamalardan hangisinin önyargılı sistemlerden ve insanlardan kaynaklandığını anlamanın bir yolu yoktur.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"> Stanford'dan araştırmacılar, insanların risk değerlendirmeleri yaparken aynı önyargıya sahip olduklarını keşfettiler. Hangisi daha kötü, önyargılı bir insan mı yoksa önyargılı bir bilgisayar algoritması mı? Hangi eylemler bu önyargıyı azaltabilir?  <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Tartışma]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>İşe alım kararları</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Büyük şirketler her iş rolü için yüzlerce başvuru alır. Her başvuru, başvuru sahibinin görüşülmesi gerekip gerekmediğine karar vermek için taranmalıdır. Geleneksel olarak, tarama İK departmanındaki işe alım uzmanları tarafından yapılır, ancak sıkıcı bir iştir ve başvuru sahiplerini insan işe alım uzmanının önyargılarına maruz bırakma riski taşır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Birçok şirket, sürecin verimliliğini ve nesnelliğini artırma umuduyla, makine öğrenimi tarafından desteklenen algoritmalarla taramayı otomatikleştirmeye başlıyor.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bir tarama algoritması, başvuru sahibinin özgeçmişini inceler ve başvuru sahibinin iş rolüne uygunluğunu tahmin eden bir puan atar.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 617px; max-height: 191px;"><img alt='A diagram of the screening algorithm process. A resume is inputted into an algorithm (represented as a black box) and there are three possible outputs: "Great fit", "Good fit", and "Not a fit".' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/ddd3ce3cf5b829e0067d2357ec5983e4f9dbad37.svg" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Tarama algoritması sürecinin diyagramı. Bir özgeçmiş bir algoritmaya (kara kutu olarak temsil edilir) girilir ve üç olası çıktı vardır: "Mükemmel uyum", "İyi uyum" ve "Uygun değil".</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">2014 yılında Amazon, iş başvurusunda bulunanları taramak için yazılım kullanmayı denedi. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--4-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>4</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> başlangıç üst simgesi, <span id="katex-uid--4-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">4, bitiş üst simgesi</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> Bununla birlikte, yazılımın kadın adaylara göre erkek adayları tercih ettiğini, "kadın" kelimesini içeren özgeçmişleri ("kadın satranç kulübünde" olduğu gibi) cezalandırdığını ve tüm kadın kolejlerinden mezunları düşürdüğünü keşfettiler. Yazılım nasıl cinsiyetçi oldu?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Tarama yazılımı, daha önce çalışanlar tarafından işe alım sürecinin bir parçası olarak derecelendirilen on yıllık özgeçmişler üzerinde eğitildi.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">2014 yılında Amazon çalışanları büyük ölçüde erkekti:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 362px; max-height: 241px;"><img alt="A bar chart of the following data on gender breakdown in job roles at Amazon:
+
+Job role | % Female | % Male
+- | - | -
+Senior officials | 18 | 82
+Mid-level officials and managers | 21 | 79
+Professionals | 25 | 75
+Technicians | 13 | 87
+Laborers | 45 | 55" aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/f267f1d5110f47e03e362288a9155eb0207061c9.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël ile oluşturuldu</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs></svg><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 33.6682%; top: 89.0519%; margin-left: -67px; margin-top: -39px; fill: none; font-size: 100%;"><p align="right">Işçi</p></span><span class="graphie-label" data-math-formula="55\%" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 66.8343%; top: 92.5631%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>55%55\%5 5%45%</mn><span class="graphie-label" data-math-formula="45\%" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 60.8041%; top: 85.5411%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>45</mn><mi mathvariant="normal"></mi>
+        
+        
+      </mrow><annotation encoding="application/x-tex">\</annotation>
+      
+      
+    </semantics></math></span>%<span aria-hidden="true" class="katex-html"><span class="base"><span class="mord">4</span><span class="mord"></span><span class="mord"></span> %<span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span>
+      
+      
+      
+      
+    </span></span>
+    
+    
+  </span></span>5 <span class="mathjax-holder"></span>
+  
+  
+</span><mi mathvariant="normal"></mi><annotation encoding="application/x-tex"></annotation><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span>
+  
+  
+  
+  
+</span></span><span class="mathjax-holder"></span></mrow></semantics></math></span></span></span></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 33.6682%; top: 71.4971%; margin-left: -85px; margin-top: -39px; fill: none; font-size: 100%;"><p align="right">Teknisyen</p></span><span class="graphie-label" data-math-formula="87\%" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 86.1307%; top: 75.0079%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>87%87</mn><mi mathvariant="normal">\%</mi><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord">8</span><span class="mord">7</span><span class="mord"></span>%13%13\%1 %<span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span>
+  
+  
+  
+  
+</span></span><span class="mathjax-holder"></span><span class="graphie-label" data-math-formula="13\%" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 41.5075%; top: 67.9859%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi>
+        
+        
+      </mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord"></span><span class="mord">3</span><span class="mord"></span>
+      
+      
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><annotation encoding="application/x-tex"></annotation></mrow></semantics></math></span></span></span></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 33.6682%; top: 53.9419%; margin-left: -95px; margin-top: -39px; fill: none; font-size: 100%;"><p align="right">Profesyonel</p></span><span class="graphie-label" data-math-formula="75\%" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 78.8945%; top: 57.4531%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>75%75\%7 5%25%</mn><span class="graphie-label" data-math-formula="25\%" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 48.7436%; top: 50.4307%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>25</mn><mi mathvariant="normal"></mi>
+        
+        
+      </mrow><annotation encoding="application/x-tex">\</annotation>
+      
+      
+    </semantics></math></span>%<span aria-hidden="true" class="katex-html"><span class="base"><span class="mord">2</span><span class="mord">5</span><span class="mord"></span>%<span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span>
+      
+      
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><mi mathvariant="normal"></mi><annotation encoding="application/x-tex"></annotation><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span>
+  
+  
+  
+  
+</span></span><span class="mathjax-holder"></span></mrow></semantics></math></span></span></span></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 33.6682%; top: 36.3868%; margin-left: -122px; margin-top: -48px; fill: none; font-size: 100%;"><p align="right">Orta düzey yetkililer<br> ve yöneticiler</p></span><span class="graphie-label" data-math-formula="79\%" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 81.3066%; top: 39.8978%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>79%79</mn><mi mathvariant="normal">\%</mi><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord">7</span><span class="mord">9</span><span class="mord"></span>%21%21\%2 1%<span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span>
+  
+  
+  
+  
+</span></span><span class="mathjax-holder"></span><span class="graphie-label" data-math-formula="21\%" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 46.3318%; top: 32.8759%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi>
+        
+        
+      </mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span>
+      
+      
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><annotation encoding="application/x-tex"></annotation></mrow></semantics></math></span></span></span></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 33.6682%; top: 18.8318%; margin-left: -103px; margin-top: -39px; fill: none; font-size: 100%;"><p align="right">Üst düzey yetkililer</p></span><span class="graphie-label" data-math-formula="82\%" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 83.1155%; top: 22.3428%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>82%82</mn><mi mathvariant="normal">\%8 2%18%</mi><span class="graphie-label" data-math-formula="18\%" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 44.5227%; top: 15.3208%; fill: none; font-size: 100%; margin-left: 0px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>18</mn><mi mathvariant="normal"></mi>
+        
+        
+      </mrow><annotation encoding="application/x-tex">\</annotation>
+      
+      
+    </semantics></math></span>%<span aria-hidden="true" class="katex-html"><span class="base"><span class="mord">1</span><span class="mord"></span> <span class="mord">8</span>%<span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span>
+      
+      
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><annotation encoding="application/x-tex"></annotation><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span>
+  
+  
+  
+  
+</span></span><span class="mathjax-holder"></span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 37.8141%; top: 3.59081%; margin-left: 0px; margin-top: -17px; fill: none; font-size: 100%;">Kadın</span><span class="graphie-label" style="position: absolute; padding: 7px; color: black; left: 59.5227%; top: 3.59081%; margin-left: 0px; margin-top: -17px; fill: none; font-size: 100%;">Erkek</span></mrow></semantics></math></span></span></span></span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Amazon'daki iş rollerinde cinsiyet dağılımı hakkında aşağıdaki verilerin bir çubuk grafiği:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">İş rolü</th><th scope="col">% Kadın%</th><th scope="col"> Erkek</th></tr></thead><tbody><tr><td>Üst düzey yetkililer</td><td>18</td><td>82</td></tr><tr><td>Orta düzey yetkililer ve yöneticiler</td><td>21</td><td>79</td></tr><tr><td>Profesyonel</td><td>25</td><td>75</td></tr><tr><td>Teknisyen</td><td>13</td><td>87</td></tr><tr><td>Işçi</td><td>45</td><td>55</td></tr></tbody></table></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><em>Grafik kaynağı: <a class="_8gcxk83" href="https://www.seattletimes.com/business/amazon/amazon-more-diverse-at-its-warehouses-than-among-white-collar-ranks/" rel="noopener noreferrer" tabindex="0" target="_blank">Seattle Times</a></em></div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Erkek çalışanlar kasıtlı olarak cinsiyetçi olmasalar bile, özgeçmişleri kendi kişisel deneyimlerine göre derecelendiriyorlardı. Ayrıca, birçok özgeçmiş yönlendirmelerden gelir ve erkekler genellikle diğer erkeklerle çalışmıştır. Bu, kadın özgeçmişlerinin nispeten az temsili <em>ve</em> sahip olduğu özgeçmişlerin önyargılı puanlaması olan bir eğitim veri seti ile sonuçlanır.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Potansiyel önyargının bir başka kaynağı da doğal dil işleme için kullanılan kütüphanelerdir. Metin ayrıştırma algoritmaları genellikle, sayısallaştırılmış metinlerde tipik olarak ne sıklıkta birlikte ortaya çıktıklarına bağlı olarak kelimelerin diğer kelimelere benzerliğini sıralayan bir kelime vektörleri kütüphanesi kullanır. 2018 yılında yapılan bir araştırma, en popüler kelime vektör kütüphanelerinden birinde önyargı buldu ve bilim ve matematikle ilgili terimlerin erkeklerle daha yakından ilişkili olduğunu, sanatla ilgili terimlerin ise kadınlarla daha yakından ilişkili olduğunu ortaya koydu.  <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--5-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>5</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^5</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> başlangıç üst simgesi, <span id="katex-uid--5-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">5, bitiş üst simgesi</span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 534px; max-height: 546px;"><div style="padding-bottom: 102.25%;"></div><img alt="A scatter plot that shows the association of subject discipline terms with gender. It shows that the arts are more associated with females and science is more associated with males." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/45d4ca9340a6d3b457b06f99ef75a5b2d666a382.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Konu disiplini terimlerinin cinsiyetle ilişkisini gösteren bir dağılım grafiği. Sanatın kadınlarla daha fazla ilişkili olduğunu ve bilimin erkeklerle daha fazla ilişkili olduğunu göstermektedir.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><em>Grafik kaynağı: <a class="_8gcxk83" href="https://arxiv.org/pdf/1806.06301.pdf" rel="noopener noreferrer" tabindex="0" target="_blank">ArXiv.org</a></em></div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Aynı çalışma, Avrupalı-Amerikalı isimlerle ilgili Afrikalı-Amerikalı isimlerden daha olumlu duygular buldu:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 578px; max-height: 519px;"><img alt="A scatter plot showing the association of European-American and African-American names with sentiment. African-American names are more correlated with negative sentiment while European-American names are more correlated with positive sentiment." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/6a65254170cd29bf81e4fd617e110d36cb859c6c.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Avrupalı-Amerikalı ve Afrikalı-Amerikalı isimlerin duygu ile ilişkisini gösteren dağınık bir komplo. Afrikalı-Amerikalı isimler olumsuz duygularla daha fazla ilişkilidir, Avrupalı-Amerikalı isimler ise olumlu duygularla daha fazla ilişkilidir.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><em>Grafik kaynağı: <a class="_8gcxk83" href="https://arxiv.org/pdf/1806.06301.pdf" rel="noopener noreferrer" tabindex="0" target="_blank">ArXiv.org</a></em></div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Amazon'un başvuru sahiplerini otomatik olarak tarama girişimi başarısız oldu, ancak bazı şirketler hala insan önyargısından arındırılmış işe alım için otomatik çözümler yaratmaya çalışıyor.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Pymetrics, makine öğrenimi ile desteklenen bir tarama hizmeti sunan böyle bir şirkettir. Bununla birlikte, bir adayı yalnızca özgeçmişlerine dayanarak değerlendirmek çok zor olduğundan, süreçleri davranışsal bir değerlendirme içerir. Buna ek olarak, algoritmalarını ne zaman değiştirseler, binlerce geçmiş başvuru sahibi üzerinde test ederler ve ayrımcılığı kontrol ederler. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--6-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>6</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^{6}</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> start superscript, <span id="katex-uid--6-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">6, end superscript</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> Bu denetim sürecini diğer şirketlerin de kullanması için açık kaynaklı bir yazılıma dönüştürdüler. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--7-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>7</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^{7}</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> başlangıç üst simgesi, <span id="katex-uid--7-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">7, bitiş üst simgesi</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir tarama algoritmasının bir iş için çok uygun olabilecek adayları reddedip reddetmediğini bilmek neredeyse imkansızdır, çünkü reddedilen bir aday asla bu rolde çalışma şansına sahip değildir. Bu nedenle, tarama algoritmalarının kapsamlı bir şekilde denetlenmesi iki kat daha önemlidir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> Bir iş için sizi bir insanın mı yoksa bir algoritmanın mı taramasını tercih edersini? Bir algoritmanın özgeçmişinizi incelediğini bilseydiniz, neyi değiştirirdiniz?  <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Tartışma]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Referanslar]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Ek okuma ve izleme]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

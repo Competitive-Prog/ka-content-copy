@@ -1,0 +1,988 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Sağlık ve tıpta simülasyonlar | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Sağlık ve tıpta simülasyonlar | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sağlık ve tıp alanında çalışan insanlar hayat kurtarmak ve refahı artırmak isterler. Tıbbi sorunlara çözüm ararlar, ancak ters etkiye sahip olacak deneyleri riske atamazlar. Aynı zamanda, insanların hayatları tehlikede olduğunda bir çözüm bulmak için çok fazla zaman harcamak istemiyorlar. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Gerçek dünyadaki deneyler çok ölümcül veya çok yavaş olduğunda, bunun yerine bilgisayar simülasyonları kullanılabilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Epidemiyoloji simülasyonları</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Devlet sağlık kuruluşları, bulaşıcı bir hastalığın bir topluluk üzerindeki etkisini tahmin etmek için simülasyonlar kullanır ve bu tahminler onların bu etkiye hazırlanmalarına ve önerilerde bulunmalarına yardımcı olur.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Aşağıdaki simülasyon, bir salgının bir topluluğu nasıl etkileyeceğini göstermektedir. Neyin değiştiğini görmek için farklı enfeksiyon ve popülasyon parametrelerini deneyin.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>/************
+ 
+  
+ 
+   
+   
+   
+             
+ *  - Ölüler: Hastalıktan ölen insanlar.
+ * 
+ * Her gün insanlar birbirleriyle temasa geçiyor.
+ * Enfekte insanlar hastalığı duyarlı insanların bir kısmına
+ * yayar. Enfekte insanlar sonunda
+ ölür * veya iyileşir. İyileşen insanlar daha fazla enfeksiyona karşı duyarlı
+ değildir*.
+ * * 
+ Salgının ilerlemesinin nasıl değiştiğini görmek
+ için enfeksiyon parametrelerini değiştirmeyi deneyin.
+/
+
+var ARKA PLAN = renk(250, 250, 254);
+var RED = renk(200, 0, 0);
+var GRİ = renk(160, 160, 160);
+var MAVİ = renk(64, 95, 237);
+var PINK = renk(255, 0, 175);
+var YEŞİL = renk(28, 173, 123);
+var TURUNCU = renk(255, 165, 0);
+var TOOLBAR = renk(245, 245, 245);
+
+/*********
+       
+
+
+
+
+durumu, 'seçenekler' sayfasını
+gösterip göstermeyeceğimizi veya simülasyonun 'çalışıyor' mu yoksa 'duraklatılmış' mı olduğunu belirler.
+var state = 'çalışıyor';
+var state = 'seçenekler';
+var state = 'bilgi';
+
+Zaman ölçeğini
+gösteriyor muyuz var showTime = true;
+
+Array of sliders var sliders
+= [];
+
+Simülasyonun simüle edilen gün başına
+güncellenme sayısı. Bu ne kadar yüksek olursa, simülasyon o kadar fazla
+/ / ince taneli olur, ancak o kadar yavaş olur.
+var UPDATES_PER_DAY = 4;
+
+/***************
+       
+ 
+ 
+ 
+
+
+
+    
+        
+        
+        
+        
+        
+    
+    "İlk bağışıklık (%)": {desc: "Başlangıçta hastalığa karşı bağışık olan popülasyonun yüzdesi.",minValue: 0,maxValue: 99,nowValue: 0
+    },"İlk enfeksiyonlar": {desc: "Başlangıçta enfekte olan kişi sayısı.",minValue: 1,maxValue: 1000,nowValue: 1,logScale: true
+    },"İletişim oranı": {
+        
+        
+        desc: "Enfekte bir kişinin her gün temas ettiği ortalama kişi sayısı.",
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        minValue:  0.1,maxValue
+        : 20,nowValue: 4
+    },"Infection rate (%)": {desc: "Enfekte bir kişi ile duyarlı kişi arasında hastalığın bulaşmasına neden olan temasların yüzdesi.",minValue: 1,maxValue: 100,nowValue: 10},"Hastalık süresi": {
+        
+        desc: "Hastalığı olan bir kişinin bulaşıcı olduğu ortalama gün sayısı.",minValue: 1,maxValue: 100,nowValue
+    : 6
+    },
+        
+        
+        
+        
+        
+    
+    
+        
+        
+    "Mortalite rate (%)":  {
+        desc: "Hastalık tarafından öldürülen enfekte kişilerin yüzdesi.",minValue: 1,maxValue: 100,nowValue: 15
+    },
+        
+
+        
+        };
+
+/***************
+       
+ 
+ 
+/
+
+var popülasyonları = {Hassas: {desc: "Hastalıktan etkilenebilecek insanlar.",renk: MAVI
+    },Enfekte olan: {desc: "Hastalıktan enfekte olan insanlar.",renk: KIRMIZI
+    },Bağışıklık: {desc: "Hastalığa karşı bağışık olan insanlar.",renk: YEŞİL
+    },Ölü: {
+        
+        
+        
+    
+        desc: "Hastalık tarafından öldürülen insanlar.",
+        
+    
+        
+        
+    
+    
+        renk: GREY}
+};
+
+Var startSimulation = function() {
+    // Parametre değerlerini
+kaydırıcılara göre güncelle var s = 0 kaydırıcı değerlerini kullanarak sayımları
+    ayarlayın;
+    for (parametrelerde var p) {if (sliders[s]) {
+        
+            parameters[p].nowValue = sliders[s].val;
+            s++;   
+        }}
+    
+    
+    var infected = parameters['İlk enfeksiyonlar'].nowValue;
+    var immuneProb = parametreler['İlk bağışıklık (%)'].nowValue / 100;
+    var remaining = max(0, parametreler. Size.nowValue - bulaşmış);
+    
+    Nüfus. Susceptible.counts = [kalan * (1 - immuneProb)];
+    Nüfus. Infected.counts = [bulaşmış];
+    Nüfus. Immune.counts = [kalan * immuneProb];
+    Nüfus. Dead.counts = [0];
+    state = 'çalışıyor';
+    t = 0;};
+
+
+var toggleSimulationRunning = function() {if (state === 'running') {state = 'paused';} else if (state === 'paused') {
+    
+        
+        state = 'running';}};
+    
+    
+
+
+/******
+   
+
+
+
+    
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.name = ad;
+    this.defaultCol = renk(220, 220, 220, 250);
+    this.highlightCol = renk(253, 63, 0);
+    this.showing = true;
+    this.box = this.h - 6;
+    this.clickFunction = clickFunction;};
+
+
+Button.prototype.mouseover = function() {
+    return (mouseX &gt;= this.x &amp;&amp; mouseX &lt;= this.x + this.w &amp;&amp;&amp;mouseY &gt;= this.y &amp;&amp;
+            mouseY &lt;= this.y + this.h);};
+
+
+Button.prototype.click = function() {if (this.clickFunction) {
+    
+        this.clickFunction();}};
+    
+
+
+Button.prototype.draw = function() {if (!this.showing) {
+    return; }
+    
+    if (this.mouseover() || this.selected) {fill(this.highlightCol);} else {
+        
+        noFill();}
+    
+    
+    strokeWeight(2);
+    inme(240, 100, 10);
+    rect(this.x, this.y - 1, this.w, this.h + 3, 8);
+    
+    doldurma(0);
+    textSize(16);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2);};
+
+
+Dairesel düğme
+var CircleButton = function(x, y, w, h, clickFunction, drawFunction) {
+    Button.call(this, x, y, w, h, "", clickFunction);
+    this.drawIcon = drawFunction;};
+
+CircleButton.prototype = Object.create(Button.prototype);
+
+CircleButton.prototype.draw = function() {
+    var c;
+    if (this.mouseover()) {
+        c = color(40, 40, 40);
+        fill(255);
+    } else {
+        c = renk(140, 140, 140);
+        noFill();
+    }
+    
+    var x = this.x + this.w / 2;
+    var y = this.y + this.w / 2;
+    inme(c);
+    strokeWeight(2);
+    elipse(x, y, this.w, this.w);
+    
+    if (this.drawIcon) {
+        fill(c);
+        this.drawIcon(x, y);}};   
+    
+}
+
+/************
+       
+
+
+
+    
+    this.x2 = x + genişlik;
+    this.y = y;
+    this.width = genişlik;
+    this.h = 12;
+    this.useLog = logScale;
+    
+    this.ballR = 8;
+    this.ballD = this.ballR * 2;
+    
+    this.min = minValue;
+    bu.max = maxValue;
+    this.val = nowDeğer ||minValue;
+
+    if (this.useLog) {
+        var log2 = log(2);
+        this.scale = log(this.max / this.min) / log2;
+        var n = log(this.val / this.min) / log2;
+        this.bx = map(n, 0, this.scale, this.x, this.x2);
+    } else {
+        this.bx = map(this.val, this.min, this.max, this.x, this.x2);
+    }
+
+    this.name = ad;
+    this.held = false;};
+
+
+Slider.prototype.draw = function() {
+    noStroke();
+    doldurma(180);
+    rect(this.x - 8, this.y - this.h / 2, this.width + 16, this.h, 8);
+
+    strokeWeight(1);
+    inme(0, 0, 0, 120);
+    doldurma (180, 180, 250);
+    elipse(this.bx, this.y, this.ballD, this.ballD);
+    noStroke();
+    doldurma(255, 255, 255, 150);
+    elips(this.bx - this.ballR * 0.3, this.y - this.ballR * 0.3, 5, 5);};
+
+
+Slider.prototype.mouseover = function() {
+    return mouseX &gt;= this.x - 8 &amp;&amp; mouseX &lt;= this.x2 + 8 &amp;&amp;&amp;mouseY &gt;= this.y - this.h / 2 &amp;&amp;
+           mouseY &lt;= this.y + this.h / 2;};
+
+    
+Slider.prototype.selected = function() {
+    this.held = dist(mouseX, mouseY, this.bx, this.y) &lt; this.ballR;
+    if (!this.held &amp; this.mouseover()) {
+        this.setBallPosition();}}
+;
+    
+    
+Slider.prototype.drag = function() {if (this.held) {
+    
+        this.setBallPosition();
+        true değerini döndür;}}
+;
+    
+
+Slider.prototype.setBallPosition = function() {
+    this.bx = constrain(mouseX, this.x, this.x2);
+    this.setValue();};
+
+
+Slider.prototype.setValue = function() {if (this.useLog) {
+    
+        var n = map(this.bx, this.x, this.x + this.width, 0, this.scale);
+        this.val = this.min * round(pow(2, n));
+    } else {
+        this.val = round(map(this.bx, this.x, this.x2, this.min, this.max));}}
+;
+    
+
+Bu, değeri kaydırıcıyı kullanmaktan başka
+bir şekilde // şeklinde güncelleştirmek istiyorsanız (ancak kaydırıcının güncelleştirilmesini istiyorsanız) kullanılır.
+Slider.prototype.update = function(d) {
+    this.val = constrain(this.val + d, this.min, this.max);
+    this.bx = (this.val - this.min) / this.scale + this.x;};
+
+
+/***************
+       
+
+
+
+    
+    textAlign(CENTER, CENTER);
+    text("↻", x, y);};
+
+
+var playIcon = function(x, y) {
+    noStroke();
+    if (state === 'running') {
+        rect(x - 4, y - 5, 3, 10, 5);
+        rect(x + 1, y - 5, 3, 10, 5);
+    } else {
+        üçgen(x - 3, y - 5, x - 3, y + 5, x + 6, y);}}
+;
+
+
+    var infoIcon = function(x, y) {
+    noStroke();
+    rect(x - 2, y - 1, 4, 8, 2);
+    elips(x, y - 4, 4, 4);};
+
+
+var closeIcon = function(x, y) {
+    strokeWeight(2);
+    line(x - 3, y - 3, x + 3, y + 3);
+    line(x - 3, y + 3, x + 3, y - 3);};
+
+
+var startButton = yeni Düğme(genişlik - 70, yükseklik - 35, 50, 20, "Başlat", startSimulation);
+var restartButton = new CircleButton(5, 3, 18, 18, function() { state = 'options'; }, restartIcon);
+var playButton = yeni CircleButton(29, 3, 18, 18, toggleSimulationRunning, playIcon);
+var infoButton = new CircleButton(53, 3, 18, 18, function() { state = 'info'; }, infoIcon);
+var closeButton = new CircleButton(width - 32, 12, 18, 18, function() { state = 'paused'; }, closeIcon);
+var toolbarButtons = [restartButton, playButton, infoButton];
+
+var createParameterSliders = function() {
+    var x = 170;
+    var y = 55;
+    var dy = 28;
+    
+    for (parametrelerde var p) {
+        var parametresi = parametreler[p];
+        var newSlider = new Slider(x, y, 200, parameter.minValue, parameter.maxValue, parameter.nowValue, p, parameter.logScale);
+        newSlider.desc = parameter.desc;
+        sliders.push(newSlider);
+        if (p === 'İletişim oranı') {
+            y += 36;
+        }
+        y += dy;}}
+;
+    
+
+createParameterSliders();
+
+/******
+       
+//
+
+// Büyük Susceptibles
+var formatNumber = function(n) {
+    var str = n.toString().split(".") için virgül ekleyin;
+    
+    if (str[0].length &gt; 3) {
+        return str[0].replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+    }
+    
+    dönüş turu(n);};
+
+
+var drawScreen = function(d) {
+    fill(TOOLBAR);
+    noStroke();
+    rect(d, d, genişlik - d * 2, yükseklik - 2 * d, 26);};
+
+
+var drawBorder = function(d) {
+    noFill();
+    inmeAğırlık(3);
+    inme(80, 120, 180);
+    rect(d, d, genişlik - d * 2, yükseklik - 2 * d, 26);};
+
+
+Kullanıcıların simülasyon parametrelerini
+belirlemelerini sağlayan sayfa var drawParameterOptions = function() {
+    drawScreen(5);
+    
+    startButton.draw();
+    
+    textSize(13);
+    textAlign(SOL, ORTA);
+    var mouseoverSlider = false;
+    var x = 16;
+    var d = 5;
+    (var i = 0; i &lt; sliders.length; i++) {
+        var slider = sliders[i];
+        
+        if (mouseY &gt;= slider.y - 13 &amp;&amp; mouseY &lt;= slider.y + 14) {
+            mouseoverSlider = slider;
+            noStroke();
+            doldurma(230);
+            rect(d, slider.y - 13, genişlik - d * 2, 28);
+        }
+        
+        slider.draw();
+        
+        doldurma(20);
+        text(slider.name + ": " + formatNumber(slider.val), x, slider.y);
+    }
+    
+    R0 değeri
+    var y = kaydırıcılar[sliders.length - 1].y;
+    var r0 = kaydırıcılar[3].val * kaydırıcılar[4].val * kaydırıcılar[5].val / 100;
+    parametreler.r0 = r0;
+    text("R0 = Enfeksiyon oranı × Hastalık dönemi × temas oranı", x, y + 30);
+    text("R0 = " + kaydırıcılar[3].val + " × " + (kaydırıcılar[4].val) / 100 + " × " + kaydırıcılar[5].val + " = " + r0, x, y + 48);
+    
+        
+    Açıklama
+    yazın if (mouseoverSlider) {
+        var x2 = 80;
+        textAlign(SOL, ÜST);
+        text(mouseoverSlider.desc, x, sliders[sliders.length - 1].y + 80, genişlik - x - x2, 100);
+    }
+    
+    Başlıkları
+    yaz textSize(18);
+    textAlign(CENTER, BASELINE);
+    strokeWeight(1);
+    inme(20, 20, 20, 20);
+    var titles = ["Popülasyon parametreleri", "Enfeksiyon parametreleri"];
+    
+    for (var i = 0; i &lt; titles.length; i++) {
+        var y = sliders[i * 4].y - 20;
+        metin(başlıklar[i], genişlik / 2, y - 2);
+        
+        var w = textWidth(titles[i]) + 2;
+        var x = (genişlik - w) / 2;
+        for (var d = 0; d &lt; 16; d++) {
+            line(x - d, y, x + w + 2 * d, y);
+        }}
+    
+    
+    drawBorder(5);};
+
+
+var drawInformationScreen = function() {
+    drawScreen(5);
+    drawBorder(5);
+    closeButton.draw();
+    
+    var x = 20;
+    var y = 25;
+    
+    doldurma(40);
+    textAlign(SOL, ÜST);
+    textSize(14);
+    textLeading(18);
+    text("Bu simülasyonda, popülasyon dört insan grubuna ayrılmıştır:", x, y, genişlik - x * 2, 40);
+    
+    x = 20;
+    y += 50;
+
+    for (popülasyonlarda var p) {
+        fill(0);
+        textSize(14);
+        metin(p + ":", x, y);
+        doldurma(40);
+        textSize(13);
+        text(populations[p].desc, x + 90, y);
+        y += 25;
+    }
+    
+    doldurma(40);
+    textAlign(SOL, ÜST);
+    textSize(14);
+    textLeading(18);
+    y += 10;
+    text("Her gün insanlar birbirleriyle temasa geçerler. Duyarlı bir kişi enfekte bir kişiyle temas ederse, duyarlı kişinin enfekte olma ihtimali vardır.", x, y, genişlik - x * 2, 100);
+    y += 80;
+    text("Enfekte insanlar hastalığı birkaç gün boyunca taşır ve diğer duyarlı insanları enfekte etmelerine izin verir. Sonunda enfekte insanlar ya hastalıktan ölür ya da iyileşir. Hastalıktan kurtulurlarsa, daha fazla enfeksiyona karşı bağışıklıkları vardır.", x, y, genişlik - x * 2, 100);};
+
+
+R0 değerini yazın ve zaman
+var drawInfo = function(x, y, w, h) {
+    fill(20);
+    textAlign(SOL, ORTA);
+    textSize(14);
+    text("Gün " + ceil(t / UPDATES_PER_DAY), x + 5, y + h /2);
+    
+    textAlign(CENTER, CENTER);
+    text("R0 = " + parameters.r0, genişlik / 2, y + h / 2);};
+
+
+Popülasyonlar
+arasındaki akıyı gösteren bir ok çizin var drawArrow = fonksiyon(x1, y1, x2, y2, flux) {
+    var d = 8;
+    var açısı = atan2(y2 - y1, x2 + d - x1);
+    
+    Çizgi
+    strok(20);
+    strokeWeight(2);
+    line(x1 + d, y1, x2 - d, y2);
+    
+    Ok
+    noStroke();
+    doldurma(20);
+    
+    pushMatrix();
+    çeviri(x2 - d, y2);
+    döndürmek (açı);
+    üçgen(4, 0, -8, -4, -8, 4);
+    popMatrix();
+    
+    textAlign etiketini
+    (CENTER, BASELINE);
+    pushMatrix();
+    çeviri((x1 + x2) * 0,5, (y1 + y2) * 0,5 - 5);
+    döndürmek (açı);
+    text(formatNumber(flux), 0, 0);
+    popMatrix();};
+
+
+Her alt popülasyonu, alanı büyüklüğüne
+eşit olan bir daire olarak çizin var drawBubbleChart = function(gx, gy, gw, gh) {
+    /*
+    noStroke();
+    doldurma(240);
+    rect(gx + 1, gy + 1, gw - 2, gh - 2);
+    
+    strokeWeight(1);
+    inme(20);
+    line(0, gy + gh/2, genişlik, gy + gh/2);
+    *//
+
+    / Popülasyon grafiği
+    için maksimum yarıçap var radiusScale = 40 / sqrt(parametreler.Size.nowValue);
+    var yarıçapı = [];
+    
+    (Popülasyonlarda
+    var pop) {
+        var radius = sqrt(populations[pop].counts[t]) * radiusScale;
+        radii.push(yarıçap);
+    }
+
+    var sumDiameters = 2 * (radii[0] + radii[1] + max(radii[2], radii[3]));
+    
+    Popülasyonlar
+    için güzel x-koordinatları bulmak için yarıçap kullanın// Ekran kenarı ile daire kenarı arasındaki minimum mesafe 10// Ekran kenarı ile daire merkezi arasındaki minimum mesafe 40 var kenarlıktır1 = maksimum(40, yarıçap[0] + 10
+    
+    ) - yarıçap[0];
+    var border2 = max(40, radii[2] + 10) - radii[2];
+    var dx = (gw - sumDiameters - border1 - border2) / 2;
+    
+    Nüfus grafikleri çizin
+    noStroke();
+    
+    Dairelerin
+    konumunu hesaplayın var x1 = border1 + radii[0];
+    var x2 = x1 + yarıçap[0] + yarıçap[1] + dx;
+    var x3 = x2 + yarıçap[1] + maksimum(yarıçap[2], yarıçap[3]) + dx;
+    var xs = [x1, x2, x3, x3];
+    
+    var maxY = gy + gh - 20;
+    var y = gy + gh / 2;
+    var ys = [y, y, gy + max(10, radii[2]) + 35, maxY - max(10, radii[3]) - 15];
+    
+    var i = 0;
+    for (popülasyonlarda var pop) {
+        var r = radii[i];
+        Circle
+        if (r &lt; 5) {
+            noFill();
+            inme(80);
+            strokeWeight(1);
+            elips(xs[i], ys[i], 20, 20);
+        }
+        
+        noStroke();
+        fill(populations[pop].color);
+        elips(xs[i], ys[i], r * 2, r * 2);
+        
+        Etiket
+        dolgusu(20);
+        textSize(13);
+        if (i === 2) {
+            var ty = ys[i] - max(10, r) - 20;
+            textAlign(CENTER, BASELINE);
+            text(pop, xs[i], ty);
+            text(formatNumber(populations[pop].counts[t]), xs[i], ty + 15);
+        } else {
+            var ty = ys[i] + max(10, r);
+            textAlign(CENTER, TOP);
+            text(pop, xs[i], ty);
+            text(formatNumber(populations[pop].counts[t]), xs[i], ty + 15);   
+        }
+        
+        i++;
+    }
+    
+    Durumlar
+    arasındaki akıyı gösteren oklar çizin if (t &gt; 0) {
+        var fluxes = [
+            popülasyonlar. Susceptible.counts[t - 1] - popülasyonlar. Susceptible.counts[t],
+            popülasyonlar. Immune.counts[t] - popülasyonlar. Immune.counts[t - 1],
+            popülasyonlar. Dead.counts[t] - popülasyonlar. Dead.counts[t - 1]]
+        ;
+        
+        for (var i = 0; i &lt; fluxes.length; i++) {
+            var i1 = min(i, 1);
+            drawArrow(xs[i1] + max(10, radii[i1]), ys[i1], xs[i + 1] - max(10, radii[i + 1]), ys[i + 1], fluxes[i]);}}}
+
+
+    ;
+        
+
+Alt popülasyon boyutlarının
+çizgi grafiği var drawGraph = function(gx, gy, gw, gh) {
+    /*
+    strokeWeight(1);
+    inme(20);
+    çizgi(0, gy, genişlik, gy);
+    inme(160);
+    line(0, gy + 1, genişlik, gy + 1);
+    */
+    
+    noStroke();
+    doldurma(240);
+    rect(gx + 1, gy + 1, gw - 2, gh - 2);
+    
+    gh -= (showTime ? 40 : 30);
+    gy += gh + 20;
+    gx += 42;
+    gw -= 60;
+
+    Kılavuz çizgileri
+    konturAğırlık(1);
+    inme(200);
+    doldurma(20);
+    textAlign(SAĞ, MERKEZ);
+    textSize(11);
+    
+    Y ekseni ölçeğini
+    hesaplayın var numGridlines = 4;
+    
+    var maxValue = pow(10, ceil(log(parameters. Size.nowValue) / Math.LN10));
+    if (maxValue &gt; parametreleri. Size.nowValue * 1.25) {
+        maxValue *= 0.8;
+    }
+    iken (maxValue &gt; 2 * parametreleri. Size.nowValue) {
+        maxValue /= 2;
+    }
+    
+    var bölme = 1;
+    var yLabel = "İnsanlar";
+    if (maxValue &gt; 1000) {
+        böl *= 1000;
+        if (maxValue &gt; 1000000) {
+            böl *= 1000;
+            yLabel = "Milyon kişi";
+        } else {
+            yLabel = "Bin kişi";
+        }}
+    
+    var yScale = maxValue / divide;
+
+    for (var i = 0; i &lt;= numGridlines; i++) {
+        var p = i / numGridlines;
+        var y = gy - 1 - (gh - 1) * p;
+        line(gx, y, gx + gw, y);
+        text("" + round(10 * p * yScale) / 10, gx - 3, y);
+    }
+    
+    var n = popülasyonlar. Susceptible.counts.length - 1;
+    var maxN = max(gw, t);
+    var kene = 10 * max(1, zemin(5 * maxN / UPDATES_PER_DAY / gw));
+    
+    if (t &gt; 1) {
+        strokeWeight(2);
+        noFill();
+
+        Çizim çizgileri
+        var dx = gw / (maxN - 1);
+        var dy = (gh - 1) / maxValue;
+        for (popülasyonlarda var pop) {
+            stroke(populations[pop].color);
+            var counts = popülasyonlar[pop].counts;
+            beginShape();
+            for (var i = 0; i &lt; n; i++) {
+                vertex(gx + i * dx, gy - 1 - dy * counts[i]);
+            }
+            endShape();
+        }}
+    
+    
+    Zaman ekseni etiketleri
+    eğer (showTime) {
+        textAlign(CENTER, TOP);
+        for (var i = 0; i &lt;= floor(maxN / tick / UPDATES_PER_DAY); i++) {
+            var x = gx + gw * UPDATES_PER_DAY * tick * i / maxN;
+            if (gx + gw - x &gt; 20) {
+                line(x, gy, x, gy + 3);
+                text(tick * i, x, gy + 4);   
+            }}
+        
+        Son onay işareti
+        (t &gt; gw) {
+            line(gx + gw, gy, gx + gw, gy + 3);
+            text(ceil(t / UPDATES_PER_DAY), gx + gw, gy + 4);   
+        }}
+    
+
+    Eksen etiketleri
+    textSize(13);
+    textAlign(CENTER, CENTER);
+    çeviri(gx, gy - gh / 2);
+    döndürmek(270);
+    metin(yLabel, 0, -32);
+    resetMatrix();
+    
+    text("Zaman (gün)", gx + gw / 2, gy + (showTime ? 23 : 10));
+    
+    Eksen
+    strokAğırlık(2);
+    inme(20);
+    line(gx, gy, gx + gw, gy);};
+
+
+/*********
+       
+ 
+
+
+
+    
+    Susceptible.counts[t];
+    var infectedNow = popülasyonlar. Infected.counts[t];
+    var removedNow = popülasyonlar. Immune.counts[t];
+    var deadNow = popülasyonlar. Dead.counts[t];
+    
+    Rates
+    var contactRate = parameters['Contact rate'].nowValue / UPDATES_PER_DAY;
+    var infectionRate = parametreler['Enfeksiyon oranı (%)'].nowValue / 100;
+    var mortalityRate = parameters['Mortalite rate (%)'].nowValue / 100;
+    var removalRate = 1 / parameters['Hastalık dönemi'].nowValue / UPDATES_PER_DAY;
+    
+    Nüfusun ne kadarı duyarlı
+    var orantıDuyarlı = duyarlıNow / parametreler. Size.nowValue;
+    
+    Enfekte kişilerin temas ettiği duyarlı kişilerin
+    sayısı var infectedContact = infectedNow * proportionSusceptible * contactRate;
+    
+    Bu süre zarfında
+    enfekte olan kişi sayısı var newCases = infectedContact * infectionRate;
+    
+    İyileşen/ölen
+    enfekte kişilerin sayısı var kaldırıldıVakalar = enfekte olduŞimdi * removalRate;
+    
+    Enfeksiyondan
+    iyileşen kişi sayısı var iyileşti = kaldırıldıVakalar * (1 - ölüm oranı);
+    
+    Hastalıktan
+    ölen insan sayısı var öldü = kaldırıldıVakalar * ölüm oranı;
+    
+    Nüfus popülasyonlarını
+    güncelleyin. Susceptible.counts.push(susceptibleNow - newCases);
+    Nüfus. Infected.counts.push(infectedNow + newCases - removedCases);
+    Nüfus. Immune.counts.push(removedNow + kurtarıldı);
+    Nüfus. Dead.counts.push(deadNow + öldü);
+    
+    t++;};
+
+
+/******************
+       
+
+
+
+    
+    
+    if (state === 'options') {drawParameterOptions();} else if (state === 'info') {drawInformationScreen();
+    } else {
+        
+        
+      drawInfo(72, 0, width, 24);
+          
+    drawBubbleChart(0, 24, genişlik, 200);
+        drawGraph(0, 224, genişlik, 160);
+        
+        for (var i = 0; i &lt; toolbarButtons.length; i++) {
+            toolbarButtons[i].draw();
+        }
+        
+        Bölme çizgileri
+        strokAğırlık(1);
+        inme(212, 204, 176);
+        çizgi(0, 24, genişlik, 24);
+        satır(0, 224, genişlik, 224);
+
+        if (state === 'running' &amp;&amp; (t === 0 || popülasyonlar. Infected.counts[t] &gt; 0.05)) {
+            updatePopulations();}}};   
+        
+
+
+    
+/***************
+ ***
+        
+
+
+
+
+
+    
+    
+              
+mousePressed = function() {for (var s = 0; s &lt; sliders.length; s++) {
+    
+        sliders[s].selected();}};
+    
+
+
+mouseDragged = function() {if (state === 'options') {for (var s = 0; s &lt; sliders.length; s++) {
+    
+        
+            sliders[s].drag();}}};
+        
+
+   
+    
+mouseReleased = function() {if (state === 'options') {for (var s = 0; s &lt; sliders.length; s++) {
+    
+        
+            sliders[s].held = false;}
+        
+        
+        if (startButton.mouseover()) {startButton.click();}} else if (state === 'info') {if (closeButton.mouseover()) {closeButton.click();}} else {for (var i = 0; i &lt; toolbarButtons.length; i++) {if (toolbarButtons[i].mouseover()) {
+            
+            
+                
+        
+            
+        toolbarButtons[i].click();}}}
+};
+        
+        
+
+
+            
+    
+    
+        
+    mouseOut = function() {for (var s = 0; s &lt; sliders.length; s++) {
+    
+        sliders[s].held = false;}};
+    
+
+</pre></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">2020'nin COVID-19 pandemisi sırasında, dünyanın dört bir yanındaki araştırmacılar, bu pandeminin etkilerini daha iyi anlamak için simülasyonlar oluşturdu.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">En önemli araştırma makalelerinden biri 16 Mart 2020'de çıktı ve çeşitli müdahaleleri simüle etmeye dayalı tahminlerde bulundu:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 1700px; max-height: 1048px;"><img alt="A graph with six lines overlaid. The red line is straight and the other lines are curves. The black curve has the highest peak, then the green curve, then orange curve, then yellow, then blue. " aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/d25a0d2729bb0a797c9618f214d36007d96329ac.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Altı çizgili bir grafik. Kırmızı çizgi düzdür ve diğer çizgiler eğridir. Siyah eğri en yüksek zirveye, sonra yeşil eğriye, sonra turuncu eğriye, sonra sarıya, sonra maviye sahiptir. </div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Büyük Britanya için kritik bakım (YBÜ) yatak gereksinimlerini gösteren azaltma stratejisi senaryoları. Siyah çizgi, hafifletilmemiş salgını gösterir. Yeşil çizgi, okulların ve üniversitelerin kapatılmasını içeren bir azaltma stratejisi göstermektedir; turuncu çizgi kasa izolasyonunu gösterir; sarı çizgi vaka izolasyonunu ve ev karantinasını gösterir; ve mavi çizgi vaka izolasyonunu, ev karantinasını ve 70 yaşın üzerindekilerin sosyal mesafesini gösterir. Mavi gölgelendirme, bu müdahalelerin yerinde kaldığı varsayılan 3 aylık süreyi gösterir.  <em>Kaynak: <a class="_8gcxk83" href="https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf" rel="noopener noreferrer" tabindex="0" target="_blank">Imperial College Raporu</a></em></div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu simülasyonlardan elde edilen sonuçlar hükümet ve basın aracılığıyla yayıldı ve muhtemelen kısa bir süre sonra evde kalma emirlerinin verilmesini etkiledi. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>1</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^1</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> başlangıç üst simgesi, <span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">1, bitiş üst simgesi</span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Farmasötik simülasyonlar</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">İlaç şirketleri yıllık bütçelerinin büyük bir bölümünü yeni ilaçların araştırılması ve geliştirilmesine harcamaktadır. 2013 yılında yapılan bir analiz, büyük ilaç şirketlerinin sonunda piyasaya sürdükleri her ilaç için ortalama <em>5 milyar dolar</em> harcadıklarını ortaya koydu. <span style="white-space: nowrap;">
+  <span></span>
+  <span>
+    <span></span>
+    <span aria-describedby="katex-uid--2-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex">
+      <span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics>
+        <mrow><msup>
+          <mrow></mrow>
+          <mn>2</mn>
+        </msup></mrow>
+        <annotation encoding="application/x-tex">^2</annotation>
+      </semantics></math></span>
+      <span aria-hidden="true" class="katex-html"><span class="base">
+        <span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span>
+        <span class="mord">
+          <span></span>
+          <span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;">
+            <span class="pstrut" style="height:2.7em;"></span>
+            <span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span>
+          </span></span></span></span></span>
+        </span>
+      </span></span>
+    </span></span>
+    <span id="katex-uid--2-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">kare</span>
+  </span>
+  <span></span>
+</span></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Neyse ki, ilaç şirketleri artık ilaç geliştirme sürecini hızlandırmak için hesaplamalı simülasyonlar kullanıyor. 2017'deki FDA komiserine göre, "Yeni moleküler varlıklar için tüm yeni ilaç uygulamalarının neredeyse yüzde 100'ü modelleme ve simülasyon bileşenlerine sahip." <span style="white-space: nowrap;">
+  <span></span>
+  <span>
+    <span></span>
+    <span aria-describedby="katex-uid--3-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex">
+      <span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics>
+        <mrow><msup>
+          <mrow></mrow>
+          <mn>3</mn>
+        </msup></mrow>
+        <annotation encoding="application/x-tex">^3</annotation>
+      </semantics></math></span>
+      <span aria-hidden="true" class="katex-html"><span class="base">
+        <span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span>
+        <span class="mord">
+          <span></span>
+          <span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;">
+            <span class="pstrut" style="height:2.7em;"></span>
+            <span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span>
+          </span></span></span></span></span>
+        </span>
+      </span></span>
+    </span></span>
+    <span id="katex-uid--3-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">küp küp</span>
+  
+</span><span></span></span></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bilgisayar destekli ilaç tasarımında, hesaplamalı kimyagerler, moleküler yapıların büyük veritabanlarından potansiyel ilaç hedeflerini tanımlamak için bilgisayar modellerini kullanırlar. Sonuçlar, aday ilaçların özelliklerini tahmin eden veya ilaçların hedef moleküllerle etkileşimlerini simüle eden modelleme yoluyla daha da rafine edilebilir. Kimyager umut verici bir ilaç hedefi belirledikten sonra, başka bir kimyager potansiyel ilacı laboratuvarda sentezleyebilir ve test edebilir.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 2130px; max-height: 1071px;"><img alt="Diagram of a drug discovery process. Starts on the left with databases and a molecular target, then arrow points to an computer generated image of molecular docking, then to a synthesis of the molecule, then experimental evaluation, and then an arrow points back to the molecular docking." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/a82b41f9564bc1181b7e3a8640c4bbad6e66ee31.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bir ilaç keşif sürecinin diyagramı. Solda veritabanları ve moleküler bir hedefle başlar, sonra ok, moleküler kenetlenmenin bilgisayar tarafından oluşturulan bir görüntüsüne, daha sonra molekülün bir sentezine, daha sonra deneysel değerlendirmeye ve ardından bir ok moleküler kenetlenmeye geri döner.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bir ilaç keşif süreci. <em>Görüntü kaynağı: <a class="_8gcxk83" href="https://www.frontiersin.org/articles/10.3389/fphar.2018.01278/full" rel="noopener noreferrer" tabindex="0" target="_blank">Ferreira ve Andricopulo</a></em></div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Çoğu zaman, ilaç keşif süreci, klinik çalışmalar için yeterince umut verici bir ilacı bulmak için birden fazla yineleme alacaktır, ancak bilgisayar destekli ilaç tasarım süreci hala ilaç keşif oranını önemli ölçüde artırmaktadır.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Klinik çalışmaların bir sonraki aşaması için bir ilaç seçildikten sonra, ilaç şirketleri klinik araştırma tasarımını optimize etmek için bilgisayar simülasyonları kullanır. Simülasyonlar, optimal dozaj ve tedavi programı, hasta dahil etme / dışlama kriterlerinin sonuçlar üzerindeki etkisi ve çalışmaların minimum uzunluğu ve sayısı gibi çalışmanın yönlerini belirlemelerine yardımcı olur.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Zamandan tasarruf etmek ilaç şirketlerine milyarlarca dolar tasarruf sağlayabildiğinden, bilgisayar destekli ilaç tasarımı ve klinik deneme tasarımı için yazılım geliştiren giderek artan sayıda şirket bulunmaktadır.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Referanslar]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Ek simülasyonlar]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

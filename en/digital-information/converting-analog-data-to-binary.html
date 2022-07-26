@@ -1,0 +1,2178 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Converting analog data to binary (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Converting analog data to binary (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">The real world is <strong>analog</strong>, a continuous stream of varying data. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Just look around you, beyond your computer or phone. There's an infinite amount of visual information. If you zoom into one part of your visual field, you can notice more and more details. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Now sing a little song to yourself. That's an infinite stream of audio information. Your voice is constantly changing in big and little ways, microsecond by microsecond.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Analog data is infinitely detailed. Computers can only store digital data, finite data in a binary representation.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">So how can we capture the wondrous analog world of our senses and convert it into digital data? We can use a process of sampling, quantization, and binary encoding. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>An analog signal</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Let's start with a simple analog signal, a waveform representing a sound:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> <div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 and a y-axis labeled "v" that goes from -100 to 100. A curvy line goes up and down across the graph.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/38ea1efb1016370a71de597c33a47e16b028e7d4.png" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A graph with an x-axis labeled "t" that goes from 0 to 330 and a y-axis labeled "v" that goes from -100 to 100. A curvy line goes up and down across the graph.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">All analog signals are continuous both in the time domain (x-axis) and in the amplitude domain (y-axis). That means that there is a precise value for every possible value of time, even as specific as "1.2345 seconds", and that value may be as precise as "47.8291824806423964 volts".</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Sampling</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The first step is <strong>sampling</strong>, where we take a sample at regular time intervals. This step reduces the continuous time domain into a series of discrete intervals.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">In this signal, where time varies from 0 to 330 milliseconds, we could take a sample every 30 milliseconds:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 and a y-axis labeled "v" that goes from -100 to 100. A curvy line goes up and down across the graph. A series of straight lines intercept the curvy line every 30 units on the x-axis.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/7d949cd063a816e1b9aaa8f64e80379d71f52f12.png" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A graph with an x-axis labeled "t" that goes from 0 to 330 and a y-axis labeled "v" that goes from -100 to 100. A curvy line goes up and down across the graph. A series of straight lines intercept the curvy line every 30 units on the x-axis.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">That gives us 12 samples of the signal between 0 and 330 milliseconds.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Now we can express the signal as a series of sampled points:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><pre><code>(0, 7)
+(30, 95.98676803710936)
+(60, -71.43289186523432)
+(90, -106.55949554687498)
+(120, -97.21617085937501)
+(150, -70)
+(180, -29.045472375000003)
+(210, 6.171340345703143)
+(240, 24.439022283203116)
+(270, -74.45763529492186)
+(300, -31.31245312500002)
+(330, 24)</code></pre></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">The y-values are only as precise as our computer can store; numbers stored in computers aren't infinitely precise and may be <a class="_8gcxk83" href="/a/number-limits-overflow-and-roundoff" rel="noopener noreferrer" tabindex="0" target="_blank">rounded off</a>.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">🔎 Is 12 samples enough? Play around with the sampling interval in the interactive below and observe the effect of choosing different intervals:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Analog to Digital Converter: Sampling&lt;/title&gt;
+      &lt;!-- WonderBlocks styles --&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+  &lt;style&gt;
+  body {
+      font-family: "Lato", sans-serif;
+      max-width: 375px;
+  }
+  .container {
+    display:flex;
+    flex-direction: row;
+  }
+
+  .form-controls {
+    background: #efefef;
+    margin-bottom: 12px;
+  }
+  .range-controls {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 6px;
+    border-radius: 3px;
+  }
+  fieldset {
+      border: none;
+      margin-top: 0px;
+      padding-left: 6px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .form-row &gt; label {
+    padding: .5em 1em .1em 0;
+    flex: 6;
+  }
+  .form-row &gt; input {
+    flex: 2;
+  }
+  .form-row &gt; span {
+    flex: 1;
+    margin-left: 6px;
+    align-self: center;
+  }
+  .form-row &gt; input,
+  .form-row &gt; button {
+    padding: .5em;
+  }
+  .form-row &gt; button {
+   background: gray;
+   color: white;
+   border: 0;
+  }
+
+  .left-side, .right-side {
+      flex-grow: 1;
+      flex-basis: 100%;
+  }
+
+  .right-side {
+    padding-top:8px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .right-side:first-child {
+      margin-bottom: 10px;
+  }
+  .right-side textarea {
+    margin-top: 6px;
+    height: 150px;
+    width: 65px;
+  }
+  &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="left-side"&gt;
+            &lt;div class="form-controls"&gt;
+                &lt;ul class="range-controls"&gt;
+                    &lt;li class="form-row" id="sampleRangeRow"&gt;
+                        &lt;label for="sampleRange"&gt;Sampling interval:
+                        &lt;/label&gt;
+                        &lt;input type="range" min="2" max="150" value="30" id="sampleRange"/&gt;
+                        &lt;span id="sampleRangeVal"&gt;30&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class="form-row" id="quantizationRangeRow"&gt;
+                        &lt;label for="quantizationRange"&gt;Quantization interval:&lt;/label&gt;
+                        &lt;input type="range" min="2" max="120" value="25" id="quantizationRange"/&gt;
+                        &lt;span id="quantizationRangeVal"&gt;50&lt;/span&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;fieldset&gt;
+                    Show:&lt;br/&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showCurve"&gt;
+                        original
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showSamples"&gt;
+                        samples
+                    &lt;/label&gt;
+                    &lt;label id="showQuantizedLabel"&gt;
+                        &lt;input type="checkbox" id="showQuantized"&gt;
+                        quantized
+                    &lt;/label&gt;
+                    &lt;label id="showReconstructedLabel"&gt;
+                        &lt;input type="checkbox" id="showReconstructed"&gt;
+                        reconstructed
+                    &lt;/label&gt;
+                &lt;/fieldset&gt;
+            &lt;/div&gt;
+            &lt;div style="position:relative;"&gt;
+            &lt;canvas id="mycanvas" style="width:400px; height: 260px; background: #ccc; border:0px none;"&gt;&lt;/canvas&gt;
+            &lt;img id="placeholder" style="position:absolute; z-index: 2;top:0;left:0;" src="https://www.kasandbox.org/programming-images/avatars/questionmark.png"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="right-side"&gt;
+                &lt;div id="pointsOutput"&gt;
+                    Points:
+                    &lt;textarea id="pointsPre"&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                &lt;div id="encodedOutput"&gt;
+                    Encoded:
+                    &lt;textarea id="encodedPre" readonly&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+  &lt;script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdn.jsdelivr.net/gh/gdenisov/cardinal-spline-js@master/curve_calc.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+// What to show in UI
+var STEP_ANALOG = 0;
+var STEP_SAMPLING = 1;
+var STEP_QUANTIZING = 2;
+var STEP_ENCODING = 3;
+var STEP_RECONSTRUCTING = 4;
+var processStep = STEP_SAMPLING;
+
+// What to show on graph
+var showCurve = false;
+var showSamples = false;
+var showQuantized = false;
+var updateGraph = true;
+
+var sampleInterval = 20;
+var qInterval = 50;
+var numBits = 2;
+var binaryCodes = [];
+
+var convertToBinary = function(decimal) {
+  var quotient = decimal;
+  var remainder;
+  var remainders = [];
+
+  do {
+    remainder = quotient % 2;
+    quotient = Math.floor(quotient / 2);
+    remainders.push(remainder);
+  } while (quotient &gt; 0);
+
+  return remainders.reverse().join("");
+};
+
+var padBinaryNum = function(binaryStr, numDigits) {
+  var digitsDiff = numDigits - binaryStr.length;
+  for (var i = 0; i &lt; digitsDiff; i++) {
+    binaryStr = "0" + binaryStr;
+  }
+  return binaryStr;
+};
+
+var generateBinarySequence = function(maxVal, numBits) {
+    var minVal = 0;
+    var binaryNums = [];
+    for (var num = minVal; num &lt; maxVal; num++) {
+        var binaryNum = padBinaryNum(convertToBinary(num), numBits);
+        binaryNums.push(binaryNum);
+    }
+    return binaryNums;
+};
+
+var findMinY = function(samples) {
+    var minY = 99999;
+    for (var i = 0; i &lt; samples.length; i++) {
+        if (samples[i].y &lt; minY) {
+            minY = samples[i].y;
+        }
+    }
+    return minY;
+};
+
+var findMaxY = function(samples) {
+    var maxY = - 99999;
+    for (var i = 0; i &lt; samples.length; i++) {
+        if (samples[i].y &gt; maxY) {
+            maxY = samples[i].y;
+        }
+    }
+    return maxY;
+};
+
+var programCode = function(processingInstance) {
+    with(processingInstance) {
+        size(400, 260);
+        noLoop();
+        var yAxis = 50;
+        var curvePoints;
+
+        background(255, 255, 255);
+
+        // Draw grid for sampling
+        var gridColor = color(214, 214, 214);
+        if (processStep &gt;= STEP_SAMPLING) {
+            stroke(gridColor);
+            for (var x = yAxis; x &lt; width; x += sampleInterval) {
+                line(x, 0, x, height);
+            }
+        }
+
+        // Draw grid based on quantization interval
+        if (processStep &gt;= STEP_QUANTIZING) {
+            // Negative intervals
+            for (var y = height/2; y &lt; height; y += qInterval) {
+                line(yAxis, y, width, y);
+            }
+            // Positive intervals
+            for (var y = height/2 - qInterval; y &gt; 0; y -= qInterval) {
+                line(yAxis, y, width, y);
+            }
+        }
+
+        // y axis - amplitude
+        fill(0, 0, 0);
+        stroke(8, 8, 8);
+        strokeWeight(3);
+        line(yAxis, 0, yAxis, height);
+        line(yAxis, 0, yAxis - 8, 10);
+        line(yAxis, 0, yAxis + 8, 10);
+        line(yAxis, height, yAxis - 8, height - 10);
+        line(yAxis, height, yAxis + 8, height - 10);
+        textSize(20);
+        textFont(createFont("monospace"));
+        text("v", yAxis + 6, 36);
+        if (processStep &lt; STEP_ENCODING) {
+            text("100", yAxis + -43, height/2 - 100);
+            text("0", yAxis + -21, height/2);
+            text("-100", yAxis + -53, height/2 + 100);
+        }
+
+        // x axis -time
+        line(yAxis, height/2, width, height/2);
+        line(width, height/2, width - 8, height/2 - 10);
+        line(width, height/2, width - 8, height/2 + 10);
+        text("t", width - 15, height/2 + -18);
+        if (processStep &lt; STEP_ENCODING) {
+            text(330, width - 25 - 10, height/2 + 36);
+        }
+
+        noFill();
+        strokeWeight(2);
+        var originalColor = color(218,165,32);
+        if (showCurve) {
+            stroke(originalColor);
+        } else {
+            noStroke();
+        }
+        
+        var curve1 = [200, 200, 33, 383, 139, -191, yAxis, 123];
+        bezier(curve1[0], curve1[1], curve1[2], curve1[3], curve1[4], curve1[5], curve1[6], curve1[7]);
+        var curve2 = [380, 106, 222, 409, 399, -90, 200, 200];
+        bezier(curve2[0], curve2[1], curve2[2], curve2[3], curve2[4], curve2[5], curve2[6], curve2[7]);
+
+        var yToGraph = function(yPoint) {
+            return -1 * (yPoint - height/2);
+        };
+        var yToCanvas = function(yPoint) {
+            return (-1 * yPoint) + height/2;
+        };
+        var xToGraph = function(xPoint) {
+            return xPoint - yAxis;
+        };
+        var xToCanvas = function(xPoint) {
+            return xPoint + yAxis;
+        };
+
+        // Store enough points so that we have one for each x value
+        if (!curvePoints) {
+            curvePoints = [];
+            var steps = 800;
+            for (var i = 0; i &lt;= steps; i++) {
+                var t = i / steps;
+                var x1 = bezierPoint(curve1[0], curve1[2], curve1[4], curve1[6], t);
+                var y1 = bezierPoint(curve1[1], curve1[3], curve1[5], curve1[7], t);
+                curvePoints[xToGraph(Math.round(x1))] = yToGraph(y1);
+                var x2 = bezierPoint(curve2[0], curve2[2], curve2[4], curve2[6], t);
+                var y2 = bezierPoint(curve2[1], curve2[3], curve2[5], curve2[7], t);
+                curvePoints[xToGraph(Math.round(x2))] = yToGraph(y2);
+            }
+        }
+        
+        // Now sample at the given sample rate
+        var samples = [];
+        for (var i = 0; i &lt;= curvePoints.length; i += sampleInterval) {
+            samples.push({x: i, y: curvePoints[i]});
+        }
+
+        // Now quantize at the given interval
+        var quantizeY = function(y, qInterval) {
+            return Math.round(y/qInterval) * qInterval;
+        };
+
+        var quantizedSamples = [];
+        for (var i = 0; i &lt; samples.length; i++) {
+            quantizedSamples.push({x: samples[i].x, y: quantizeY(samples[i].y, qInterval)});
+        }
+
+        var formatPoints = function(points) {
+            var pointsStr = [];
+            for (var i = 0; i &lt; points.length; i++) {
+                pointsStr.push("(" + points[i].x + ", " + points[i].y + ")");
+            }
+            return pointsStr.join("\n");
+        };
+        
+        window.setTimeout(function() {
+           
+        // Draw the samples
+        if (showSamples) {
+            stroke(255, 128, 0);
+            fill(255, 128, 0);
+            for (var i = 0; i &lt; samples.length; i++) {
+                var x = xToCanvas(samples[i].x);
+                var y = yToCanvas(samples[i].y);
+                line(x, height/2, x, y);
+                ellipse(x, y, 10, 10);
+            }
+        }
+        
+        // Draw the quantization
+        var quantizedColor = color(100, 0, 140);
+        if (showQuantized) {
+            noFill();
+            stroke(quantizedColor);
+            var currentSample;
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                currentSample = quantizedSamples[i];
+                var x = xToCanvas(currentSample.x);
+                var y = yToCanvas(currentSample.y);
+                ellipse(x, y, 10, 10);
+                var lineY = currentSample.y &gt; 0 ? y + 5 : y - 5;
+                line(xToCanvas(currentSample.x), height/2, xToCanvas(currentSample.x), lineY);
+            }
+        }
+
+        // Draw the reconstructed curve
+
+        if (processStep &gt;= STEP_ENCODING) {
+
+            // First, what is the range in y values?
+            // (Could also look at unique levels instead of range)
+            var minY = findMinY(quantizedSamples);
+            var maxY = findMaxY(quantizedSamples);
+            var levels = ((maxY - minY) / qInterval) + 1;
+            // How many bits are needed to present # of levels?
+            var bitsNeeded = Math.ceil(Math.log2(levels));
+            binaryCodes = generateBinarySequence(levels, bitsNeeded);
+
+            // Negative intervals
+            var yToCode = {};
+            fill(0, 0, 0);
+            for (var y = minY, binaryCodeI = 0; y &lt;= maxY; y += qInterval, binaryCodeI++) {
+                textSize(12);
+                text(binaryCodes[binaryCodeI], yAxis - 40, yToCanvas(y));
+                yToCode[y] = binaryCodes[binaryCodeI];
+            }
+            var binaryStr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                var binaryCode = yToCode[quantizedSamples[i].y];
+                binaryStr.push(binaryCode);
+            }
+            document.getElementById("encodedPre").value = binaryStr.join("\n");
+        }
+
+        // Draw reconstructed curve
+        if (showReconstructed) {
+            var pointsArr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                pointsArr.push(xToCanvas(quantizedSamples[i].x));
+                pointsArr.push(yToCanvas(quantizedSamples[i].y));
+            }
+            var splinePoints = getCurvePoints(pointsArr, 0.5, 20);
+
+            var reconstructedColor = color(0, 128, 128);
+            noFill();
+            stroke(reconstructedColor);
+            beginShape();
+            for (var i = 0; i &lt; splinePoints.length; i += 2) {
+                curveVertex(splinePoints[i], splinePoints[i + 1])
+            }
+            endShape();
+        }
+
+        if (processStep === STEP_SAMPLING) {
+            document.getElementById("pointsPre").value = formatPoints(samples);
+        } else if (processStep &gt;= STEP_QUANTIZING) {
+            document.getElementById("pointsPre").value = formatPoints(quantizedSamples);
+        }
+        //For screenshots:
+        //var img    = document.getElementById("mycanvas").toDataURL("image/png");
+        //document.getElementById("pointsPre").value=(img);
+        
+        }, 100);
+    }
+};
+
+// Update visible fields
+var placeholderImg = document.getElementById("placeholder");
+if (processStep &lt; STEP_QUANTIZING) {
+    document.getElementById("quantizationRangeRow").style.display = "none";
+    document.getElementById("showQuantizedLabel").style.display = "none";
+}
+if (processStep &lt; STEP_ENCODING) {
+    document.getElementById("pointsPre").style.height = "318px";
+    document.getElementById("encodedOutput").style.display = "none";
+}
+if (processStep &lt; STEP_RECONSTRUCTING) {
+    document.getElementById("showReconstructedLabel").style.display = "none";
+}
+
+// Update the checkboxes
+if (processStep === STEP_ANALOG) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/38ea1efb1016370a71de597c33a47e16b028e7d4.png";
+}
+if (processStep === STEP_SAMPLING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showSamples").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/7d949cd063a816e1b9aaa8f64e80379d71f52f12.png";
+    document.getElementById("pointsPre").value = "(0, 7)\n(30, 95.98676803710936)\n(60, -71.43289186523432)\n(90, -106.55949554687498)\n(120, -97.21617085937501)\n(150, -70)\n(180, -29.045472375000003)\n(210, 6.171340345703143)\n(240, 24.439022283203116)\n(270, -74.45763529492186)\n(300, -31.31245312500002)\n(330, 24)";
+}
+if (processStep === STEP_QUANTIZING) {
+    document.getElementById("showSamples").setAttribute("checked", true);
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/dca943fa67ab49a5edfeafad9eb0389f93290be2.png";
+}
+if (processStep === STEP_ENCODING) {
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/52fe7646cf89ba456090b51b5116473d65d2b7d3.png";
+}
+if (processStep === STEP_RECONSTRUCTING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showReconstructed").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/12822e856c9f2d5923004c48649f0f91678585ec.png";
+}
+
+if (processStep &gt;= STEP_QUANTIZING) {
+    document.getElementById("pointsPre").value = "(0, 0)\n(30, 100)\n(60, -75)\n(90, -100)\n(120, -100)\n(150, -75)\n(180, -25)\n(210, 0)\n(240, 25)\n(270, -75)\n(300, -25)\n(330, 25)";
+}
+if (processStep &gt;= STEP_ENCODING) {
+    document.getElementById("encodedPre").value = "0100\n1000\n0001\n0000\n0000\n0001\n0011\n0100\n0101\n0001\n0011\n0101";
+}
+
+var updateSampleInterval = function(e) {
+    var sampleRangeVal = document.getElementById("sampleRange").value;
+    document.getElementById("sampleRangeVal").innerText = sampleRangeVal;
+    sampleInterval = parseInt(sampleRangeVal, 10);
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("sampleRange").addEventListener("change", updateSampleInterval);
+
+var updateQuantizationInterval = function(e) {
+    var quantizationRangeVal = document.getElementById("quantizationRange").value;
+    document.getElementById("quantizationRangeVal").innerText = quantizationRangeVal;
+    qInterval = parseInt(quantizationRangeVal, 10);
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("quantizationRange").addEventListener("change", updateQuantizationInterval);
+
+
+var updateShowCurve = function(e) {
+    showCurve = document.getElementById("showCurve").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showCurve").addEventListener("click", updateShowCurve);
+
+
+var updateShowSamples = function(e) {
+    showSamples = document.getElementById("showSamples").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showSamples").addEventListener("click", updateShowSamples);
+
+var updateShowQuantized = function(e) {
+    showQuantized = document.getElementById("showQuantized").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showQuantized").addEventListener("click", updateShowQuantized);
+
+
+var updateShowReconstructed = function(e) {
+    showReconstructed = document.getElementById("showReconstructed").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showReconstructed").addEventListener("click", updateShowReconstructed);
+
+var canvas = document.getElementById("mycanvas");
+var renderCanvas = function() {
+    document.getElementById("placeholder").style.display = "none";
+    var processingInstance = new Processing(canvas, programCode);
+    
+};
+
+// Render the visualization
+window.setTimeout(function() {
+    updateSampleInterval();
+    updateQuantizationInterval();
+    updateShowCurve();
+    updateShowSamples();
+    updateShowQuantized();
+    updateShowReconstructed();
+}, 100);
+
+
+
+
+
+  &lt;/script&gt;
+&lt;/html&gt;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">The inverse of the sampling interval is the <strong>sampling rate</strong>: the number of samples in a second (or other unit of time). For example, a sampling interval of 30 milliseconds corresponds to a sampling rate of 33.33 samples per second.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">According to the Nyquist-Shannon sampling theorem, a sufficient sampling rate is anything larger than twice the highest frequency in the signal.  The frequency is the number of cycles per second and measured in Hz (hertz). If a signal has a maximum frequency of 500 Hz, a sufficient sampling rate is anything greater than 1000 Hz.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">A typical sampling rate for music recordings is 48 kHz (48,000 samples per second). That's a little over double the highest frequency that humans can hear, 20 kHz. If the audio only contains human speech, as is often the case for phone calls, a much smaller sampling rate of 8 kHz can be used since 4kHz is the highest frequency in most speech. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">^1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span><span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">start superscript, 1, end superscript</span></span><span></span></span></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Quantization</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">After sampling, we are still left with a wide range in the amplitude domain, the y values. The next step of quantization reduces that continuous amplitude domain into discrete levels.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">For our simple signal, where amplitude varies from -100 to 100 volts, we can apply a quantization interval of 25 volts:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 and a y-axis labeled "v" that goes from -100 to 100. Sampled points are shown as orange circles. Lines go from the x-axis to near each of the sampled points, at an intersection with horizontal grid lines.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/dca943fa67ab49a5edfeafad9eb0389f93290be2.png" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A graph with an x-axis labeled "t" that goes from 0 to 330 and a y-axis labeled "v" that goes from -100 to 100. Sampled points are shown as orange circles. Lines go from the x-axis to near each of the sampled points, at an intersection with horizontal grid lines.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Now the 12 points all have y values that are multiples of 25:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>(0, 0)
+(30, 100)
+(60, -75)
+(90, -100)
+(120, -100)
+(150, -75)
+(180, -25)
+(210, 0)
+(240, 25)
+(270, -75)
+(300, -25)
+(330, 25)</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">🔎 What's the best quantization interval? Play around with different quantization intervals below and observe how far the quantized points are from the sampled points:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Analog to Digital Converter: Quantizing&lt;/title&gt;
+      &lt;!-- WonderBlocks styles --&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+  &lt;style&gt;
+  body {
+      font-family: "Lato", sans-serif;
+      max-width: 375px;
+  }
+  .container {
+    display:flex;
+    flex-direction: row;
+  }
+
+  .form-controls {
+    background: #efefef;
+    margin-bottom: 12px;
+  }
+  .range-controls {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 6px;
+    border-radius: 3px;
+  }
+  fieldset {
+      border: none;
+      margin-top: 0px;
+      padding-left: 6px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .form-row &gt; label {
+    padding: .5em 1em .1em 0;
+    flex: 6;
+  }
+  .form-row &gt; input {
+    flex: 2;
+  }
+  .form-row &gt; span {
+    flex: 1;
+    margin-left: 6px;
+    align-self: center;
+  }
+  .form-row &gt; input,
+  .form-row &gt; button {
+    padding: .5em;
+  }
+  .form-row &gt; button {
+   background: gray;
+   color: white;
+   border: 0;
+  }
+
+  .left-side, .right-side {
+      flex-grow: 1;
+      flex-basis: 100%;
+  }
+
+  .right-side {
+    padding-top:8px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .right-side:first-child {
+      margin-bottom: 10px;
+  }
+  .right-side textarea {
+    margin-top: 6px;
+    height: 150px;
+    width: 65px;
+  }
+  &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="left-side"&gt;
+            &lt;div class="form-controls"&gt;
+                &lt;ul class="range-controls"&gt;
+                    &lt;li class="form-row" id="sampleRangeRow"&gt;
+                        &lt;label for="sampleRange"&gt;Sampling interval:
+                        &lt;/label&gt;
+                        &lt;input type="range" min="2" max="150" value="30" id="sampleRange"/&gt;
+                        &lt;span id="sampleRangeVal"&gt;30&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class="form-row" id="quantizationRangeRow"&gt;
+                        &lt;label for="quantizationRange"&gt;Quantization interval:&lt;/label&gt;
+                        &lt;input type="range" min="2" max="120" value="25" id="quantizationRange"/&gt;
+                        &lt;span id="quantizationRangeVal"&gt;50&lt;/span&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;fieldset&gt;
+                    Show:&lt;br/&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showCurve"&gt;
+                        original
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showSamples"&gt;
+                        samples
+                    &lt;/label&gt;
+                    &lt;label id="showQuantizedLabel"&gt;
+                        &lt;input type="checkbox" id="showQuantized"&gt;
+                        quantized
+                    &lt;/label&gt;
+                    &lt;label id="showReconstructedLabel"&gt;
+                        &lt;input type="checkbox" id="showReconstructed"&gt;
+                        reconstructed
+                    &lt;/label&gt;
+                &lt;/fieldset&gt;
+            &lt;/div&gt;
+            &lt;div style="position:relative;"&gt;
+            &lt;canvas id="mycanvas" style="width:400px; height: 260px; background: #ccc; border:0px none;"&gt;&lt;/canvas&gt;
+            &lt;img id="placeholder" style="position:absolute; z-index: 2;top:0;left:0;" src="https://www.kasandbox.org/programming-images/avatars/questionmark.png"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="right-side"&gt;
+                &lt;div id="pointsOutput"&gt;
+                    Points:
+                    &lt;textarea id="pointsPre"&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                &lt;div id="encodedOutput"&gt;
+                    Encoded:
+                    &lt;textarea id="encodedPre" readonly&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+  &lt;script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdn.jsdelivr.net/gh/gdenisov/cardinal-spline-js@master/curve_calc.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+// What to show in UI
+var STEP_ANALOG = 0;
+var STEP_SAMPLING = 1;
+var STEP_QUANTIZING = 2;
+var STEP_ENCODING = 3;
+var STEP_RECONSTRUCTING = 4;
+var processStep = STEP_QUANTIZING;
+
+// What to show on graph
+var showCurve = false;
+var showSamples = false;
+var showQuantized = false;
+var updateGraph = true;
+
+var sampleInterval = 20;
+var qInterval = 50;
+var numBits = 2;
+var binaryCodes = [];
+
+var convertToBinary = function(decimal) {
+  var quotient = decimal;
+  var remainder;
+  var remainders = [];
+
+  do {
+    remainder = quotient % 2;
+    quotient = Math.floor(quotient / 2);
+    remainders.push(remainder);
+  } while (quotient &gt; 0);
+
+  return remainders.reverse().join("");
+};
+
+var padBinaryNum = function(binaryStr, numDigits) {
+  var digitsDiff = numDigits - binaryStr.length;
+  for (var i = 0; i &lt; digitsDiff; i++) {
+    binaryStr = "0" + binaryStr;
+  }
+  return binaryStr;
+};
+
+var generateBinarySequence = function(maxVal, numBits) {
+    var minVal = 0;
+    var binaryNums = [];
+    for (var num = minVal; num &lt; maxVal; num++) {
+        var binaryNum = padBinaryNum(convertToBinary(num), numBits);
+        binaryNums.push(binaryNum);
+    }
+    return binaryNums;
+};
+
+var findMinY = function(samples) {
+    var minY = 99999;
+    for (var i = 0; i &lt; samples.length; i++) {
+        if (samples[i].y &lt; minY) {
+            minY = samples[i].y;
+        }
+    }
+    return minY;
+};
+
+var findMaxY = function(samples) {
+    var maxY = - 99999;
+    for (var i = 0; i &lt; samples.length; i++) {
+        if (samples[i].y &gt; maxY) {
+            maxY = samples[i].y;
+        }
+    }
+    return maxY;
+};
+
+var programCode = function(processingInstance) {
+    with(processingInstance) {
+        size(400, 260);
+        noLoop();
+        var yAxis = 50;
+        var curvePoints;
+
+        background(255, 255, 255);
+
+        // Draw grid for sampling
+        var gridColor = color(214, 214, 214);
+        if (processStep &gt;= STEP_SAMPLING) {
+            stroke(gridColor);
+            for (var x = yAxis; x &lt; width; x += sampleInterval) {
+                line(x, 0, x, height);
+            }
+        }
+
+        // Draw grid based on quantization interval
+        if (processStep &gt;= STEP_QUANTIZING) {
+            // Negative intervals
+            for (var y = height/2; y &lt; height; y += qInterval) {
+                line(yAxis, y, width, y);
+            }
+            // Positive intervals
+            for (var y = height/2 - qInterval; y &gt; 0; y -= qInterval) {
+                line(yAxis, y, width, y);
+            }
+        }
+
+        // y axis - amplitude
+        fill(0, 0, 0);
+        stroke(8, 8, 8);
+        strokeWeight(3);
+        line(yAxis, 0, yAxis, height);
+        line(yAxis, 0, yAxis - 8, 10);
+        line(yAxis, 0, yAxis + 8, 10);
+        line(yAxis, height, yAxis - 8, height - 10);
+        line(yAxis, height, yAxis + 8, height - 10);
+        textSize(20);
+        textFont(createFont("monospace"));
+        text("v", yAxis + 6, 36);
+        if (processStep &lt; STEP_ENCODING) {
+            text("100", yAxis + -43, height/2 - 100);
+            text("0", yAxis + -21, height/2);
+            text("-100", yAxis + -53, height/2 + 100);
+        }
+
+        // x axis -time
+        line(yAxis, height/2, width, height/2);
+        line(width, height/2, width - 8, height/2 - 10);
+        line(width, height/2, width - 8, height/2 + 10);
+        text("t", width - 15, height/2 + -18);
+        if (processStep &lt; STEP_ENCODING) {
+            text(330, width - 25 - 10, height/2 + 36);
+        }
+
+        noFill();
+        strokeWeight(2);
+        var originalColor = color(218,165,32);
+        if (showCurve) {
+            stroke(originalColor);
+        } else {
+            noStroke();
+        }
+        
+        var curve1 = [200, 200, 33, 383, 139, -191, yAxis, 123];
+        bezier(curve1[0], curve1[1], curve1[2], curve1[3], curve1[4], curve1[5], curve1[6], curve1[7]);
+        var curve2 = [380, 106, 222, 409, 399, -90, 200, 200];
+        bezier(curve2[0], curve2[1], curve2[2], curve2[3], curve2[4], curve2[5], curve2[6], curve2[7]);
+
+        var yToGraph = function(yPoint) {
+            return -1 * (yPoint - height/2);
+        };
+        var yToCanvas = function(yPoint) {
+            return (-1 * yPoint) + height/2;
+        };
+        var xToGraph = function(xPoint) {
+            return xPoint - yAxis;
+        };
+        var xToCanvas = function(xPoint) {
+            return xPoint + yAxis;
+        };
+
+        // Store enough points so that we have one for each x value
+        if (!curvePoints) {
+            curvePoints = [];
+            var steps = 800;
+            for (var i = 0; i &lt;= steps; i++) {
+                var t = i / steps;
+                var x1 = bezierPoint(curve1[0], curve1[2], curve1[4], curve1[6], t);
+                var y1 = bezierPoint(curve1[1], curve1[3], curve1[5], curve1[7], t);
+                curvePoints[xToGraph(Math.round(x1))] = yToGraph(y1);
+                var x2 = bezierPoint(curve2[0], curve2[2], curve2[4], curve2[6], t);
+                var y2 = bezierPoint(curve2[1], curve2[3], curve2[5], curve2[7], t);
+                curvePoints[xToGraph(Math.round(x2))] = yToGraph(y2);
+            }
+        }
+        
+        // Now sample at the given sample rate
+        var samples = [];
+        for (var i = 0; i &lt;= curvePoints.length; i += sampleInterval) {
+            samples.push({x: i, y: curvePoints[i]});
+        }
+
+        // Now quantize at the given interval
+        var quantizeY = function(y, qInterval) {
+            return Math.round(y/qInterval) * qInterval;
+        };
+
+        var quantizedSamples = [];
+        for (var i = 0; i &lt; samples.length; i++) {
+            quantizedSamples.push({x: samples[i].x, y: quantizeY(samples[i].y, qInterval)});
+        }
+
+        var formatPoints = function(points) {
+            var pointsStr = [];
+            for (var i = 0; i &lt; points.length; i++) {
+                pointsStr.push("(" + points[i].x + ", " + points[i].y + ")");
+            }
+            return pointsStr.join("\n");
+        };
+        
+        window.setTimeout(function() {
+           
+        // Draw the samples
+        if (showSamples) {
+            stroke(255, 128, 0);
+            fill(255, 128, 0);
+            for (var i = 0; i &lt; samples.length; i++) {
+                var x = xToCanvas(samples[i].x);
+                var y = yToCanvas(samples[i].y);
+                line(x, height/2, x, y);
+                ellipse(x, y, 10, 10);
+            }
+        }
+        
+        // Draw the quantization
+        var quantizedColor = color(100, 0, 140);
+        if (showQuantized) {
+            noFill();
+            stroke(quantizedColor);
+            var currentSample;
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                currentSample = quantizedSamples[i];
+                var x = xToCanvas(currentSample.x);
+                var y = yToCanvas(currentSample.y);
+                ellipse(x, y, 10, 10);
+                var lineY = currentSample.y &gt; 0 ? y + 5 : y - 5;
+                line(xToCanvas(currentSample.x), height/2, xToCanvas(currentSample.x), lineY);
+            }
+        }
+
+        // Draw the reconstructed curve
+
+        if (processStep &gt;= STEP_ENCODING) {
+
+            // First, what is the range in y values?
+            // (Could also look at unique levels instead of range)
+            var minY = findMinY(quantizedSamples);
+            var maxY = findMaxY(quantizedSamples);
+            var levels = ((maxY - minY) / qInterval) + 1;
+            // How many bits are needed to present # of levels?
+            var bitsNeeded = Math.ceil(Math.log2(levels));
+            binaryCodes = generateBinarySequence(levels, bitsNeeded);
+
+            // Negative intervals
+            var yToCode = {};
+            fill(0, 0, 0);
+            for (var y = minY, binaryCodeI = 0; y &lt;= maxY; y += qInterval, binaryCodeI++) {
+                textSize(12);
+                text(binaryCodes[binaryCodeI], yAxis - 40, yToCanvas(y));
+                yToCode[y] = binaryCodes[binaryCodeI];
+            }
+            var binaryStr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                var binaryCode = yToCode[quantizedSamples[i].y];
+                binaryStr.push(binaryCode);
+            }
+            document.getElementById("encodedPre").value = binaryStr.join("\n");
+        }
+
+        // Draw reconstructed curve
+        if (showReconstructed) {
+            var pointsArr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                pointsArr.push(xToCanvas(quantizedSamples[i].x));
+                pointsArr.push(yToCanvas(quantizedSamples[i].y));
+            }
+            var splinePoints = getCurvePoints(pointsArr, 0.5, 20);
+
+            var reconstructedColor = color(0, 128, 128);
+            noFill();
+            stroke(reconstructedColor);
+            beginShape();
+            for (var i = 0; i &lt; splinePoints.length; i += 2) {
+                curveVertex(splinePoints[i], splinePoints[i + 1])
+            }
+            endShape();
+        }
+
+        if (processStep === STEP_SAMPLING) {
+            document.getElementById("pointsPre").value = formatPoints(samples);
+        } else if (processStep &gt;= STEP_QUANTIZING) {
+            document.getElementById("pointsPre").value = formatPoints(quantizedSamples);
+        }
+        //For screenshots:
+        //var img    = document.getElementById("mycanvas").toDataURL("image/png");
+        //document.getElementById("pointsPre").value=(img);
+        
+        }, 100);
+    }
+};
+
+// Update visible fields
+var placeholderImg = document.getElementById("placeholder");
+if (processStep &lt; STEP_QUANTIZING) {
+    document.getElementById("quantizationRangeRow").style.display = "none";
+    document.getElementById("showQuantizedLabel").style.display = "none";
+}
+if (processStep &lt; STEP_ENCODING) {
+    document.getElementById("pointsPre").style.height = "318px";
+    document.getElementById("encodedOutput").style.display = "none";
+}
+if (processStep &lt; STEP_RECONSTRUCTING) {
+    document.getElementById("showReconstructedLabel").style.display = "none";
+}
+
+// Update the checkboxes
+if (processStep === STEP_ANALOG) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/38ea1efb1016370a71de597c33a47e16b028e7d4.png";
+}
+if (processStep === STEP_SAMPLING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showSamples").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/7d949cd063a816e1b9aaa8f64e80379d71f52f12.png";
+    document.getElementById("pointsPre").value = "(0, 7)\n(30, 95.98676803710936)\n(60, -71.43289186523432)\n(90, -106.55949554687498)\n(120, -97.21617085937501)\n(150, -70)\n(180, -29.045472375000003)\n(210, 6.171340345703143)\n(240, 24.439022283203116)\n(270, -74.45763529492186)\n(300, -31.31245312500002)\n(330, 24)";
+}
+if (processStep === STEP_QUANTIZING) {
+    document.getElementById("showSamples").setAttribute("checked", true);
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/dca943fa67ab49a5edfeafad9eb0389f93290be2.png";
+}
+if (processStep === STEP_ENCODING) {
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/52fe7646cf89ba456090b51b5116473d65d2b7d3.png";
+}
+if (processStep === STEP_RECONSTRUCTING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showReconstructed").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/12822e856c9f2d5923004c48649f0f91678585ec.png";
+}
+
+if (processStep &gt;= STEP_QUANTIZING) {
+    document.getElementById("pointsPre").value = "(0, 0)\n(30, 100)\n(60, -75)\n(90, -100)\n(120, -100)\n(150, -75)\n(180, -25)\n(210, 0)\n(240, 25)\n(270, -75)\n(300, -25)\n(330, 25)";
+}
+if (processStep &gt;= STEP_ENCODING) {
+    document.getElementById("encodedPre").value = "0100\n1000\n0001\n0000\n0000\n0001\n0011\n0100\n0101\n0001\n0011\n0101";
+}
+
+var updateSampleInterval = function(e) {
+    var sampleRangeVal = document.getElementById("sampleRange").value;
+    document.getElementById("sampleRangeVal").innerText = sampleRangeVal;
+    sampleInterval = parseInt(sampleRangeVal, 10);
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("sampleRange").addEventListener("change", updateSampleInterval);
+
+var updateQuantizationInterval = function(e) {
+    var quantizationRangeVal = document.getElementById("quantizationRange").value;
+    document.getElementById("quantizationRangeVal").innerText = quantizationRangeVal;
+    qInterval = parseInt(quantizationRangeVal, 10);
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("quantizationRange").addEventListener("change", updateQuantizationInterval);
+
+
+var updateShowCurve = function(e) {
+    showCurve = document.getElementById("showCurve").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showCurve").addEventListener("click", updateShowCurve);
+
+
+var updateShowSamples = function(e) {
+    showSamples = document.getElementById("showSamples").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showSamples").addEventListener("click", updateShowSamples);
+
+var updateShowQuantized = function(e) {
+    showQuantized = document.getElementById("showQuantized").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showQuantized").addEventListener("click", updateShowQuantized);
+
+
+var updateShowReconstructed = function(e) {
+    showReconstructed = document.getElementById("showReconstructed").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showReconstructed").addEventListener("click", updateShowReconstructed);
+
+var canvas = document.getElementById("mycanvas");
+var renderCanvas = function() {
+    document.getElementById("placeholder").style.display = "none";
+    var processingInstance = new Processing(canvas, programCode);
+    
+};
+
+// Render the visualization
+window.setTimeout(function() {
+    updateSampleInterval();
+    updateQuantizationInterval();
+    updateShowCurve();
+    updateShowSamples();
+    updateShowQuantized();
+    updateShowReconstructed();
+}, 100);
+  &lt;/script&gt;
+&lt;/html&gt;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">The ideal quantization interval depends on our use case and physical constraints. If there is enough space to represent thousands of different y values, then we can use a very small quantization interval. If there is limited space, then we can use a large interval. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The quantizing step always introduces some amount of quantization error, which is measured by comparing the actual signal value with the quantized value at each sampled point. However, some level of quantization is always necessary for storing analog data in digital form, due to the finite nature of a computer's memory and <a class="_8gcxk83" href="/computing/ap-computer-science-principles/x2d2f703b37b450a3:digital-information/x2d2f703b37b450a3:from-analog-to-digital-data/a/a/number-limits-overflow-and-roundoff" rel="noopener noreferrer" tabindex="0" target="_blank">its numeric precision</a>.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Binary encoding</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">That brings us to the final step: binary encoding. If there is a limited set of quantized y values, the computer does not need to store the actual value. Instead, it can store a much smaller value that represents the quantized y value.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">For this signal, a quantization interval of 25 resulted in 9 possible y values. We can map the 9 values to the binary numbers <code>0000</code> - <code>1001</code>:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 milliseconds and a y-axis labeled "v" that goes from -100 to 100. A series of lines are shown every 30 milliseconds, with each line ending at a circle that intersects a horizontal grid line.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/52fe7646cf89ba456090b51b5116473d65d2b7d3.png" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A graph with an x-axis labeled "t" that goes from 0 to 330 milliseconds and a y-axis labeled "v" that goes from -100 to 100. A series of lines are shown every 30 milliseconds, with each line ending at a circle that intersects a horizontal grid line.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">We can then encode the signal into this binary sequence: </div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>0100 1000 0001 0000 0000 0001 0011 0100 0101 0001 0011 0101</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">For a computer to understand that sequence, our digitized version would also need to include a description of how the sequence was sampled and encoded.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">This encoding uses 4 bits per sample. The number of bits per sample is also know as the <strong>bit depth</strong>. The lowest bit depth is 1, which can only describe 2 values (0 or 1). The standard bit depth for telephone calls is 8 bits (256 values) and the recommended bit depth for YouTube music videos is 24 bits (over 16 million values).</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[What are other encoding options?]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">🔎 Play around again with the quantization interval and observe how the bit depth changes. What intervals only need 2 bits? 4 bits? 6 bits?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Analog to Digital Converter: Encoding&lt;/title&gt;
+      &lt;!-- WonderBlocks styles --&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+  &lt;style&gt;
+  body {
+      font-family: "Lato", sans-serif;
+      max-width: 375px;
+  }
+  .container {
+    display:flex;
+    flex-direction: row;
+  }
+
+  .form-controls {
+    background: #efefef;
+    margin-bottom: 12px;
+  }
+  .range-controls {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 6px;
+    border-radius: 3px;
+  }
+  fieldset {
+      border: none;
+      margin-top: 0px;
+      padding-left: 6px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .form-row &gt; label {
+    padding: .5em 1em .1em 0;
+    flex: 6;
+  }
+  .form-row &gt; input {
+    flex: 2;
+  }
+  .form-row &gt; span {
+    flex: 1;
+    margin-left: 6px;
+    align-self: center;
+  }
+  .form-row &gt; input,
+  .form-row &gt; button {
+    padding: .5em;
+  }
+  .form-row &gt; button {
+   background: gray;
+   color: white;
+   border: 0;
+  }
+
+  .left-side, .right-side {
+      flex-grow: 1;
+      flex-basis: 100%;
+  }
+
+  .right-side {
+    padding-top:8px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .right-side:first-child {
+      margin-bottom: 10px;
+  }
+  .right-side textarea {
+    margin-top: 6px;
+    height: 150px;
+    width: 65px;
+  }
+  &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="left-side"&gt;
+            &lt;div class="form-controls"&gt;
+                &lt;ul class="range-controls"&gt;
+                    &lt;li class="form-row" id="sampleRangeRow"&gt;
+                        &lt;label for="sampleRange"&gt;Sampling interval:
+                        &lt;/label&gt;
+                        &lt;input type="range" min="2" max="150" value="30" id="sampleRange"/&gt;
+                        &lt;span id="sampleRangeVal"&gt;30&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class="form-row" id="quantizationRangeRow"&gt;
+                        &lt;label for="quantizationRange"&gt;Quantization interval:&lt;/label&gt;
+                        &lt;input type="range" min="2" max="120" value="25" id="quantizationRange"/&gt;
+                        &lt;span id="quantizationRangeVal"&gt;50&lt;/span&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;fieldset&gt;
+                    Show:&lt;br/&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showCurve"&gt;
+                        original
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showSamples"&gt;
+                        samples
+                    &lt;/label&gt;
+                    &lt;label id="showQuantizedLabel"&gt;
+                        &lt;input type="checkbox" id="showQuantized"&gt;
+                        quantized
+                    &lt;/label&gt;
+                    &lt;label id="showReconstructedLabel"&gt;
+                        &lt;input type="checkbox" id="showReconstructed"&gt;
+                        reconstructed
+                    &lt;/label&gt;
+                &lt;/fieldset&gt;
+            &lt;/div&gt;
+            &lt;div style="position:relative;"&gt;
+            &lt;canvas id="mycanvas" style="width:400px; height: 260px; background: #ccc; border:0px none;"&gt;&lt;/canvas&gt;
+            &lt;img id="placeholder" style="position:absolute; z-index: 2;top:0;left:0;" src="https://www.kasandbox.org/programming-images/avatars/questionmark.png"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="right-side"&gt;
+                &lt;div id="pointsOutput"&gt;
+                    Points:
+                    &lt;textarea id="pointsPre"&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                &lt;div id="encodedOutput"&gt;
+                    Encoded:
+                    &lt;textarea id="encodedPre" readonly&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+  &lt;script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdn.jsdelivr.net/gh/gdenisov/cardinal-spline-js@master/curve_calc.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+// What to show in UI
+var STEP_ANALOG = 0;
+var STEP_SAMPLING = 1;
+var STEP_QUANTIZING = 2;
+var STEP_ENCODING = 3;
+var STEP_RECONSTRUCTING = 4;
+var processStep = STEP_ENCODING;
+
+// What to show on graph
+var showCurve = false;
+var showSamples = false;
+var showQuantized = false;
+var updateGraph = true;
+
+var sampleInterval = 20;
+var qInterval = 50;
+var numBits = 2;
+var binaryCodes = [];
+
+var convertToBinary = function(decimal) {
+  var quotient = decimal;
+  var remainder;
+  var remainders = [];
+
+  do {
+    remainder = quotient % 2;
+    quotient = Math.floor(quotient / 2);
+    remainders.push(remainder);
+  } while (quotient &gt; 0);
+
+  return remainders.reverse().join("");
+};
+
+var padBinaryNum = function(binaryStr, numDigits) {
+  var digitsDiff = numDigits - binaryStr.length;
+  for (var i = 0; i &lt; digitsDiff; i++) {
+    binaryStr = "0" + binaryStr;
+  }
+  return binaryStr;
+};
+
+var generateBinarySequence = function(maxVal, numBits) {
+    var minVal = 0;
+    var binaryNums = [];
+    for (var num = minVal; num &lt; maxVal; num++) {
+        var binaryNum = padBinaryNum(convertToBinary(num), numBits);
+        binaryNums.push(binaryNum);
+    }
+    return binaryNums;
+};
+
+var findMinY = function(samples) {
+    var minY = 99999;
+    for (var i = 0; i &lt; samples.length; i++) {
+        if (samples[i].y &lt; minY) {
+            minY = samples[i].y;
+        }
+    }
+    return minY;
+};
+
+var findMaxY = function(samples) {
+    var maxY = - 99999;
+    for (var i = 0; i &lt; samples.length; i++) {
+        if (samples[i].y &gt; maxY) {
+            maxY = samples[i].y;
+        }
+    }
+    return maxY;
+};
+
+var programCode = function(processingInstance) {
+    with(processingInstance) {
+        size(400, 260);
+        noLoop();
+        var yAxis = 50;
+        var curvePoints;
+
+        background(255, 255, 255);
+
+        // Draw grid for sampling
+        var gridColor = color(214, 214, 214);
+        if (processStep &gt;= STEP_SAMPLING) {
+            stroke(gridColor);
+            for (var x = yAxis; x &lt; width; x += sampleInterval) {
+                line(x, 0, x, height);
+            }
+        }
+
+        // Draw grid based on quantization interval
+        if (processStep &gt;= STEP_QUANTIZING) {
+            // Negative intervals
+            for (var y = height/2; y &lt; height; y += qInterval) {
+                line(yAxis, y, width, y);
+            }
+            // Positive intervals
+            for (var y = height/2 - qInterval; y &gt; 0; y -= qInterval) {
+                line(yAxis, y, width, y);
+            }
+        }
+
+        // y axis - amplitude
+        fill(0, 0, 0);
+        stroke(8, 8, 8);
+        strokeWeight(3);
+        line(yAxis, 0, yAxis, height);
+        line(yAxis, 0, yAxis - 8, 10);
+        line(yAxis, 0, yAxis + 8, 10);
+        line(yAxis, height, yAxis - 8, height - 10);
+        line(yAxis, height, yAxis + 8, height - 10);
+        textSize(20);
+        textFont(createFont("monospace"));
+        text("v", yAxis + 6, 36);
+        if (processStep &lt; STEP_ENCODING) {
+            text("100", yAxis + -43, height/2 - 100);
+            text("0", yAxis + -21, height/2);
+            text("-100", yAxis + -53, height/2 + 100);
+        }
+
+        // x axis -time
+        line(yAxis, height/2, width, height/2);
+        line(width, height/2, width - 8, height/2 - 10);
+        line(width, height/2, width - 8, height/2 + 10);
+        text("t", width - 15, height/2 + -18);
+        if (processStep &lt; STEP_ENCODING) {
+            text(330, width - 25 - 10, height/2 + 36);
+        }
+
+        noFill();
+        strokeWeight(2);
+        var originalColor = color(218,165,32);
+        if (showCurve) {
+            stroke(originalColor);
+        } else {
+            noStroke();
+        }
+        
+        var curve1 = [200, 200, 33, 383, 139, -191, yAxis, 123];
+        bezier(curve1[0], curve1[1], curve1[2], curve1[3], curve1[4], curve1[5], curve1[6], curve1[7]);
+        var curve2 = [380, 106, 222, 409, 399, -90, 200, 200];
+        bezier(curve2[0], curve2[1], curve2[2], curve2[3], curve2[4], curve2[5], curve2[6], curve2[7]);
+
+        var yToGraph = function(yPoint) {
+            return -1 * (yPoint - height/2);
+        };
+        var yToCanvas = function(yPoint) {
+            return (-1 * yPoint) + height/2;
+        };
+        var xToGraph = function(xPoint) {
+            return xPoint - yAxis;
+        };
+        var xToCanvas = function(xPoint) {
+            return xPoint + yAxis;
+        };
+
+        // Store enough points so that we have one for each x value
+        if (!curvePoints) {
+            curvePoints = [];
+            var steps = 800;
+            for (var i = 0; i &lt;= steps; i++) {
+                var t = i / steps;
+                var x1 = bezierPoint(curve1[0], curve1[2], curve1[4], curve1[6], t);
+                var y1 = bezierPoint(curve1[1], curve1[3], curve1[5], curve1[7], t);
+                curvePoints[xToGraph(Math.round(x1))] = yToGraph(y1);
+                var x2 = bezierPoint(curve2[0], curve2[2], curve2[4], curve2[6], t);
+                var y2 = bezierPoint(curve2[1], curve2[3], curve2[5], curve2[7], t);
+                curvePoints[xToGraph(Math.round(x2))] = yToGraph(y2);
+            }
+        }
+        
+        // Now sample at the given sample rate
+        var samples = [];
+        for (var i = 0; i &lt;= curvePoints.length; i += sampleInterval) {
+            samples.push({x: i, y: curvePoints[i]});
+        }
+
+        // Now quantize at the given interval
+        var quantizeY = function(y, qInterval) {
+            return Math.round(y/qInterval) * qInterval;
+        };
+
+        var quantizedSamples = [];
+        for (var i = 0; i &lt; samples.length; i++) {
+            quantizedSamples.push({x: samples[i].x, y: quantizeY(samples[i].y, qInterval)});
+        }
+
+        var formatPoints = function(points) {
+            var pointsStr = [];
+            for (var i = 0; i &lt; points.length; i++) {
+                pointsStr.push("(" + points[i].x + ", " + points[i].y + ")");
+            }
+            return pointsStr.join("\n");
+        };
+        
+        window.setTimeout(function() {
+           
+        // Draw the samples
+        if (showSamples) {
+            stroke(255, 128, 0);
+            fill(255, 128, 0);
+            for (var i = 0; i &lt; samples.length; i++) {
+                var x = xToCanvas(samples[i].x);
+                var y = yToCanvas(samples[i].y);
+                line(x, height/2, x, y);
+                ellipse(x, y, 10, 10);
+            }
+        }
+        
+        // Draw the quantization
+        var quantizedColor = color(100, 0, 140);
+        if (showQuantized) {
+            noFill();
+            stroke(quantizedColor);
+            var currentSample;
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                currentSample = quantizedSamples[i];
+                var x = xToCanvas(currentSample.x);
+                var y = yToCanvas(currentSample.y);
+                ellipse(x, y, 10, 10);
+                var lineY = currentSample.y &gt; 0 ? y + 5 : y - 5;
+                line(xToCanvas(currentSample.x), height/2, xToCanvas(currentSample.x), lineY);
+            }
+        }
+
+        // Draw the reconstructed curve
+
+        if (processStep &gt;= STEP_ENCODING) {
+
+            // First, what is the range in y values?
+            // (Could also look at unique levels instead of range)
+            var minY = findMinY(quantizedSamples);
+            var maxY = findMaxY(quantizedSamples);
+            var levels = ((maxY - minY) / qInterval) + 1;
+            // How many bits are needed to present # of levels?
+            var bitsNeeded = Math.ceil(Math.log2(levels));
+            binaryCodes = generateBinarySequence(levels, bitsNeeded);
+
+            // Negative intervals
+            var yToCode = {};
+            fill(0, 0, 0);
+            for (var y = minY, binaryCodeI = 0; y &lt;= maxY; y += qInterval, binaryCodeI++) {
+                textSize(12);
+                text(binaryCodes[binaryCodeI], yAxis - 40, yToCanvas(y));
+                yToCode[y] = binaryCodes[binaryCodeI];
+            }
+            var binaryStr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                var binaryCode = yToCode[quantizedSamples[i].y];
+                binaryStr.push(binaryCode);
+            }
+            document.getElementById("encodedPre").value = binaryStr.join("\n");
+        }
+
+        // Draw reconstructed curve
+        if (showReconstructed) {
+            var pointsArr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                pointsArr.push(xToCanvas(quantizedSamples[i].x));
+                pointsArr.push(yToCanvas(quantizedSamples[i].y));
+            }
+            var splinePoints = getCurvePoints(pointsArr, 0.5, 20);
+
+            var reconstructedColor = color(0, 128, 128);
+            noFill();
+            stroke(reconstructedColor);
+            beginShape();
+            for (var i = 0; i &lt; splinePoints.length; i += 2) {
+                curveVertex(splinePoints[i], splinePoints[i + 1])
+            }
+            endShape();
+        }
+
+        if (processStep === STEP_SAMPLING) {
+            document.getElementById("pointsPre").value = formatPoints(samples);
+        } else if (processStep &gt;= STEP_QUANTIZING) {
+            document.getElementById("pointsPre").value = formatPoints(quantizedSamples);
+        }
+        //For screenshots:
+        //var img    = document.getElementById("mycanvas").toDataURL("image/png");
+        //document.getElementById("pointsPre").value=(img);
+        
+        }, 100);
+    }
+};
+
+// Update visible fields
+var placeholderImg = document.getElementById("placeholder");
+if (processStep &lt; STEP_QUANTIZING) {
+    document.getElementById("quantizationRangeRow").style.display = "none";
+    document.getElementById("showQuantizedLabel").style.display = "none";
+}
+if (processStep &lt; STEP_ENCODING) {
+    document.getElementById("pointsPre").style.height = "318px";
+    document.getElementById("encodedOutput").style.display = "none";
+}
+if (processStep &lt; STEP_RECONSTRUCTING) {
+    document.getElementById("showReconstructedLabel").style.display = "none";
+}
+
+// Update the checkboxes
+if (processStep === STEP_ANALOG) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/38ea1efb1016370a71de597c33a47e16b028e7d4.png";
+}
+if (processStep === STEP_SAMPLING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showSamples").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/7d949cd063a816e1b9aaa8f64e80379d71f52f12.png";
+    document.getElementById("pointsPre").value = "(0, 7)\n(30, 95.98676803710936)\n(60, -71.43289186523432)\n(90, -106.55949554687498)\n(120, -97.21617085937501)\n(150, -70)\n(180, -29.045472375000003)\n(210, 6.171340345703143)\n(240, 24.439022283203116)\n(270, -74.45763529492186)\n(300, -31.31245312500002)\n(330, 24)";
+}
+if (processStep === STEP_QUANTIZING) {
+    document.getElementById("showSamples").setAttribute("checked", true);
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/dca943fa67ab49a5edfeafad9eb0389f93290be2.png";
+}
+if (processStep === STEP_ENCODING) {
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/52fe7646cf89ba456090b51b5116473d65d2b7d3.png";
+}
+if (processStep === STEP_RECONSTRUCTING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showReconstructed").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/12822e856c9f2d5923004c48649f0f91678585ec.png";
+}
+
+if (processStep &gt;= STEP_QUANTIZING) {
+    document.getElementById("pointsPre").value = "(0, 0)\n(30, 100)\n(60, -75)\n(90, -100)\n(120, -100)\n(150, -75)\n(180, -25)\n(210, 0)\n(240, 25)\n(270, -75)\n(300, -25)\n(330, 25)";
+}
+if (processStep &gt;= STEP_ENCODING) {
+    document.getElementById("encodedPre").value = "0100\n1000\n0001\n0000\n0000\n0001\n0011\n0100\n0101\n0001\n0011\n0101";
+}
+
+var updateSampleInterval = function(e) {
+    var sampleRangeVal = document.getElementById("sampleRange").value;
+    document.getElementById("sampleRangeVal").innerText = sampleRangeVal;
+    sampleInterval = parseInt(sampleRangeVal, 10);
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("sampleRange").addEventListener("change", updateSampleInterval);
+
+var updateQuantizationInterval = function(e) {
+    var quantizationRangeVal = document.getElementById("quantizationRange").value;
+    document.getElementById("quantizationRangeVal").innerText = quantizationRangeVal;
+    qInterval = parseInt(quantizationRangeVal, 10);
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("quantizationRange").addEventListener("change", updateQuantizationInterval);
+
+
+var updateShowCurve = function(e) {
+    showCurve = document.getElementById("showCurve").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showCurve").addEventListener("click", updateShowCurve);
+
+
+var updateShowSamples = function(e) {
+    showSamples = document.getElementById("showSamples").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showSamples").addEventListener("click", updateShowSamples);
+
+var updateShowQuantized = function(e) {
+    showQuantized = document.getElementById("showQuantized").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showQuantized").addEventListener("click", updateShowQuantized);
+
+
+var updateShowReconstructed = function(e) {
+    showReconstructed = document.getElementById("showReconstructed").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showReconstructed").addEventListener("click", updateShowReconstructed);
+
+var canvas = document.getElementById("mycanvas");
+var renderCanvas = function() {
+    document.getElementById("placeholder").style.display = "none";
+    var processingInstance = new Processing(canvas, programCode);
+    
+};
+
+// Render the visualization
+window.setTimeout(function() {
+    updateSampleInterval();
+    updateQuantizationInterval();
+    updateShowCurve();
+    updateShowSamples();
+    updateShowQuantized();
+    updateShowReconstructed();
+}, 100);
+  &lt;/script&gt;
+&lt;/html&gt;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Reconstruction</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">We often store analog signals in digital storage so that we can reproduce them later, like playing back an audio file or displaying an image. When a device wants to convert a digitized signal back into an analog signal, it will attempt to reconstruct the original continuous signal.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">For this signal, a simple reconstruction strategy could interpolate a smooth curve through the quantized points:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 milliseconds and a y-axis labeled "v" that goes from -100 to 100. A series of lines are shown every 30 milliseconds, with each line ending at a circle that intersects a horizontal grid line. A curve is overlaid on top that joins those circles.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/6d46b795849b48b3050ac3277cc0ac5000788728.png" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A graph with an x-axis labeled "t" that goes from 0 to 330 milliseconds and a y-axis labeled "v" that goes from -100 to 100. A series of lines are shown every 30 milliseconds, with each line ending at a circle that intersects a horizontal grid line. A curve is overlaid on top that joins those circles.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">How well does that match the original? We can overlay the curves to see the difference visually:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 milliseconds and a y-axis labeled "v" that goes from -100 to 100. A curvy line goes across the graph and is overlaid with another similar curvy line.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/12822e856c9f2d5923004c48649f0f91678585ec.png" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">A graph with an x-axis labeled "t" that goes from 0 to 330 milliseconds and a y-axis labeled "v" that goes from -100 to 100. A curvy line goes across the graph and is overlaid with another similar curvy line.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">The reconstructed signal looks very close to the original, but misses a few details. If we can decrease the sampling interval and lower the quantization error, we can bring the reconstructed curve closer to the original signal. We could also use different strategies for reconstructing the signal.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🔎 Play around below with different sampling rates and quantization intervals. How close can you get to the original curve? </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Analog to Digital Converter: Reconstructing&lt;/title&gt;
+      &lt;!-- WonderBlocks styles --&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+  &lt;style&gt;
+  body {
+      font-family: "Lato", sans-serif;
+      max-width: 375px;
+  }
+  .container {
+    display:flex;
+    flex-direction: row;
+  }
+
+  .form-controls {
+    background: #efefef;
+    margin-bottom: 12px;
+  }
+  .range-controls {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 6px;
+    border-radius: 3px;
+  }
+  fieldset {
+      border: none;
+      margin-top: 0px;
+      padding-left: 6px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .form-row &gt; label {
+    padding: .5em 1em .1em 0;
+    flex: 6;
+  }
+  .form-row &gt; input {
+    flex: 2;
+  }
+  .form-row &gt; span {
+    flex: 1;
+    margin-left: 6px;
+    align-self: center;
+  }
+  .form-row &gt; input,
+  .form-row &gt; button {
+    padding: .5em;
+  }
+  .form-row &gt; button {
+   background: gray;
+   color: white;
+   border: 0;
+  }
+
+  .left-side, .right-side {
+      flex-grow: 1;
+      flex-basis: 100%;
+  }
+
+  .right-side {
+    padding-top:8px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .right-side:first-child {
+      margin-bottom: 10px;
+  }
+  .right-side textarea {
+    margin-top: 6px;
+    height: 150px;
+    width: 65px;
+  }
+  &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="left-side"&gt;
+            &lt;div class="form-controls"&gt;
+                &lt;ul class="range-controls"&gt;
+                    &lt;li class="form-row" id="sampleRangeRow"&gt;
+                        &lt;label for="sampleRange"&gt;Sampling interval:
+                        &lt;/label&gt;
+                        &lt;input type="range" min="2" max="150" value="30" id="sampleRange"/&gt;
+                        &lt;span id="sampleRangeVal"&gt;30&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class="form-row" id="quantizationRangeRow"&gt;
+                        &lt;label for="quantizationRange"&gt;Quantization interval:&lt;/label&gt;
+                        &lt;input type="range" min="2" max="120" value="25" id="quantizationRange"/&gt;
+                        &lt;span id="quantizationRangeVal"&gt;50&lt;/span&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;fieldset&gt;
+                    Show:&lt;br/&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showCurve"&gt;
+                        original
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showSamples"&gt;
+                        samples
+                    &lt;/label&gt;
+                    &lt;label id="showQuantizedLabel"&gt;
+                        &lt;input type="checkbox" id="showQuantized"&gt;
+                        quantized
+                    &lt;/label&gt;
+                    &lt;label id="showReconstructedLabel"&gt;
+                        &lt;input type="checkbox" id="showReconstructed"&gt;
+                        reconstructed
+                    &lt;/label&gt;
+                &lt;/fieldset&gt;
+            &lt;/div&gt;
+            &lt;div style="position:relative;"&gt;
+            &lt;canvas id="mycanvas" style="width:400px; height: 260px; background: #ccc; border:0px none;"&gt;&lt;/canvas&gt;
+            &lt;img id="placeholder" style="position:absolute; z-index: 2;top:0;left:0;" src="https://www.kasandbox.org/programming-images/avatars/questionmark.png"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="right-side"&gt;
+                &lt;div id="pointsOutput"&gt;
+                    Points:
+                    &lt;textarea id="pointsPre"&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                &lt;div id="encodedOutput"&gt;
+                    Encoded:
+                    &lt;textarea id="encodedPre" readonly&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+  &lt;script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdn.jsdelivr.net/gh/gdenisov/cardinal-spline-js@master/curve_calc.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+// What to show in UI
+var STEP_ANALOG = 0;
+var STEP_SAMPLING = 1;
+var STEP_QUANTIZING = 2;
+var STEP_ENCODING = 3;
+var STEP_RECONSTRUCTING = 4;
+var processStep = STEP_RECONSTRUCTING;
+
+// What to show on graph
+var showCurve = false;
+var showSamples = false;
+var showQuantized = false;
+var updateGraph = true;
+
+var sampleInterval = 20;
+var qInterval = 50;
+var numBits = 2;
+var binaryCodes = [];
+
+var convertToBinary = function(decimal) {
+  var quotient = decimal;
+  var remainder;
+  var remainders = [];
+
+  do {
+    remainder = quotient % 2;
+    quotient = Math.floor(quotient / 2);
+    remainders.push(remainder);
+  } while (quotient &gt; 0);
+
+  return remainders.reverse().join("");
+};
+
+var padBinaryNum = function(binaryStr, numDigits) {
+  var digitsDiff = numDigits - binaryStr.length;
+  for (var i = 0; i &lt; digitsDiff; i++) {
+    binaryStr = "0" + binaryStr;
+  }
+  return binaryStr;
+};
+
+var generateBinarySequence = function(maxVal, numBits) {
+    var minVal = 0;
+    var binaryNums = [];
+    for (var num = minVal; num &lt; maxVal; num++) {
+        var binaryNum = padBinaryNum(convertToBinary(num), numBits);
+        binaryNums.push(binaryNum);
+    }
+    return binaryNums;
+};
+
+var findMinY = function(samples) {
+    var minY = 99999;
+    for (var i = 0; i &lt; samples.length; i++) {
+        if (samples[i].y &lt; minY) {
+            minY = samples[i].y;
+        }
+    }
+    return minY;
+};
+
+var findMaxY = function(samples) {
+    var maxY = - 99999;
+    for (var i = 0; i &lt; samples.length; i++) {
+        if (samples[i].y &gt; maxY) {
+            maxY = samples[i].y;
+        }
+    }
+    return maxY;
+};
+
+var programCode = function(processingInstance) {
+    with(processingInstance) {
+        size(400, 260);
+        noLoop();
+        var yAxis = 50;
+        var curvePoints;
+
+        background(255, 255, 255);
+
+        // Draw grid for sampling
+        var gridColor = color(214, 214, 214);
+        if (processStep &gt;= STEP_SAMPLING) {
+            stroke(gridColor);
+            for (var x = yAxis; x &lt; width; x += sampleInterval) {
+                line(x, 0, x, height);
+            }
+        }
+
+        // Draw grid based on quantization interval
+        if (processStep &gt;= STEP_QUANTIZING) {
+            // Negative intervals
+            for (var y = height/2; y &lt; height; y += qInterval) {
+                line(yAxis, y, width, y);
+            }
+            // Positive intervals
+            for (var y = height/2 - qInterval; y &gt; 0; y -= qInterval) {
+                line(yAxis, y, width, y);
+            }
+        }
+
+        // y axis - amplitude
+        fill(0, 0, 0);
+        stroke(8, 8, 8);
+        strokeWeight(3);
+        line(yAxis, 0, yAxis, height);
+        line(yAxis, 0, yAxis - 8, 10);
+        line(yAxis, 0, yAxis + 8, 10);
+        line(yAxis, height, yAxis - 8, height - 10);
+        line(yAxis, height, yAxis + 8, height - 10);
+        textSize(20);
+        textFont(createFont("monospace"));
+        text("v", yAxis + 6, 36);
+        if (processStep &lt; STEP_ENCODING) {
+            text("100", yAxis + -43, height/2 - 100);
+            text("0", yAxis + -21, height/2);
+            text("-100", yAxis + -53, height/2 + 100);
+        }
+
+        // x axis -time
+        line(yAxis, height/2, width, height/2);
+        line(width, height/2, width - 8, height/2 - 10);
+        line(width, height/2, width - 8, height/2 + 10);
+        text("t", width - 15, height/2 + -18);
+        if (processStep &lt; STEP_ENCODING) {
+            text(330, width - 25 - 10, height/2 + 36);
+        }
+
+        noFill();
+        strokeWeight(2);
+        var originalColor = color(218,165,32);
+        if (showCurve) {
+            stroke(originalColor);
+        } else {
+            noStroke();
+        }
+        
+        var curve1 = [200, 200, 33, 383, 139, -191, yAxis, 123];
+        bezier(curve1[0], curve1[1], curve1[2], curve1[3], curve1[4], curve1[5], curve1[6], curve1[7]);
+        var curve2 = [380, 106, 222, 409, 399, -90, 200, 200];
+        bezier(curve2[0], curve2[1], curve2[2], curve2[3], curve2[4], curve2[5], curve2[6], curve2[7]);
+
+        var yToGraph = function(yPoint) {
+            return -1 * (yPoint - height/2);
+        };
+        var yToCanvas = function(yPoint) {
+            return (-1 * yPoint) + height/2;
+        };
+        var xToGraph = function(xPoint) {
+            return xPoint - yAxis;
+        };
+        var xToCanvas = function(xPoint) {
+            return xPoint + yAxis;
+        };
+
+        // Store enough points so that we have one for each x value
+        if (!curvePoints) {
+            curvePoints = [];
+            var steps = 800;
+            for (var i = 0; i &lt;= steps; i++) {
+                var t = i / steps;
+                var x1 = bezierPoint(curve1[0], curve1[2], curve1[4], curve1[6], t);
+                var y1 = bezierPoint(curve1[1], curve1[3], curve1[5], curve1[7], t);
+                curvePoints[xToGraph(Math.round(x1))] = yToGraph(y1);
+                var x2 = bezierPoint(curve2[0], curve2[2], curve2[4], curve2[6], t);
+                var y2 = bezierPoint(curve2[1], curve2[3], curve2[5], curve2[7], t);
+                curvePoints[xToGraph(Math.round(x2))] = yToGraph(y2);
+            }
+        }
+        
+        // Now sample at the given sample rate
+        var samples = [];
+        for (var i = 0; i &lt;= curvePoints.length; i += sampleInterval) {
+            samples.push({x: i, y: curvePoints[i]});
+        }
+
+        // Now quantize at the given interval
+        var quantizeY = function(y, qInterval) {
+            return Math.round(y/qInterval) * qInterval;
+        };
+
+        var quantizedSamples = [];
+        for (var i = 0; i &lt; samples.length; i++) {
+            quantizedSamples.push({x: samples[i].x, y: quantizeY(samples[i].y, qInterval)});
+        }
+
+        var formatPoints = function(points) {
+            var pointsStr = [];
+            for (var i = 0; i &lt; points.length; i++) {
+                pointsStr.push("(" + points[i].x + ", " + points[i].y + ")");
+            }
+            return pointsStr.join("\n");
+        };
+        
+        window.setTimeout(function() {
+           
+        // Draw the samples
+        if (showSamples) {
+            stroke(255, 128, 0);
+            fill(255, 128, 0);
+            for (var i = 0; i &lt; samples.length; i++) {
+                var x = xToCanvas(samples[i].x);
+                var y = yToCanvas(samples[i].y);
+                line(x, height/2, x, y);
+                ellipse(x, y, 10, 10);
+            }
+        }
+        
+        // Draw the quantization
+        var quantizedColor = color(100, 0, 140);
+        if (showQuantized) {
+            noFill();
+            stroke(quantizedColor);
+            var currentSample;
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                currentSample = quantizedSamples[i];
+                var x = xToCanvas(currentSample.x);
+                var y = yToCanvas(currentSample.y);
+                ellipse(x, y, 10, 10);
+                var lineY = currentSample.y &gt; 0 ? y + 5 : y - 5;
+                line(xToCanvas(currentSample.x), height/2, xToCanvas(currentSample.x), lineY);
+            }
+        }
+
+        // Draw the reconstructed curve
+
+        if (processStep &gt;= STEP_ENCODING) {
+
+            // First, what is the range in y values?
+            // (Could also look at unique levels instead of range)
+            var minY = findMinY(quantizedSamples);
+            var maxY = findMaxY(quantizedSamples);
+            var levels = ((maxY - minY) / qInterval) + 1;
+            // How many bits are needed to present # of levels?
+            var bitsNeeded = Math.ceil(Math.log2(levels));
+            binaryCodes = generateBinarySequence(levels, bitsNeeded);
+
+            // Negative intervals
+            var yToCode = {};
+            fill(0, 0, 0);
+            for (var y = minY, binaryCodeI = 0; y &lt;= maxY; y += qInterval, binaryCodeI++) {
+                textSize(12);
+                text(binaryCodes[binaryCodeI], yAxis - 40, yToCanvas(y));
+                yToCode[y] = binaryCodes[binaryCodeI];
+            }
+            var binaryStr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                var binaryCode = yToCode[quantizedSamples[i].y];
+                binaryStr.push(binaryCode);
+            }
+            document.getElementById("encodedPre").value = binaryStr.join("\n");
+        }
+
+        // Draw reconstructed curve
+        if (showReconstructed) {
+            var pointsArr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                pointsArr.push(xToCanvas(quantizedSamples[i].x));
+                pointsArr.push(yToCanvas(quantizedSamples[i].y));
+            }
+            var splinePoints = getCurvePoints(pointsArr, 0.5, 20);
+
+            var reconstructedColor = color(0, 128, 128);
+            noFill();
+            stroke(reconstructedColor);
+            beginShape();
+            for (var i = 0; i &lt; splinePoints.length; i += 2) {
+                curveVertex(splinePoints[i], splinePoints[i + 1])
+            }
+            endShape();
+        }
+
+        if (processStep === STEP_SAMPLING) {
+            document.getElementById("pointsPre").value = formatPoints(samples);
+        } else if (processStep &gt;= STEP_QUANTIZING) {
+            document.getElementById("pointsPre").value = formatPoints(quantizedSamples);
+        }
+        //For screenshots:
+        //var img    = document.getElementById("mycanvas").toDataURL("image/png");
+        //document.getElementById("pointsPre").value=(img);
+        
+        }, 100);
+    }
+};
+
+// Update visible fields
+var placeholderImg = document.getElementById("placeholder");
+if (processStep &lt; STEP_QUANTIZING) {
+    document.getElementById("quantizationRangeRow").style.display = "none";
+    document.getElementById("showQuantizedLabel").style.display = "none";
+}
+if (processStep &lt; STEP_ENCODING) {
+    document.getElementById("pointsPre").style.height = "318px";
+    document.getElementById("encodedOutput").style.display = "none";
+}
+if (processStep &lt; STEP_RECONSTRUCTING) {
+    document.getElementById("showReconstructedLabel").style.display = "none";
+}
+
+// Update the checkboxes
+if (processStep === STEP_ANALOG) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/38ea1efb1016370a71de597c33a47e16b028e7d4.png";
+}
+if (processStep === STEP_SAMPLING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showSamples").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/7d949cd063a816e1b9aaa8f64e80379d71f52f12.png";
+    document.getElementById("pointsPre").value = "(0, 7)\n(30, 95.98676803710936)\n(60, -71.43289186523432)\n(90, -106.55949554687498)\n(120, -97.21617085937501)\n(150, -70)\n(180, -29.045472375000003)\n(210, 6.171340345703143)\n(240, 24.439022283203116)\n(270, -74.45763529492186)\n(300, -31.31245312500002)\n(330, 24)";
+}
+if (processStep === STEP_QUANTIZING) {
+    document.getElementById("showSamples").setAttribute("checked", true);
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/dca943fa67ab49a5edfeafad9eb0389f93290be2.png";
+}
+if (processStep === STEP_ENCODING) {
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/52fe7646cf89ba456090b51b5116473d65d2b7d3.png";
+}
+if (processStep === STEP_RECONSTRUCTING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showReconstructed").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/12822e856c9f2d5923004c48649f0f91678585ec.png";
+}
+
+if (processStep &gt;= STEP_QUANTIZING) {
+    document.getElementById("pointsPre").value = "(0, 0)\n(30, 100)\n(60, -75)\n(90, -100)\n(120, -100)\n(150, -75)\n(180, -25)\n(210, 0)\n(240, 25)\n(270, -75)\n(300, -25)\n(330, 25)";
+}
+if (processStep &gt;= STEP_ENCODING) {
+    document.getElementById("encodedPre").value = "0100\n1000\n0001\n0000\n0000\n0001\n0011\n0100\n0101\n0001\n0011\n0101";
+}
+
+var updateSampleInterval = function(e) {
+    var sampleRangeVal = document.getElementById("sampleRange").value;
+    document.getElementById("sampleRangeVal").innerText = sampleRangeVal;
+    sampleInterval = parseInt(sampleRangeVal, 10);
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("sampleRange").addEventListener("change", updateSampleInterval);
+
+var updateQuantizationInterval = function(e) {
+    var quantizationRangeVal = document.getElementById("quantizationRange").value;
+    document.getElementById("quantizationRangeVal").innerText = quantizationRangeVal;
+    qInterval = parseInt(quantizationRangeVal, 10);
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("quantizationRange").addEventListener("change", updateQuantizationInterval);
+
+
+var updateShowCurve = function(e) {
+    showCurve = document.getElementById("showCurve").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showCurve").addEventListener("click", updateShowCurve);
+
+
+var updateShowSamples = function(e) {
+    showSamples = document.getElementById("showSamples").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showSamples").addEventListener("click", updateShowSamples);
+
+var updateShowQuantized = function(e) {
+    showQuantized = document.getElementById("showQuantized").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showQuantized").addEventListener("click", updateShowQuantized);
+
+
+var updateShowReconstructed = function(e) {
+    showReconstructed = document.getElementById("showReconstructed").checked;
+    e &amp;&amp; renderCanvas();
+};
+document.getElementById("showReconstructed").addEventListener("click", updateShowReconstructed);
+
+var canvas = document.getElementById("mycanvas");
+var renderCanvas = function() {
+    document.getElementById("placeholder").style.display = "none";
+    var processingInstance = new Processing(canvas, programCode);
+    
+};
+
+// Render the visualization
+window.setTimeout(function() {
+    updateSampleInterval();
+    updateQuantizationInterval();
+    updateShowCurve();
+    updateShowSamples();
+    updateShowQuantized();
+    updateShowReconstructed();
+}, 100);
+
+
+
+
+
+  &lt;/script&gt;
+&lt;/html&gt;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Summary</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The first step of sampling converted an infinite stream to a finite sequence. In quantization, the values in that sequence were approximated. Finally, the values were encoded into bits for storage on a computing device. At some later point, a device could interpret those bits to attempt a reconstruction of the original infinite stream of continuous values.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Whenever we convert analog data to digital data, whether it's audio or visual, our goal is to sample data with enough precision so that we can reconstruct it later at the desired quality level but not exceed our data storage capacity. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Land-line telephones use relatively low sampling rates and bit depths, since the data must travel over telephone lines, whereas movie directors record film at very high sampling rates and bit depths, so that they may replay it on giant screens later.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">🤔 Find a device near you that converts analog data into digital data. What sort of space constraints does it have for storing or transferring the data? What sort of detail is lost in the digitized version?</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[References]</a></div></div></div></div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><hr/></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer—just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

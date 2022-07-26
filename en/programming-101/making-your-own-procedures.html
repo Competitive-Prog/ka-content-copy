@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Custom programming procedures | AP CSP (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Custom programming procedures | AP CSP (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">We can do some pretty neat things with programming, like computing complicated math expressions and manipulating strings in all sorts of ways. Sometimes we come up with a bit of code that's so neat that we want to reuse it multiple times. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">That's why all programming languages let you make your own <strong>procedures</strong>, also known as subroutines, functions, or methods. A procedure is a reusable collection of statements. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">In the JavaScript language, there are multiple ways to define procedures. One way is create a <code>function</code> definition with statements inside:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>function singBingo() {
+   println("B!");
+   println("I!");
+   println("N!");
+   println("G!");
+   println("O!");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Once we've defined that function, we can call it whenever we'd like, and the computer will execute the statements that are inside the <code>function</code> block (between the curly brackets).</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">To call a function in JavaScript, we write the name of the function, two parenthesis, and a semi-colon. Let's call it three times, for good measure:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="6"><pre><code>singBingo();
+singBingo();
+singBingo();</code></pre></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/vj5jpVN6uIvpKASmFpUI8zkuniOK0U6ppTSv-1lF0g4/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Defining%20a%20procedure%3A%20Bingo&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/DefiningProcedureBingo" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">This likely looks familiar, as we've already been calling built-in functions like <code>println()</code> and <code>Math.sin()</code>. Now we can call our own functions too, and build up a useful library of procedures to suit our needs.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">To give you another example, here's a program that tells my favorite knock-knock joke, with the help of a few procedures and a bit of ASCII art:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>function knock() {
+    println("Knock Knock!");  
+}
+function whos() {
+    println("⚆ _ ⚆ Who's there?? ");   
+}
+function banana() {
+    println("Banana!"); 
+    println(".            ,#");
+    println("\\ `-._____,-'=/");
+    println(" `._ ----- _,'");
+    println("    `-----'");
+}
+knock();
+whos();
+banana();
+knock();
+whos();
+banana();
+knock();
+whos();
+println("Orange!");
+println("⚆ _ ⚆ Orange who??");
+println("Orange you glad I didn't say banana?");
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/n7y9WcX50-TSfyOXRYiXUXip3bVnfkRcxM563nP74Q0/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Defining%20a%20procedure%3A%20KnockKnock&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/DefiningProcedureKnockKnock" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Imagine how painfully long we could make that joke, now that we have those three functions! That's the power of procedures. </div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">When we call a procedure in our program, we are saving ourselves the time and space of typing the same code repeatedly. We're also reducing our chance of introducing new bugs, since we don't need to re-type all the code inside the function.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Inside the computer</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">When a computer sees a call to a procedure in a program, it looks it up by its name, finds the statements inside the procedure, and executes those statements. The computer is <em>still doing</em> all the work of executing those statements, even if it looks like less code to us. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">In some ways, it's doing <em>more</em> work, since it has an additional step of looking up the procedure name. That's a quick check, though.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Recall the code before that called <code>singBingo()</code> three times:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>singBingo();
+singBingo();
+singBingo();</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Behind the scenes, the computer still executed all these lines:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="6"><pre><code>println("B!");
+println("I!");
+println("N!");
+println("G!");
+println("O!");
+println("B!");
+println("I!");
+println("N!");
+println("G!");
+println("O!");
+println("B!");
+println("I!");
+println("N!");
+println("G!");
+println("O!");</code></pre></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Procedures don't make it easier for computers to run a program, but they do make it much easier for <em>humans</em> to make complicated programs. </div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">We'll explore ways to make our procedures even more powerful soon, by using parameters and return values.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Procedures in pseudo-code</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[What's pseudocode?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">This pseudocode represents a procedure called <code>name</code>:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>PROCEDURE name ()
+{
+     &lt;instructions&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Here's pseudocode for the <code>singBingo</code> procedure and calls:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>PROCEDURE singBingo () {
+  DISPLAY ("B!")
+  DISPLAY ("I!")
+  DISPLAY ("N!")
+  DISPLAY ("G!")
+  DISPLAY ("O!")
+}
+
+singBingo ()
+singBingo ()
+singBingo ()</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer— just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

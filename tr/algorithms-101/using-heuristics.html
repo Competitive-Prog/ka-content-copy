@@ -1,0 +1,1872 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Sezgisel ve yaklaşık çözümler | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Sezgisel ve yaklaşık çözümler | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bilgisayar bilimlerindeki en zor problemler, süperpolinom zamanında çalışan, giriş boyutu her arttığında gereken adım sayısını iki katına çıkaran veya iki katından fazla olan problemlerdir! Bilgisayarlar bu sorunları çok küçük giriş boyutları için çözebilir, ancak çok geçmeden bunları çözmek için aylarca veya yıllarca bilgi işlem süresi alabilecek noktaya gelirler.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bilgisayar bilimcileri bu zor problemleri çözmek için farklı bir yaklaşım kullanırlar: <em>mükemmel</em> çözümü bulmaya çalışmak yerine, <em>yaklaşık</em> bir çözüm bulmaya çalışırlar. İyi bir cevap hiç olmamasından iyidir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir soruna yaklaşık cevaplar bulmanın bir yolu, iyi seçimler bulmak için bir algoritmaya rehberlik eden bir teknik olan <strong>sezgisel</strong> bir yöntem kullanmaktır. Bir algoritma sezgisel yöntem kullandığında, artık olası her çözümü kapsamlı bir şekilde araştırmasına gerek yoktur, böylece yaklaşık çözümleri daha hızlı bulabilir. Sezgisel tarama, doğruluğu ve bütünlüğü feda eden bir kısayoldur.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Sezgisel yöntemleri daha iyi anlamak için, bilgisayar bilimlerindeki en ünlü zor problemlerden birini inceleyelim.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Seyahat Eden Satış Elemanı Sorunu</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Seyahat eden satış elemanı sorunu (TSP) aşağıdaki soruyu sorar:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">"Şehirlerin bir listesi ve her bir şehir çifti arasındaki mesafeler göz önüne alındığında, her şehri ziyaret eden ve menşe şehre geri dönen mümkün olan en kısa rota nedir?"</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Örneğin, bu diyagram 46 Alman şehri arasındaki en kısa turu göstermektedir:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="46 dots labeled as German cities. A line goes through the dots, going through each of them exactly once. " aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/916c323eb61b2ba1b396ada88874b6068e0bb05c.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Alman şehirleri olarak etiketlenmiş 46 nokta. Bir çizgi noktalardan geçer, her birinden tam olarak bir kez geçer. </div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">TSP sorunu başlangıçta seyahat eden satıcılar tarafından karşı karşıya kaldı, ancak aslında birçok alanla ilgili: verileri bir ağ etrafında yönlendirmek, mikroçipler üretmek, teleskopla yerleri gözlemlemek ve hatta DNA'yı sıralamak. Tüm bu durumlarda, birden fazla konum arasında etkili bir yol bulacak bir çözüm istiyoruz.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h4>Kaba kuvvet yaklaşımı</h4></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">TSP kombinatoryal bir problemdir ve bunu bu kadar zorlaştıran da budur. Bir bilgisayarın en uygun çözümü bulabilmesinin tek yolu "kaba kuvvet yaklaşımı" dır: şehirler arasında mümkün olan her yolu deneyin, her yolun mesafesini ölçün ve en kısa mesafeye sahip yolu seçin.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Aşağıdaki görselleştirme rastgele dört şehir oluşturur, olası yolları hesaplar ve en uygun yolu vurgular. Ortaya çıkan olasılıkları görmek için yollara tıklayın veya yeni bir dizi şehirle denemek için baştan başlayın.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;! KA AP CS P
+
+için DOCTYPE html&gt;&lt;!--TSP örneği https://github.com/dzhang55/travelling-salesman--&gt;html&lt;&gt;head&lt;&gt;meta name="viewport" content="width=device-width, initial-scale=1"&lt;&gt;meta charset="utf-8"&lt;&gt;
+  
+  title&lt;Travelling Salesperson Problem Brute-Force Approach (4 Cities)&gt;/title&lt;&gt;
+  
+ 
+
+  
+
+
+&lt;!-- WonderBlocks stilleri --&gt;
+   
+&lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;&lt;style&gt;
+  
+  body {
+      font-family: "Lato", sans-serif;}
+  
+  button.primary {
+      -webkit-box-pack: merkez !önemli;
+      -ms-flex-pack: merkez !önemli;
+      -webkit-box-align: merkez !önemli;
+      -ms-flex-align: merkez !önemli;
+      marj: 0px !önemli;
+      pozisyon: göreceli !önemli;
+      display: -webkit-inline-box !important;
+      ekran: -moz-inline-box !important;
+      ekran: -ms-inline-flexbox !important;
+      ekran: -webkit-inline-flex !important;
+      ekran: inline-flex !important;
+      -webkit-align-items: merkez !önemli;
+      hizalama öğeleri: merkez !önemli;
+      -webkit-justify-content: merkez !önemli;
+      gerekçelendirme-içerik: merkez !önemli;
+      yükseklik: 40 piksel !önemli;
+      dolgu-üst: 0px !önemli;
+      dolgu-alt: 0px !önemli;
+      dolgu-sol: 16 piksel !önemli;
+      dolgu-sağ: 16px !önemli;
+      sınır: hiçbiri !önemli;
+      kenarlık-yarıçap: 4px !önemli;
+      imleç: işaretçi !önemli;
+      taslak: hiçbiri !önemli;
+      metin-dekorasyon: hiçbiri !önemli;
+      -moz-box-sizeing: border-box !important;
+      kutu boyutlandırma: kenarlık-kutu !önemli;
+      -ms-touch-action: manipülasyon !önemli;
+      dokunma-eylem: manipülasyon !önemli;
+      arka plan: #1865f2 !önemli;
+      renk: #ffffff !önemli;
+      marj-sağ: 10px !important;
+  }
+  button.primary:hover {
+      kutu-gölge: 0 0 0 1 piksel #FFF, 0 0 0 3 piksel #1865f2;
+  }
+  button.primary span {
+      -webkit-box-align: center !important;
+      -ms-flex-align: merkez !önemli;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: gri tonlamalı !önemli;
+      yazı tipi ailesi: Lato, sans-serif !important;
+      yazı tipi boyutu: 16 piksel !önemli;
+      çizgi yüksekliği: 20 piksel !önemli;
+      ekran: -webkit-box !important;
+      ekran: -moz-box !important;
+      ekran: -ms-flexbox !important;
+      ekran: -webkit-flex !important;
+      ekran: esnek !önemli;
+      -webkit-align-items: merkez !önemli;
+      hizalama öğeleri: merkez !önemli;
+      yazı tipi ağırlığı: kalın !önemli;
+      -webkit-user-select: hiçbiri !önemli;
+      -moz-user-select: hiçbiri !önemli;
+      -ms-user-select: hiçbiri !önemli;
+      kullanıcı seçimi: hiçbiri !önemli;
+      beyaz boşluk: nowrap !important;
+      taşma: gizli !önemli;
+      metin taşması: üç nokta !önemli;
+      işaretçi-olaylar: hiçbiri !önemli;
+  }
+  tablo, tablo td {
+      kenarlık: 1 piksel katı #ccc;
+      border-collapse: collapse;
+  }
+  tablo td {
+      text-align: center;
+      genişlik: %3;
+  }
+  &lt;/style&gt;
+  &lt;style&gt;
+  body {
+    dolgu: 8px;
+  }
+  #svg-container {
+    arka plan: #D1E0FC;
+    kenarlık-yarıçap: 10px;
+    kenar boşluğu-alt: 16px;
+  }
+  #paths listeleme {
+    genişlik: 250 piksel;
+    float: sağ;
+  }
+  #paths listeleme tr td {
+    satır-yükseklik: 28 piksel;
+    metin hizalaması: sol;
+    dolgu: 5px;
+  }
+  #paths listeleme tr.highlighted {
+    arka plan-renk: #F0F1F2;
+  }
+  #new düğmesi {
+    clear: both;
+  }
+  &lt;/style&gt;&lt;
+/head&gt;&lt;
+body&gt;&lt;
+  table id="paths-listing"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Path&lt;th&gt;&lt;th&gt;thDistance&lt;thth&gt;&lt;&gt;&lt;th/tr/thead&gt;&lt;tbody&gt;&lt;/tbody&lt;&gt;
+    /table&gt;
+      
+  &lt;div id="svg-container"&gt;&lt;/div&gt;
+  
+      
+      
+  &lt;div style="display: hiçbiri;" &gt;
+    &lt;span id="slider-value"&gt;4 Points&lt;/span&gt;&lt;input id="num-points" value="4" max="30" min="1" type="range"&gt;&lt;/div&gt;&lt;button id="new-button" class="birincil" type="button"&gt;&lt;span&gt;Start over&lt;/span&gt;&lt;/button&gt;&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"&gt;&lt;/script&gt;
+    
+  &lt;
+  
+  script&gt;
+  
+/** Görselleştirme globalleri **/
+var width = 250;
+var yüksekliği = 250;
+var N = 200;
+var transitionDuration = 12000 / N;
+var instantDuration = 20;
+var currPathDistance = 0;
+var lineWidth = 2;
+var puanları;
+
+var noktası = [];
+var yolu = [];
+
+/** Çözücü kodu **/var TSPSolver = function(points, width, height) {//
+store distances each point'ten each point
+var generateDistanceMatrix = function (points) {
+
+
+    var numPoints = points.length;
+    var distanceMatrix = yeni Array(numPoints);
+    for (var i = 0; i &lt; numPoints; i++) {
+        distanceMatrix[i] = new Array(numPoints);
+    }
+
+    for (var i = 0; i &lt; numPoints; i++) {for (var j = i; j &lt; numPoints; j++) {
+        
+            distanceMatrix[i][j] = Math.sqrt((points[i].x - points[j].x) * (points[i].x- points[j].x
+                ) + (points[i].y - points[j].y) * (points[i].y - points[j].y));
+            distanceMatrix[j][i] = distanceMatrix[i][j];
+        }}
+    
+    dönüş mesafesiMatris;};
+
+
+var getPathDistance = function (path, distanceMatrix) {
+    var d = distanceMatrix[path[0]][path[path.length - 1]];
+    for (var i = 1; i &lt; path.length; i++) {
+        d += distanceMatrix[path[i - 1]][path[i]];
+    }
+    Math.round( d * 1e2 ) / 1e2;} değerini döndürün;
+
+
+var generateRandomPath = function (numPoints) {
+    var path = [];
+    for (var i = 0; i &lt; numPoints; i++) {
+        path[i] = i;
+    }
+    yol = karıştır (yol);
+    dönüş yolu;};
+
+
+var swap = fonksiyon (yol, i, j) {
+    var klon = yol.slice(0);
+    var temp = klon[i];
+    klon[i] = klon[j];
+    klon[j] = sıcaklık;
+    klonu geri döndür;};
+
+
+var shuffle = function (arr) {for (var i = arr.length - 1; i &gt; 0; i--) {
+    
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = sıcaklık;
+    }
+    dönüş arr;};
+
+
+
+this.height = yükseklik;
+this.width = genişlik;
+this.path = [];
+this.pathDistances = [];
+this.paths = [];
+this.points = puan;
+this.numPoints = points.length;
+this.distanceMatrix = generateDistanceMatrix(this.points);
+
+en yakın komşu sezgisel
+yöntemini kullanarak puan turu this.useNearestNeighbors = function() {
+    var remaining = generateRandomPath(this.numPoints);
+    this.path = [kalan[0]];
+    this.paths.push(this.path.slice(0));
+    for (var i = 0; i &lt; this.points.length - 1; i++) {
+        var nearestDistance = this.height * this.height + this.width * this.width + 1;
+        var nearestPoint = null;
+        var indexInRemaining = 0;
+        (var j = i + 1; j &lt; this.points.length; j++) {
+            currentDistance = this.distanceMatrix[this.path[i]][remaining[j]];
+            if (currentDistance &lt; nearestDistance) {
+                nearestPoint = remaining[j];
+                nearestDistance = currentDistance;
+                indexInRemaining = j;
+            }}
+        
+        yola ekle ve kalandaki swap'ı tekrar
+        eklenmemesi için kalan = swap(remaining, i + 1, indexInRemaining);
+        this.path.push(remaining[i + 1]);
+    }
+    this.paths = [this.path];
+    this.pathDistances.push(getPathDistance(this.path, this.distanceMatrix));
+
+    return {
+        paths: this.paths,distances: this.pathDistances,isClosed
+        
+        : false
+    };};
+
+
+en yakın komşu sezgisel
+this.useBruteForce = function() {
+    const startPoint = 0;
+    var allPaths = this.findAllPaths(startPoint);
+
+    TODO:Döngülerle
+
+    yolları filtrele// (var i = 0; i &lt; allPaths.length; i++) {
+        this.pathDistances.push(getPathDistance(allPaths[i], this.distanceMatrix));
+    }
+
+    için her yol
+    için mesafeler oluşturun return {paths: allPaths,distances: this.pathDistances,isClosed: false
+    }}
+
+
+
+this.findAllPaths = function(startPoint, paths,
+        
+        path) {
+        
+    paths = paths || [];
+    yol = yol ||[];
+    Geçerli yolu klonla
+    var currentPath = path.slice(0);
+    currentPath.push(startPoint) yoluna
+    startPoint ekleyin;
+
+    Ziyaret edilmeyen tüm noktaları
+    bulun var ziyaret edilmemiş puanlar = [];
+    for (var i = 0; i &lt; this.points.length; i++) {if (currentPath.indexOf(i) &lt; 0) {
+        
+            unvisitedPoints.push(i);
+        }}
+    
+    Ziyaret edilmemiş nokta yoksa, geçerli yolu tamamlanmış
+    olarak kaydedin if (unvisitedPoints.length === 0) {
+        paths.push(currentPath);
+        dönüş yolları;
+    }
+    Şimdi (var i = 0; i &lt; unvisitedPoints.length; i++) {
+        this.findAllPaths(unvisitedPoints[i], paths, currentPath);
+    }
+
+    için ziyaret edilmemiş noktalar
+    arasında tekrarlayın dönüş yolları;};};
+
+
+
+
+
+/** Görselleştirme kodu **/
+
+var toLine = function (isClosed) {if (isClosed) {var interpolation = 'linear-closed';} else {
+        
+        
+    var interpolation = 'linear';}
+    
+    
+    return d3.svg.line().x(function (d) {
+    		return points[d].x;
+    	})
+    	
+    	). y(function (d) {
+    		return points[d].y;
+    	})
+    	. interpolat(interpolasyon);};
+
+
+var generatePoints = function () {
+    var dolgu = 8;
+    puan = [];
+    for (var i = 0; i &lt; N; i++) {points[i] = {
+        
+            key: String.fromCharCode(65 + i),x: Math.floor(Math.random() * (genişlik-doldurma)) + padding/2,y
+            
+            : Math.floor(Math.random() * (yükseklik-dolgu)) + padding/2
+        };}};
+    
+
+
+var drawPoints = function () {
+    svg.selectAll('circle')
+        .remove();
+    svg.selectAll('circle').data(points).enter().append('circle')
+        
+        
+        
+        .attr('cx', function (d) {
+            return 0;
+        }).
+        attr('cy', function (d) {
+            return 0;
+        })
+        . attr('cx', function (d) {
+            return d.x;
+        })
+        . attr('cy', function (d) {
+            return d.y;
+        })
+        . attr('r', 4);};
+
+
+var drawIndexces = function () {
+    svg.selectAll('text')
+        .remove();
+    svg.selectAll('text').data(points).enter().append('text')
+        
+        
+        
+        .text(function (d, i) {
+            return d.key;
+        }).
+        attr('fill', 'black').attr('font-family', 'sans-serif').attr('font-size', 12).attr('x', function(d) {
+            return d.x + 4;
+        })
+        
+        
+        
+        . attr('y', function(d) {
+            return d.y + 4;});};
+
+
+        
+var appendPath = function (path, isClosed) {
+    clearLines(true);
+
+    svg.append
+        ('yol')
+        .attr('d', toLine(isClosed)(yol)).attr('doldurma', 'hiçbiri').attr('kontur', '#14BF96').attr('kontur-genişliği', lineWidth)
+        
+        
+        ;};
+
+
+var clearLines = function (removePath) {if (removePath) {
+    
+        svg.selectAll('path').remove()
+            ;
+    }
+    svg.selectAll('line')
+        .remove();
+    d3.timer.flush();};
+
+
+
+var highlightTableRow = function(pathNum) {
+    var tableRows = document.querySelectorAll("#paths-listing tbody tr");
+    for (var i = 0; i &lt; tableRows.length; i++) {if (i !== pathNum || tableRows[i] !== pathNum) {tableRows[i].classList.remove("highlighted");} else {
+        
+            
+            tableRows[i].classList.add("highlighted");}}};
+        
+        
+
+
+
+    
+geçişleri zincirlemek için yinelemeler veya takaslar yoluyla yinelemeler yapar var animate = fonksiyon (yollar, mesafeler, isClosed) {
+    // En kısa mesafeyi bul var shortestDistance = mesafeler
+
+    [0];
+    for (var i = 0; i &lt; distances.length; i++) {if (distances[i] &lt; shortestDistance) {
+        
+            shortestDistance = distances[i];
+        }}
+    
+
+    var createPathRow = function(path, distance) {var highlightPath = function() {
+
+        
+            highlightTableRow(pathRow);
+            appendPath(path, isClosed);
+            pathRow.classList.add("vurgulanmış");};
+        
+        var pathRow = document.createElement("tr");
+        var pathInfo = document.createElement("td");
+        pathInfo.innerHTML = path.map(function(index) {
+          return points[index].key;
+        }). join(" - ");
+        var pathDistance = document.createElement("td");
+        pathDistance.innerHTML = mesafe;
+        if (distance === shortestDistance) {
+            pathDistance.innerHTML += " ";
+            highlightPath();
+        }
+        pathRow.appendChild(pathInfo);
+        pathRow.appendChild(pathDistance);
+
+        pathRow.addEventListener("click", function() {
+            highlightPath();
+        });
+        pathRow.addEventListener("mouseover", function() {
+            highlightPath();
+        });
+        return pathRow;};
+    
+
+    var pathsTable = document.querySelector("#paths-listing tbody");
+    pathsTable.innerHTML = "";
+    for (var i = 0; i &lt; paths.length; i++) {
+        pathsTable.appendChild(createPathRow(paths[i], distances[i]));
+    }}
+
+
+var updatePoints = function() {
+    N = parseInt(document.getElementById('num-points').value, 10);
+    transitionDuration = 12000 / N;
+    generatePoints();
+    yol.uzunluk = 0;
+    clearLines(true);
+    drawPoints();
+    drawIndexces();};
+
+
+var genAndSolve = function() {
+    updatePoints();
+    var results = yeni TSPSolver(nokta, genişlik, yükseklik).useBruteForce();
+    clearLines(true);
+    animate(results.paths, results.distances, true);};
+
+
+Başlangıç kodu
+var svg = d3.select('#svg-container').append('svg').attr('width', width)
+    
+    .attr('height', height);
+
+document.getElementById("svg-container").style.width = genişlik + "px";
+document.getElementById("svg-container").style.height = yükseklik + "px";
+
+document.getElementById('new-button').addEventListener('click', function (e) {
+    genAndSolve();
+});
+
+genAndSolve();
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Her zaman <em>iki</em> optimal yol ürettiğini fark ettiniz mi? Yollar aynı görünür, ancak ters sıradadır. Teknik olarak, bunlar her ikisi de en uygun çözümlerdir ve bir satış elemanı, mesafe dışı nedenlerden dolayı diğeri yerine en kısa yolu seçebilir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bilgisayarın 4 şehir için olası yolları oluşturması çok uzun sürmüyor - makinemde milisaniyenin onda birinden daha az. <a class="_8gcxk83" href="/computer-programming/traveling-salesperson-more-cities/5815209397157888" rel="noopener noreferrer" tabindex="0" target="_blank">5 şehir</a>, 6 şehir ve 7 <a class="_8gcxk83" href="/computer-programming/traveling-salesperson-6-cities/6016092936437760" rel="noopener noreferrer" tabindex="0" target="_blank">şehir</a> için bile oldukça <a class="_8gcxk83" href="/computer-programming/traveling-salesperson-7-cities/5937664082149376" rel="noopener noreferrer" tabindex="0" target="_blank">hızlı;</a> bilgisayarınıza güveniyorsanız bunları kendiniz deneyebilirsiniz.  Ancak çalışma süresi katlanarak büyür, bu nedenle birkaç milisaniye yakında birkaç saniye olur. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">İşte makinemdeki 4 ila 11 şehir için çalışma sürelerinin bir tablosu:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><table class='table'><thead><tr><th scope="col">Şehir</th><th scope="col">Yolları</th><th scope="col">Milisaniyeler</th></tr></thead><tbody><tr><td>4</td><td>6</td><td>0.1</td></tr><tr><td>5</td><td>24</td><td>0.3</td></tr><tr><td>6</td><td>120</td><td>0.8</td></tr><tr><td>7</td><td>720</td><td>3</td></tr><tr><td>8</td><td>5,040</td><td>10</td></tr><tr><td>9</td><td>40,320</td><td>50</td></tr><tr><td>10</td><td>362,880</td><td>520</td></tr><tr><td>11</td><td>3,628,800</td><td>5,770</td></tr></tbody></table></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Orada sonunda 520'den 5770'e atlamayı fark ettiniz mi? İşte o zaman zavallı dizüstü bilgisayarıma acımaya ve daha yükseğe çıkmamaya karar verdim. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu hızda, bilgisayarın önceki diyagramdaki 46 Alman şehrinin yollarını hesaplamak için yaklaşık <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn></mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span> 53 <span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">^</span><span class="mord mtight"></span>
+              
+              
+            </span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>{53}<span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span>2 <span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">5 3 2, start superscript, 53, end superscript</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> miliseconds gerekir. Bu yaklaşık <span style="white-space: nowrap;"><span></span><span><span></span> 6 42 <span aria-describedby="katex-uid--2-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><annotation encoding="application/x-tex">6^{42}</annotation><mrow><msup><mn></mn><mn></mn>
+          
+          
+        </msup></mrow>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span>6 <span class="mord"><span class="mord"></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span><span class="mord mtight">2</span>
+              
+              
+            </span></span>6<span class="pstrut" style="height:2.7em;"></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span>, <span id="katex-uid--2-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">başlangıç üst simgesi, 42, son üst simge</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> yılları, evrenin var olduğundan çok daha uzun. Tabii ki, dizüstü bilgisayarımdan daha güçlü bilgisayarlar var, ancak 200.000 kat daha güçlü bir süper bilgisayar bile 3 37 3 <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--3-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><annotation encoding="application/x-tex">^ {37}</annotation><mrow><msup><mn></mn><mn></mn>
+          
+          
+        </msup></mrow>
+        
+        
+      </semantics></math></span> <span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span><span class="mord mtight">3</span>
+              
+              
+            </span></span><span class="pstrut" style="height:2.7em;"></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--3-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, başlangıç üst simgesi, 37, bitiş üst simge</span> yıllarını gerektirir<span></span>
+    
+    
+    
+  </span><span></span>.<span></span>
+  
+  
+  
+</span></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Peki 46 şehirden oluşan bu yol yukarıda nasıl hesaplandı? Tabii ki sezgisel bir yöntemle!</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h4>Sezgisel bir yöntem geliştirme</h4></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir sezgisel yöntem bulmanın bir yolu, soruna nasıl yaklaşacağınızı düşünmektir. İnsanlar problemleri çözmek için gereksiz çaba harcamaktan hoşlanmazlar, bu yüzden genellikle bizi yeterince iyi bir çözüme götüren kısayollar buluruz.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Aşağıdaki görselleştirme rastgele 5 şehri göstermektedir. A'dan ziyaret edilecek bir sonraki şehirden başlayarak şehirleri tıklayarak en kısa yolu önerin. İşiniz bittiğinde, yolunuzun en uygun yolla nasıl karşılaştırıldığını öğrenin.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;! KA AP CS P
+
+için DOCTYPE html&gt;&lt;!--TSP örneği https://github.com/dzhang55/travelling-salesman--&gt;html&lt;head&gt;&lt;meta name="viewport" content="width&gt;=
+  device-width, initial-scale=1"&lt;&gt;&lt;meta charset="utf-8"&gt;&lt;
+  title&gt;
+
+
+Traveling Salesman (Kendinizi deneyin)&lt;
+/title&gt;&lt;!--
+WonderBlocks stilleri --&gt;
+  
+  
+  &lt;link href="https://fonts.googleapis.com/css?family=Lato
+" rel="stylesheet"&gt;&lt;style&gt;
+  
+  body {
+      font-family: "Lato", sans-serif;
+      maksimum genişlik: 375 piksel;
+  }
+  button.primary {
+      -webkit-box-pack: center;
+      -ms-flex-pack: merkez;
+      -webkit-box-align: orta;
+      -ms-flex-align: merkez;
+      marj: 0px;
+      pozisyon: göreceli;
+      display: -webkit-inline-box;
+      display: -moz-inline-box;
+      ekran: -ms-inline-flexbox;
+      ekran: -webkit-inline-flex;
+      ekran: inline-flex;
+      -webkit-align-items: merkez;
+      hizalama öğeleri: merkez;
+      -webkit-justify-content: merkez;
+      gerekçelendirme-içerik: merkez;
+      yükseklik: 40 piksel;
+      dolgu-üst: 0px;
+      dolgu-alt: 0px;
+      dolgu-sol: 16 piksel;
+      sağ dolgu: 16 piksel;
+      sınır: yok;
+      kenarlık-yarıçap: 4px;
+      imleç: işaretçi;
+      taslak: yok;
+      metin dekorasyonu: yok;
+      -moz-box-sizeing: kenarlık-kutu;
+      kutu boyutlandırma: kenarlık kutusu;
+      -ms-touch-action: manipülasyon;
+      dokunma-eylem: manipülasyon;
+      arka plan: #1865f2;
+      renk: #ffffff;
+      kenar boşluğu-sağ: 10px;
+  }
+  button.primary:hover {
+      kutu-gölge: 0 0 0 1 piksel #FFF, 0 0 0 3 piksel #1865f2;
+  }
+  button.primary span {
+      -webkit-box-align: center;
+      -ms-flex-align: merkez;
+      -webkit-font-smoothing: antialiased ;
+      -moz-osx-font-smoothing: gri tonlamalı;
+      yazı tipi ailesi: Lato, sans-serif ;
+      yazı tipi boyutu: 16 piksel;
+      hat yüksekliği: 20 piksel;
+      ekran: -webkit-box ;
+      ekran: -moz-kutu;
+      ekran: -ms-flexbox;
+      ekran: -webkit-flex;
+      ekran: esnek;
+      -webkit-align-items: merkez;
+      hizalama öğeleri: merkez;
+      yazı tipi ağırlığı: kalın;
+      -webkit-user-select: yok;
+      -moz-user-select: yok;
+      -ms-user-select: yok;
+      kullanıcı seçimi: yok;
+      beyaz boşluk: nowrap;
+      taşma: gizli;
+      metin taşması: elips;
+      işaretçi-olaylar: yok;
+  }
+
+  button.primary[devre dışı] {
+    background:rgba(33,36,44,0.32);
+    renk: rgba (255.255.255.0.64);
+    imleç: varsayılan;
+  }
+  button.primary[devre dışı]:hover {
+      kutu-gölgesi: yok;
+  }
+
+  button.secondary {
+    -webkit-box-pack: center;
+    -ms-flex-pack: merkez;
+    -webkit-box-align: orta;
+    -ms-flex-align: merkez;
+    marj: 0px;
+    pozisyon: göreceli;
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    ekran: -ms-inline-flexbox;
+    ekran: -webkit-inline-flex;
+    ekran: inline-flex;
+    -webkit-align-items: merkez;
+    hizalama öğeleri: merkez;
+    -webkit-justify-content: merkez;
+    gerekçelendirme-içerik: merkez;
+    yükseklik: 40 piksel;
+    dolgu-üst: 0px;
+    dolgu-alt: 0px;
+    dolgu-sol: 16 piksel;
+    sağ dolgu: 16 piksel;
+    sınır: yok;
+    kenarlık-yarıçap: 4px;
+    imleç: işaretçi;
+    taslak: yok;
+    metin dekorasyonu: yok;
+    -moz-box-sizeing: kenarlık-kutu;
+    kutu boyutlandırma: kenarlık kutusu;
+    -ms-touch-action: manipülasyon;
+    dokunma-eylem: manipülasyon;
+    -webkit-user-select: yok;
+    -moz-user-select: yok;
+    -ms-user-select: yok;
+    kullanıcı seçimi: yok;
+    arka plan: yok;
+    renk: #1865f2;
+    kenarlık rengi: rgba (33,36,44,0,50);
+    kenarlık tarzı: katı;
+    kenarlık genişliği: 1 piksel;
+    kenar boşluğu-sağ: 10px;
+  }
+
+  button.secondary span {
+    -webkit-box-align: center;
+    -ms-flex-align: merkez;
+    -webkit-font-smoothing: kenar yumuşatma;
+    -moz-osx-font-smoothing: gri tonlamalı;
+    yazı tipi ailesi: Lato, sans-serif;
+    yazı tipi boyutu: 16 piksel;
+    çizgi yüksekliği: 20 piksel;
+    ekran: -webkit-box;
+    ekran: -moz-kutusu;
+    ekran: -ms-flexbox;
+    ekran: -webkit-flex;
+    ekran: esnek;
+    -webkit-align-items: merkez;
+    hizalama öğeleri: merkez;
+    yazı tipi ağırlığı: kalın;
+    beyaz boşluk: nowrap;
+    taşma: gizli;
+    metin taşması: elips;
+    işaretçi-olaylar: yok;
+  }
+
+  button.secondary:hover {
+    kenarlık-renk: #1865f2;
+    kenarlık genişliği: 2 piksel;
+    dolgu-sol: 15 piksel;
+    sağ dolgu: 15 piksel;
+  }
+
+  tablo, tablo td {
+      kenarlık: 1 piksel katı #ccc;
+      border-collapse: collapse;
+  }
+  tablo td {
+      text-align: center;
+      genişlik: %3;
+  }
+  &lt;/style&gt;
+  &lt;style&gt;
+  body {
+    dolgu: 8px;
+  }
+  #svg-container {
+    arka plan: #D1E0FC;
+    kenarlık-yarıçap: 10px;
+    kenar boşluğu-alt: 16px;
+  }
+  #slider kapsayıcı {
+    margin-bottom: 16px;
+  }
+  #restart düğmesi {
+    clear: both;
+  }
+  #distance konteyner {
+    float:right;
+    float: sağ;
+  }
+  &lt;/style&gt;
+&lt;/head&gt;&lt;
+body&gt;
+  &lt;div id="distance-container" style="display:none;"&gt;&lt;
+    p&gt;
+    Yolunuz &lt;br&gt;&lt;span id="çizilen mesafe"&gt;&lt;/span&gt;&lt;/p&gt;&lt;&gt;p&lt;En kısa yol: br&gt;&lt;span id="short-distance"&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&lt;&gt;div id="svg-container"&gt;&lt;/div&gt;
+  &lt;
+    
+
+  
+    
+    
+  button id="restart-button" class="secondary" type="button"&gt;&lt;span&gt;Start over&lt;/span&gt;&lt;/button&gt;
+    
+    
+    
+  
+
+  &lt;button id="compare-button" class="primary" type="button" disabled&gt;&lt;span&gt;Compare path&lt;/span&gt;&lt;/button&gt;&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"&gt;&lt;/script&gt;&lt;script&gt;
+
+  
+  
+/** Görselleştirme genelleri **/
+var width = 250;
+var yüksekliği = 250;
+var N = 200;
+var transitionDuration = 12000 / N;
+var instantDuration = 20;
+var currPathDistance = 0;
+var lineWidth = 2;
+var puanları;
+
+var noktası = [];
+var yolu = [];
+var drawnPath = [];
+
+/** Çözücü kodu **/var TSPSolver = function(points, width, height) {//
+store distances each point'ten each point
+var generateDistanceMatrix = function (points) {
+
+
+    var numPoints = points.length;
+    var distanceMatrix = yeni Array(numPoints);
+    for (var i = 0; i &lt; numPoints; i++) {
+        distanceMatrix[i] = new Array(numPoints);
+    }
+
+    for (var i = 0; i &lt; numPoints; i++) {for (var j = i; j &lt; numPoints; j++) {
+        
+            distanceMatrix[i][j] = Math.sqrt((points[i].x - points[j].x) * (points[i].x- points[j].x
+                ) + (points[i].y - points[j].y) * (points[i].y - points[j].y));
+            distanceMatrix[j][i] = distanceMatrix[i][j];
+        }}
+    
+    dönüş mesafesiMatris;};
+
+
+var getPathDistance = function (path, distanceMatrix) {
+    var d = distanceMatrix[path[0]][path[path.length - 1]];
+    for (var i = 1; i &lt; path.length; i++) {
+        d += distanceMatrix[path[i - 1]][path[i]];
+    }
+    Math.round( d * 1e2 ) / 1e2;} değerini döndürün;
+
+
+var generateRandomPath = function (numPoints) {
+    var path = [];
+    for (var i = 0; i &lt; numPoints; i++) {
+        path[i] = i;
+    }
+    yol = karıştır (yol);
+    dönüş yolu;};
+
+
+var swap = fonksiyon (yol, i, j) {
+    var klon = yol.slice(0);
+    var temp = klon[i];
+    klon[i] = klon[j];
+    klon[j] = sıcaklık;
+    klonu geri döndür;};
+
+
+var shuffle = function (arr) {for (var i = arr.length - 1; i &gt; 0; i--) {
+    
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = sıcaklık;
+    }
+    dönüş arr;};
+
+
+
+this.height = yükseklik;
+this.width = genişlik;
+this.path = [];
+this.pathDistances = [];
+this.paths = [];
+this.points = puan;
+this.numPoints = points.length;
+this.distanceMatrix = generateDistanceMatrix(this.points);
+
+en yakın komşu sezgisel
+yöntemini kullanarak puan turu this.useNearestNeighbors = function() {
+    var remaining = generateRandomPath(this.numPoints);
+    this.path = [kalan[0]];
+    this.paths.push(this.path.slice(0));
+    for (var i = 0; i &lt; this.points.length - 1; i++) {
+        var nearestDistance = this.height * this.height + this.width * this.width + 1;
+        var nearestPoint = null;
+        var indexInRemaining = 0;
+        (var j = i + 1; j &lt; this.points.length; j++) {
+            currentDistance = this.distanceMatrix[this.path[i]][remaining[j]];
+            if (currentDistance &lt; nearestDistance) {
+                nearestPoint = remaining[j];
+                nearestDistance = currentDistance;
+                indexInRemaining = j;
+            }}
+        
+        yola ekle ve kalandaki swap'ı tekrar
+        eklenmemesi için kalan = swap(remaining, i + 1, indexInRemaining);
+        this.path.push(remaining[i + 1]);
+    }
+    this.paths = [this.path];
+    this.pathDistances.push(getPathDistance(this.path, this.distanceMatrix));
+
+    return {
+        paths: this.paths,distances: this.pathDistances,isClosed
+        
+        : false
+    };};
+
+
+en yakın komşu sezgisel
+this.useBruteForce = function() {
+    const startPoint = 0;
+    var allPaths = this.findAllPaths(startPoint);
+
+    TODO:Döngülerle
+
+    yolları filtrele// (var i = 0; i &lt; allPaths.length; i++) {
+        this.pathDistances.push(getPathDistance(allPaths[i], this.distanceMatrix));
+    }
+
+    için her yol
+    için mesafeler oluşturun return {paths: allPaths,distances: this.pathDistances,isClosed: false
+    }}
+
+
+
+this.findAllPaths = function(startPoint, paths,
+        
+        path) {
+        
+    paths = paths || [];
+    yol = yol ||[];
+    Geçerli yolu klonla
+    var currentPath = path.slice(0);
+    currentPath.push(startPoint) yoluna
+    startPoint ekleyin;
+
+    Ziyaret edilmeyen tüm noktaları
+    bulun var ziyaret edilmemiş puanlar = [];
+    for (var i = 0; i &lt; this.points.length; i++) {if (currentPath.indexOf(i) &lt; 0) {
+        
+            unvisitedPoints.push(i);
+        }}
+    
+    Ziyaret edilmemiş nokta yoksa, geçerli yolu tamamlanmış
+    olarak kaydedin if (unvisitedPoints.length === 0) {
+        paths.push(currentPath);
+        dönüş yolları;
+    }
+    Şimdi (var i = 0; i &lt; unvisitedPoints.length; i++) {
+        this.findAllPaths(unvisitedPoints[i], paths, currentPath);
+    }
+
+    için ziyaret edilmemiş noktalar
+    arasında tekrarlayın dönüş yolları;};};
+
+
+
+
+
+/** Görselleştirme kodu **/
+
+var toLine = function (isClosed) {if (isClosed) {var interpolation = 'linear-closed';} else {
+        
+        
+    var interpolation = 'linear';}
+    
+    
+    return d3.svg.line().x(function (d) {
+    		return points[d].x;
+    	})
+    	
+    	). y(function (d) {
+    		return points[d].y;
+    	})
+    	. interpolat(interpolasyon);};
+
+
+var generateKey = function(pathNum) {
+  var numLetters = 26;
+  var letter = String.fromCharCode(65 + pathNum % numLetters);
+  var tuşu = harf;
+  if (pathNum &gt; numLetters) {
+    var numToRepeat = Math.floor(pathNum/numLetters);
+    for (var i = 0; i &lt; numToRepeat; i++) {
+      key += letter;
+    }}
+  
+  dönüş anahtarı;};
+
+
+var generatePoints = function () {
+    var dolgu = 12;
+    puan = [];
+    for (var pathNum = 0; pathNum &lt; N; pathNum++) {points[pathNum] = {
+        
+            key: generateKey(pathNum),x: Math.floor(Math.random() * (width-padding)) + padding/2,y
+            
+            : Math.floor(Math.random() * (height-padding)) + padding/2
+        };}};
+    
+
+
+Her noktayı
+içeriyorsa true var isCompletePath = function() {for (var i = 0; i &lt; points.length; i++) {if (drawnPath.indexOf(i) === -1) {
+  
+    
+      return false;
+    }}
+  
+  true değerini döndür;};
+
+
+var drawPoints = function () {
+    svg.selectAll('circle')
+        .remove();
+    svg.selectAll('circle').data(points).enter().append('circle')
+        
+        
+        
+        .on("mouseover", function() {
+          d3.select(this).style("imleç", "işaretçi");
+        }).
+        on("mouseout", function() {
+          d3.select(this).style("imleç", "varsayılan");
+        })
+        . on("click", function(point, pointNum) {// Auto-add the first point
+          if (!drawnPath.length) {
+          
+            drawnPath.push(0);}
+          (drawnPath[drawnPath.length - 1] === pointNum) {
+            return;
+          }
+          drawnPath.push(pointNum) yolunu
+          güncelleyin ve çizin;
+          appendPath(drawnPath, false);
+          Eksiksizliği
+          kontrol edin if (isCompletePath(drawnPath)) {// Son noktayı
+            otomatik olarak ekleyin if (drawnPath[drawnPath.length - 1] !== 0) {
+            
+              drawnPath.push(0);
+              appendPath(drawnPath, false);
+            }
+            document.getElementById("compare-button").removeAttribute("disabled");
+          }}
+        )
+        . attr('cx', function (d) {
+            return 0;
+        })
+        . attr('cy', function (d) {
+            return 0;
+        })
+        . attr('cx', function (d) {
+            return d.x;
+        })
+        . attr('cy', function (d) {
+            return d.y;
+        })
+        . attr('r', 6);};
+
+
+var drawIndexces = function () {
+    svg.selectAll('text')
+        .remove();
+    svg.selectAll('text').data(points).enter().append('text')
+        
+        
+        
+        .text(function (d, i) {
+            return d.key;
+        }).
+        on("mouseover", function() {
+          d3.select(this).style("imleç", "varsayılan");
+        })
+        . attr('fill', 'black').attr('font-family', 'sans-serif').attr('font-size', 12).attr('x', function(d) {
+            return d.x + 8;
+        })
+        
+        
+        
+        . attr('y', function(d) {
+            return d.y + 8;});};
+
+
+        
+var appendPath = function (path, isClosed) {
+    clearLines(true);
+
+    svg.append
+        ('yol')
+        .attr('d', toLine(isClosed)(yol))
+        .attr('doldurma', 'hiçbiri').attr('kontur', '#B32471').attr('kontur-genişliği', lineWidth)
+        
+        ;};
+
+
+var appendNewPath = function (path, isClosed) {
+    svg.append
+        ('path').attr('d', toLine(isClosed)(path))
+        .attr('fill', 'none').attr('stroke', '#14BF96').attr('stroke-width', lineWidth)
+        
+        
+        ;};
+
+
+var clearLines = function (removePath) {if (removePath) {
+    
+        svg.selectAll('path').remove()
+            ;
+    }
+    svg.selectAll('line')
+        .remove();
+    d3.timer.flush();};
+
+
+
+var highlightTableRow = function(pathNum) {
+    var tableRows = document.querySelectorAll("#paths-listing tbody tr");
+    for (var i = 0; i &lt; tableRows.length; i++) {if (i !== pathNum || tableRows[i] !== pathNum) {tableRows[i].classList.remove("highlighted");} else {
+        
+            
+            tableRows[i].classList.add("highlighted");}}};
+        
+        
+
+
+
+    
+geçişleri zincirlemek için yinelemeler veya takaslar yoluyla yinelemeler yapar var animate = fonksiyon (yollar, mesafeler, isClosed) {
+    // En kısa mesafeyi bul var shortestDistance = mesafeler
+
+    [0];
+    for (var i = 0; i &lt; distances.length; i++) {if (distances[i] &lt; shortestDistance) {
+        
+            shortestDistance = distances[i];
+        }}
+    
+
+    var drawnPathMinus = drawnPath.slice(0, drawnPath.length - 1).join(",");
+    var drawnDistance;
+    for (var i = 0; i &lt; paths.length; i++) {if (paths[i].join(",") === drawnPathMinus) {
+      
+        drawnDistance = distances[i];
+        document.getElementById("çizilen mesafe").innerText = drawnDistance;
+      }
+      if (distances[i] === shortestDistance) {
+        document.getElementById("short-distance").innerText = distances[i];
+        appendNewPath(paths[i], isClosed);
+        if (drawnDistance === shortestDistance) {document.getElementById("drawn-distance").innerText = drawnDistance + " ";
+        }}}}
+      
+    
+
+
+
+          var updatePoints = function() {
+    document.getElementById("compare-button").setAttribute("disabled", "disabled");
+    document.getElementById("mesafe-konteyner").style.display = "hiçbiri";
+    N = 5;
+    transitionDuration = 12000 / N;
+    generatePoints();
+    drawnPath.length = 0;
+    yol.uzunluk = 0;
+    clearLines(true);
+    drawPoints();
+    drawIndexces();};
+
+
+var comparePath = function() {
+    document.getElementById("compare-button").setAttribute("disabled", "disabled");
+    document.getElementById("mesafe-konteyner").style.display = "blok";
+    var results = yeni TSPSolver(nokta, genişlik, yükseklik).useBruteForce();
+    animate(results.paths, results.distances, true);
+}
+
+Başlangıç kodu
+var svg = d3.select('#svg-container').append('svg').attr('width', width)
+    
+    .attr('height', height);
+
+document.getElementById("svg-container").style.width = genişlik + "px";
+document.getElementById("svg-container").style.height = yükseklik + "px";
+
+document.getElementById("compare-button").addEventListener("click", comparePath);
+
+document.getElementById("restart-button").addEventListener("click", updatePoints);
+
+updatePoints();
+  &lt;/script&gt;
+&lt;/body&gt;&lt;
+/html&gt;</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Yolunuz en uygun yolla nasıl karşılaştırıldı? Şehirleri ziyaret etme sırasına karar vermek için hangi sezgisel yöntemleri kullandınız? Bilgisayar aynı sezgisel yöntemi kullanabilir mi?</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Tüm sezgisel yöntemler eşit değildir, ancak hepsi bize bilgisayarı daha hızlı bir şekilde iyi bir çözüm bulmaya yönlendirmenin farklı yolları için fikir verebilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h4>En yakın komşu sezgisel</h4></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">TSP için ortak bir sezgisel yöntem "en yakın komşu" dur: bilgisayar her zaman en <em>yakın</em> ziyaret edilmemiş şehri yoldaki bir sonraki şehir olarak seçer. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Aşağıdaki görselleştirmede deneyin. Artık sezgisel bir yöntem kullandığımıza göre, eskisinden çok daha fazla şehirle deneyebilirsiniz. 46 şehir bile makinemde sadece birkaç milisaniye sürüyor.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;! KA AP CS P
+
+için DOCTYPE html&gt;
+&lt;!--TSP örneği https://github.com/dzhang55/travelling-salesman--&gt;html&lt;&gt;head&lt;&gt;meta name="viewport" content="width=device-width, initial-scale=1"&lt;&gt;meta charset="utf-8"&lt;&gt;title&lt;Traveling Salesman Nearest Neighbor&gt;/title&lt;&lt;!--
+&gt;
+  
+  
+
+
+
+  
+  WonderBlocks styles --&gt;
+  &lt;link href="
+https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;&lt;style&gt;
+  
+  body {
+      font-family: "Lato", sans-serif;}
+  
+  button.primary {
+      -webkit-box-pack: merkez !önemli;
+      -ms-flex-pack: merkez !önemli;
+      -webkit-box-align: merkez !önemli;
+      -ms-flex-align: merkez !önemli;
+      marj: 0px !önemli;
+      pozisyon: göreceli !önemli;
+      display: -webkit-inline-box !important;
+      ekran: -moz-inline-box !important;
+      ekran: -ms-inline-flexbox !important;
+      ekran: -webkit-inline-flex !important;
+      ekran: inline-flex !important;
+      -webkit-align-items: merkez !önemli;
+      hizalama öğeleri: merkez !önemli;
+      -webkit-justify-content: merkez !önemli;
+      gerekçelendirme-içerik: merkez !önemli;
+      yükseklik: 40 piksel !önemli;
+      dolgu-üst: 0px !önemli;
+      dolgu-alt: 0px !önemli;
+      dolgu-sol: 16 piksel !önemli;
+      dolgu-sağ: 16px !önemli;
+      sınır: hiçbiri !önemli;
+      kenarlık-yarıçap: 4px !önemli;
+      imleç: işaretçi !önemli;
+      taslak: hiçbiri !önemli;
+      metin-dekorasyon: hiçbiri !önemli;
+      -moz-box-sizeing: border-box !important;
+      kutu boyutlandırma: kenarlık-kutu !önemli;
+      -ms-touch-action: manipülasyon !önemli;
+      dokunma-eylem: manipülasyon !önemli;
+      arka plan: #1865f2 !önemli;
+      renk: #ffffff !önemli;
+      marj-sağ: 10px !important;
+  }
+  button.primary:hover {
+      kutu-gölge: 0 0 0 1 piksel #FFF, 0 0 0 3 piksel #1865f2;
+  }
+  button.primary span {
+      -webkit-box-align: center !important;
+      -ms-flex-align: merkez !önemli;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: gri tonlamalı !önemli;
+      yazı tipi ailesi: Lato, sans-serif !important;
+      yazı tipi boyutu: 16 piksel !önemli;
+      çizgi yüksekliği: 20 piksel !önemli;
+      ekran: -webkit-box !important;
+      ekran: -moz-box !important;
+      ekran: -ms-flexbox !important;
+      ekran: -webkit-flex !important;
+      ekran: esnek !önemli;
+      -webkit-align-items: merkez !önemli;
+      hizalama öğeleri: merkez !önemli;
+      yazı tipi ağırlığı: kalın !önemli;
+      -webkit-user-select: hiçbiri !önemli;
+      -moz-user-select: hiçbiri !önemli;
+      -ms-user-select: hiçbiri !önemli;
+      kullanıcı seçimi: hiçbiri !önemli;
+      beyaz boşluk: nowrap !important;
+      taşma: gizli !önemli;
+      metin taşması: üç nokta !önemli;
+      işaretçi-olaylar: hiçbiri !önemli;
+  }
+  tablo, tablo td {
+      kenarlık: 1 piksel katı #ccc;
+      border-collapse: collapse;
+  }
+  tablo td {
+      text-align: center;
+      genişlik: %3;
+  }
+  &lt;/style&gt;
+  &lt;style&gt;
+  body {
+    dolgu: 8px;
+  }
+  #svg-container {
+    arka plan: #D1E0FC;
+    kenarlık-yarıçap: 10px;
+    kenar boşluğu-alt: 16px;
+  }
+  #slider kapsayıcı {
+    margin-bottom: 16px;
+  }
+  #paths listeleme {
+    genişlik: 250 piksel;
+    float: sağ;
+  }
+  #paths listeleme tr td {
+    satır-yükseklik: 28 piksel;
+    metin hizalaması: sol;
+    dolgu: 5px;
+  }
+  #paths listeleme tr.highlighted {
+    arka plan-renk: #F0F1F2;
+  }
+  #new düğmesi {
+    clear: both;
+  }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;table id="paths-listing" style="display:none;" &gt;&lt;
+      thead&gt;&lt;tr&gt;&lt;th&gt;Path&lt;/th&gt;&lt;th&gt;Distance&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;div id="svg-container"&gt;&lt;/div&gt;&lt;div id="slider-container"&gt;
+  
+      
+    
+      
+    
+  
+  &lt;input id="num-points" value="5" min="3" max="50" type="range" style="width:220px;" &gt;
+    &lt;label id="slider-value" for="num-points"&gt;5&lt;/label&gt;&lt;/div&gt;&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"&gt;&lt;/script&gt;&lt;script&gt;
+
+  
+  
+  /** Görselleştirme globalleri **/
+var width = 250;
+var yüksekliği = 250;
+var N = 200;
+var transitionDuration = 12000 / N;
+var instantDuration = 20;
+var currPathDistance = 0;
+var lineWidth = 2;
+var puanları;
+
+var noktası = [];
+var yolu = [];
+
+/** Çözücü kodu **/var TSPSolver = function(points, width, height) {//
+store distances each point'ten each point
+var generateDistanceMatrix = function (points) {
+
+
+    var numPoints = points.length;
+    var distanceMatrix = yeni Array(numPoints);
+    for (var i = 0; i &lt; numPoints; i++) {
+        distanceMatrix[i] = new Array(numPoints);
+    }
+
+    for (var i = 0; i &lt; numPoints; i++) {for (var j = i; j &lt; numPoints; j++) {
+        
+            distanceMatrix[i][j] = Math.sqrt((points[i].x - points[j].x) * (points[i].x- points[j].x
+                ) + (points[i].y - points[j].y) * (points[i].y - points[j].y));
+            distanceMatrix[j][i] = distanceMatrix[i][j];
+        }}
+    
+    dönüş mesafesiMatris;};
+
+
+var getPathDistance = function (path, distanceMatrix) {
+    var d = distanceMatrix[path[0]][path[path.length - 1]];
+    for (var i = 1; i &lt; path.length; i++) {
+        d += distanceMatrix[path[i - 1]][path[i]];
+    }
+    Math.round( d * 1e2 ) / 1e2;} değerini döndürün;
+
+
+var generateRandomPath = function (numPoints) {
+    var path = [];
+    for (var i = 0; i &lt; numPoints; i++) {
+        path[i] = i;
+    }
+    yol = karıştır (yol);
+    dönüş yolu;};
+
+
+var swap = fonksiyon (yol, i, j) {
+    var klon = yol.slice(0);
+    var temp = klon[i];
+    klon[i] = klon[j];
+    klon[j] = sıcaklık;
+    klonu geri döndür;};
+
+
+var shuffle = function (arr) {for (var i = arr.length - 1; i &gt; 0; i--) {
+    
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = sıcaklık;
+    }
+    dönüş arr;};
+
+
+
+this.height = yükseklik;
+this.width = genişlik;
+this.path = [];
+this.pathDistances = [];
+this.paths = [];
+this.points = puan;
+this.numPoints = points.length;
+this.distanceMatrix = generateDistanceMatrix(this.points);
+
+en yakın komşu sezgisel
+yöntemini kullanarak puan turu this.useNearestNeighbors = function() {
+    var remaining = generateRandomPath(this.numPoints);
+    this.path = [kalan[0]];
+    this.paths.push(this.path.slice(0));
+    for (var i = 0; i &lt; this.points.length - 1; i++) {
+        var nearestDistance = this.height * this.height + this.width * this.width + 1;
+        var nearestPoint = null;
+        var indexInRemaining = 0;
+        (var j = i + 1; j &lt; this.points.length; j++) {
+            currentDistance = this.distanceMatrix[this.path[i]][remaining[j]];
+            if (currentDistance &lt; nearestDistance) {
+                nearestPoint = remaining[j];
+                nearestDistance = currentDistance;
+                indexInRemaining = j;
+            }}
+        
+        yola ekle ve kalandaki swap'ı tekrar
+        eklenmemesi için kalan = swap(remaining, i + 1, indexInRemaining);
+        this.path.push(remaining[i + 1]);
+    }
+    this.paths = [this.path];
+    this.pathDistances.push(getPathDistance(this.path, this.distanceMatrix));
+
+    return {
+        paths: this.paths,distances: this.pathDistances,isClosed
+        
+        : false
+    };};
+
+
+en yakın komşu sezgisel
+this.useBruteForce = function() {
+    const startPoint = 0;
+    var allPaths = this.findAllPaths(startPoint);
+
+    TODO:Döngülerle
+
+    yolları filtrele// (var i = 0; i &lt; allPaths.length; i++) {
+        this.pathDistances.push(getPathDistance(allPaths[i], this.distanceMatrix));
+    }
+
+    için her yol
+    için mesafeler oluşturun return {paths: allPaths,distances: this.pathDistances,isClosed: false
+    }}
+
+
+
+this.findAllPaths = function(startPoint, paths,
+        
+        path) {
+        
+    paths = paths || [];
+    yol = yol ||[];
+    Geçerli yolu klonla
+    var currentPath = path.slice(0);
+    currentPath.push(startPoint) yoluna
+    startPoint ekleyin;
+
+    Ziyaret edilmeyen tüm noktaları
+    bulun var ziyaret edilmemiş puanlar = [];
+    for (var i = 0; i &lt; this.points.length; i++) {if (currentPath.indexOf(i) &lt; 0) {
+        
+            unvisitedPoints.push(i);
+        }}
+    
+    Ziyaret edilmemiş nokta yoksa, geçerli yolu tamamlanmış
+    olarak kaydedin if (unvisitedPoints.length === 0) {
+        paths.push(currentPath);
+        dönüş yolları;
+    }
+    Şimdi (var i = 0; i &lt; unvisitedPoints.length; i++) {
+        this.findAllPaths(unvisitedPoints[i], paths, currentPath);
+    }
+
+    için ziyaret edilmemiş noktalar
+    arasında tekrarlayın dönüş yolları;};};
+
+
+
+
+
+/** Görselleştirme kodu **/
+
+var toLine = function (isClosed) {if (isClosed) {var interpolation = 'linear-closed';} else {
+        
+        
+    var interpolation = 'linear';}
+    
+    
+    return d3.svg.line().x(function (d) {
+    		return points[d].x;
+    	})
+    	
+    	). y(function (d) {
+    		return points[d].y;
+    	})
+    	. interpolat(interpolasyon);};
+
+
+var generateKey = function(pathNum) {
+  var numLetters = 26;
+  var letter = String.fromCharCode(65 + pathNum % numLetters);
+  var tuşu = harf;
+  if (pathNum &gt; numLetters) {
+    var numToRepeat = Math.floor(pathNum/numLetters);
+    for (var i = 0; i &lt; numToRepeat; i++) {
+      key += letter;
+    }}
+  
+  dönüş anahtarı;};
+
+
+var generatePoints = function () {
+    var dolgu = 8;
+    puan = [];
+    for (var pathNum = 0; pathNum &lt; N; pathNum++) {points[pathNum] = {
+        
+            key: generateKey(pathNum),x: Math.floor(Math.random() * (width-padding)) + padding/2,y
+            
+            : Math.floor(Math.random() * (height-padding)) + padding/2
+        };}};
+    
+
+
+var drawPoints = function () {
+    svg.selectAll('circle')
+        .remove();
+    svg.selectAll('circle').data(points).enter().append('circle')
+        
+        
+        
+        .attr('cx', function (d) {
+            return 0;
+        }).
+        attr('cy', function (d) {
+            return 0;
+        })
+        . attr('cx', function (d) {
+            return d.x;
+        })
+        . attr('cy', function (d) {
+            return d.y;
+        })
+        . attr('r', 4);};
+
+
+var drawIndexces = function () {
+    svg.selectAll('text')
+        .remove();
+    svg.selectAll('text').data(points).enter().append('text')
+        
+        
+        
+        .text(function (d, i) {
+            return d.key;
+        }).
+        attr('fill', 'black').attr('font-family', 'sans-serif').attr('font-size', 12).attr('x', function(d) {
+            return d.x + 4;
+        })
+        
+        
+        
+        . attr('y', function(d) {
+            return d.y + 4;});};
+
+
+        
+var appendPath = function (path, isClosed) {
+    clearLines(true);
+
+    svg.append
+        ('yol')
+        .attr('d', toLine(isClosed)(yol))
+        .attr('doldurma', 'hiçbiri').attr('kontur', '#14BF96').attr('kontur-genişliği', lineWidth)
+        
+        ;};
+
+
+var clearLines = function (removePath) {if (removePath) {
+    
+        svg.selectAll('path').remove()
+            ;
+    }
+    svg.selectAll('line')
+        .remove();
+    d3.timer.flush();};
+
+
+
+var highlightTableRow = function(pathNum) {
+    var tableRows = document.querySelectorAll("#paths-listing tbody tr");
+    for (var i = 0; i &lt; tableRows.length; i++) {if (i !== pathNum || tableRows[i] !== pathNum) {tableRows[i].classList.remove("highlighted");} else {
+        
+            
+            tableRows[i].classList.add("highlighted");}}};
+        
+        
+
+
+
+    
+geçişleri zincirlemek için yinelemeler veya takaslar yoluyla yinelemeler yapar var animate = fonksiyon (yollar, mesafeler, isClosed) {
+    // En kısa mesafeyi bul var shortestDistance = mesafeler
+
+    [0];
+    for (var i = 0; i &lt; distances.length; i++) {if (distances[i] &lt; shortestDistance) {
+        
+            shortestDistance = distances[i];
+        }}
+    
+
+    var createPathRow = function(path, distance) {var highlightPath = function() {
+
+        
+            highlightTableRow(pathRow);
+            appendPath(path, isClosed);
+            pathRow.classList.add("vurgulanmış");};
+        
+        var pathRow = document.createElement("tr");
+        var pathInfo = document.createElement("td");
+        pathInfo.innerHTML = path.map(function(index) {
+          return points[index].key;
+        }). join(" - ");
+        var pathDistance = document.createElement("td");
+        pathDistance.innerHTML = mesafe;
+        if (distance === shortestDistance) {
+            pathDistance.innerHTML += " ";
+            highlightPath();
+        }
+        pathRow.appendChild(pathInfo);
+        pathRow.appendChild(pathDistance);
+
+        pathRow.addEventListener("click", function() {
+            highlightPath();
+        });
+        pathRow.addEventListener("mouseover", function() {
+            highlightPath();
+        });
+        return pathRow;};
+    
+
+    var pathsTable = document.querySelector("#paths-listing tbody");
+    pathsTable.innerHTML = "";
+    for (var i = 0; i &lt; paths.length; i++) {
+        pathsTable.appendChild(createPathRow(paths[i], distances[i]));
+    }}
+
+
+var updatePoints = function() {
+    N = parseInt(document.getElementById('num-points').value, 10);
+    transitionDuration = 12000 / N;
+    generatePoints();
+    yol.uzunluk = 0;
+    clearLines(true);
+    drawPoints();
+    drawIndexces();};
+
+
+var genAndSolve = function() {
+    updatePoints();
+    var results = yeni TSPSolver(nokta, genişlik, yükseklik).useNearestNeighbors();
+    clearLines(true);
+    animate(results.paths, results.distances, true);};
+
+
+Başlangıç kodu
+var svg = d3.select('#svg-container').append('svg').attr('width', width)
+    
+    .attr('height', height);
+
+document.getElementById("svg-container").style.width = genişlik + "px";
+document.getElementById("svg-container").style.height = yükseklik + "px";
+
+document.getElementById("num-points").addEventListener("change", function() {
+    updatePoints();
+    document.getElementById("kaydırıcı-değeri").innerHTML = N;
+    genAndSolve();
+});
+
+genAndSolve();
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Etkileyici, değil mi? Bir sezgisel yöntem olmadan, mükemmel çözümü bulmak için evrenin ısı ölümüne kadar bekleyebilirdik. Şimdi, basit bir sezgisel yöntem sayesinde, sonuçları neredeyse anında görüyoruz.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Ancak, unutmayın, sezgisel bir yöntem yalnızca <em>yaklaşık</em> bir çözüm sunar. Bu özel sezgisel yöntem için çözüm, ortalama olarak, mümkün olan en kısa yoldan yaklaşık% 25 daha uzun olacaktır. En yakın komşu sezgisel yöntemin <em>en kötü</em> rotayı vereceği zamanlar bile vardır.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Bilgisayar bilimcileri, karıncaların feromonları bir yol boyunca biriktirme şeklinden esinlenen bir sezgisel yöntem olan "karınca kolonisi optimizasyonu" da dahil olmak üzere TSP için düzinelerce başka sezgisel yöntem bulmuşlardır. Her sezgisel yöntem için, sezgisel yöntemin mükemmel çözümü bulmaya ne kadar yaklaştığını, ne kadar zaman aldığını ve en kötü durumun ne sıklıkta gerçekleştiğini analiz ederler.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Her yerde sezgisel yöntemler</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">TSP'nin yanı sıra sezgisel yöntemlerden yararlanan birçok sorun vardır. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">İşte birkaçı:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><strong>Sırt çantası sorunu</strong>: Her biri bir ağırlık ve değere sahip bir sırt çantası ve bir dizi öğe türünüz var. Toplam ağırlığın sınırı aşmaması ve toplam değerin en üst düzeye çıkarılması için her öğeden kaç tanesini paketleyebilirsiniz? Bu tür bir sorun, bir portföy için yatırım seçen finansal danışmanlar veya hammaddeleri kesmenin en uygun yolunu bulan fabrikalar gibi farklı endüstrilerde birçok biçimde ortaya çıkar. Bir sezgisel yöntem, paketlenecek bir sonraki öğeyi seçerken değer/ağırlık oranına göre sıralama yapmaktır.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 370px; max-height: 197px;"><img alt="A graphic with a knapsack and 4 boxes. The knapsack is labeled as 15 kg. Box 1 is labeled as 12 kg, $4. Box 2 is labeled as 2 kg, $2. Box 3 is labeled as 4 kg, $10. Box 4 is labeled as 1 kg, $1." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/5db988cc9a101d5edc98bfb0b35ba7d43461e1c5.svg" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sırt çantası ve 4 kutulu bir grafik. Sırt çantası 15 kg olarak etiketlenmiştir. Kutu 1, 12 kg, <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--4-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn> olarak etiketlenmiştir. <mi>B</mi><mi>o</mi><mi>x</mi> 2 <mi>i</mi> s l a <mi>b</mi> e <mi>l</mi><mi>e</mi><mi>d</mi><mi></mi><mi>a</mi><mi></mi><mi></mi><mi>s</mi><mn>2</mn><mi>k</mi><mn></mn><mi></mi><mi></mi> <mo separator="true">g,4</mo>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">. Kutu 2, 2 kg, </annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">4</span> olarak etiketlenmiştir<span class="mord">.</span> <span class="mord mathdefault" style="margin-right:0.05017em;"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault" style="margin-right:0.01968em;"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault" style="margin-right:0.01968em;"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord"></span><span class="mord mathdefault" style="margin-right:0.03148em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;"></span><span class="mpunct"></span>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span> B o x 2 i s l a b e l e d a s 2 k g,4, nokta, B, o, x, 2, i, s, l, a, b, e, <span id="katex-uid--4-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">l, e, e, d, a, s, 2, k, g, virgül</span>
+    
+    
+    
+  </span><span></span>2
+  
+  
+  
+</span>. Kutu 3, 4 kg, <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--5-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn> olarak etiketlenmiştir. <mi>B</mi><mi>o</mi><mi>x</mi><mn>4</mn><mi>i</mi> s l a <mi>b</mi> e <mi>l</mi><mi></mi><mi>e</mi><mi>d</mi><mi>a</mi><mi></mi><mi>s</mi><mn>1</mn><mi>k</mi><mi></mi><mi></mi><mi></mi> <mo separator="true">g,10</mo>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">. Kutu 4, 1 kg, </annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mord">0</span> olarak etiketlenmiştir<span class="mord">.</span> <span class="mord mathdefault" style="margin-right:0.05017em;"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault" style="margin-right:0.01968em;"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault" style="margin-right:0.01968em;"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord"></span><span class="mord mathdefault" style="margin-right:0.03148em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;"></span><span class="mpunct"></span>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span> B o x 4 i s l a b e l e d a s 1 k g,10, nokta, B, o, x, 4, i, s, l, a, b, e, l, e, d, a, s, 1, <span id="katex-uid--5-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">k, g, virgül</span>
+    
+    
+    
+  </span><span></span>1
+  
+  
+  
+</span>.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Toplam ağırlığı 15 kg ve 4 ürün tipi olan basit bir sırt çantası problemi.</div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph"><strong>Oyun oynama</strong>: Bir bilgisayarın bir oyunda bir insanı yenmesi (veya en azından saygın bir şekilde kaybetmesi) için, hareketi en yüksek başarı şansıyla seçmesi gerekir. Başarıyı gerçekten tahmin etmek için, bilgisayarın mevcut hareketten son hamleye kadar tüm oyun ağacını hesaplaması ve insanın yanıt olarak yapabileceği <em>tüm</em> hareketleri tahmin etmesi gerekir. Basit Tic-Tac-Toe oyunu için, bu 362.880 <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--6-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow>362.880 <mo separator="true"></mo><mn></mn><mn></mn>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord">3</span><span class="mord">6</span><span class="mord">2,8</span><span class="mord"></span> <span class="mord">8</span><span class="mord"></span>0 <span class="mpunct"></span>362, virgül, <span class="mspace" style="margin-right:0.16666666666666666em;"></span> 880 olası durum, ancak Satranç gibi daha sofistike bir oyun için bu 1 0 120 10^{120<span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--6-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span><span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--7-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><msup><mn></mn><mn></mn>
+            
+            
+          </msup>
+          
+          
+        </mrow><annotation encoding="application/x-tex"> }</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span>1 0<span class="mord"></span> <span class="mord"><span class="mord"></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span><span class="mord mtight">0</span>
+              
+              
+              
+            </span></span><span class="pstrut" style="height:2.7em;"></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--7-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">10, üst simgeyi başlat, 120, üst simge</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> durumlarını bitir! Neyse ki, "minimax" gibi sezgisel yöntemler, olasılıklar ağacını budamaya yardımcı olur.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 545px; max-height: 363px;"><img alt="A tree diagram with three levels. The first level shows an empty Tic-Tac-Toe board. The second level shows three Tic-Tac-Toe boards, with an X in a different spot in each one. The third level shows 12 Tic-Tac-Toe boards, with an O in a spot in each one as well." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/7654fe1f2572ecbad13d67d13d601722ab6ab376.svg" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Üç seviyeli bir ağaç diyagramı. İlk seviye boş bir Tic-Tac-Toe tahtası gösterir. İkinci seviye, her birinde farklı bir noktada bir X bulunan üç Tic-Tac-Toe tahtasını gösterir. Üçüncü seviye, her birinde bir noktada bir O bulunan 12 Tic-Tac-Toe tahtasını gösterir.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Tic-Tac-Toe için kısmi bir oyun ağacı.</div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph"><strong>Tesis konumu</strong>: Bir eyalette 20 lokasyonu olan ve süpermarketlere yiyecek teslim etmek için 5 depo inşa etmek isteyen bir süpermarket zinciri hayal edin. Amaçları, maliyetleri en aza indirmek ve teslimat hızını en üst düzeye çıkarmaktır. Tesis konumu sorunu, bu 5 depo için en uygun yeri bulmaktır. Aynı sorun, kullanıcı isteklerine hızlı bir şekilde yanıt vermek için arka uç sunucularını dağıtmak isteyen web uygulamaları tarafından da karşı karşıya kalmaktadır. "Yerel arama" gibi sezgisel yöntemler, olası konumların dizisini daraltmaya yardımcı olur.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 384px; max-height: 249px;"><img alt="A two-part diagram. The first part shows 20 blue dots distributed around a rectangular space. The second part shows 5 pink dots interspersed in those dots, with arrows connecting each pink dot to a blue dot." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/1e3e29a4b4b513c226e7e13317146b61a3a60ab4.svg" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">İki parçalı diyagram. İlk bölüm, dikdörtgen bir alanın etrafına dağılmış 20 mavi noktayı göstermektedir. İkinci bölüm, bu noktalara serpiştirilmiş 5 pembe noktayı gösterir ve oklar her pembe noktayı mavi bir noktaya bağlar.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">20 lokasyon ve 5 tesis ile olası bir çözüm.</div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">Bunların hepsi, bir bilgisayarın en uygun cevabı bulmak için katlanarak artan sayıda kombinasyon araması gereken kombinatoryal problemlerdir. Kombinatoryal problemler gerçek dünyada oldukça yaygındır, bu nedenle hem şirketler hem de bilgisayar bilimcileri, en iyi yaklaşık çözümleri verecek sezgisel yöntemler bulmayı derinden önemsemektedir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

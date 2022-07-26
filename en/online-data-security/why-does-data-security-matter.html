@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Why care about data security? (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Why care about data security? (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- For AP CSP article.
+Per second statistic is taken from:
+https://www.internetlivestats.com/one-second/#traffic-band
+--&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;Amount of traffic flowing through Internet&lt;/title&gt;
+        &lt;link href="https://fonts.googleapis.com/css2?family=Lato&amp;display=swap" rel="stylesheet"&gt;
+        &lt;style&gt;
+        body {
+            font-family: 'Lato', sans-serif;
+            font-size: 64px;
+        }
+        /* Disable scrolling */
+        body, html {
+            height:100%;
+        }
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #amount {
+            width: 90%;
+            height:100%;
+            overflow:hidden;
+        }
+
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    
+    &lt;div id="amount"&gt;&lt;/div&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/textfit/2.4.0/textFit.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        var perSecond = 91129;
+        var startMS = new Date().getTime();
+        var amountDiv = document.getElementById("amount");
+        var updateAmount = function() {
+            var ellipsedMS = new Date().getTime() - startMS;
+            var ellipsedS = ellipsedMS / 1000;
+            var amountGB = perSecond * ellipsedS;
+            amountDiv.innerHTML = amountGB.toLocaleString(undefined, {maximumFractionDigits: 0}) + " GB";
+            try {
+                textFit(amountDiv);
+            } catch(e) {
+                console.log(e);
+            }
+        };
+        
+        updateAmount();
+        window.setInterval(updateAmount, 200);
+        
+    &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre></div></div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The ticking number above is an estimate of the amount of data that's flowed through the Internet since you started reading this article.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">The monthly volume of Internet traffic is on the order of <em>billions</em> of gigabytes. To put this number into perspective, every word ever spoken can fit into five billion gigabytes!</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">What types of data flow through the Internet? One type is numerical such as a city’s temperature. Another type is categorical such as a movie genre. An extremely useful type of data is <strong>personally identifiable information</strong> (<strong>PII</strong>).  PII refers to any data that can help identify you, such as your address or name. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Organizations use PII to improve users' online experiences. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">For example, an e-commerce website like Amazon stores PII (my shopping history) so that it can make better item recommendations. As you can see below, Amazon learned from my prior purchases that I love tea and pens and decided to recommend more kinds of teas and pens.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 658px; max-height: 459px;"><img alt="Screenshot of Amazon recommendations section, includes photos of a box of Hibiscus tea box and a box of Uni-ball pens." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/e354a74d0532207c6ca33674af225dad148387b8.png" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Screenshot of Amazon recommendations section, includes photos of a box of Hibiscus tea box and a box of Uni-ball pens.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Let's look at another example: Google Discover, a personalized dashboard for mobile phones. It's an application that helps plan my daily commute and surprisingly, it even knows where I parked my family’s car!</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 1051px; max-height: 728px;"><img alt='Screenshot from Google Discover. Includes a map with a marker near a road and the text "You parked here - updated 12min ago - based on your location history"' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/d5dbdbc26944e40e25866c8d1beec37605c90276.png" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Screenshot from Google Discover. Includes a map with a marker near a road and the text "You parked here - updated 12min ago - based on your location history"</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Because parking locations and other forms of PII can be very sensitive, we want companies to keep our PII private and prevent it from falling into the wrong hands.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">So then, how do companies keep PII private if it flows through a public, open Internet? How do attackers steal PII and how do companies defend against it?</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">We'll answer these questions in this unit about online data security.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">First, we’ll cover PII in more detail and see the different ways it's collected. Then, we’ll see the different ways attackers steal PII via phishing, rogue access points, or computer malware. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">We’ll then show how cryptography can help keep PII private with encryption and also prevent PII from falling into the wrong hands with authentication. We’ll see how encryption sends “locked” PII over the public Internet and unlocks it only if someone presents the correct key. We’ll also see how authentication verifies someone’s identity before sending over PII. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Finally, we’ll see how the Internet incorporates these cryptographic techniques into the TLS and HTTPS protocols.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Let’s begin!</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[References]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

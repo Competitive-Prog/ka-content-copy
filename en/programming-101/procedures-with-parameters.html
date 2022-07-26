@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Procedures with parameters | AP CSP (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Procedures with parameters | AP CSP (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">When programming, we use procedures to make our code more reusable and to better organize our code. Often-times, we pass <strong>parameters</strong> to a procedure so that we can change the output of the code.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><h2>The need for parameters</h2></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Consider this JavaScript code:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>var greeting1 = "Hello, Jackson, how are you?";
+println(greeting1);
+var greeting2 = "Hello, Mr. H, how are you?";
+println(greeting2);
+var greeting3 = "Hello, Stranger, how are you?";
+println(greeting3);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">There's a lot of repetition in that code: it continually stores a string inside a variable that greets someone and then displays it on the screen. However, there is also <em>variance</em> in the code: the name changes each time.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">We can create a procedure with parameters to handle both the repetition and the variance.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">To specify parameters in JavaScript, we write the name of the parameter (or parameters) inside the parentheses that come after the function name. We then reference that parameter name inside the function.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><pre><code>function sayHello(person) {
+  var greeting = "Hello," + person + ", how are you?";
+  println(greeting);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Now we can call that function and pass our desired value for the parameter:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="9"><pre><code>sayHello("Jackson");
+sayHello("Mr. H");
+sayHello("Stranger");</code></pre></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">That syntax should look familiar, since we've been calling a function with parameters since the very beginning: <code>println()</code>!</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="11"><pre><code>println("Hello");
+println("World");</code></pre></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">Now we can start using parameters in our own user defined functions and make them much more customizable.</div></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph">✏️ The program below generates funny names using a function that takes a single parameter. Try calling the function more times and modifying the code inside the function to see what changes.</div></div><div class="paragraph" data-perseus-paragraph-index="14"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>function genName(word) {
+    var firstName = word + "y";
+    var lastName = "Mc" + word + "erFace";
+    var fullName = firstName + " " + lastName;
+    println(fullName.toUpperCase());
+}
+
+genName("test");
+genName("corn");
+genName("cactus");</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="15"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/W_6Rvun9FlLlN1z5wf1ENYI69Yds3OlFmjFG-o9SgYQ/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20parameters%3A%20Name%20generator&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresParametersNameGenerator" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Multiple parameters</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">What if one parameter isn't enough to customize our procedure the way we want it? That's no problem, we can just specify more parameters!</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">In JavaScript,  we can specify multiple parameters with a comma-separated list inside the parentheses, making sure to give each parameter a unique name.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">In the code below, the <code>reportGrade</code> function accepts two parameters, and uses them to report the score of a student on a 30-question test:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>function reportGrade(studentName, numCorrect) {
+  var score  = (numCorrect/30) * 100;
+  var report = studentName + " earned: " + score;
+  println(report);
+}
+
+reportGrade("Sally", 27);
+reportGrade("Wilbur", 24);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/88t4uFUCTXumPgFFI7uSn3aPV2KGwH7KTVAtElGKSCc/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20parameters%3A%20Grade%20reporter&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresParametersGradeReporter" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Whenever you're writing procedures with parameters, pay careful attention to your parameter names, since you need to reference those names exactly inside the procedure. It helps to make the names very descriptive.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">✏️ Ever played Mad Libs? The following program uses a procedure with <em>eleven</em> parameters to generate a story. Ask a classmate for parameter values and see what story comes out!</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>function tellStory(creature, place, verb, object, adjective, noun, emotion, job, adjective2, verb2, timeOfDay) {
+    println("Once upon a time, there was a " + creature + ".");
+    println("Every day, the " + creature + " would go to " + place + " and " + verb + ".");
+    println("Until one day, they stepped on a " + object + " and turned into a " + adjective + " " + noun + ".");
+    println("Because of that, they felt " + emotion + " and became a " + job + ".");
+    println("So that finally, everyone thought they were " + adjective2 + "!");
+    println("The moral of story is: always " + verb2 + " in the " + timeOfDay + ".");
+}
+
+tellStory("walrus", "DisneyLand", "surf", "Xmas tree", "fluffy", "flower", "angry", "lawyer", "spiky", "scuttle", "morning");
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/Hv6nB-0BSMkzQR3BcDvkKgMfRh9ENhJOiDDz83UadFU/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20parameters%3A%20Mad%20Libs&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresParametersMadLibs" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Passing variables as parameters</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">In the examples above, we've been passing literal strings and number values as the parameters, like "Sally" and 27. We can actually pass any programatic expression that evaluates to a value, like a variable.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">This procedure displays the result of multiplying two numbers:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>function showMathFact(num1, num2) {
+   var multiplied = num1 * num2;
+   println(num1 + " x " + num2 + " = " + multiplied);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">I can easily show just the multiples of a particular number by storing the first number in a variable, and always passing that as the first parameter: </div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>var firstNum = 9;
+showMathFact(firstNum, 1);
+showMathFact(firstNum, 2);
+showMathFact(firstNum, 3);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">✏️ Try changing the value of the <code>firstNum</code> variable in the program below, and notice how that affects every function call below it.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>function showMathFact(num1, num2) {
+   var multiplied = num1 * num2;
+   println(num1 + " x " + num2 + " = " + multiplied);
+}
+
+var firstNum = 9;
+showMathFact(firstNum, 1);
+showMathFact(firstNum, 2);
+showMathFact(firstNum, 3);
+showMathFact(firstNum, 4);
+showMathFact(firstNum, 5);
+showMathFact(firstNum, 6);
+showMathFact(firstNum, 7);
+showMathFact(firstNum, 8);
+showMathFact(firstNum, 9);
+showMathFact(firstNum, 10);</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">📝 See similar code in: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/dg1nKqPgo-Y9CE2Z6nDG1i1DMY330TNofTtDtaySzlY/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20parameters%3A%20Math%20facts&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresParametersMathFacts" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Parameters in pseudocode</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[What's pseudocode?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">This pseudocode represents a procedure that takes two parameters named <code>parameter1</code> and <code>parameter2</code>:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>PROCEDURE name (parameter1, parameter2)
+{
+     &lt;instructions&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Here's pseudocode for the <code>reportGrade</code> procedure and calls:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>PROCEDURE reportGrade (studentName, numCorrect) {
+    score ← ( numCorrect / 30 ) * 100
+    report ← CONCAT(CONCAT(studentName, " earned: "), score)
+    DISPLAY(report))
+}
+
+reportGrade("Sally", 27)
+reportGrade("Wilbur", 24)
+</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer— just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

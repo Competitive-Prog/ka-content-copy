@@ -1,0 +1,319 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Şifreleme, şifre çözme ve kırma (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Şifreleme, şifre çözme ve kırma (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">En eski şifreleme tekniklerinden biri, iki bin yıldan daha uzun bir süre önce Jül Sezar tarafından müttefiklerine mesaj iletmek için icat edilen Sezar <strong>Şifresi</strong>'dir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Caesar Cipher, basitliği sayesinde şifreleme, şifre çözme ve kod kırmaya harika bir giriştir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>İletiyi şifreleme</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Sezar'ın şu mesajı göndermek istediğini hayal edin:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><div class="paragraph"><code>SECRET MEETING AT THE PALACE</code></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bunun şifreli gibi görünebileceği şu şekildedir:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><div class="paragraph"><code>YKIXKZ SKKZOTM GZ ZNK VGRGIK</code></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Bu ilk başta gobbledygook'a çok benziyor, ancak bu şifreli mesaj aslında orijinal metinle <em>çok</em> ilgili.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Sezar Şifresi, alfabeyi belirli bir miktarda kaydırarak alfabedeki her orijinal harfi farklı bir harfle değiştiren basit bir ikame şifresidir. </div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Yukarıdaki şifreli mesajı yapmak için alfabeyi 6 ile değiştirdim ve bu ikame tablosunu kullandım:</div></div><div class="paragraph" data-perseus-paragraph-index="8"><table class='table'><thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th><th scope="col">E</th><th scope="col">F</th><th scope="col">G</th><th scope="col">H</th><th scope="col">I</th><th scope="col">J</th><th scope="col">K</th><th scope="col">L</th><th scope="col">M</th><th scope="col">N</th><th scope="col">O</th><th scope="col">P</th><th scope="col">Q</th><th scope="col">R</th><th scope="col">S</th><th scope="col">T</th><th scope="col">U</th><th scope="col">V</th><th scope="col">W</th><th scope="col">X</th><th scope="col">Y</th><th scope="col">Z</th></tr></thead><tbody><tr><td>G</td><td>H</td><td>Ben</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>Veya</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>İçinde</td><td>İçinde</td><td>İçinde</td><td>X</td><td>Ve</td><td>İle</td><td>A</td><td>B</td><td>C</td><td>D</td><td>Ve</td><td>F</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">S, 6 harfi Y'ye, E 6 harfi K'ya kaydırır, vb. İşte ilk kelime ve değişimleri:</div></div><div class="paragraph" data-perseus-paragraph-index="10"><table class='table'><thead><tr><th scope="col">S E </th><th scope="col">C</th><th scope="col"></th><th scope="col">R</th><th scope="col">E</th><th scope="col">T</th></tr></thead><tbody><tr><td>Ve</td><td>K</td><td>Ben</td><td>X</td><td>K</td><td>İle</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Anlayışınızı kontrol edin</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Şimdi Sezar'ın aynı 6 vardiyasıyla aşağıdaki mesajı göndermek istediğini hayal edin:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><div class="paragraph"><code>ALEXANDRIA SOON</code></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Şifrelenmiş mesaj ne olurdu?</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">1 cevap seçin:</legend><div class="instructions _125m8j1">1 cevap seçin:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-0" name="perseus_radio_9" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CNGZCPFTKC UQQP</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-1" name="perseus_radio_9" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>HSLEHUKYPH ZVVU</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-2" name="perseus_radio_9" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>EPIBERHVME WSSR</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-3" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-3" name="perseus_radio_9" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek D)</div><div aria-hidden="true">D</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>GRKDGTJXOG YUUT</code></div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>İletinin şifresini çözme</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Tarihi kayıtlara göre, Sezar her zaman 3'lük bir vardiya kullandı. Mesaj alıcısı vardiya miktarını bildiği sürece, mesajın kodunu çözmeleri önemsizdi.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Sezar'ın bir yoldaşına şu mesajı gönderdiğini hayal edin:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><div class="paragraph"><code>EHZDUH EUXWXV</code></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Yoldaş, alfabenin 3 ile kaydırıldığı bu ikame tablosunu kullanır:</div></div><div class="paragraph" data-perseus-paragraph-index="5"><table class='table'><thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th><th scope="col">E</th><th scope="col">F</th><th scope="col">G</th><th scope="col">H</th><th scope="col">I</th><th scope="col">J</th><th scope="col">K</th><th scope="col">L</th><th scope="col">M</th><th scope="col">N</th><th scope="col">O</th><th scope="col">P</th><th scope="col">Q</th><th scope="col">R</th><th scope="col">S</th><th scope="col">T</th><th scope="col">U</th><th scope="col">V</th><th scope="col">W</th><th scope="col">X</th><th scope="col">Y</th><th scope="col">Z</th></tr></thead><tbody><tr><td>D</td><td>Ve</td><td>F</td><td>G</td><td>H</td><td>Ben</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>Veya</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>İçinde</td><td>İçinde</td><td>İçinde</td><td>X</td><td>Ve</td><td>İle</td><td>A</td><td>B</td><td>C</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Daha sonra mesajın kodunu kesin olarak çözebilirler. İlk harf "E", "B" den 3 ile kaydırıldı, ikinci harf "H" 3 ile "E" den kaydırıldı, vb. Sonuç şu uğursuz mesajdır:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><div class="paragraph"><code>BEWARE BRUTUS</code></div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Anlayışınızı kontrol edin</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">İşte Sezar'ın gönderebileceği başka bir mesaj:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><div class="paragraph"><code>FURVV WKH UXELFRQ</code></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Sezar'ın her zamanki 3 değişimini varsayarsak, bu neyin şifresini çözer?</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">1 cevap seçin:</legend><div class="instructions _125m8j1">1 cevap seçin:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-0" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CHECK THE RACEWAY</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-1" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CHECK THE RANSOMS</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-2" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CROSS THE RACEWAY</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-3" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-3" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek D)</div><div aria-hidden="true">D</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CROSS THE RUBICON</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-4" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-4" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek E)</div><div aria-hidden="true">Ve</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CRUSH THE RAMPART</code></div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-5" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-5" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(F Seçeneği)</div><div aria-hidden="true">F</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><div class="paragraph"><code>CRUSH THE RAGERS</code></div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Şifreyi kırma</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Çok okuryazar ve anlayışlı bir düşmanın Sezar'ın mesajlarından birini ele geçirdiğini hayal edin.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><div class="paragraph"><code>RZ VMZ WMDIBDIB VGG AJMXZN OJ EJDI RDOC XGZJKVOMV OJ YZAZVO OCZ ZIZHT LPZZI VO OCZ IDGZ YZGOV</code></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu düşman, Sezar'ın her zaman 3'lük bir kayma kullandığını bilmez, bu yüzden değişimi bilmeden şifreyi "kırmaya" çalışmalıdır.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Kullanabileceği üç ana teknik vardır: frekans analizi, bilinen düz metin ve kaba kuvvet.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><h3>Frekans analizi</h3></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">İnsan dilleri bazı harfleri diğerlerinden daha fazla kullanma eğilimindedir. Örneğin, "E" İngilizce dilinde en popüler harftir. Mesajdaki karakterlerin sıklığını analiz edebilir ve en olası "E" yi belirleyebilir ve buna göre olası vardiya miktarlarını daraltabiliriz. </div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Kendiniz deneyin! Mesajı aşağıdaki metin alanına yapıştırın ve olası bir "E" yi tanımlamak için frekans grafiğini analiz edin:</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;! DOCTYPE html&gt;
+&lt;!-- 
+Metin alanına metin yazın ve harflerin sıklığını görmek için "Analiz Et" i tıklayın. Bu, şifreleri kırmak için yararlıdır!
+Daha fazla bilgi için @ 
+https://www.khanacademy.org/computing/computer-science/cryptography#crypt--&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;
+  
+    Frekans analizi&lt;/title&gt;&lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;&lt;style&gt;
+    
+    
+    
+
+    body {
+        font-family: "Lato", sans-serif;
+        
+maksimum genişlik: 600 piksel;
+    }
+    button.primary {
+        -webkit-box-pack: merkez !önemli;
+        -ms-flex-pack: merkez !önemli;
+        -webkit-box-align: merkez !önemli;
+        -ms-flex-align: merkez !önemli;
+        marj: 0px !önemli;
+        pozisyon: göreceli !önemli;
+        display: -webkit-inline-box !important;
+        ekran: -moz-inline-box !important;
+        ekran: -ms-inline-flexbox !important;
+        ekran: -webkit-inline-flex !important;
+        ekran: inline-flex !important;
+        -webkit-align-items: merkez !önemli;
+        hizalama öğeleri: merkez !önemli;
+        -webkit-justify-content: merkez !önemli;
+        gerekçelendirme-içerik: merkez !önemli;
+        yükseklik: 40 piksel !önemli;
+        dolgu-üst: 0px !önemli;
+        dolgu-alt: 0px !önemli;
+        dolgu-sol: 16 piksel !önemli;
+        dolgu-sağ: 16px !önemli;
+        sınır: hiçbiri !önemli;
+        kenarlık-yarıçap: 4px !önemli;
+        imleç: işaretçi !önemli;
+        taslak: hiçbiri !önemli;
+        metin-dekorasyon: hiçbiri !önemli;
+        -moz-box-sizeing: border-box !important;
+        kutu boyutlandırma: kenarlık-kutu !önemli;
+        -ms-touch-action: manipülasyon !önemli;
+        dokunma-eylem: manipülasyon !önemli;
+        arka plan: #1865f2 !önemli;
+        renk: #ffffff !önemli;
+        marj-sağ: 10px !important;
+    }
+    button.primary:hover {
+        kutu-gölge: 0 0 0 1 piksel #FFF, 0 0 0 3 piksel #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: merkez !önemli;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: gri tonlamalı !önemli;
+        yazı tipi ailesi: Lato, sans-serif !important;
+        yazı tipi boyutu: 16 piksel !önemli;
+        çizgi yüksekliği: 20 piksel !önemli;
+        ekran: -webkit-box !important;
+        ekran: -moz-box !important;
+        ekran: -ms-flexbox !important;
+        ekran: -webkit-flex !important;
+        ekran: esnek !önemli;
+        -webkit-align-items: merkez !önemli;
+        hizalama öğeleri: merkez !önemli;
+        yazı tipi ağırlığı: kalın !önemli;
+        -webkit-user-select: hiçbiri !önemli;
+        -moz-user-select: hiçbiri !önemli;
+        -ms-user-select: hiçbiri !önemli;
+        kullanıcı seçimi: hiçbiri !önemli;
+        beyaz boşluk: nowrap !important;
+        taşma: gizli !önemli;
+        metin taşması: üç nokta !önemli;
+        işaretçi-olaylar: hiçbiri !önemli;
+    }
+    &lt;/style&gt;
+  &lt;/head&gt;&lt;
+  body&gt;
+  &lt;textarea id="input" style="width: %100; height: 50px; margin-bottom: 10px;" &gt;&lt;/textarea&gt;
+  
+  &lt;button id="analyze" class="primary"&gt;&lt;span&gt;Analyze&lt;/span&gt;&lt;/button&gt;&lt;div id="chart"&gt;&lt;/div&gt;&lt;script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"&gt;&lt;/script&gt;
+
+  
+&lt;script&gt;
+var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",  "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+var drawChart = function(letterCounts) {const data = {labels: alphabet,datasets
+        : [{
+    
+        
+            values: letterCounts
+        }]
+    }
+
+    const chart = new frappe. Grafik("#chart", {
+        veri: veri,tür: 'çubuk',
+        
+        yükseklik: 250
+    });}
+
+
+var analyzeButton = document.getElementById("analiz");
+analyzeButton.addEventListener("click", function() {
+    var inputText = document.getElementById("input").value;
+    var lettersSeen = {};
+    for (var i = 0; i &lt; alphabet.length; i++) {
+        lettersSeen[alfabe[i]] = 0;
+    }
+    for (var i = 0; i &lt; inputText.length; i++) {
+        var currentLetter = inputText.charAt(i).toUpperCase();
+        if (lettersSeen[currentLetter] &gt;= 0) {
+            lettersSeen[currentLetter]++;
+        }}
+    
+    drawChart(Object.values(lettersSeen));
+});
+&lt;/script&gt;
+
+  &lt;/body&gt;&lt;
+  /html&gt;</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Bilinen düz metin</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Orijinal şifrelenmemiş ileti için başka bir terim <strong>düz metindir</strong>. Düşman düz metnin bir bölümünü zaten biliyorsa, şifrelenmiş sürümün geri kalanını kırmaları daha kolay olacaktır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Örneğin, iletiler benzer başlangıçlarla başlama eğilimindedir. İkinci Dünya Savaşı'nda, şifreli Alman mesajları her zaman bir hava tahminiyle başladı ve bu da İngiliz matematikçi Alan Turing'in çatlamasını kolaylaştırdı. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Sizce Julius bu mesaja ortak bir şekilde mi başladı?</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Kaba kuvvet</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Sadece 25 olası vardiya vardır (26 değil – neden olmasın?). Düşmanın her birini denemesi ve mantıklı bir mesaj veren birini bulması biraz zaman alabilirdi. Tüm mesajdaki değişimleri denemelerine bile gerek kalmayacaktı, sadece ilk veya iki kelime. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Aşağıda kendiniz deneyin:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;! DOCTYPE html&gt;
+&lt;!-- 
+Metin kutusuna Sezar Şifresi ile şifrelenmiş metin yazın. Ardından bir vardiya miktarı seçin ve bu vardiyaya göre şifresi çözülen metni görmek için Şifresini Çöz'ü tıklayın.
+Daha fazla bilgi için @ 
+https://www.khanacademy.org/computing/computer-science/cryptography#crypt--&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;
+
+    &lt;title&gt;Caesar Cipher Decrypter&lt;/title&gt;&lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;&lt;style&gt;
+    
+    
+    
+  
+    body {
+        font-family: "Lato", sans-serif;
+        
+maksimum genişlik: 600 piksel;
+    }
+    button.primary {
+        -webkit-box-pack: merkez !önemli;
+        -ms-flex-pack: merkez !önemli;
+        -webkit-box-align: merkez !önemli;
+        -ms-flex-align: merkez !önemli;
+        marj: 0px !önemli;
+        pozisyon: göreceli !önemli;
+        display: -webkit-inline-box !important;
+        ekran: -moz-inline-box !important;
+        ekran: -ms-inline-flexbox !important;
+        ekran: -webkit-inline-flex !important;
+        ekran: inline-flex !important;
+        -webkit-align-items: merkez !önemli;
+        hizalama öğeleri: merkez !önemli;
+        -webkit-justify-content: merkez !önemli;
+        gerekçelendirme-içerik: merkez !önemli;
+        yükseklik: 40 piksel !önemli;
+        dolgu-üst: 0px !önemli;
+        dolgu-alt: 0px !önemli;
+        dolgu-sol: 16 piksel !önemli;
+        dolgu-sağ: 16px !önemli;
+        sınır: hiçbiri !önemli;
+        kenarlık-yarıçap: 4px !önemli;
+        imleç: işaretçi !önemli;
+        taslak: hiçbiri !önemli;
+        metin-dekorasyon: hiçbiri !önemli;
+        -moz-box-sizeing: border-box !important;
+        kutu boyutlandırma: kenarlık-kutu !önemli;
+        -ms-touch-action: manipülasyon !önemli;
+        dokunma-eylem: manipülasyon !önemli;
+        arka plan: #1865f2 !önemli;
+        renk: #ffffff !önemli;
+        marj-sağ: 10px !important;
+    }
+    button.primary:hover {
+        kutu-gölge: 0 0 0 1 piksel #FFF, 0 0 0 3 piksel #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: merkez !önemli;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: gri tonlamalı !önemli;
+        yazı tipi ailesi: Lato, sans-serif !important;
+        yazı tipi boyutu: 16 piksel !önemli;
+        çizgi yüksekliği: 20 piksel !önemli;
+        ekran: -webkit-box !important;
+        ekran: -moz-box !important;
+        ekran: -ms-flexbox !important;
+        ekran: -webkit-flex !important;
+        ekran: esnek !önemli;
+        -webkit-align-items: merkez !önemli;
+        hizalama öğeleri: merkez !önemli;
+        yazı tipi ağırlığı: kalın !önemli;
+        -webkit-user-select: hiçbiri !önemli;
+        -moz-user-select: hiçbiri !önemli;
+        -ms-user-select: hiçbiri !önemli;
+        kullanıcı seçimi: hiçbiri !önemli;
+        beyaz boşluk: nowrap !important;
+        taşma: gizli !önemli;
+        metin taşması: üç nokta !önemli;
+        işaretçi-olaylar: hiçbiri !önemli;
+    }
+    tablo, tablo td {
+        kenarlık: 1 piksel katı #ccc;
+        border-collapse: collapse;
+    }
+    tablo td {
+        text-align: center;
+        genişlik: %3;
+    }
+    &lt;/style&gt;
+  &lt;/head&gt;&lt;
+  body&gt;
+  &lt;textarea id="input" style="width: %100; height: 50px; margin-bottom: 10px;" &gt;&lt;/textarea&gt;
+  &lt;div style="margin-bottom:10px;" &gt;
+  &lt;label&gt; shift 
+  &lt;span id="amount" style="font-weight:bold;" &gt;&lt;/span&gt;
+  &lt;input id="shiftSlider" type="range" min="1" max="25" value="14" step="1" style="width:70%"&gt;&lt;/label&gt;&lt;/div&gt;
+  
+  
+  &lt;div id="shiftedAlphabet" style="margin-bottom: 20px;" &gt;
+  &lt;/div&gt;
+  &lt;button id="decryptButton" class="birincil"&gt;&lt;span&gt;&lt;&gt;&lt;/button&gt;&lt;div id="output"&gt;&lt;/div&gt;&lt;script&gt;
+  
+  
+      
+  
+var button = document.getElementById("decryptButton");
+var slider = document.getElementById("shiftSlider");
+var alpha = document.getElementById("shiftedAlphabet");
+var amount = document.getElementById("amount");
+var input = document.getElementById("input");
+var output = document.getElementById("output");
+var alfabesi = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+var updateAmount = function() {
+    var shiftAmount = parseInt(slider.value, 10);
+    amount.innerHTML = shiftAmount;
+    var table = document.createElement("table");
+    var tbody = document.createElement("tbody");
+    var topRow = document.createElement("tr");
+    var bottomRow = document.createElement("tr");
+    var letterCell = document.createElement("td");
+    letterCell.innerHTML = "Orijinal";
+    topRow.appendChild(letterCell);
+    var letterCell = document.createElement("td");
+    letterCell.innerHTML = "Kaydırılmış";
+    bottomRow.appendChild(letterCell);
+    for (var i = 0; i &lt; alphabet.length; i++) {
+        var letterCell = document.createElement("td");
+        letterCell.innerHTML = alfabe[i];
+        topRow.appendChild(letterCell);
+        var letter2Cell = document.createElement("td");
+        var shiftedIndex = (i + shiftAmount) % 26;
+        letter2Cell.innerHTML = alfabe[shiftedIndex];
+        bottomRow.appendChild(letter2Cell);
+    }
+    tbody.appendChild(topRow);
+    tbody.appendChild(bottomRow);
+    table.appendChild(tbody);
+    alpha.innerHTML = "";
+    alpha.appendChild(tablo);
+}
+slider.addEventListener("change", function(evt) {
+    updateAmount();
+});
+
+button.addEventListener("click", function() {
+    var shiftAmount = parseInt(slider.value, 10);
+    var input = document.getElementById("input").value;
+    var şifresi çözüldü = "";
+    for (var i = 0; i &lt; input.length; i++) {
+        var currentLetter = input.charAt(i).toUpperCase();
+        var alphaIndex = alphabet.indexOf(currentLetter);
+        if (alphaIndex &gt; -1) {
+            var unshiftedIndex = (alphaIndex - shiftAmount);
+            if (unshiftedIndex &lt; 0) {
+                unshiftedIndex = alphabet.length + unshiftedIndex;
+            }
+            var unshiftedLetter = alfabe[unshiftedIndex];
+            şifresi çözüldü += unshiftedLetter;
+        } else {
+            şifresi çözüldü += currentLetter;
+        }}
+    
+    output.innerHTML = şifresi çözülmüş;
+});
+updateAmount();
+  &lt;/script&gt;
+
+  &lt;/body&gt;
+  &lt;/html&gt;</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sezar'ın düşmanının onlara yardım edecek bir bilgisayarı olmayacaktı, ancak Sezar Şifresi fikrini anlamaları muhtemelen bir saatten az sürecekti. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Kodu kırmayı ve mesajın şifresini çözmeyi başardınız mı? Büyük açıklama için aşağıya tıklayın!</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Mesajı açıkla]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Şifreleme, şifre çözme ve kırma</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Sezar Şifresi'nin bu keşfi sayesinde, artık veri şifrelemenin üç temel yönünü anlıyoruz:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><ul><li>Şifreleme: Verileri gizli bir anahtara göre karıştırma (bu durumda, alfabe kayması).</li><li>Şifre çözme: Gizli anahtarı kullanarak karıştırılmış verilerden özgün verileri kurtarma.</li><li>Kod kırma: Sırrı bilmeden, çeşitli akıllı teknikler kullanarak orijinal verileri ortaya çıkarmak.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Olası bir şifreleme tekniğini düşündüğümüzde, tüm bu yönleri düşünmemiz gerekir: şifrelemek ne kadar kolaydır? şifresini çözmek ne kadar kolay? Ve en önemlisi, hain bir bireyin kodu kırması ne kadar kolaydır?</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Artık Sezar Şifresi'ni verilerimizi güvence altına almak için kullanamıyoruz, çünkü kırılması çok kolay, ancak Şifre'yi anlamak bizi modern şifreleme tekniklerini anlamaya hazırlıyor.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">İsterseniz, Khan Academy'nin <a class="_8gcxk83" href="/computing/computer-science/cryptography/crypt/v/intro-to-cryptography" rel="noopener noreferrer" tabindex="0" target="_blank">Kadim Kriptografi</a> öğreticisinde Sezar Şifresi'nin derinliklerine dalabilirsiniz.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Referanslar]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

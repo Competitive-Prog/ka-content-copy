@@ -1,0 +1,2208 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Fizik | Simülasyonlar AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Fizik | Simülasyonlar AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Fizikçiler dünyanın doğal güçleriyle ilgilenirler. Bu güçlerin çoğunu burada, Dünya'da deneyimliyor ve etkilerini gözlemliyoruz, ama güçlerin kendileri görünmez. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Fizikçiler, doğal kuvvetleri görselleştirmek ve farklı kuvvet kombinasyonlarının farklı sonuçlar üretmek için nesneler üzerinde nasıl hareket ettiğini görmek için simülasyonları kullanabilirler.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Eğitim simülasyonları</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><a class="_8gcxk83" href="/science/physics" rel="noopener noreferrer" tabindex="0" target="_blank">Khan Academy Physics içeriğinden</a> bazı simülasyonlarla başlayalım. Bu simülasyonların birincil amacı öğrenme olduğundan, gerçek fizikçiler tarafından kullanılanlardan daha basittirler.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu simülasyon, manyetik alanları bir mıknatısın etrafına çizer ve bilgisayarların görünmez kuvvetleri görselleştirmemize nasıl izin verdiğinin harika bir örneğidir. Farklı açılardan görmek için, farenizi kullanarak mıknatısın etrafında döndürün.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>/*********************
+ 
+  
+ 
+//
+
+/ Ekran ortasına
+taşı çevirisi(200.5, 200.5);
+
+var magnetStrength = 100;
+var iğneBoyut = 10;
+var fieldColor = renk(10, 200, 20, 255);
+var BEYAZ = renk(255, 255, 255, 100);
+var lightVector =[-0.5, -3, 1];
+var dönen = doğru;
+
+/******************
+ 
+
+
+
+var magHeight = 50;
+var magDepth = 30;
+
+var RED = renk(200, 20, 20);
+var MAVİ = renk(20, 20, 200);
+var SİYAH = renk(0, 0, 0);
+
+var mıknatıs = {
+    yüzler: [[0,2,6,4],,[1,0,4,5], [5,4,6,7], [2,3,7,6], [3,1,5,7],[2,0,8,10],[0,1,9,8],[8,9,11,10],[3,2,10,11],[1,3,11,9]],renkler:[KIRMIZI, KIRMIZI, KIRMIZI, KIRMIZI,mavi, MAVİ, MAVİ, MAVİ, MAVİ, MAVİ, MAVİ],düğümler: [[0, -magHeight/2,magDepth/2],[0,magHeight/2,magDepth/2],[0,magHeight/2],  
+             
+             [          0,magHeight/2  ],[                              0,magDepth/
+            2],
+            [-magWidth/2,magHeight/2,magDepth/2],[-magWidth/2, -magHeight/2, -magDepth/2],[-magWidth/2,magHeight/2, -magDepth/2],[ magWidth/2, -magHeight/2,magDepth/2],[ magWidth/2,magHeight/2,magDepth/2],[ magWidth/2, -magHeight/2, -magDepth/2],[ magWidth/2,magHeight/2, -magDepth/2],[-magWidth/2, 0, 0], [magWidth/2, 0,
+            
+              
+            
+                  
+            
+                  
+            0]] // poles
+};
+
+var nesneleri = [mıknatıs];
+
+/******************
+ 
+ 
+
+
+    
+
+
+var subtractVectors = function(v1, v2) {
+    return [v1[0] - v2[0], v1[1] - v2[1], v1[2] - v2[2]];};
+
+
+var vectorTimesScalar = function(v, s) {
+    return [v[0] * s, v[1] * s, v[2] * s];};
+
+
+var vectorLength = function(v) {
+    return sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);};
+
+
+var normaliseVector = function(v) {
+    var d = vectorLength(v);
+    return [v[0]/d, v[1]/d, v[2]/d];};
+
+
+var dotProduct = function(v1, v2) {
+    return v1[0]*v2[0] + v1[1]*v2[1] + v1[2]*v2[2];};
+
+
+var normalOfPlane = fonksiyon(yüz, düğümler) {
+    var n1 = düğümler[face[0]];
+    var n2 = nodes[face[1]];
+    var n3 = nodes[face[2]];
+    
+    var v1 = subtractVectors(n1, n2);
+    var v2 = subtractVectors(n1, n3);
+    
+    var v3 = [[v1[1]*v2[2] - v1[2]*v2[1]],[v1[2]*v2[0] - v1[0]*v2[2]],
+              
+              [v1[0]*v2[1] - v1[1]*v2[0]]];
+              
+    dönüş v3;};
+
+
+/************
+ 
+//
+/ p2 var calculateForce = function(p1, p2
+) {
+    var vector = subtractVectors(p1, p2);
+    var dist = vectorLength(vector);
+    var kuvveti = magnetStrength / (dist * dist);
+    return vectorTimesSkaler(vector, force);};
+
+
+Mıknatıs alanının vektörünü bir noktada hesaplayın (x, y, z)var calculateField = function(point, pole1, pole2)
+{    
+    var v1 = calculateForce(point, pole1);
+    var v2 = calculateForce(pole2, point);    
+    var v3 = addVectors(v1, v2);
+    return normaliseVector(v3);};
+
+
+/*********************
+ 
+
+
+
+    
+    var p2 = magnet.nodes[13];
+    var v = calculateField(position, p1, p2);
+    var d = vectorTimesSkaler(v, boyut/2);
+    
+    var n1 = addVectors(position, d);
+    var n2 = subtractVectors(position, d);
+    
+    nodes.push(n1);
+    nodes.push(n2);
+    var e = nodes.length;
+    edges.push([e-2, e-1]);};
+
+
+Rastgele n iğne
+ekle var createField = function() {    
+    var dTheta = 20;
+    var len = 22;
+    
+    var pole1 = magnet.nodes[12];
+    var pole2 = magnet.nodes[13];
+    var düğümleri = [pole2];
+    var kenarları = [];
+    
+    for (var r = 15; r&lt;=50; r += 10) {for (var theta = 0; theta&lt;=360; theta += dTheta) {
+        
+            var x1 = pole2[0] + len;
+            var y1 = pole2[1] - r * cos(theta);
+            var z1 = pole2[2] + r * sin(theta);
+            var p1 = [x1, y1, z1];
+            edges.push([0, nodes.length]);
+            
+            for (var n=0; n&lt;40; n++) {
+                var v = calculateField(p1, pole1, pole2);
+                var d = vectorTimesSkaler(v, -len);
+                var p2 = addVectors(p1, d);
+                nodes.push(p1);
+                nodes.push(p2);
+                edges.push([nodes.length-2, nodes.length-1]);
+                p1 = p2;
+            }}}
+        
+    
+    addNeedle([x, y, z], needleSize, düğümler, kenarlar);
+    return {düğümler: düğümler, kenarlar: kenarlar};};
+
+
+var iğneleri = createField();
+objects.push(iğneler);
+
+/******************&lt;***
+ 
+
+
+
+    
+        
+    
+
+
+var rotateY3D = fonksiyon(teta, düğümler) {
+    var ct = cos(theta);
+    var st = günah(teta);
+    var x, y, z;
+
+    for (var i = 0; i &lt; nodes.length; i+=1) {
+        x = nodes[i][0];
+        y = düğümler[i][1];
+        z = düğümler[i][2];
+        düğümler[i] = [ct*x + st*z, y, -st*x + ct*z];}}
+;
+    
+
+var rotateX3D = fonksiyon(teta, düğümler) {
+    var ct = cos(theta);
+    var st = günah(teta);
+    var x, y, z;
+    
+    for (var i = 0; i &lt; nodes.length; i+=1) {
+        x = nodes[i][0];
+        y = düğümler[i][1];
+        z = düğümler[i][2];
+        düğümler[i] = [x, ct*y - st*z, st*y + ct*z];}}
+;
+    
+
+/*********************
+ 
+
+
+
+var drawEdges = function(obj) {
+    var nodes = obj.nodes;
+    var kenarları = obj.edges;
+    
+    for (var i = 0; i &lt; edges.length; i+=1) {
+        var node1 = nodes[edges[i][0]];
+        var node2 = nodes[edges[i][1]];
+        var d = (0.5 * (node1[2] + node2[2]) + 400) / 800;
+        stroke(lerpColor(WHITE, fieldColor, d));
+        line(node1[0], node1[1], node2[0], node2[1]);}}
+;
+
+
+    var drawFaces = function(obj) {
+    var nodes = obj.nodes;
+    var faces = obj.faces;
+    var colours = obj.colours;
+    
+    for (yüzlerde var f) {
+        var face = faces[f];
+        var fnorm = normalOfPlane(yüz, düğümler);
+        
+        if (fnorm[2] &lt; 0) {
+            // Shading
+            var l = dotProduct(lightVector, normaliseVector(fnorm));
+            Bazı arka plan ışığı
+            l = max(0, 0,1 + 0,9*l);
+            var c = lerpColor(renkler[f], SİYAH, l);
+            dolgu(c);
+              
+            if (face.length === 3) {triangle(nodes[face[0]][0], nodes[face[0]][1],nodes[face[1]][0], nodes[face[1]][1],nodes[face[2]][0], nodes[face[2]][1]);} else {
+                
+                quad(nodes[face[0]][0], nodes[face[0]][1],nodes[1]][0], nodes[face[1]][0
+                     ], nodes[face[2]][0], nodes[face[2]][1],nodes[face[3]][0],
+                         
+                         
+                     
+                     
+              düğümler[yüz[3]][1]);}}}
+
+    };
+
+
+              
+        Ekrana
+en yakın nesnede var findMaxZ = function(nodes) {
+    var maxZ = nodes[0][2];
+    for (var i=1; i&lt;nodes.length; i++) {if (nodes[i][2] &gt; maxZ) {
+        
+            maxZ = nodes[i][2];
+        }}
+    
+    maxZ;} dönüşü;
+
+
+İğneleri öndekilere ve arkadakilere
+bölün / / mıknatısı temsil eden belirli bir z var splitEdgesByZ = fonksiyon(şekil, hedefZ) {var
+inFront = {
+    düğümler: [], kenarlar: [] };
+    var behind = { nodes: [], edges: [] };
+    
+    for (var e=0; e&lt;shape.edges.length; e++) {
+        var edge = shape.edges[e];
+        var n1 = shape.nodes[edge[0]];
+        var n2 = shape.nodes[edge[1]];
+        var z = 0,5 * (n1[2] + n2[2]);
+        
+        var hedefi;
+        if (z &gt; targetZ) { target =  inFront;}
+        else { hedef =  arka;}
+        
+        target.nodes.push(n1);
+        target.nodes.push(n2);
+        var n = target.nodes.length;
+        target.edges.push([n-2, n-1]);
+    }
+    return [önde, arkada];};
+
+
+var draw = function() {
+        background(235, 254, 255);
+    
+    if (döner) {for (nesnelerde var o) {
+        
+            var nodes = objects[o].nodes;
+            rotateX3D(1, düğümler);
+            rotateY3D(1, düğümler);
+        }}   
+    
+    
+    var magnetZ = findMaxZ(magnet.nodes);
+    var needleGroups = splitEdgesByZ(iğneler, magnetZ);
+    
+    strokeWeight(2);
+    drawEdges(needleGroups[1]);
+    
+    strokeWeight(1);
+    inme(162, 169, 189);
+    drawFaces (mıknatıs);
+    
+    strokeWeight(2);
+    drawEdges(needleGroups[0]);};
+
+
+/************************
+ 
+
+
+
+    
+    var theta2 = (pmouseY - mouseY) * PI / 10;
+    
+    for (nesnelerde var o) {
+        var nodes = objects[o].nodes;
+        rotateY3D (teta1, düğümler);
+        rotateX3D(theta2, düğümler);    
+    }
+    döndürme = yanlış;};
+
+
+var keyControls = {
+    37: [rotateY3D, 2],38: [rotateX3D, -2],39: [rotateY3D, -2],40: [rotateX3D,
+    
+    
+    2]
+};
+
+Çalışmıyor
+var keyPressed = function() {if (keyControls[keyCode]) {
+    
+        var f = keyControls[keyCode];
+        for (nesnelerde var obj) {
+            f[0](f[1], objects[obj].nodes);}}}
+    
+; 
+        
+</pre></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu simülasyon, bir mıknatıs demir dolgularla çevrili olduğunda ne olduğunu gösterir. Mıknatıs açısını sol/sağ oklarla ve mıknatıs konumunu farenizle değiştirebilirsiniz.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>/******************
+ 
+ * Mıknatısın * açısını değiştirmek 
+ için sol ve sağ ok tuşlarını kullanın.
+/
+
+var filingLength = 6;
+var numFilings = 1000;
+var dosyalamalar;
+var sürtünme = 0.6;
+
+var Magnet = function() {
+    this.x = 170;
+    bu.y = 230;
+    this.width = 40;
+    this.height = 100;
+    this.angle = 0;
+    this.strength = 100;
+    
+    this.draw = function() {
+        var w = this.width/2;
+        var h = this.height/2;
+        
+        translate(this.x, this.y);
+        döndürmek (this.angle);
+        
+        noStroke();
+        doldur(0, 0, 0, 100);
+        rect(3-w, 3-h, this.width, this.height);
+        
+        strokeWeight(1);
+        inme(0, 0, 0);
+        doldurma(200, 20, 20);
+        rect(-w, -h, this.width, h);
+        doldurma(20, 20, 200);
+        rect(-w, 0, this.width, h);
+        
+        textSize(22);
+        textAlign(CENTER, CENTER);
+        doldurma(255, 255, 255);
+        text("N", 0, -this.height/4);
+        text("S", 0, this.height/4);
+        
+        resetMatrix();};
+    
+    
+    this.updatePolePositions = function() {
+        var s = (this.height / 2) * sin(this.angle);
+        var c = (this.height / 2) * cos(this.angle);
+
+        this.x1 = this.x + s;
+        this.x2 = this.x - s;
+        this.y1 = this.y - c;
+        this.y2 = this.y + c;};
+    
+    
+    this.rotate = fonksiyon(açı) {
+        this.angle += açı;
+        this.updatePolePositions();};
+    
+    
+    x1, y1, x2, y2
+    this.updatePolePositions();} öğesini ayarlayın;
+
+
+var Dosyalama = fonksiyon(x, y, uzunluk, teta) {
+    this.x = x;
+    this.y = y;
+    this.length = uzunluk/2;
+    this.theta = theta;
+    
+    this.draw = function() {
+        var t = this.theta;
+        var s = this.length * günah(t);
+        var c = this.length * cos(t);
+        var x1 = this.x + s;
+        var y1 = this.y - c;
+        var x2 = this.x - s;
+        var y2 = this.y + c;
+        line(x1, y1, x2, y2);};
+    
+    
+    this.barInteraction = fonksiyon(magnet) {    
+        var dx = this.x - magnet.x1;
+        var dy = this.y - magnet.y1;
+        var theta1 = atan2(dy, dx) + 90;
+        var f1 = magnet.strength / sqrt(dx*dx + dy*dy);
+        
+        dx = this.x - magnet.x2;
+        dy = this.y - magnet.y2;
+        var theta2 = atan2(dy, dx) - 90;
+        var f2 = magnet.strength / sqrt(dx*dx + dy*dy);
+        
+        var mx = f1 * cos(theta1) + f2 * cos(theta2);
+        var my = f1 * sin(theta1) + f2 * sin(theta2);
+        var f = (f1 + f2) / (f1 + f2 + 5);
+        var d = (360 + atan2(my, mx) - this.theta) % 180;
+        this.theta += d;};};
+    
+
+
+var addIronFilings = function(n) {
+    var filings = [];
+    
+    for (var i=0; i &lt; numFilings; i++) {
+        var x = random() * 400;
+        var y = rastgele() * 400;
+        var teta = rastgele() * 360;
+        fileings.push(new Fileling(x, y, fileingLength, theta);
+    }
+    iade dosyaları;};
+
+
+var barMagnet = yeni Magnet();
+
+Mıknatıslar çubuk mıknatıs
+var interact = fonksiyon(mıknatıslar) {for (var i=0; i &lt; numFilings; i++) {
+        
+     fileings[i].barInteraction(barMagnet);}};
+    
+
+
+var fileings = addIronFilings();
+etkileşim (dosyalama);
+
+var updateDrawing = function() {
+    var x, y;
+    arka plan(235, 254, 255);
+    
+    Çekme
+    strokAğırlık(1);
+    inme(20, 20, 20);
+    for (var i=0; i &lt; numFilings; i++) {
+        fileings[i].draw();
+    }
+    
+    barMagnet.draw();};  
+
+
+mouseDragged = function() {
+    barMagnet.x = mouseX;
+    barMagnet.y = mouseY;
+    barMagnet.updatePolePositions();
+    etkileşim (dosyalama);
+    updateDrawing();};
+
+
+keyPressed = function() {// Magnet'i döndür if (keyCode === 37) {barMagnet.rotate(-5);} else if (keyCode === 39) {
+    
+        
+        barMagnet.rotate(5);
+    }
+    
+    
+    etkileşim (dosyalama);
+    updateDrawing();};
+
+
+updateDrawing();
+</pre></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Eğlence simülasyonları</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Animasyon stüdyoları ve video oyunu geliştiricileri, gerçekçi dijital dünyalar yaratmak için fiziğe güveniyor. Genellikle yerleşik bir <strong>fizik motoruna</strong> (fiziksel sistemleri simüle edebilen bir kod kütüphanesi) sahip bir yazılım kullanırlar.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><a class="_8gcxk83" href="/partner-content/pixar" rel="noopener noreferrer" tabindex="0" target="_blank">Khan Academy Pixar içeriğinden</a>, fizik motorlarında bulunan araçların basitleştirilmiş versiyonları olan birkaç simülasyona göz atalım.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Aşağıdaki simülasyon, bir parçacık sistemi olarak bir su modeli kullanarak bir kabı dolduran suyu görselleştirmektedir. Parçacık özelliklerini ve yerçekimi kuvvetini değiştirerek simülasyonun daha gerçekçi görünmesini sağlamaya çalışın.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1m361lju"><pre>/******************
+   
+
+* Değişen partikül boyutunun etkisi nedir?
+/
+
+var ARKA PLAN = renk(230, 240, 250);
+var BACKGROUND = renk(10);
+var RED = renk(255, 0, 0);
+var MAVİ = renk(0, 0, 255);
+var YEŞİL = renk(0, 255, 0);
+var SARI = renk(255, 255, 0);
+
+var running = true;
+var showCount = false;
+frameRate(40);
+noStroke();
+var sansFont = createFont("sans", 15);
+
+Var yerçekimi = 0.02 ile
+oynayacak fiziksel değişkenler; // Yerçekimi
+nedeniyle kuvvet var elastikiyeti = 0.4;Çarpışmada
+
+kaybolan enerji// Ekran değişkeni
+var col = 0,3;
+var opaklık = 250;
+var waterColor = lerpColor(MAVİ, YEŞİL, col) + (opaklık &lt;&lt; 24);
+
+Ekranı
+güncellemeden önce kaç yineleme var framesNotShown = 3;
+
+Yapılan
+hesaplama sayısının çok kaba tahmini var hesaplamalar = 0;
+
+Partikül özellikleri
+var suBoyut = 3;
+var akış hızı = 4;
+var waterSize2 = waterSize * 2;
+var waterSizeS = sq(waterSize2);
+
+var waterMass = 10;
+var waterMass2 = 2 * waterMass;
+
+var initialSpeed = 0.4;
+
+var cupH = 40;
+var cupW = 140;
+
+var cupY1 = 190;
+var cupY2 = cupY1 + cupH;
+
+var cupX = genişlik * 0.5 + 50;
+var cupX1 = cupX - cupW / 2;
+var cupX2 = cupX + cupW / 2;
+
+var dotProduct = function(ax, ay, bx, by) {
+    return ax * bx + ay * by;};
+
+
+var forEach = function(arr, func) {
+    var i, n = arr.length;
+    for (i = 0; i &lt; n; i++) {
+        arr[i][func]();}}
+;
+    
+
+/******************GUI_Component***
+ 
+ 
+
+
+
+    
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.name = ad;
+    
+    if (updateFunction) {
+        this.trigger = updateFunction.bind(this);
+    }
+    
+    this.selected = false;
+    this.disabled = false;
+    this.transition = 0;
+    this.activeCursor = HAND;};
+
+
+GUI_Component.prototype.draw = function() {if (this.mouseOver()) {fill(100);} else {
+    
+        
+        fill(200);}
+    
+    
+    
+    noStroke();
+    rect(this.x, this.y, this.w, this.h, 12);
+    
+    doldurma(20);
+    textFont(sansFont, 15);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2 + 1);};
+
+
+GUI_Component.prototype.mouseOver = function() {
+    return (mouseX &gt;= this.x &amp;&amp; mouseX &lt;= this.x + this.w &amp;&amp;mouseY &gt;= this.y &amp;&amp; mouseY
+            &lt;= this.y + this.h);};
+
+
+GUI_Component.prototype.mousePressed = function() {
+    this.selected = this.mouseOver();};
+
+
+GUI_Component.prototype.mouseDragged = function() {};
+
+GUI_Component.prototype.mouseReleased = function() {if (this.selected &amp; !this.disabled &amp; this.mouseOver()) {
+    
+        this.trigger();}
+    
+    this.selected = false;};
+
+
+GUI_Component.prototype.trigger = function() {
+    // Üzerine yazılacak
+};
+
+GUI_Component.prototype.fade = function() {if (this.selected || this.mouseOver()) {
+    
+        cursor(this.activeCursor);
+        this.transition = min(10, this.transition + 1);
+    } else {
+        this.transition = max(0, this.transition - 1);}};}
+
+
+    
+/***************params.name GUI_Component***
+       
+
+
+
+    
+    this.defaultCol = renk(230, 230, 230, 200);
+    this.highlightCol = params.highlightCol || renk(210, 210, 210, 250);
+    if (params.filled) {
+        this.makeFilled();}}
+;
+    
+button.prototype = Object.create(GUI_Component.prototype);
+
+Button.prototype.draw = function() {
+    this.fade();
+    
+    if (this.disabled) {
+        fill(180);
+        noStroke();
+    } else {
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        strokeWeight(1);
+        inme(200);
+    }
+    
+    rect(this.x, this.y - 1, this.w, this.h + 3, 12);
+    
+    if (this.disabled) {fill(120);} else {
+        
+        fill(20);}
+    
+    
+    
+    textFont(sansFont, 16);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2 + 1);};
+
+
+Button.prototype.drawFilled = function() {
+    this.fade();
+    
+    if (this.disabled) {
+        fill(180);
+        noStroke();
+    } else {
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        strokeWeight(1);
+        stroke(this.highlightCol);
+    }
+    
+    rect(this.x, this.y - 1, this.w, this.h + 3, 19);
+    
+    if (this.disabled) {fill(120);} else {
+        
+        fill(lerpColor(this.highlightCol, color(255, 255, 255), this.transition / 10));}
+    
+    
+    
+    textFont(sansFont, 16);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2);};
+
+
+Button.prototype.makeFilled = function() {
+    this.draw = this.drawFilled;
+    this.defaultCol = renk(0, 0, 0, 1);};
+
+
+var CheckBox = function(x, y, w, h, name) {Button.call(this, x, y, w, h, {
+    name: name });
+    this.box = this.h - 6;
+    this.bx = this.x + 5;
+    this.by = this.y + 3;};
+
+CheckBox.prototype = Object.create(Button.prototype);
+
+CheckBox.prototype.trigger = function() {
+    //showing[this.name] = !showing[this.name];};  
+
+
+CheckBox.prototype.draw = function() {
+    this.fade();
+    
+    if (this.transition) {
+        noStroke();
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        rect(this.x, this.y, this.w, this.h + 1, 4);
+    }
+    
+    doldurma(20);
+    textFont(sansFont, 15);
+    textAlign(SOL, ORTA);
+    text(this.name, this.x + this.box + 9, this.y + this.h/2 + 1);
+    
+    noFill();
+    inme(10);
+    strokeWeight(1);
+    rect(this.bx, this.y + 3, this.box, this.box);
+
+/*
+    if (gösterilen[this.name]) {
+        line(this.bx + 1, this.by + 1, this.bx + this.box, this.by + this.box);
+        line(this.bx + this.box, this.by + 1, this.bx + 1, this.by + this.box);
+    }
+    */
+};
+}
+/************||***
+ 
+
+
+
+    
+    
+    this.ballD = this.ballR * 2;
+    
+    x += this.ballR;
+    w -= this.ballR * 2;
+    
+    var h = this.ballD + (params.name ? 16 : 0);
+    y += h - this.ballR;
+    
+    GUI_Component.call(bu, x, y, w, h, params.name, params.trigger);
+    
+    this.x2 = x + w;
+    this.fill = params.fill || renk(240);
+    this.stroke = params.stroke || renk(180);
+    
+    this.min = params.min || 0;
+    bu.max = params.max === tanımsız ? 1 : paramlar.max;
+    this.val = params.now === tanımsız ? this.min : params.now;
+    this.decimalPlaces = params.decimalPlaces === tanımsız ? 0 : params.decimalPlaces;
+    this.setValue(this.val);
+    this.trigger();
+    
+    this.hideVal = params.hideVal;
+    this.activeCursor = 'ew-resize';};
+
+Slider.prototype = Object.create(GUI_Component.prototype);
+
+Slider.prototype.draw = function() {if (this.name) {
+    
+        fill(20);
+        textSize(13);
+        textAlign(CENTER, BASELINE);
+        text(this.name,this.x  + this.w / 2, this.y - 14);
+        text(this.name + ": " + this.val,this.x + this.w / 2,  this.y - 14);
+    }
+    
+    inme (this.stroke);
+    inmeAğırlık(3);
+    line(this.x, this.y, this.x2, this.y);
+    
+    this.fade();
+    fill(lerpColor(color(this.fill), color(this.stroke), this.transition / 10));
+    
+    if (!this.hideVal) {
+        elipse(this.bx, this.y, this.ballD, this.ballD);
+        doldurma(20);
+        textSize(11);
+        textAlign(CENTER, CENTER);
+        text("" + this.val, this.bx, this.y);
+    } else {
+        stroke(10);
+        strokeWeight(1);
+        elipse(this.bx, this.y, this.ballD, this.ballD);}}
+;
+
+
+    Slider.prototype.mouseOver = function() {
+    return dist(mouseX, mouseY, this.bx, this.y) &lt; this.ballR;};
+
+
+Slider.prototype.mousePressed = function() {if (this.mouseOver()) {
+    
+        this.selected = true;
+        true değerini döndür;}}
+;
+    
+
+Slider.prototype.mouseDragged = function() {if (this.selected) {
+    
+        this.bx = constrain(mouseX, this.x, this.x2);
+        var p = pow(10, this.decimalPlaces);
+        this.val = round(map(this.bx, this.x, this.x2, this.min, this.max) * p) / p;
+        this.trigger();
+        true değerini döndür;}}
+;
+    
+
+Slider.prototype.setValue = function(v) {
+    this.val = constrain(v, this.min, this.max);
+    this.bx = map(this.val, this.min, this.max, this.x, this.x2);
+    this.trigger();};
+
+}
+/******************
+       
+   
+ 
+/
+{
+var Araç Çubuğu = function(x, y, w) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = 8;
+    this.components = [];};
+
+
+Toolbar.prototype.draw = function() {if (!this.components.length) {
+    return; }
+    
+    doldurma(250);
+    strokeWeight(1);
+    inme(180);
+    rect(this.x, this.y, this.w, this.h, 8);
+    forEach(this.components, 'draw');};
+
+
+Toolbar.prototype.add = function(type, params) {
+    params = params || {};
+    var h = params.h ||20;
+    var bileşeni = yeni tür(this.x + 5, this.y + this.h, this.w - 10, h, params);
+    this.components.push(component);
+    this.h += component.h + 8;};
+
+
+Toolbar.prototype.mouseOver = function() {
+    return mouseX &gt; this.x &amp; mouseX &lt; this.x + this.w &amp;mouseY &gt; this.y &amp;&amp;
+           mouseY &lt; this.y + this.h;};
+
+
+Toolbar.prototype.mousePressed = function() {
+    forEach(this.components, 'mousePressed');};
+
+
+Toolbar.prototype.mouseReleased = function() {
+    forEach(this.components, 'mouseRelease');};
+
+
+Toolbar.prototype.mouseDragged = function() {
+    forEach(this.components, 'mouseDragged');};
+
+}
+/******
+       
+//
+/ Parçacıkların bir konumu, hızı, rengi ve kütleleri
+vardır Parçacık = fonksiyon(x, y, kütle) {
+    // Konum
+    this.x = x;
+    this.y = y;
+    this.mass = kütle;
+    
+    Velocity
+    var speed = initialSpeed * random() / waterSize;
+    var açısı = 360 * rastgele();
+    this.dx = hız * cos (açı);
+    this.dy = hız * günah (açı);};
+
+
+Particle.prototype.collide = function(that) {
+    
+    var dx = this.x - that.x;
+    if (dx &gt; waterSize2) { return; }
+    
+    var dy = this.y - that.y;
+    if (dy &gt; waterSize2) { return; }
+    
+    var d = dx * dx + dy * dy;
+    
+    if (d &lt; waterSizeS) {
+        // Parçacıklar çarpışıyor
+        var çarpışmaDist = sqrt(d + 0.1);
+        var çarpışmaDistI = 1 / sqrt(d + 0.1);
+        
+        Çarpışma yönünde birim vektörü bulun var çarpışmaVi
+        = dx * çarpışmaDistI;
+        var collisionVj = dy * collisionDistI;
+        
+        Çarpışma vektörüne
+        yansıtılan parçacığın hızını bulun var çarpışmaV1 = (this.dx * dx + this.dy * dy) * collisionDistI;
+        var collisionV2 = (that.dx * dx + that.dy * dy) * collisionDistI;
+        
+        Çarpışma vektörüne
+        dik parçacık hızını bulun var perpV1 = (this.dy * dx - this.dx * dy) * collisionDistI;
+        var perpV2 = (that.dy * dx - that.dx * dy) * collisionDistI;
+        
+        Çarpışma
+        yönünde hareketi bulun var v1p = çarpışmaV2 * elastikiyet;
+        var v2p = çarpışmaV1 * elastikiyet;
+        
+        Güncelleme hızları
+        this.dx = v1p * collisionVi - perpV1 * collisionVj;
+        this.dy = v1p * collisionVj + perpV1 * collisionVi;
+        that.dx = v2p * collisionVi - perpV2 * collisionVj;
+        that.dy = v2p * collisionVj + perpV2 * collisionVi;
+        
+        Çakışmayı
+        önlemek için hareket edin var çakışma = (waterSize2 - collisionDist + 0.5) * 0.5;
+        this.x += collisionVi * çakışma;
+        this.y += çarpışmaVj * çakışma;
+        that.x -= collisionVi * örtüşme;
+        that.y -= collisionVj * örtüşmesi;
+        hesaplamalar++;}}
+;
+    
+
+/************************
+       
+
+
+
+var addWater = function() {if (!particles.length || particles[particles.length - 1].y &gt; 0) {
+    
+        var x = cupX + random() - 0.5;
+        var y = -waterSize2;
+        particles.push(yeni Parçacık(x, y, waterMass));}}
+;
+
+
+    /************************
+       
+
+
+
+
+toolbar.add(Kaydırıcı, {ad: "Parçacık boyutu",min: 1, maksimum: 10, şimdi: waterSize,trigger
+    
+    : function() {
+    
+        waterSize = this.val;
+        waterSize2 = waterSize * 2;
+        waterSizeS = sq(waterSize2);
+    }}
+);
+toolbar.add(Kaydırıcı, {ad: "Yerçekimi",maksimum: 2, şimdi: 0,2,ondalıkYerler: 1,tetikleyici
+    
+    
+    : işlev() {
+    yerçekimi = this.val / 10; }}
+);
+toolbar.add(Kaydırıcı, {name: "Elasticity",max: 1, now: 0.5,decimalPlaces: 2,trigger: function() {
+    elasticity = this.val; }}
+);
+
+    
+    
+    toolbar.add(Kaydırıcı, {name: "Akış hızı",min: 0, max: 6, şimdi: 1,trigger
+    
+    : function() {
+    flowRate = 64 &gt;&gt; this.val; }}
+);
+toolbar.add(Kaydırıcı, {ad: "Renk",min: 0,1, maksimum: 1, şimdi: col,ondalıkYerler: 2,hideVal: true,trigger
+    
+    
+    
+    : function() {
+    
+        col = this.val * 255;
+        var c = renk(col, col, 255);
+        suluRenk = c + (opaklık &lt;&lt; 24);
+        this.fill = c;
+    }}
+);
+toolbar.add(Button, {
+    name: 'Restart',
+    trigger: Program.restart
+});
+toolbar.add(Button, {name: 'Pause',trigger: function() {if (running) {this.name = "Play";} else {
+    
+            
+            
+        this.name = "Pause";}
+        
+        
+        
+    running = !running;
+    }}
+);
+
+/*********************
+       
+
+
+
+    
+    hesaplamalar = 0;
+    
+    için (; n--;) {
+        particleCount = particles.length;
+        hesaplamalar = (particleCount * particleCount + 3 * particleCount) / 2;
+        
+        (i = particleCount; i--;) için ivmeyi
+        hesaplayın {
+            p = parçacıklar[i];
+            p.dy += yerçekimi;
+            for (j = i + 1; j &lt; particleCount; j++) {
+                p.collide(particles[j]);
+            }}
+        
+        
+        Parçacıkları
+        hareket ettirin var y = cupY2 - waterSize;
+        var x1 = cupX1 + 6 + waterSize;
+        var x2 = cupX2 - 6 - waterSize;
+        
+        for (i = particleCount; i--;) {
+            p = parçacıklar[i];
+
+            Bounce off cup
+            // Eğer fincan
+            içinde if (p.y &lt; y + 10 &amp; p.x &gt; cupX1 &amp;&amp; p.x &lt; cupX2) {
+                p.y += p.dy;
+                p.x += p.dx;
+                
+                if (p.y &gt; cupY1) {// Alt kenar
+                    if (p.y &gt; y) {
+                    
+                        p.y = y;
+                        p.dy *= -elastikiyet;
+                        hesaplamalar++;
+                    }
+                    
+                    if (p.x &lt; x1) {
+                        // Sol kenar
+                        p.x = x1;
+                        p.dx *= -elastikiyet;
+                        hesaplamalar++;
+                    } else if (p.x &gt; x2) {
+                        // Sağ kenar
+                        p.x = x2;
+                        p.dx *= -elastikiyet;
+                        hesaplamalar++;
+                    }}}
+                
+            else {
+                p.x += p.dx;
+                p.y += p.dy;
+            }
+            
+            if (p.y &gt; yükseklik + waterSize) {
+                particles.splice(i, 1);}}}
+    
+}
+        ;
+            
+
+var drawInfo = function() {
+    textAlign(LEFT, BASELINE);
+    textSize(15);
+    doldurma(0);
+    metin(this.__frameRate, 5, yükseklik - 60);
+    text("Parçacık sayısı: " + parçacıklar.uzunluk, 5, yükseklik - 48);
+    text("Kene başına hesaplamalar: " + hesaplamalar, 5, yükseklik - 30);
+    
+    var p = min(1, norm(hesaplamalar, 0, 80000));
+    if (p &lt; 0.5) {fill(lerpColor(GREEN, YELLOW, p * 2));} else {
+        
+        fill(lerpColor(SARARI, KIRMIZI, p * 2 - 1));}
+    
+    
+    
+    noStroke();
+    rect(0, yükseklik - 25, genişlik, 25);
+    inme(0);
+    inmeAğırlık(3);
+    line(genişlik * p, yükseklik - 25, genişlik * p, yükseklik);};
+
+
+var draw = function() {
+    background(BACKGROUND);
+    imleç('varsayılan');
+    
+    if (running &amp; particles.length &lt; 400) {if (flowRate !== 64 &amp;&amp; frameCount % flowRate === 0) {
+        
+            addWater();
+        }}
+    
+    
+    strokeWeight (waterSize2);
+    inme (suluboya);
+    for (var i = parçacıklar.uzunluk; i--;) {
+        point(particles[i].x, particles[i].y);
+    }
+    
+    Beraberlik kupası
+    noStroke();
+    doldurma(160);
+    rekt (cupX1, cupY2, cupW, 6, 6);
+    rect(cupX1, cupY1, 6, cupH + 6, 6);
+    rect (cupX2 - 6, cupY1, 6, cupH + 6, 6);
+    
+    if (çalışıyor) {
+        update(framesNotShown);
+    }
+    toolbar.draw();
+    if (showCount) {
+        fill(255);
+        textAlign(SOL, BASELINE);
+        metin(parçacıklar.uzunluk, 5, yükseklik - 6);}}
+;
+    
+
+/******************
+ 
+
+
+
+    
+    if (!toolbar.mouseOver() &amp;&amp; flowRate === 64) {
+        var x = cupX + random() - 0.5;
+        var y = -waterSize2;
+        particles.push(yeni Parçacık(x, y, waterMass));}}
+;
+
+
+    mouseReleased = function() {
+    toolbar.mouseRelease();};
+
+
+mouseDragged = function() {
+    toolbar.mouseDragged();};
+
+
+mouseOut = function() {
+    toolbar.mouseRelease();};
+
+
+keyPressed = function() {if (key.toString() === 'c') {
+    
+        showCount = !showCount;}};
+    
+
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bir sonraki simülasyon ayrıca gerçek dünyadaki bir fenomeni simüle etmek için bir parçacık sistemi kullanıyor: havai fişekler. Fiziksel kuvvetleri, fırlatma pozisyonunu ve parçacık özelliklerini kontrol eden 16 farklı parametreyle oynayabilirsiniz. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>Hareketi çerçevelere
+değil zamana bağlı hale getirin / / Ölü parçacıkların çıkarılmasını daha verimli
+
+hale getirin var yerçekimi, dragFactor;
+
+var GROUND_Y = yükseklik - 20;
+var PARTICLE_SIZE = 4;
+var EXPLODER_SIZE = 8;
+
+var sansFont = createFont("sans", 15);
+var serifFont = createFont("serif", 16);
+var TEXTCOL = renk(20, 20, 20);
+var SWATCHSIZE = 128;
+var swatch;
+
+Kodu düzenlerken daha az gecikmeli hale getirmek için bu işlevin içindeki tüm kodlara açıklama ekleyin.
+var createSwatch = function(n, brightness) {
+    loadPixels();
+    var px = imageData.data;
+    
+    var ni = 1 / n;
+    var x, y, h, s, r, g, b, i, f, p, q, t;
+    var indeksi;
+    
+    var s = 0.5;          Doygunluk
+    var v = parlaklık;     (
+    
+    x = 0; x &lt; n; x++) {
+        h = ni * x;     (y = 0; y &lt; n; y++) {
+            s = ni * y; // Y ekseni
+            boyunca doygunluk//v = ni * y; // Y ekseni
+        
+            boyunca parlaklık i = zemin(h * 6);
+            f = h * 6 - i;
+            p = v * (1 - s);
+            q = v * (1 - f * s);
+            t = v * (1 - (1 - f) * s);
+            anahtar (i % 6) {
+                durum 0: r = v; g = t; b = p; kesme;
+                durum 1: r = q; g = v; b = p; mola;
+                durum 2: r = p; g = v; b = t; mola;
+                durum 3: r = p; g = q; b = v; mola;
+                durum 4: r = t; g = p; b = v; mola;
+                durum 5: r = v; g = p; b = q; mola;
+            }
+            index = x + (y * genişlik) &lt;&lt; 2;
+            px[index++] = r * 0xFF | 0;
+            px[index++] = g * 0xFF | 0;
+            px[index++] = b * 0xFF | 0;
+        }}
+    
+    updatePixels();
+    return get(0, 0, n, n);};
+
+
+/***************GUI_Component***
+       
+
+
+
+    
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.name = ad;
+    
+    if (updateFunction) {
+        this.trigger = updateFunction.bind(this);
+    }
+    
+    this.selected = false;
+    this.disabled = false;
+    this.transition = 0;};
+
+
+GUI_Component.prototype.draw = function() {
+    var y = this.y + this.h;
+    doldurma(20);
+    inme(20);
+    strokeWeight(2);
+    if (this.mouseOver()) {
+        line(this.x + 5, y, this.x + this.w - 5, y);
+    }
+    
+    textFont(sansFont, 14);
+    textAlign(CENTER, BASELINE);
+    text(this.name, this.x + this.w / 2, y - 2);};
+
+
+GUI_Component.prototype.mouseOver = function() {
+    return (mouseX &gt;= this.x &amp;&amp; mouseX &lt;= this.x + this.w &amp;&amp;mouseY &gt;= this.y &amp;&amp; mouseY
+            &lt;= this.y + this.h);};
+
+
+GUI_Component.prototype.mousePressed = function() {
+    this.selected = this.mouseOver();};
+
+
+GUI_Component.prototype.mouseDragged = function() {};
+
+GUI_Component.prototype.mouseReleased = function() {if (this.selected &amp; !this.disabled &amp; this.mouseOver()) {
+    
+        this.trigger();}
+    
+    this.selected = false;};
+
+
+GUI_Component.prototype.trigger = function() {
+    // Üzerine yazılacak
+};
+
+GUI_Component.prototype.fade = function() {if (this.selected || this.mouseOver()) {this.transition = min(10, this.transition + 1);} else {
+    
+        
+        this.transition = max(0, this.transition - 1);}};}
+
+
+    
+    
+/******************params.name GUI_Component***
+       
+
+
+
+    
+    this.defaultCol = renk(230, 230, 230, 200);
+    this.highlightCol = params.highlightCol || renk(210, 210, 210, 250);
+    if (params.filled) {
+        this.makeFilled();}}
+;
+    
+button.prototype = Object.create(GUI_Component.prototype);
+
+Button.prototype.draw = function() {
+    this.fade();
+    
+    if (this.disabled) {
+        fill(180);
+        noStroke();
+    } else {
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        strokeWeight(1);
+        inme(200);
+    }
+    
+    rect(this.x, this.y - 1, this.w, this.h + 3, 12);
+    
+    if (this.disabled) {fill(120);} else {
+        
+        fill(TEXTCOL);}
+    
+    
+    
+    textFont(sansFont, 15);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2 + 1);};
+
+
+Button.prototype.drawFilled = function() {
+    this.fade();
+    
+    if (this.disabled) {
+        fill(180);
+        noStroke();
+    } else {
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        strokeWeight(1);
+        stroke(this.highlightCol);
+    }
+    
+    rect(this.x, this.y - 1, this.w, this.h + 3, 19);
+    
+    if (this.disabled) {fill(120);} else {
+        
+        fill(lerpColor(this.highlightCol, color(255, 255, 255), this.transition / 10));}
+    
+    
+    
+    textFont(sansFont, 16);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2);};
+
+
+Button.prototype.makeFilled = function() {
+    this.draw = this.drawFilled;
+    this.defaultCol = renk(0, 0, 0, 1);};
+
+
+var CheckBox = function(x, y, w, h, name) {Button.call(this, x, y, w, h, {
+    name: name });
+    this.box = this.h - 6;
+    this.bx = this.x + 5;
+    this.by = this.y + 3;};
+
+CheckBox.prototype = Object.create(Button.prototype);
+
+CheckBox.prototype.trigger = function() {
+    //showing[this.name] = !showing[this.name];};  
+
+
+CheckBox.prototype.draw = function() {
+    this.fade();
+    
+    if (this.transition) {
+        noStroke();
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        rect(this.x, this.y, this.w, this.h + 1, 4);
+    }
+    
+    doldurma(20);
+    textFont(sansFont, 15);
+    textAlign(SOL, ORTA);
+    text(this.name, this.x + this.box + 9, this.y + this.h/2 + 1);
+    
+    noFill();
+    inme(10);
+    strokeWeight(1);
+    rect(this.bx, this.y + 3, this.box, this.box);
+
+/*
+    if (gösterilen[this.name]) {
+        line(this.bx + 1, this.by + 1, this.bx + this.box, this.by + this.box);
+        line(this.bx + this.box, this.by + 1, this.bx + 1, this.by + this.box);
+    }
+    */
+};
+
+Renk
+ayarlamak için düğme var Swatch = function(x, y, w, h, params) {params.trigger = function() {
+    
+        this.showSwatch = !this.showSwatch;};
+    
+    
+    Button.call(bu, x, y, w, h, params);
+    this.color = params.color || renk(255, 0, 0);
+    this.hue = hue(this.color) / 255;
+    this.sat = doygunluk(this.color) / 255;
+    this.bri = parlaklık(this.color) / 255;
+
+    this.defaultCol = renk(250);
+    this.updateFunction = params.update;
+    
+    if (this.updateFunction) { this.updateFunction(); }
+    
+    this.showSwatch = false;
+    this.sx = this.x + this.w + 16;
+    this.sy = this.y - 4;
+    this.sx2 = this.sx + SWATCHSIZE;
+    this.sy2 = this.sy + SWATCHSIZE;};
+
+Swatch.prototype = Object.create(Button.prototype);
+
+Swatch.prototype.draw = function() {
+    this.fade();
+    
+    fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+    noStroke();
+    
+    rect(this.x, this.y - 1, this.w, this.h + 3, 8);
+    
+    var my = this.y + this.h / 2;
+    
+    doldurma(20);
+    textFont(sansFont, 15);
+    textAlign(SOL, ORTA);
+    var txt = this.name + ":";
+    text(txt, this.x + 3, my + 1);
+    
+    strokeWeight(1);
+    inme(20);
+    fill(this.color);
+    rect(this.x + textWidth(txt) + 8, my - 8, 16, 16);
+    
+    if (!swatch) { swatch = createSwatch(SWATCHSIZE, 0.8); }
+    
+    TODO: make a swatch object
+    if (this.showSwatch) {
+        noStroke();
+        doldur(0, 0, 0, 50);
+        rect(this.sx + 2, this.sy + 2, SWATCHSIZE + 2, SWATCHSIZE + 29);
+        doldurma(0);
+        rect(this.sx, this.sy, SWATCHSIZE, SWATCHSIZE + 30);
+        image(swatch, this.sx, this.sy);
+        
+        noFill();
+        strokeWeight(1);
+        inme(255);
+        elips(this.sx + this.hue * SWATCHSIZE, this.sy + this.sat * SWATCHSIZE, 5, 5);
+        
+        strokeWeight(2);
+        inme(240);
+        rect(this.sx - 1, this.sy - 1, SWATCHSIZE + 2, SWATCHSIZE + 2);
+        
+        if (this.mouseOverSwatch()) {
+            colorMode(HSB);
+            var hue = norm(mouseX, this.sx, this.sx2);
+            var sat = norm(mouseY, this.sy, this.sy2);
+            fill(hue * 255, oturmuş * 255, this.bri * 255);
+            rect(this.sx - 1, this.sy2 + 1, SWATCHSIZE + 2, 24);
+            colorMode(RGB);
+        } else {
+            textAlign(CENTER, CENTER);
+            doldurma(0);
+            rect(this.sx - 1, this.sy2 + 1, SWATCHSIZE + 2, 24);
+            doldurma(255);
+            text("Renk seç", this.sx + SWATCHSIZE / 2, this.sy2 + 12);}}}
+    ;
+        
+
+
+Swatch.prototype.setColor = function() {
+    colorMode(HSB);
+    this.color = color(this.hue * 255, this.sat * 255, this.bri * 255);
+    colorMode(RGB);};
+
+
+Swatch.prototype.findColor = function() {
+    this.hue = norm(mouseX, this.sx, this.sx2);
+    this.sat = norm(mouseY, this.sy, this.sy2);};
+
+
+Swatch.prototype.mouseOverSwatch = function() {
+    return mouseX &gt;= this.sx &amp;&amp; mouseX &lt;= this.sx2 &amp;&amp;mouseY &gt;= this.sy &amp;&amp; mouseY
+           &lt;= this.sy2;};
+
+
+Swatch.prototype.mousePressed = function() {
+    this.selected = this.mouseOver();
+    if (this.showSwatch &amp;&amp; !this.mouseOverSwatch()) {
+        this.showSwatch = false;}}
+;
+    
+
+Swatch.prototype.mouseReleased = function() {if (this.selected &amp; this.mouseOver()) {this.trigger();} else if (this.showSwatch) {if (this.mouseOverSwatch()) {
+    
+            
+        
+        this.findColor();
+            
+    this.setColor();
+            if (this.updateFunction) {this.updateFunction(this.color);}} else {
+                this.showSwatch = false;
+            
+        }}
+        
+    
+    
+            this.selected = false;};
+
+}
+/***************
+       
+
+
+
+    
+    
+    this.ballD = this.ballR * 2;
+    
+    x += this.ballR;
+    w -= this.ballR * 2;
+    
+    var h = this.ballD + (params.name ? 16 : 0);
+    y += h - this.ballR;
+    
+    GUI_Component.call(bu, x, y, w, h, params.name, params.trigger);
+    
+    this.x2 = x + w;
+    this.fill = params.fill || renk(240);
+    this.stroke = params.stroke || renk(180);
+    
+    this.min = params.min || 0;
+    bu.max = params.max === tanımsız ? 1 : paramlar.max;
+    this.val = params.now === tanımsız ? this.min : params.now;
+    this.decimalPlaces = params.decimalPlaces === tanımsız ? 0 : params.decimalPlaces;
+    this.setValue(this.val);
+    this.trigger();};
+
+Slider.prototype = Object.create(GUI_Component.prototype);
+
+Slider.prototype.draw = function() {if (this.name) {
+    
+        fill(20);
+        textSize(13);
+        textAlign(CENTER, BASELINE);
+        metin(this.name,this.x  + this.w / 2, this.y - 16);
+        text(this.name + ": " + this.val,this.x + this.w / 2,  this.y - 14);
+    }
+    
+    this.fade();
+    fill(lerpColor(color(this.fill), color(this.stroke), this.transition / 10));
+    inme (this.stroke);
+    inmeAğırlık(3);
+    line(this.x, this.y, this.x2, this.y);
+    elipse(this.bx, this.y, this.ballD, this.ballD);
+    
+    doldurma(20);
+    textSize(11);
+    textAlign(CENTER, CENTER);
+    text("" + this.val, this.bx, this.y);};
+
+
+Slider.prototype.mouseOver = function() {
+    return dist(mouseX, mouseY, this.bx, this.y) &lt; this.ballR;};
+
+
+Slider.prototype.mousePressed = function() {if (this.mouseOver()) {
+    
+        this.selected = true;
+        true değerini döndür;}}
+;
+    
+
+Slider.prototype.mouseDragged = function() {if (this.selected) {
+    
+        this.bx = constrain(mouseX, this.x, this.x2);
+        var p = pow(10, this.decimalPlaces);
+        this.val = round(map(this.bx, this.x, this.x2, this.min, this.max) * p) / p;
+        this.trigger();
+        true değerini döndür;}}
+;
+    
+
+Slider.prototype.setValue = function(v) {
+    this.val = constrain(v, this.min, this.max);
+    this.bx = map(this.val, this.min, this.max, this.x, this.x2);
+    this.trigger();};
+
+
+var ColorSlider = function(x, y, w, h, params) {
+    Slider.call(this, x, y, w, h, params);
+    this.doygunluk = params.doygunluk || 180;
+    this.brightness = params.brightness || 180;
+    this.setColor();};
+
+ColorSlider.prototype = Object.create(Slider.prototype);
+
+ColorSlider.prototype.setColor = function() {
+    colorMode(HSB);
+    this.color = color(this.val, this.doygunluk, this.brightness);
+    colorMode (RGB);
+    bu. R = kırmızı(this.color);
+    bu. G = yeşil(this.color);
+    bu. B = mavi(this.color);};
+
+
+ColorSlider.prototype.draw = function() {if (this.name) {
+    
+        fill(20);
+        textSize(13);
+        textAlign(CENTER, BASELINE);
+        metin(this.name,this.x  + this.w / 2, this.y - 15);
+        text(this.name + ": " + this.val,this.x + this.w / 2,  this.y - 14);
+    }
+    
+    this.fade();
+    fill(this.color);
+    strokeWeight(4);
+    inme (this.stroke);
+    line(this.x, this.y, this.x2, this.y);
+    inme(250);
+    strokeWeight(1);
+    elipse(this.bx, this.y, this.ballD, this.ballD);};
+
+
+ColorSlider.prototype.trigger = function() {
+    this.setColor();};
+
+}
+/************************
+       
+
+
+
+    
+    this.x1 = x + 8;
+    this.x2 = x + w - 8;
+    this.y = y + h - 4;
+    this.name = ad;
+};
+
+Label.prototype.draw = function() {
+    fill(40);
+    textFont(sansFont, 16);
+    textAlign(CENTER, BASELINE);
+    text(this.name, this.x, this.y - 2);
+    
+    strokeWeight(1);
+    inme(40);
+    line(this.x1, this.y, this.x2, this.y);};
+
+}
+/*********************
+       
+
+
+
+    
+    this.y = y;
+    this.w = w;
+    this.h = 8;
+    this.components = [];
+    this.labels = [];};
+
+
+Toolbar.prototype.draw = function() {
+    fill(250);
+    strokeWeight(1);
+    inme(180);
+    rect(this.x, this.y, this.w, this.h, 8);
+   
+    this.components.forEach(function(p) { p.draw(); });
+    this.labels.forEach(function(p) { p.draw(); });};
+
+
+Toolbar.prototype.add = function(type, params) {
+    params = params || {};
+    var h = params.h || 24;
+    var bileşeni = yeni tür(this.x + 5, this.y + this.h, this.w - 10, h, params);
+    this.components.push(component);
+    this.h += component.h + 8;};
+
+
+Toolbar.prototype.addLabel = function(name) {
+    var h = 20;
+    this.labels.push(yeni Label(this.x, this.y + this.h, this.w, h, name));
+    this.h += h + 8;};
+
+
+Toolbar.prototype.addOptions = function(options) {
+    var x = this.x + 3;
+    var y = this.y + this.h + 2;
+    var w = this.w - 6;
+    var h = 22;
+    
+    for (var opt in options) {
+        var button = new CheckBox(x, y, w, h, opt);
+        this.components.push(button);
+        y += h + 5;
+        this.h += h + 5;
+    }
+    
+    this.h += 2;};
+
+
+Toolbar.prototype.addSwatch = fonksiyon(ad, renk, tetikleyici) {
+    var h = 20;
+    var düğmesi = yeni Renk Örneği(this.x + 5, this.y + this.h, this.w - 10, h, ad, renk, tetikleyici);
+    this.components.push(button);
+    bu.h += h + 8;
+    dönüş düğmesi;};
+
+
+Toolbar.prototype.mousePressed = function() {this.components.forEach(function(p) {
+    p.mousePressed(); });};
+
+
+Toolbar.prototype.mouseReleased = function() {this.components.forEach(function(p) {
+    p.mouseRelease(); });};
+
+
+Toolbar.prototype.mouseDragged = function() {this.components.forEach(function(p) {
+    p.mouseDragged(); });
+};
+}
+/******************
+       
+
+
+
+    
+    this.tx = x;
+    this.y = y;
+    this.w = w;
+    this.h = 24;
+    
+    this.toolbars = [];
+    this.tabs = [];
+    this.currentTab = -1;
+    this.components = [];
+    this.labels = [];};
+
+
+TabbedToolbar.prototype = Object.create(Toolbar.prototype);
+
+TabbedToolbar.prototype.draw = function() {
+    // Arka plan
+    noStroke();
+    doldurma(250);
+    rect(this.x, this.y, this.w, this.h, 8);
+    
+    Sekme arka plan
+    dolgusu(200);
+    rect(this.x, this.y, this.w, 24, 8);
+    rect(this.x, this.y + 12, this.w, 12);
+    
+    textFont(sansFont, 13);
+    textAlign(SOL, BASELINE);
+    var tx = this.x;
+    var ty = this.y + 22;
+    
+    Çizim sekmesi
+    if (this.currentTab !== -1) {
+        var tab = this.tabs[this.currentTab];
+        doldurma(250);
+        noStroke();
+        var x = max(this.x, tab.x - 1);
+        rect(x, tab.y, tab.w + 1, 30, 8);
+    }
+
+    this.components.forEach(function(p) { p.draw(); });
+    this.labels.forEach(function(p) { p.draw(); });};
+
+
+TabbedToolbar.prototype.changeTab = function(n) {
+    this.currentTab = n;
+    this.components = this.tabs.concat(this.toolbars[n].components);
+    this.labels = this.toolbars[n].labels;
+    this.h = this.toolbars[n].h + 24;};
+
+
+TabbedToolbar.prototype.addTab = function(name) {
+    textFont(sansFont, 14);
+    var w = textWidth(name) + 8;
+    var index = this.tabs.length;
+    var self = bu;
+    
+    this.tabs.push(
+        new GUI_Component(this.tx, this.y + 1, w, 18,name,
+            function() {
+                self.changeTab(index);
+            }
+        )
+    );
+    
+    this.toolbars.push(yeni Araç Çubuğu(this.x, this.y + 24, this.w));
+    this.tx += w;};
+
+
+TabbedToolbar.prototype.addTabs = function(names) {for (var i = 0; i &lt; names.length; i++) {
+    
+        this.addTab(names[i]);}
+    
+    this.changeTab(0);};
+
+
+TabbedToolbar.prototype.addTo = function(name, element, params) {
+    var index = -1;
+    
+    for (var i = 0; i &lt; this.tabs.length; i++) {if (this.tabs[i].name === name) {
+        
+            index = i;
+            mola;
+        }}
+    
+    
+    if (index === -1) { return; }
+    
+    var toolbar = this.toolbars[index];
+    toolbar.add(element, params);
+    
+    this.changeTab(0);};
+
+
+}
+/******************
+       
+
+
+
+
+Particle.prototype.init = fonksiyon(sistem, x, y, hız, açı, boyut, col1, col2) {
+    this.system = sistem;
+    this.x = x;
+    this.y = y;
+    this.vx = hız * cos (açı);
+    this.vy = hız * günah (açı);
+    this.size = boyut;
+    this.age = 0;
+    this.isDead = false;
+
+    if (col1) {
+        this.exploder = false;
+        this.windEffect = 1;
+        this.maxAge = system.explosionLifetime;
+        this.startColor = col1;
+        this.endColor = col2;
+        this.color = col1;
+    } else {
+        this.exploder = true;
+        this.windEffect = 0.2;
+        this.color = renk(200, 200, 220);}}
+;
+    
+
+
+Particle.prototype.update = function(dx, dy) {
+    // Wind
+    this.vx += dx * this.windEffect;
+    this.vy += dy * this.windEffect + yerçekimi;
+    this.vx *= dragFactor;
+    this.vy *= dragFactor;
+    this.x += this.vx;
+    this.y += this.vy;};
+
+
+Particle.prototype.draw = function() {
+    fill(this.color);
+    elipse(this.x, this.y, this.size, this.size);};
+
+
+Particle.prototype.testForDeath = function() {if (this.exploder) {// Only age when falling if (this.vy &gt; 0) {
+    
+            
+        this.age++;
+        }
+        
+        
+        if (this.age &gt; 5) {
+            this.isDead = true;
+            Explode
+            for (var i = 0, len = this.system.explodingParticles; i &lt; len; i++) {this.system.addParticle(this.x, this.y);}
+        }}
+    else {
+                
+        this.age++;
+            
+        Hayatımızın hangi yayılımını yaşıyoruz?
+        var pLife = this.age / this.maxAge;
+        this.color = lerpColor(this.startColor, this.endColor,pLife  );
+        
+        this.isDead = (pLife &gt;= 1 || this.y &gt; GROUND_Y);}};
+    
+}
+
+/***************
+   
+/
+var ParticleSystem = {
+    parçacıklar: [],deadParticles: [],timeBetweenLaunches: 12,launchSpeed: 12,launchSpeedVariation: 0,launchAngleVariation: 1,explodingParticles: 50,explosionSpeed: 10,explosionVariation: 0.1,explosionLifetime: 80,
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    startColor1: color(200, 0, 0),startColor2: color(255, 162, 0),endColor1: color(150, 160, 240, 0),endColor2: color(60, 200, 240, 0),init: function(x,
+    
+    
+    
+    
+    y) {
+        this.x = x;
+        this.y = y;},
+    
+    update: function() {if (frameCount % this.timeBetweenLaunches === 0) {
+        
+            this.addExploder();}
+        
+        
+    
+        noStroke();
+        for (var i = this.particles.length; i--;){
+            var p = this.particles[i];
+            p.update(this.windDX, this.windDY);
+            p.testForDeath();
+            
+            if (p.isDead) {
+                // Parçacığı ölü parçacık dizisine
+                taşı this.particles.splice(i, 1);
+                this.deadParticles.push(p);
+            } else {p.draw();
+            }}
+        }
+    ,
+    
+    addExploder: function() {
+        
+                // Random upward speed var speed
+        = this.launchSpeed * (1 - random(this.launchSpeedVariation / 100));
+        var açısı = -90 + this.launchAngleVariation * rastgele(-0.5, 0.5);
+
+        var p = this.deadParticles.length &gt; 0 ? this.deadParticles.pop() : yeni Parçacık();
+        p.init(this, this.x, this.y, hız, açı, EXPLODER_SIZE);
+        this.particles.push(p);
+    },
+    
+    addParticle: function(x, y) {
+        var açısı = rastgele(360);
+        var speed = this.explosionSpeed * (1 - rastgele(this.explosionVariation));
+        var col1 = lerpColor(this.startColor1, this.startColor2, random());
+        var col2 = lerpColor(this.endColor1, this.endColor2, random());
+
+        var p = this.deadParticles.length &gt; 0 ? this.deadParticles.pop() : yeni Parçacık();
+        p.init(bu, x, y, hız, açı, PARTICLE_SIZE, col1, col2);
+        this.particles.push(p);
+    },
+    
+    getWind: function() {
+        this.windDX = this.windStrength * cos(this.windAngle);
+        this.windDY = this.windStrength * sin(this.windAngle);}}
+;
+    
+
+ParticleSystem.init(360, GROUND_Y);
+
+/*********************
+   
+
+
+
+toolbar.addTabs(['Fizik', 'Başlat', 'Patlama']);
+
+toolbar.addTo('Fizik', Kaydırıcı, {ad: "Yerçekimi",min: 1,şimdi: 9,8,maksimum: 50,ondalıkYerler: 1,tetikleyici
+    
+    
+    
+    
+    : fonksiyon() {
+    
+        yerçekimi = this.val / 100;
+    }});
+
+toolbar.addTo('Fizik', Kaydırıcı, {ad: "Hava direnci",min: 0,şimdi: 20,max: 100,ondalıkYerler: 1,tetikleyici
+    
+    
+    
+    
+    : function() {
+        
+    dragFactor = 1 - this.val / 1000;
+    }});
+
+toolbar.addTo('Fizik', Kaydırıcı, {ad: "Rüzgar kuvveti",min: 0,şimdi: 10,maksimum: 100,tetikleyici
+    
+    
+    
+    : fonksiyon() {
+        
+    ParticleSystem.windStrength = this.val / 100;
+        ParticleSystem.getWind();
+    }}
+);
+toolbar.addTo('Fizik', Kaydırıcı, {name: "Rüzgar açısı (°)",max: 360,trigger
+    
+    : function() {
+        
+    ParticleSystem.windAngle = this.val;
+        ParticleSystem.getWind();
+    }}
+);
+toolbar.addTo('Fizik', Düğme, {name: "Yeniden Başlat",tetikleyici: function() {
+    
+        Program.restart();
+    }}
+);
+
+
+    toolbar.addTo('Başlat', Kaydırıcı, {ad: "Başlatma hızı",min: 1,şimdi: 3,maksimum: 6,tetikleyici
+    
+    
+    
+    : function() {
+        
+    ParticleSystem.timeBetweenLaunches = 256 &gt;&gt; (this.val);
+    }});
+
+toolbar.addTo('Başlat', Kaydırıcı, {ad: "Başlatma hızı",min: 1,şimdi: 12,maksimum: 40,tetikleyici: function() {
+    
+        ParticleSystem.launchSpeed = this.val;
+    }}
+);
+
+    
+    
+    
+    toolbar.addTo('Başlat', Kaydırıcı, {name: "Hız varyasyonu (%)",min: 0,max: 100,trigger: function() {
+    
+        ParticleSystem.launchSpeedVariation = this.val;
+    }}
+);
+
+    
+    
+    toolbar.addTo('Başlat', Kaydırıcı, {ad: "Açı varyasyonu (°)",min: 0,şimdi: 10,maksimum: 90,tetikleyici: işlev() {
+    
+        ParticleSystem.launchAngleVariation = this.val;
+    }}
+);
+
+
+    
+    
+    
+    toolbar.addTo('Patlama', Kaydırıcı, {ad: "Parçacık sayısı",min: 1,şimdi: 40,maksimum: 100,tetikleyici: fonksiyon() {
+        
+    ParticleSystem.explodingParticles = this.val;
+    }}
+);
+
+    
+    
+    
+    toolbar.addTo('Patlama', Kaydırıcı, {ad: "Parçacık hızı",min: 1,şimdi: 5,maksimum: 20,tetikleyici: fonksiyon() {
+    
+        ParticleSystem.explosionSpeed = this.val;
+    }}
+);
+
+    
+    
+    
+    toolbar.addTo('Patlama', Kaydırıcı, {ad: "Hız varyasyonu (%)",min: 0,şimdi: 50,maksimum: 100,tetikleyici: function() {
+    
+        ParticleSystem.explosionVariation = this.val / 100;
+    }}
+);
+
+    
+    
+    
+    toolbar.addTo('Patlama', Kaydırıcı, {ad: "Parçacık ömrü",min: 10,şimdi: 80,maksimum: 300,tetikleyici: function() {
+    
+        ParticleSystem.explosionLifetime = this.val;
+    }}
+);
+
+
+    
+    
+    
+    toolbar.addTo('Patlama', Swatch, {ad: "Başlangıç rengi 1",renk: renk(200, 0, 0),
+    güncelleme: function() {
+    
+        ParticleSystem.startColor1 = this.color;
+    }}
+);
+
+    toolbar.addTo('Patlama', Swatch, {ad: "Başlangıç rengi 2",renk: renk(255, 162, 0),
+    güncelleme: function() {
+    
+        ParticleSystem.startColor2 = this.color;
+    }}
+);
+
+    toolbar.addTo('Patlama', Swatch, {name: "End color 1",color: color(150, 160, 240),
+    update: function() {
+        
+    ParticleSystem.endColor1 = this.color + (1 &lt;&lt; 24);
+    }}
+);
+
+    toolbar.addTo('Patlama', Renk Örneği, {ad: "Son renk 2",renk: renk(54, 87, 235),
+    güncelleme: function() {
+        
+    ParticleSystem.endColor2 = this.color + (1 &lt;&lt; 24);
+    }}
+);
+
+
+    /************************
+       
+
+
+
+    
+    ParticleSystem.update();
+    
+    noStroke();
+    doldurma (160, 160, 170);
+    elips(ParticleSystem.x, ParticleSystem.y, 15, 8);
+    
+    Zemin
+    dolgusu (120, 110, 100);
+    rect(0, GROUND_Y, genişlik, 40);
+    
+    doldurma(255);
+    textAlign(SOL, BASELINE);
+    metin(ParticleSystem.particles.length, 4, yükseklik - 6);
+    
+    toolbar.draw();};
+
+
+/*********************
+       
+
+
+
+    
+
+
+mousePressed = function() {
+    toolbar.mousePressed();};
+
+
+mouseDragged = function() {
+    toolbar.mouseDragged();};
+
+
+mouseReleased = function() {
+    toolbar.mouseRelease();};
+
+
+mouseOut = mouseRelease;
+}
+</pre></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> Animatörler, özel efektlerinde ince ayar yapmak için bunun gibi araçlar kullanır. Pixar, filmleri için özel olarak oluşturdukları kendi şirket içi 3D animasyon yazılımına sahiptir, ancak herkes simular efektler oluşturmak için Blender gibi ücretsiz açık kaynaklı yazılımları kullanabilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Araştırma simülasyonları</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Kuantum mekaniği, fizikte doğal kuvvetleri atomik ve atom altı düzeyde açıklamaya çalışan bir alandır. Bu güçler sadece görünmez olmakla kalmaz; aynı zamanda gözlemlememiz için çok küçükler. Kuantum fizikçileri, kuarklar ve gluonlar gibi atom altı parçacıkların etkileşimi hakkındaki teorileri test etmek için simülasyonları kullanabilirler.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu animasyon, boş alan vakumu içindeki bir kuark-antikuark çiftinin simülasyonundan alınmıştır:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 500px; max-height: 375px;"><img alt="Animated GIF with two particles separating from each other and colors indicating a field of energy emanating from the separation." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/01a94a44ed17d562c61c68829e0881cfe3707b3e.gif" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Birbirinden ayrılan iki parçacık ve ayrılıktan yayılan bir enerji alanını gösteren renklerle animasyonlu GIF.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><em>Görüntü kaynağı: <a class="_8gcxk83" href="http://www.physics.adelaide.edu.au/theory/staff/leinweber/VisualQCD/Nobel/index.html" rel="noopener noreferrer" tabindex="0" target="_blank">Derek B. Leinweber</a></em></div></div></div></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

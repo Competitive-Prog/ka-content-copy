@@ -1,0 +1,410 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Artıklık ve hata toleransı (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Artıklık ve hata toleransı (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Internet Protokolü'nde (IP), bilgisayarlar iletileri paketlere böler ve bu paketler hedeflerine giderken yönlendiriciden yönlendiriciye atlar:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Diagram of laptop computer sending packet to server computer. A network of 9 routers is shown between the laptop and the server, with various lines connecting them. There's a path from the laptop, through the routers, to the server, highlighted with green arrows." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/0d415093c4d2160530541f0170204200c89111d3.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sunucu bilgisayara paket gönderen dizüstü bilgisayarın diyagramı. Dizüstü bilgisayar ve sunucu arasında, bunları birbirine bağlayan çeşitli hatlarla 9 yönlendiriciden oluşan bir ağ gösterilir. Dizüstü bilgisayardan, yönlendiricilerden, sunucuya giden ve yeşil oklarla vurgulanan bir yol var.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir ağ yolu, doğal bir felaketin fiziksel olarak tahrip olması veya bir siber suçlunun onu ele geçirmesi gibi nedenlerle artık kullanılamıyorsa ne olur? Paket hedefine asla ulaşamayacak mı?</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Diagram with router on left and 3 routers on right. The left router has a line going to each of the right routers, and the lines are labeled 1, 2, and 3. The second line, labeled 2, is shown as cut-off halfway due to a fire." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/f26492f242cc71a6d6cac9f9ec33150d797ef5c5.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Solda yönlendirici ve sağda 3 yönlendirici ile diyagram. Sol yönlendiricinin sağ yönlendiricilerin her birine giden bir hattı vardır ve hatlar 1, 2 ve 3 olarak etiketlenmiştir. 2 etiketli ikinci satır, yangın nedeniyle yarıya kadar kesilmiş olarak gösterilir.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Yönlendirmede yedeklilik</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Neyse ki, bir paketin aynı hedefe ulaşmak için gidebileceği birçok olası yol vardır. Birden çok yolun kullanılabilirliği, bir ağın <strong>yedekliliğini</strong> artırır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Dört büyük şehirdeki yönlendiricileri birbirine bağlayan bu basitleştirilmiş ağı düşünün:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Diagram with four routers and four lines connecting them. Line goes from Oakland to Austin, line goes from Austin to New York, line goes from Austin to Tampa, line goes from New York to Tampa. The lines are bidirectional. 
+
+Lines are also described in this table:
+
+From | To
+- | - | -
+Oakland | Austin
+Austin | New York
+Austin | Tampa
+New York | Tampa" aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/d1a2354eae2f1fa82ada49f2c54d080530774367.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Dört yönlendirici ve bunları birbirine bağlayan dört çizgi ile diyagram. Hat Oakland'dan Austin'e, hat Austin'den New York'a, hat Austin'den Tampa'ya, hat New York'tan Tampa'ya gider. Çizgiler çift yönlüdür. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Çizgiler bu tabloda ayrıca açıklanmıştır:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><table class='table'><thead><tr><th scope="col">Kimden</th><th scope="col">Nereye</th></tr></thead><tbody><tr><td>Oakland</td><td>Arjantin</td></tr><tr><td>Arjantin</td><td>New York</td></tr><tr><td>Arjantin</td><td>Tampa</td></tr><tr><td>New York</td><td>Tampa</td></tr></tbody></table></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Oakland yönlendiriciden New York yönlendiricisine giden birden fazla yol vardır.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">İlk ve en kısa yol Oakland'dan Austin'e ve New York'a gider:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Diagram with four routers labeled Oakland, Austin, Tampa, and New York.  There are four lines connecting them. 
+
+* Line goes from Oakland to Austin
+* Line goes from Austin to New York
+* Line goes from Austin to Tampa
+* Line goes from New York to Tampa
+
+The lines from Oakland to Austin and from Austin to New York are highlighted green and end in an arrow." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/7262b3de19088c04ae9b60e013339552d7e21586.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Oakland, Austin, Tampa ve New York etiketli dört yönlendirici içeren diyagram.  Onları birbirine bağlayan dört hat vardır. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><ul><li>Oakland'dan Austin'e giden hat</li><li>Austin'den New York'a hat gidiyor</li><li>Hat Austin'den Tampa'ya gidiyor</li><li>Hat New York'tan Tampa'ya gidiyor</li></ul></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Oakland'dan Austin'e ve Austin'den New York'a giden çizgiler yeşil renkle vurgulanır ve bir okla biter.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Oakland'dan Austin'e, Tampa'dan New York'a biraz daha uzun bir yol var:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Diagram with four routers labeled Oakland, Austin, Tampa, and New York.  There are four lines connecting them. 
+
+* Line goes from Oakland to Austin
+* Line goes from Austin to New York
+* Line goes from Austin to Tampa
+* Line goes from New York to Tampa
+
+The 3 lines from Oakland to Austin, Austin to Tampa, and Tampa to New York are highlighted green and end in an arrow." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/e4b96eaa8fe534e0f4464d85ac1361d5cfce119d.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Oakland, Austin, Tampa ve New York etiketli dört yönlendirici içeren diyagram.  Onları birbirine bağlayan dört hat vardır. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><ul><li>Oakland'dan Austin'e giden hat</li><li>Austin'den New York'a hat gidiyor</li><li>Hat Austin'den Tampa'ya gidiyor</li><li>Hat New York'tan Tampa'ya gidiyor</li></ul></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Oakland'dan Austin'e, Austin'den Tampa'ya ve Tampa'dan New York'a giden 3 hat yeşil renkle vurgulanır ve bir okla biter.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu yedeklilik neden bu kadar önemli? Austin ve New York yönlendiricisi arasındaki bağlantı artık mevcut değilse, paketin hedefine ulaşması için başka bir yol daha vardır.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Diagram with four routers and four lines connecting them. Line goes from Oakland to Austin, line goes from Austin to Tampa, line goes from New York to Tampa. The lines are bidirectional. A partial line is shown from Austin to New York, but it is cut-off with a fire.
+
+Lines are also described in this table:
+
+From | To
+- | - | -
+Oakland | Austin
+Austin | Tampa
+New York | Tampa" aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/99913dc3859c9ed2356868a8d799343ff724a1a3.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Dört yönlendirici ve bunları birbirine bağlayan dört çizgi ile diyagram. Hat Oakland'dan Austin'e, hat Austin'den Tampa'ya, hat New York'tan Tampa'ya gider. Çizgiler çift yönlüdür. Austin'den New York'a kısmi bir çizgi gösteriliyor, ancak bir yangınla kesiliyor.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Çizgiler bu tabloda ayrıca açıklanmıştır:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><table class='table'><thead><tr><th scope="col">Kimden</th><th scope="col">Nereye</th></tr></thead><tbody><tr><td>Oakland</td><td>Arjantin</td></tr><tr><td>Arjantin</td><td>Tampa</td></tr><tr><td>New York</td><td>Tampa</td></tr></tbody></table></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Ağdaki yolların yedekliliği, bir paketin hedefine ulaşabileceği olası yolların sayısını artırır.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_14sgdtb"><div class="_cjo0m2"><div class="_6pk9ag">Anlayışınızı kontrol edin</div><div class="_bc4egv"></div><div class="_cjo0m2"><div aria-label="Skip to Check your understanding" class="_hl8o9oo" role="button"></div><div aria-label="Skip to Check your understanding" class="_1ezvcme" role="button"></div></div></div><div class="perseus-graded-group"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">ARPANET, İnternet teknolojisinin ilk kez test edildiği ağ olan İnternet'in öncüsüydü. 1969'da birbirine bağlı sadece dört bilgisayarla başladı.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">İşte ARPANET'in 1969'daki haritası:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Diagram with four routers and four lines connecting them. There are no arrows on any of the lines.
+
+* Line goes from Utah to SRI
+* Line goes from SRI to ULCA
+* Line goes from SRI to UCSB
+* Line goes from UCSB to UCLA" aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/1bf4255ed64375eafb2c3c02092aa0a529e78c88.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Dört yönlendirici ve bunları birbirine bağlayan dört çizgi ile diyagram. Çizgilerin hiçbirinde ok yoktur.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><ul><li>Hat Utah'tan SRI'ya gidiyor</li><li>Hat SRI'dan ULCA'ya gidiyor</li><li>Hat SRI'dan UCSB'ye gidiyor</li><li>Hat UCSB'den UCLA'ya gidiyor</li></ul></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><strong>Utah ve UCLA arasında kaç rota var?</strong></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCAx" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-normal" spellcheck="false" type="text" value=""></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCAx"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Cevabınız şöyle olmalıdır:</strong></li><li>6 6 6 <span style="white-space: nowrap;">6 6 gibi<span></span><span><span></span><span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> bir tamsayı
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li><span style="white-space: nowrap;">3/5 3<span>/5 3/<span aria-describedby="katex-uid--2-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn>3<mn></mn><mi mathvariant="normal">/</mi>5
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--2-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 5</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygun bir kesir</em></li><li><span style="white-space: nowrap;">7/4 7/4 7/<span><span aria-describedby="katex-uid--3-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn> <mn>7</mn><mi mathvariant="normal">/</mi>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--3-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 4</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygunsuz bir kesir</em></li><li>1 3/4 1\ 3/4 1 <span style="white-space: nowrap;">3/4 1, boşluk, 3, eğik çizgi, 4 gibi<span></span> <span><span></span><span aria-describedby="katex-uid--4-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mn></mn><mi mathvariant="normal"></mi><mn></mn>karışık bir sayı <mtext> </mtext>
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--4-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li>0,75 <em></em> <span style="white-space: nowrap;">0,75 0 gibi<span></span> tam ondalık<span>.<span></span><span aria-describedby="katex-uid--5-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span> <span class="mord">7</span><span class="mord">5</span>
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--5-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, puan, 75</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li><li>pi'nin katı, örneğin 12 pi 12\ \text{pi}1 2 pi 12, boşluk, başlangıç metni, <span style="white-space: nowrap;"><span><span id="katex-uid--6-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">p, i, bitiş metni</span> <span aria-describedby="katex-uid--6-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>veya 2/3 pi 2/3\ \text{pi}<span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span>2/3 pi 2 <span class="mspace"> </span>
+        
+        
+        
+        
+        
+      </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mtext> </mtext>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span>
+      
+      
+    </span></span>, eğik çizgi, 3, boşluk,<span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span aria-describedby="katex-uid--7-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi><mn></mn><mtext> </mtext>
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span><span id="katex-uid--7-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"> başlangıç metni, p, i, bitiş metni</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li></ul></div></div></div></div></div></div></span></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Arızaya dayanıklılık</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><strong>Hataya dayanıklı</strong> bir sistem, bileşenlerinde arıza (veya birden fazla arıza) yaşayabilen, ancak yine de düzgün çalışmaya devam edebilen bir sistemdir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">İnternet, herhangi bir zamanda kırılabilen milyonlarca bileşene sahip devasa ve karmaşık bir sistemdir ve <em>bu bileşenlerin</em> çoğu kırılır. Ancak 2020 itibariyle, hiç kimse tüm interneti kırmayı başaramadı. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Internet'in hataya dayanıklılığına büyük katkıda bulunan bir şey, ağ yönlendirme yollarındaki yedekliliktir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Amerika Birleşik Devletleri'nin doğu tarafını Avrupa'nın batı tarafına bağlayan denizaltı kablolarının sayısını düşünün:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 2194px; max-height: 812px;"><img alt="A map of undersea cables crossing the Atlantic ocean. Shows more than 10 cables connecting the East Coast of the United States with various points in Europe." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/2421a3697a8824e66c3ef76c4703d11b6ead3e37.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Atlantik Okyanusu'nu geçen denizaltı kablolarının bir haritası. Amerika Birleşik Devletleri'nin Doğu Kıyısı'nı Avrupa'nın çeşitli noktalarına bağlayan 10'dan fazla kabloyu gösterir.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><em>Görüntü kaynağı: <a class="_8gcxk83" href="https://www.submarinecablemap.com/" rel="noopener noreferrer" tabindex="0" target="_blank">Denizaltı kablo haritası, TeleGeography</a></em></div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu kablolardan biri hasar görürse, İnternet trafiğini Atlantik Okyanusu üzerinden taşıyabilecek birden fazla kablo daha vardır.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Ya da başka bir deyişle, kıyılar arasında <strong>tek bir başarısızlık noktası</strong> yoktur. Tek bir hata noktası, başarısız olursa tüm sistemi çökertecek olan sistemdeki bir bileşendir. Bir sistemin hataya dayanıklı olduğundan emin olmaya çalışırken, tek hata noktalarını arar ve bu noktalara artıklık eklemenin yollarını buluruz.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Şimdi Güney Pasifik'teki bu Polinezya adaları arasındaki az sayıda denizaltı kablosunu düşünün:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 2194px; max-height: 798px;"><img alt="A map of undersea cables in the South Pacific, showing one cable connecting Fiji to Tonga and one cable connecting Cook Islands and French Polynesia." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/84bcf62c7976f985d8dd163d78d9677fb192d879.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Güney Pasifik'teki denizaltı kablolarının bir haritası, Fiji'yi Tonga'ya bağlayan bir kabloyu ve Cook Adaları ile Fransız Polinezyası'nı birbirine bağlayan bir kabloyu gösteriyor.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><em>Görüntü kaynağı: <a class="_8gcxk83" href="https://www.submarinecablemap.com/" rel="noopener noreferrer" tabindex="0" target="_blank">Denizaltı kablo haritası, TeleGeography</a></em></div></div></div></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Cook Adaları ve Fransız Polinezyası arasında bir kablo kesilirse, bu adalardaki İnternet'i nasıl etkileyecek? </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bazı durumlarda, bir kablo kesintisi bütün bir ülkeyi çökertebilir. 2019 yılında, deniz tabanı boyunca sürüklenen bir gemi çapası, Tonga'ya giden kabloyu kesti ve 11 gün boyunca İnternet erişimini kesti. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--8-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>1</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^1</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> başlangıç üst simgesi, <span id="katex-uid--8-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">1, bitiş üst simgesi</span>
+    
+    
+    
+  </span>
+  
+  
+  <span></span>
+</span> </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir kabloyu kesmek çok fazla zaman almaz. 2011 yılında, Gürcistan ülkesindeki bir büyükanne yanlışlıkla küreğiyle bir kabloya zarar verdi ve tüm Ermenistan'ın 5 saat boyunca İnternet erişimini kaybetmesine neden oldu. <span style="white-space: nowrap;">
+  <span></span>
+  <span>
+    <span></span>
+    <span aria-describedby="katex-uid--9-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex">
+      <span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics>
+        <mrow><msup>
+          <mrow></mrow>
+          <mn>2</mn>
+        </msup></mrow>
+        <annotation encoding="application/x-tex">^2</annotation>
+      </semantics></math></span>
+      <span aria-hidden="true" class="katex-html"><span class="base">
+        <span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span>
+        <span class="mord">
+          <span></span>
+          <span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;">
+            <span class="pstrut" style="height:2.7em;"></span>
+            <span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span>
+          </span></span></span></span></span>
+        </span>
+      </span></span>
+    </span></span>
+    <span id="katex-uid--9-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">kare</span>
+  
+</span><span></span></span></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Kablo kesintileri nispeten sık gerçekleşiyor - ağ analisti Stephan Beckert'e göre "yaklaşık her 3 günde bir". <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--10-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>3</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span>3<span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--10-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">küplü</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> Çoğu zaman, ortalama bir İnternet kullanıcısı kesintilerin ne zaman gerçekleştiğini bile fark etmez ve kablo birçok kablo onarım gemisinden biri tarafından sabitlenir. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--11-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>4</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> start superscript, <span id="katex-uid--11-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">4, end superscript</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> Kablo kesintilerini fark ettiğimizde, bu genellikle tek bir hata noktası olduğu ve sisteme artıklık eklemenin zamanı geldiği anlamına gelir.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Neden her yerde fazlalıkla başlamıyoruz? Tahmin edebileceğiniz gibi, pahalıdır. Tonga'yı Fiji'ye bağlayan denizaltı kablosunun yaklaşık 30 milyon dolara mal olduğu tahmin ediliyordu ve bu nispeten kısa bir kablo. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--12-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>5</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^5</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> start superscript, <span id="katex-uid--12-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">5, end superscript</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span>, Google ABD ile Tokyo arasında yüksek hızlı bir fiber optik kablo kurduğunda, 300 milyon dolara mal oldu. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--13-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>6</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^6</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> başlangıç üst simgesi, <span id="katex-uid--13-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">6, bitiş üst simgesi</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Bir kaynağı çoğaltmak çok pahalı olduğunda, sistemin başarısızlık karşısında zarif bir şekilde bozulmasının yollarını bulmak mümkün olabilir. Tonga kesintisi sırasında, uydu sağlayıcıları İnternet erişimi sağlamak için acele etti. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--14-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>7</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^7</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> start superscript, <span id="katex-uid--14-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">7, end superscript</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> Fiber kablo bağlantısıyla aynı hızları sağlayamamış olabilirler, ancak herhangi bir İnternet bağlantısı hiç İnternet bağlantısı olmamasından daha iyidir.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"> Çevrenizdeki altyapının hata toleransını göz önünde bulundurun. Evinizin veya bilgisayar laboratuvarınızın elektrik sisteminde ne kadar yedeklilik var? Tek bir başarısızlık noktası var mı? Yedekliliği artırmanın en ucuz yolu ne olurdu?   <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Tartışma]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Anlayışınızı kontrol edin</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">1970 ARPANET hataya çok dayanıklı değildi. Düğümler arasında çok az bağlantı olduğunda, bir arıza ARPANET'i kolayca bozabilir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Diagram with 5 routers and 5 lines connecting them. There are no arrows on any of the lines.
+
+* Line goes from Utah to SRI
+* Line goes from SRI to UCSB
+* Line goes from SRI to UCLA
+* Line goes from UCSB to UCLA
+* Line goes from UCLA to BBN" aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/6ed0a5da6567188a9876de92a2d29c1f6571d43d.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bunları bağlayan 5 yönlendirici ve 5 çizgi ile diyagram. Çizgilerin hiçbirinde ok yoktur.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><ul><li>Hat Utah'tan SRI'ya gidiyor</li><li>Hat SRI'dan UCSB'ye gidiyor</li><li>Hat SRI'dan UCLA'ya gidiyor</li><li>Hat UCSB'den UCLA'ya gidiyor</li><li>Hat UCLA'dan BBN'ye gidiyor</li></ul></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><strong>Bir bilgisayar Utah'tan BBN'ye bir mesaj göndermek istiyorsa, hangi bağlantıların kesinlikle kullanılabilir kalması gerekiyordu?</strong></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">Geçerli olan tüm yanıtları seçin:</legend><div class="instructions _125m8j1">Geçerli olan tüm yanıtları seçin:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-0" name="perseus_radio_9" type="checkbox"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Utah ↔ SRI</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-1" name="perseus_radio_9" type="checkbox"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">SRI ↔ UCSB</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-2" name="perseus_radio_9" type="checkbox"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">UCLA ↔ BBN</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-3" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-3" name="perseus_radio_9" type="checkbox"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek D)</div><div aria-hidden="true">D</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">SRI ↔ UCLA</div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Referanslar]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

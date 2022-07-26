@@ -1,0 +1,2213 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Simulations in physics | AP CSP (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Simulations in physics | AP CSP (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Physicists deal with the natural forces of the world. We experience most of those forces here on Earth and observe their effects, but the forces themselves are invisible. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Physicists can use simulations to visualize the natural forces and see how different combinations of forces act on objects to produce different results.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Educational simulations</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Let's start with some simulations from the <a class="_8gcxk83" href="/science/physics" rel="noopener noreferrer" tabindex="0" target="_blank">Khan Academy Physics content</a>. Since the primary goal of these simulations is learning, they are simpler than ones used by actual physicists.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">This simulation draws the magnetic fields around a magnet and is a great example of how computers let us visualize invisible forces. To see it from different angles, rotate around the magnet using your mouse.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>/***************************************************
+ * Use the mouse to rotate a magnet in 3D space
+ * 
+ * If the magnet doesn't move, press Restart.
+***************************************************/
+
+// Move to centre of screen
+translate(200.5, 200.5);
+
+var magnetStrength = 100;
+var needleSize = 10;
+var fieldColour = color(10, 200, 20, 255);
+var WHITE = color(255, 255, 255, 100);
+var lightVector =[-0.5, -3, 1];
+var rotating = true;
+
+/*******************************************
+ * Magnet object
+********************************************/
+
+var magWidth = 120;
+var magHeight = 50;
+var magDepth = 30;
+
+var RED = color(200, 20, 20);
+var BLUE = color(20, 20, 200);
+var BLACK = color(0, 0, 0);
+
+var magnet = {
+    faces: [[0,2,6,4], [1,0,4,5], [5,4,6,7], [2,3,7,6], [3,1,5,7],
+            [2,0,8,10],[0,1,9,8],[8,9,11,10],[3,2,10,11],[1,3,11,9]],
+    colours:[RED, RED, RED, RED, RED, 
+             BLUE, BLUE, BLUE, BLUE, BLUE],
+    nodes: [[          0, -magHeight/2,  magDepth/2],
+            [          0,  magHeight/2,  magDepth/2],
+            [          0, -magHeight/2, -magDepth/2],
+            [          0,  magHeight/2, -magDepth/2],
+            [-magWidth/2, -magHeight/2,  magDepth/2],
+            [-magWidth/2,  magHeight/2,  magDepth/2],
+            [-magWidth/2, -magHeight/2, -magDepth/2],
+            [-magWidth/2,  magHeight/2, -magDepth/2],
+            [ magWidth/2, -magHeight/2,  magDepth/2],
+            [ magWidth/2,  magHeight/2,  magDepth/2],
+            [ magWidth/2, -magHeight/2, -magDepth/2],
+            [ magWidth/2,  magHeight/2, -magDepth/2],
+            [-magWidth/2, 0, 0], [magWidth/2, 0, 0]] // poles
+};
+
+var objects = [magnet];
+
+/*******************************************
+ * Linear algebra functions
+ * All assume vector has 3 dimensions
+********************************************/
+var addVectors = function(v1, v2) {
+    return [v1[0] + v2[0], v1[1] + v2[1], v1[2] + v2[2]];
+};
+
+var subtractVectors = function(v1, v2) {
+    return [v1[0] - v2[0], v1[1] - v2[1], v1[2] - v2[2]];
+};
+
+var vectorTimesScalar = function(v, s) {
+    return [v[0] * s, v[1] * s, v[2] * s];
+};
+
+var vectorLength = function(v) {
+    return sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
+};
+
+var normaliseVector = function(v) {
+    var d = vectorLength(v);
+    return [v[0]/d, v[1]/d, v[2]/d];
+};
+
+var dotProduct = function(v1, v2) {
+    return v1[0]*v2[0] + v1[1]*v2[1] + v1[2]*v2[2];
+};
+
+var normalOfPlane = function(face, nodes) {
+    var n1 = nodes[face[0]];
+    var n2 = nodes[face[1]];
+    var n3 = nodes[face[2]];
+    
+    var v1 = subtractVectors(n1, n2);
+    var v2 = subtractVectors(n1, n3);
+    
+    var v3 = [[v1[1]*v2[2] - v1[2]*v2[1]],
+              [v1[2]*v2[0] - v1[0]*v2[2]],
+              [v1[0]*v2[1] - v1[1]*v2[0]]];
+              
+    return v3;
+};
+
+/*******************************************
+ * Magnetism
+********************************************/
+// Calculat the force at p1 from a magnet at p2
+var calculateForce = function(p1, p2) {
+    var vector = subtractVectors(p1, p2);
+    var dist = vectorLength(vector);
+    var force = magnetStrength / (dist * dist);
+    return vectorTimesScalar(vector, force);
+};
+
+// Calculate the vector of the magnet field at a point (x, y, z)
+var calculateField = function(point, pole1, pole2) {    
+    var v1 = calculateForce(point, pole1);
+    var v2 = calculateForce(pole2, point);    
+    var v3 = addVectors(v1, v2);
+    return normaliseVector(v3);
+};
+
+/*******************************************
+ * Needles
+********************************************/
+
+var addNeedle = function(position, size, nodes, edges) {
+    var p1 = magnet.nodes[12];
+    var p2 = magnet.nodes[13];
+    var v = calculateField(position, p1, p2);
+    var d = vectorTimesScalar(v, size/2);
+    
+    var n1 = addVectors(position, d);
+    var n2 = subtractVectors(position, d);
+    
+    nodes.push(n1);
+    nodes.push(n2);
+    var e = nodes.length;
+    edges.push([e-2, e-1]);
+};
+
+// Randomly add n needles
+var createField = function() {    
+    var dTheta = 20;
+    var len = 22;
+    
+    var pole1 = magnet.nodes[12];
+    var pole2 = magnet.nodes[13];
+    var nodes = [pole2];
+    var edges = [];
+    
+    for (var r = 15; r&lt;=50; r += 10) {
+        for (var theta = 0; theta&lt;=360; theta += dTheta) {
+            var x1 = pole2[0] + len;
+            var y1 = pole2[1] - r * cos(theta);
+            var z1 = pole2[2] + r * sin(theta);
+            var p1 = [x1, y1, z1];
+            edges.push([0, nodes.length]);
+            
+            for (var n=0; n&lt;40; n++) {
+                var v = calculateField(p1, pole1, pole2);
+                var d = vectorTimesScalar(v, -len);
+                var p2 = addVectors(p1, d);
+                nodes.push(p1);
+                nodes.push(p2);
+                edges.push([nodes.length-2, nodes.length-1]);
+                p1 = p2;
+            }
+        }
+    }
+    //addNeedle([x, y, z], needleSize, nodes, edges);
+    return {nodes: nodes, edges: edges};
+};
+
+var needles = createField();
+objects.push(needles);
+
+/*******************************************
+ * Transformations
+********************************************/
+
+var translate3D = function(x, y, z, nodes) {
+    for (var i = 0; i &lt; nodes.length; i+=1) {
+        nodes[i] = [nodes[i][0]+x, nodes[i][1]+y, nodes[i][2]+z];
+    }
+};
+
+var rotateY3D = function(theta, nodes) {
+    var ct = cos(theta);
+    var st = sin(theta);
+    var x, y, z;
+
+    for (var i = 0; i &lt; nodes.length; i+=1) {
+        x = nodes[i][0];
+        y = nodes[i][1];
+        z = nodes[i][2];
+        nodes[i] = [ct*x + st*z, y, -st*x + ct*z];
+    }
+};
+
+var rotateX3D = function(theta, nodes) {
+    var ct = cos(theta);
+    var st = sin(theta);
+    var x, y, z;
+    
+    for (var i = 0; i &lt; nodes.length; i+=1) {
+        x = nodes[i][0];
+        y = nodes[i][1];
+        z = nodes[i][2];
+        nodes[i] = [x, ct*y - st*z, st*y + ct*z];
+    }
+};
+
+/*******************************************
+ * Display
+********************************************/
+lightVector = normaliseVector(lightVector);
+
+var drawEdges = function(obj) {
+    var nodes = obj.nodes;
+    var edges = obj.edges;
+    
+    for (var i = 0; i &lt; edges.length; i+=1) {
+        var node1 = nodes[edges[i][0]];
+        var node2 = nodes[edges[i][1]];
+        var d = (0.5 * (node1[2] + node2[2]) + 400) / 800;
+        stroke(lerpColor(WHITE, fieldColour, d));
+        line(node1[0], node1[1], node2[0], node2[1]);
+    }
+};
+
+var drawFaces = function(obj) {
+    var nodes = obj.nodes;
+    var faces = obj.faces;
+    var colours = obj.colours;
+    
+    for (var f in faces) {
+        var face = faces[f];
+        var fnorm = normalOfPlane(face, nodes);
+        
+        if (fnorm[2] &lt; 0) {
+            // Shading
+            var l = dotProduct(lightVector, normaliseVector(fnorm));
+            // Some background light
+            l = max(0, 0.1 + 0.9*l);
+            var c = lerpColor(colours[f], BLACK, l);
+            fill(c);
+              
+            if (face.length === 3) {
+                triangle(nodes[face[0]][0], nodes[face[0]][1],
+                         nodes[face[1]][0], nodes[face[1]][1],
+                         nodes[face[2]][0], nodes[face[2]][1]);
+              } else {
+                quad(nodes[face[0]][0], nodes[face[0]][1],
+                     nodes[face[1]][0], nodes[face[1]][1],
+                     nodes[face[2]][0], nodes[face[2]][1],
+                     nodes[face[3]][0], nodes[face[3]][1]);
+              }
+        }
+    }
+};
+
+// Find the point in an object that's closest to the screen
+var findMaxZ = function(nodes) {
+    var maxZ = nodes[0][2];
+    for (var i=1; i&lt;nodes.length; i++) {
+        if (nodes[i][2] &gt; maxZ) {
+            maxZ = nodes[i][2];
+        }
+    }
+    return maxZ;
+};
+
+// Split needles into those in front of and those behind
+// a given z representing the magnet
+var splitEdgesByZ = function(shape, targetZ) {
+    var inFront = { nodes: [], edges: [] };
+    var behind = { nodes: [], edges: [] };
+    
+    for (var e=0; e&lt;shape.edges.length; e++) {
+        var edge = shape.edges[e];
+        var n1 = shape.nodes[edge[0]];
+        var n2 = shape.nodes[edge[1]];
+        var z = 0.5 * (n1[2] + n2[2]);
+        
+        var target;
+        if (z &gt; targetZ) { target =  inFront;}
+        else { target =  behind;}
+        
+        target.nodes.push(n1);
+        target.nodes.push(n2);
+        var n = target.nodes.length;
+        target.edges.push([n-2, n-1]);
+    }
+    return [inFront, behind];
+};
+
+var draw = function() {
+        background(235, 254, 255);
+    
+    if (rotating) {
+        for (var o in objects) {
+            var nodes = objects[o].nodes;
+            rotateX3D(1, nodes);
+            rotateY3D(1, nodes);
+        }   
+    }
+    
+    var magnetZ = findMaxZ(magnet.nodes);
+    var needleGroups = splitEdgesByZ(needles, magnetZ);
+    
+    strokeWeight(2);
+    drawEdges(needleGroups[1]);
+    
+    strokeWeight(1);
+    stroke(162, 169, 189);
+    drawFaces(magnet);
+    
+    strokeWeight(2);
+    drawEdges(needleGroups[0]);
+};
+
+/*******************************************
+ * Event handling
+********************************************/
+
+mouseDragged = function() {
+    var theta1 = -(pmouseX - mouseX) * PI / 10;
+    var theta2 = (pmouseY - mouseY) * PI / 10;
+    
+    for (var o in objects) {
+        var nodes = objects[o].nodes;
+        rotateY3D(theta1, nodes);
+        rotateX3D(theta2, nodes);    
+    }
+    rotating = false;
+};
+
+var keyControls = {
+    37: [rotateY3D, 2],
+    38: [rotateX3D, -2],
+    39: [rotateY3D, -2],
+    40: [rotateX3D, 2]
+};
+
+// Not working
+var keyPressed = function() {
+    if (keyControls[keyCode]) {
+        var f = keyControls[keyCode];
+        for (var obj in objects) {
+            f[0](f[1], objects[obj].nodes); 
+        }
+    }
+};
+</pre></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">This simulation shows what happens when a magnet is surrounded by iron filings. You can change the magnet angle with the left/right arrows and the magnet position with your mouse.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>/********************************************************
+ * Click and drag the bar magnet over the iron filings.
+ * Use the left and right arrow keys to change the 
+ * angle of the magnet.
+*********************************************************/
+
+var filingLength = 6;
+var numFilings = 1000;
+var filings;
+var friction = 0.6;
+
+var Magnet = function() {
+    this.x = 170;
+    this.y = 230;
+    this.width = 40;
+    this.height = 100;
+    this.angle = 0;
+    this.strength = 100;
+    
+    this.draw = function() {
+        var w = this.width/2;
+        var h = this.height/2;
+        
+        translate(this.x, this.y);
+        rotate(this.angle);
+        
+        noStroke();
+        fill(0, 0, 0, 100);
+        rect(3-w, 3-h, this.width, this.height);
+        
+        strokeWeight(1);
+        stroke(0, 0, 0);
+        fill(200, 20, 20);
+        rect(-w, -h, this.width, h);
+        fill(20, 20, 200);
+        rect(-w, 0, this.width, h);
+        
+        textSize(22);
+        textAlign(CENTER, CENTER);
+        fill(255, 255, 255);
+        text("N", 0, -this.height/4);
+        text("S", 0, this.height/4);
+        
+        resetMatrix();
+    };
+    
+    this.updatePolePositions = function() {
+        var s = (this.height / 2) * sin(this.angle);
+        var c = (this.height / 2) * cos(this.angle);
+
+        this.x1 = this.x + s;
+        this.x2 = this.x - s;
+        this.y1 = this.y - c;
+        this.y2 = this.y + c;
+    };
+    
+    this.rotate = function(angle) {
+        this.angle += angle;
+        this.updatePolePositions();
+    };
+    
+    // Set up x1, y1, x2, y2
+    this.updatePolePositions();
+};
+
+var Filing = function(x, y, length, theta) {
+    this.x = x;
+    this.y = y;
+    this.length = length/2;
+    this.theta = theta;
+    
+    this.draw = function() {
+        var t = this.theta;
+        var s = this.length * sin(t);
+        var c = this.length * cos(t);
+        var x1 = this.x + s;
+        var y1 = this.y - c;
+        var x2 = this.x - s;
+        var y2 = this.y + c;
+        line(x1, y1, x2, y2);
+    };
+    
+    this.barInteraction = function(magnet) {    
+        var dx = this.x - magnet.x1;
+        var dy = this.y - magnet.y1;
+        var theta1 = atan2(dy, dx) + 90;
+        var f1 = magnet.strength / sqrt(dx*dx + dy*dy);
+        
+        dx = this.x - magnet.x2;
+        dy = this.y - magnet.y2;
+        var theta2 = atan2(dy, dx) - 90;
+        var f2 = magnet.strength / sqrt(dx*dx + dy*dy);
+        
+        var mx = f1 * cos(theta1) + f2 * cos(theta2);
+        var my = f1 * sin(theta1) + f2 * sin(theta2);
+        var f = (f1 + f2) / (f1 + f2 + 5);
+        var d = (360 + atan2(my, mx) - this.theta) % 180;
+        this.theta += d;
+    };
+};
+
+var addIronFilings = function(n) {
+    var filings = [];
+    
+    for (var i=0; i &lt; numFilings; i++) {
+        var x = random() * 400;
+        var y = random() * 400;
+        var theta = random() * 360;
+        filings.push(new Filing(x, y, filingLength, theta));
+    }
+    return filings;
+};
+
+var barMagnet = new Magnet();
+
+// Magnets interact with the bar magnet
+var interact = function(magnets) {
+     for (var i=0; i &lt; numFilings; i++) {
+        filings[i].barInteraction(barMagnet);
+    }
+};
+
+var filings = addIronFilings();
+interact(filings);
+
+var updateDrawing = function() {
+    var x, y;
+    background(235, 254, 255);
+    
+    // Draw
+    strokeWeight(1);
+    stroke(20, 20, 20);
+    for (var i=0; i &lt; numFilings; i++) {
+        filings[i].draw();
+    }
+    
+    barMagnet.draw();  
+};
+
+mouseDragged = function() {
+    barMagnet.x = mouseX;
+    barMagnet.y = mouseY;
+    barMagnet.updatePolePositions();
+    interact(filings);
+    updateDrawing();
+};
+
+keyPressed = function() {
+    // Rotate magnet
+    if (keyCode === 37) {
+        barMagnet.rotate(-5);
+    } else if (keyCode === 39) {
+        barMagnet.rotate(5);
+    }
+    interact(filings);
+    updateDrawing();
+};
+
+updateDrawing();
+</pre></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Entertainment simulations</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Animation studios and video game developers rely on physics to create realistic digital worlds. They typically use software with a built-in <strong>physics engine</strong> (a library of code that can simulate physical systems).</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Let's check out a few simulations from the <a class="_8gcxk83" href="/partner-content/pixar" rel="noopener noreferrer" tabindex="0" target="_blank">Khan Academy Pixar content</a> that are simplified versions of the tools available in physics engines.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">The simulation below visualizes water filling a container, using a model of water as a system of particles. Try to make the simulation appear more realistic by changing the particle properties and gravitational force.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1m361lju"><pre>/*********************************************************
+*   Simple simulation of water
+* How well does it simulate water?
+* What is the effect of changing particle size?
+*********************************************************/
+
+var BACKGROUND = color(230, 240, 250);
+var BACKGROUND = color(10);
+var RED = color(255, 0, 0);
+var BLUE = color(0, 0, 255);
+var GREEN = color(0, 255, 0);
+var YELLOW = color(255, 255, 0);
+
+var running = true;
+var showCount = false;
+frameRate(40);
+noStroke();
+var sansFont = createFont("sans", 15);
+
+// Physical variables to play with
+var gravity = 0.02; // Force due to gravity
+var elasticity = 0.4; // Energy lost on collision
+
+// Display variable
+var col = 0.3;
+var opacity = 250;
+var waterColor = lerpColor(BLUE, GREEN, col) + (opacity &lt;&lt; 24);
+
+// How many iterations before updating the display
+var framesNotShown = 3;
+
+// Very rough estimation of number of computations done
+var computations = 0;
+
+// Particle properties
+var waterSize = 3;
+var flowRate = 4;
+var waterSize2 = waterSize * 2;
+var waterSizeS = sq(waterSize2);
+
+var waterMass = 10;
+var waterMass2 = 2 * waterMass;
+
+var initialSpeed = 0.4;
+
+var cupH = 40;
+var cupW = 140;
+
+var cupY1 = 190;
+var cupY2 = cupY1 + cupH;
+
+var cupX = width * 0.5 + 50;
+var cupX1 = cupX - cupW / 2;
+var cupX2 = cupX + cupW / 2;
+
+var dotProduct = function(ax, ay, bx, by) {
+    return ax * bx + ay * by;
+};
+
+var forEach = function(arr, func) {
+    var i, n = arr.length;
+    for (i = 0; i &lt; n; i++) {
+        arr[i][func]();
+    }
+};
+
+/*******************************************************
+ * Generic GUI component from which other elements inherit
+ * The default object is basically a button
+********************************************************/
+{
+var GUI_Component = function(x, y, w, h, name, updateFunction) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.name = name;
+    
+    if (updateFunction) {
+        this.trigger = updateFunction.bind(this);
+    }
+    
+    this.selected = false;
+    this.disabled = false;
+    this.transition = 0;
+    this.activeCursor = HAND;
+};
+
+GUI_Component.prototype.draw = function() {
+    if (this.mouseOver()) {
+        fill(100);
+    } else {
+        fill(200);
+    }
+    
+    noStroke();
+    rect(this.x, this.y, this.w, this.h, 12);
+    
+    fill(20);
+    textFont(sansFont, 15);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2 + 1);
+};
+
+GUI_Component.prototype.mouseOver = function() {
+    return (mouseX &gt;= this.x &amp;&amp; mouseX &lt;= this.x + this.w &amp;&amp;
+            mouseY &gt;= this.y &amp;&amp; mouseY &lt;= this.y + this.h);
+};
+
+GUI_Component.prototype.mousePressed = function() {
+    this.selected = this.mouseOver();
+};
+
+GUI_Component.prototype.mouseDragged = function() {};
+
+GUI_Component.prototype.mouseReleased = function() {
+    if (this.selected &amp;&amp; !this.disabled &amp;&amp; this.mouseOver()) {
+        this.trigger();
+    }
+    this.selected = false;
+};
+
+GUI_Component.prototype.trigger = function() {
+    // To be over-written
+};
+
+GUI_Component.prototype.fade = function() {
+    if (this.selected || this.mouseOver()) {
+        cursor(this.activeCursor);
+        this.transition = min(10, this.transition + 1);
+    } else {
+        this.transition = max(0, this.transition - 1);
+    }
+};
+}
+/*************************************************
+ *      GUI Button
+**************************************************/
+{
+var Button = function(x, y, w, h, params) {
+    GUI_Component.call(this, x, y, w, h, params.name, params.trigger);
+    this.defaultCol = color(230, 230, 230, 200);
+    this.highlightCol = params.highlightCol || color(210, 210, 210, 250);
+    if (params.filled) {
+        this.makeFilled();
+    }
+};
+Button.prototype = Object.create(GUI_Component.prototype);
+
+Button.prototype.draw = function() {
+    this.fade();
+    
+    if (this.disabled) {
+        fill(180);
+        noStroke();
+    } else {
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        strokeWeight(1);
+        stroke(200);
+    }
+    
+    rect(this.x, this.y - 1, this.w, this.h + 3, 12);
+    
+    if (this.disabled) {
+        fill(120);
+    } else {
+        fill(20);
+    }
+    
+    textFont(sansFont, 16);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2 + 1);
+};
+
+Button.prototype.drawFilled = function() {
+    this.fade();
+    
+    if (this.disabled) {
+        fill(180);
+        noStroke();
+    } else {
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        strokeWeight(1);
+        stroke(this.highlightCol);
+    }
+    
+    rect(this.x, this.y - 1, this.w, this.h + 3, 19);
+    
+    if (this.disabled) {
+        fill(120);
+    } else {
+        fill(lerpColor(this.highlightCol, color(255, 255, 255), this.transition / 10));
+    }
+    
+    textFont(sansFont, 16);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2);
+};
+
+Button.prototype.makeFilled = function() {
+    this.draw = this.drawFilled;
+    this.defaultCol = color(0, 0, 0, 1);
+};
+
+var CheckBox = function(x, y, w, h, name) {
+    Button.call(this, x, y, w, h, { name: name });
+    this.box = this.h - 6;
+    this.bx = this.x + 5;
+    this.by = this.y + 3;
+};
+CheckBox.prototype = Object.create(Button.prototype);
+
+CheckBox.prototype.trigger = function() {
+    //showing[this.name] = !showing[this.name];  
+};
+
+CheckBox.prototype.draw = function() {
+    this.fade();
+    
+    if (this.transition) {
+        noStroke();
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        rect(this.x, this.y, this.w, this.h + 1, 4);
+    }
+    
+    fill(20);
+    textFont(sansFont, 15);
+    textAlign(LEFT, CENTER);
+    text(this.name, this.x + this.box + 9, this.y + this.h/2 + 1);
+    
+    noFill();
+    stroke(10);
+    strokeWeight(1);
+    rect(this.bx, this.y + 3, this.box, this.box);
+
+/*
+    if (showing[this.name]) {
+        line(this.bx + 1, this.by + 1, this.bx + this.box, this.by + this.box);
+        line(this.bx + this.box, this.by + 1, this.bx + 1, this.by + this.box);
+    }
+    */
+};
+}
+/*******************************************************
+ * GUI Slider
+********************************************************/
+{
+var Slider = function(x, y, w, h, params) {
+    // Size of ball
+    this.ballR = params.ballR || h / 2;
+    this.ballD = this.ballR * 2;
+    
+    x += this.ballR;
+    w -= this.ballR * 2;
+    
+    var h = this.ballD + (params.name ? 16 : 0);
+    y += h - this.ballR;
+    
+    GUI_Component.call(this, x, y, w, h, params.name, params.trigger);
+    
+    this.x2 = x + w;
+    this.fill = params.fill || color(240);
+    this.stroke = params.stroke || color(180);
+    
+    this.min = params.min || 0;
+    this.max = params.max === undefined ? 1 : params.max;
+    this.val = params.now === undefined ? this.min : params.now;
+    this.decimalPlaces = params.decimalPlaces === undefined ? 0 : params.decimalPlaces;
+    this.setValue(this.val);
+    this.trigger();
+    
+    this.hideVal = params.hideVal;
+    this.activeCursor = 'ew-resize';
+};
+Slider.prototype = Object.create(GUI_Component.prototype);
+
+Slider.prototype.draw = function() {
+    if (this.name) {
+        fill(20);
+        textSize(13);
+        textAlign(CENTER, BASELINE);
+        text(this.name,  this.x + this.w / 2, this.y - 14);
+        //text(this.name + ": " + this.val,  this.x + this.w / 2, this.y - 14);
+    }
+    
+    stroke(this.stroke);
+    strokeWeight(3);
+    line(this.x, this.y, this.x2, this.y);
+    
+    this.fade();
+    fill(lerpColor(color(this.fill), color(this.stroke), this.transition / 10));
+    
+    if (!this.hideVal) {
+        ellipse(this.bx, this.y, this.ballD, this.ballD);
+        fill(20);
+        textSize(11);
+        textAlign(CENTER, CENTER);
+        text("" + this.val, this.bx, this.y);
+    } else {
+        stroke(10);
+        strokeWeight(1);
+        ellipse(this.bx, this.y, this.ballD, this.ballD);
+    }
+};
+
+Slider.prototype.mouseOver = function() {
+    return dist(mouseX, mouseY, this.bx, this.y) &lt; this.ballR;
+};
+
+Slider.prototype.mousePressed = function() {
+    if (this.mouseOver()) {
+        this.selected = true;
+        return true;
+    }
+};
+
+Slider.prototype.mouseDragged = function() {
+    if (this.selected) {
+        this.bx = constrain(mouseX, this.x, this.x2);
+        var p = pow(10, this.decimalPlaces);
+        this.val = round(map(this.bx, this.x, this.x2, this.min, this.max) * p) / p;
+        this.trigger();
+        return true;
+    }
+};
+
+Slider.prototype.setValue = function(v) {
+    this.val = constrain(v, this.min, this.max);
+    this.bx = map(this.val, this.min, this.max, this.x, this.x2);
+    this.trigger();
+};
+}
+/*******************************************************
+ *      Toolbar
+ *  Like GUI but is displayed and has methods for adding
+ * components like buttons and sliders.
+********************************************************/
+{
+var Toolbar = function(x, y, w) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = 8;
+    this.components = [];
+};
+
+Toolbar.prototype.draw = function() {
+    if (!this.components.length) { return; }
+    
+    fill(250);
+    strokeWeight(1);
+    stroke(180);
+    rect(this.x, this.y, this.w, this.h, 8);
+    forEach(this.components, 'draw');
+};
+
+Toolbar.prototype.add = function(type, params) {
+    params = params || {};
+    var h = params.h || 20;
+    var component = new type(this.x + 5, this.y + this.h, this.w - 10, h, params);
+    this.components.push(component);
+    this.h += component.h + 8;
+};
+
+Toolbar.prototype.mouseOver = function() {
+    return mouseX &gt; this.x &amp;&amp; mouseX &lt; this.x + this.w &amp;&amp;
+           mouseY &gt; this.y &amp;&amp; mouseY &lt; this.y + this.h;
+};
+
+Toolbar.prototype.mousePressed = function() {
+    forEach(this.components, 'mousePressed');
+};
+
+Toolbar.prototype.mouseReleased = function() {
+    forEach(this.components, 'mouseReleased');
+};
+
+Toolbar.prototype.mouseDragged = function() {
+    forEach(this.components, 'mouseDragged');
+};
+}
+/*******************************************************
+ *      Particle object
+********************************************************/
+// Particles have a position, speed, colour and masss
+var Particle = function(x, y, mass) {
+    // Position
+    this.x = x;
+    this.y = y;
+    this.mass = mass;
+    
+    // Velocity
+    var speed = initialSpeed * random() / waterSize;
+    var angle = 360 * random();
+    this.dx = speed * cos(angle);
+    this.dy = speed * sin(angle);
+};
+
+Particle.prototype.collide = function(that) {
+    
+    var dx = this.x - that.x;
+    if (dx &gt; waterSize2) { return; }
+    
+    var dy = this.y - that.y;
+    if (dy &gt; waterSize2) { return; }
+    
+    var d = dx * dx + dy * dy;
+    
+    if (d &lt; waterSizeS) {
+        // Particles collide
+        var collisionDist = sqrt(d + 0.1);
+        var collisionDistI = 1 / sqrt(d + 0.1);
+        
+        // Find unit vector in direction of collision
+        var collisionVi = dx * collisionDistI;
+        var collisionVj = dy * collisionDistI;
+        
+        // Find velocity of particle projected on to collision vector
+        var collisionV1 = (this.dx * dx + this.dy * dy) * collisionDistI;
+        var collisionV2 = (that.dx * dx + that.dy * dy) * collisionDistI;
+        
+        // Find velocity of particle perpendicular to collision vector
+        var perpV1 = (this.dy * dx - this.dx * dy) * collisionDistI;
+        var perpV2 = (that.dy * dx - that.dx * dy) * collisionDistI;
+        
+        // Find movement in direction of collision
+        var v1p = collisionV2 * elasticity;
+        var v2p = collisionV1 * elasticity;
+        
+        // Update velocities
+        this.dx = v1p * collisionVi - perpV1 * collisionVj;
+        this.dy = v1p * collisionVj + perpV1 * collisionVi;
+        that.dx = v2p * collisionVi - perpV2 * collisionVj;
+        that.dy = v2p * collisionVj + perpV2 * collisionVi;
+        
+        // Move to avoid overlap
+        var overlap = (waterSize2 - collisionDist + 0.5) * 0.5;
+        this.x += collisionVi * overlap;
+        this.y += collisionVj * overlap;
+        that.x -= collisionVi * overlap;
+        that.y -= collisionVj * overlap;
+        computations++;
+    }
+};
+
+/*******************************************************
+ *      Making particles
+********************************************************/
+var particles = [];
+
+var addWater = function() {
+    if (!particles.length || particles[particles.length - 1].y &gt; 0) {
+        var x = cupX + random() - 0.5;
+        var y = -waterSize2;
+        particles.push(new Particle(x, y, waterMass));
+    }
+};
+
+/*******************************************************
+ *      Make Interface
+********************************************************/
+
+var toolbar = new Toolbar(5, 5, 120);
+
+toolbar.add(Slider, {
+    name: "Size of particle",
+    min: 1, max: 10, now: waterSize,
+    trigger: function() {
+        waterSize = this.val;
+        waterSize2 = waterSize * 2;
+        waterSizeS = sq(waterSize2);
+    }
+});
+toolbar.add(Slider, {
+    name: "Gravity",
+    max: 2, now: 0.2,
+    decimalPlaces: 1,
+    trigger: function() { gravity = this.val / 10; }
+});
+toolbar.add(Slider, {
+    name: "Elasticity",
+    max: 1, now: 0.5,
+    decimalPlaces: 2,
+    trigger: function() { elasticity = this.val; }
+});
+toolbar.add(Slider, {
+    name: "Flow rate",
+    min: 0, max: 6, now: 1,
+    trigger: function() { flowRate = 64 &gt;&gt; this.val; }
+});
+toolbar.add(Slider, {
+    name: "Color",
+    min: 0.1, max: 1, now: col,
+    decimalPlaces: 2,
+    hideVal: true,
+    trigger: function() {
+        col = this.val * 255;
+        var c = color(col, col, 255);
+        waterColor = c + (opacity &lt;&lt; 24);
+        this.fill = c;
+    }
+});
+toolbar.add(Button, {
+    name: 'Restart',
+    trigger: Program.restart
+});
+toolbar.add(Button, {
+    name: 'Pause',
+    trigger: function() {
+        if (running) {
+            this.name = "Play";
+        } else {
+            this.name = "Pause";
+        }
+        running = !running;
+    }
+});
+
+/*******************************************************
+ *      Main loop
+********************************************************/
+
+var update = function(n) {
+    var t, p, i, j, particleCount;
+    computations = 0;
+    
+    for (; n--;) {
+        particleCount = particles.length;
+        computations = (particleCount * particleCount + 3 * particleCount) / 2;
+        
+        // Calculate acceleration
+        for (i = particleCount; i--;) {
+            p = particles[i];
+            p.dy += gravity;
+            for (j = i + 1; j &lt; particleCount; j++) {
+                p.collide(particles[j]);
+            }
+        }
+        
+        // Move particles
+        var y = cupY2 - waterSize;
+        var x1 = cupX1 + 6 + waterSize;
+        var x2 = cupX2 - 6 - waterSize;
+        
+        for (i = particleCount; i--;) {
+            p = particles[i];
+
+            // Bounce off cup
+            // Within cup
+            if (p.y &lt; y + 10 &amp;&amp; p.x &gt; cupX1 &amp;&amp; p.x &lt; cupX2) {
+                p.y += p.dy;
+                p.x += p.dx;
+                
+                if (p.y &gt; cupY1) {
+                    // Lower edge
+                    if (p.y &gt; y) {
+                        p.y = y;
+                        p.dy *= -elasticity;
+                        computations++;
+                    }
+                    
+                    if (p.x &lt; x1) {
+                        // Left edge
+                        p.x = x1;
+                        p.dx *= -elasticity;
+                        computations++;
+                    } else if (p.x &gt; x2) {
+                        // Right edge
+                        p.x = x2;
+                        p.dx *= -elasticity;
+                        computations++;
+                    }
+                }
+            } else {
+                p.x += p.dx;
+                p.y += p.dy;
+            }
+            
+            if (p.y &gt; height + waterSize) {
+                particles.splice(i, 1);
+            }
+        }
+    }
+};
+
+var drawInfo = function() {
+    textAlign(LEFT, BASELINE);
+    textSize(15);
+    fill(0);
+    text(this.__frameRate, 5, height - 60);
+    text("Number of particles: " + particles.length, 5, height - 48);
+    text("Computations per tick: " + computations, 5, height - 30);
+    
+    var p = min(1, norm(computations, 0, 80000));
+    if (p &lt; 0.5) {
+        fill(lerpColor(GREEN, YELLOW, p * 2));
+    } else {
+        fill(lerpColor(YELLOW, RED, p * 2 - 1));
+    }
+    
+    noStroke();
+    rect(0, height - 25, width, 25);
+    stroke(0);
+    strokeWeight(3);
+    line(width * p, height - 25, width * p, height);
+};
+
+var draw = function() {
+    background(BACKGROUND);
+    cursor('default');
+    
+    if (running &amp;&amp; particles.length &lt; 400) {
+        if (flowRate !== 64 &amp;&amp; frameCount % flowRate === 0) {
+            addWater();
+        }
+    }
+    
+    strokeWeight(waterSize2);
+    stroke(waterColor);
+    for (var i = particles.length; i--;) {
+        point(particles[i].x, particles[i].y);
+    }
+    
+    // Draw cup
+    noStroke();
+    fill(160);
+    rect(cupX1, cupY2, cupW, 6, 6);
+    rect(cupX1, cupY1, 6, cupH + 6, 6);
+    rect(cupX2 - 6, cupY1, 6, cupH + 6, 6);
+    
+    if (running) {
+        update(framesNotShown);
+    }
+    toolbar.draw();
+    if (showCount) {
+        fill(255);
+        textAlign(LEFT, BASELINE);
+        text(particles.length, 5, height - 6);
+    }
+};
+
+/*******************************************************
+ * Event handling
+********************************************************/
+
+mousePressed = function() {
+    toolbar.mousePressed();
+    if (!toolbar.mouseOver() &amp;&amp; flowRate === 64) {
+        var x = cupX + random() - 0.5;
+        var y = -waterSize2;
+        particles.push(new Particle(x, y, waterMass));
+    }
+};
+
+mouseReleased = function() {
+    toolbar.mouseReleased();
+};
+
+mouseDragged = function() {
+    toolbar.mouseDragged();
+};
+
+mouseOut = function() {
+    toolbar.mouseReleased();
+};
+
+keyPressed = function() {
+    if (key.toString() === 'c') {
+        showCount = !showCount;
+    }
+};
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">The next simulation also uses a particle system to simulate a real-world phenomenon: fireworks. You can play around with 16 different parameters controlling the physical forces, launch position, and particle properties. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>// Make movement depend on time not frames
+// Make removing dead particles more efficient
+
+var gravity, dragFactor;
+
+var GROUND_Y = height - 20;
+var PARTICLE_SIZE = 4;
+var EXPLODER_SIZE = 8;
+
+var sansFont = createFont("sans", 15);
+var serifFont = createFont("serif", 16);
+var TEXTCOL = color(20, 20, 20);
+var SWATCHSIZE = 128;
+var swatch;
+
+// Comment out all the code inside this function to make it less laggy when editing the code.
+var createSwatch = function(n, brightness) {
+    loadPixels();
+    var px = imageData.data;
+    
+    var ni = 1 / n;
+    var x, y, h, s, r, g, b, i, f, p, q, t;
+    var index;
+    
+    //var s = 0.5;          // Saturation
+    var v = brightness;     // Brightness
+    
+    for (x = 0; x &lt; n; x++) {
+        h = ni * x;     // Hue along x-axis
+        for (y = 0; y &lt; n; y++) {
+            s = ni * y; // Saturation along y-axis
+            //v = ni * y; // Brightness along y-axis
+            i = floor(h * 6);
+            f = h * 6 - i;
+            p = v * (1 - s);
+            q = v * (1 - f * s);
+            t = v * (1 - (1 - f) * s);
+            switch (i % 6) {
+                case 0: r = v; g = t; b = p; break;
+                case 1: r = q; g = v; b = p; break;
+                case 2: r = p; g = v; b = t; break;
+                case 3: r = p; g = q; b = v; break;
+                case 4: r = t; g = p; b = v; break;
+                case 5: r = v; g = p; b = q; break;
+            }
+            index = x + (y * width) &lt;&lt; 2;
+            px[index++] = r * 0xFF | 0;
+            px[index++] = g * 0xFF | 0;
+            px[index++] = b * 0xFF | 0;
+        }
+    }
+    updatePixels();
+    return get(0, 0, n, n);
+};
+
+/*************************************************
+ *      Generic GUI component
+**************************************************/
+{
+var GUI_Component = function(x, y, w, h, name, updateFunction) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.name = name;
+    
+    if (updateFunction) {
+        this.trigger = updateFunction.bind(this);
+    }
+    
+    this.selected = false;
+    this.disabled = false;
+    this.transition = 0;
+};
+
+GUI_Component.prototype.draw = function() {
+    var y = this.y + this.h;
+    fill(20);
+    stroke(20);
+    strokeWeight(2);
+    if (this.mouseOver()) {
+        line(this.x + 5, y, this.x + this.w - 5, y);
+    }
+    
+    textFont(sansFont, 14);
+    textAlign(CENTER, BASELINE);
+    text(this.name, this.x + this.w / 2, y - 2);
+};
+
+GUI_Component.prototype.mouseOver = function() {
+    return (mouseX &gt;= this.x &amp;&amp; mouseX &lt;= this.x + this.w &amp;&amp;
+            mouseY &gt;= this.y &amp;&amp; mouseY &lt;= this.y + this.h);
+};
+
+GUI_Component.prototype.mousePressed = function() {
+    this.selected = this.mouseOver();
+};
+
+GUI_Component.prototype.mouseDragged = function() {};
+
+GUI_Component.prototype.mouseReleased = function() {
+    if (this.selected &amp;&amp; !this.disabled &amp;&amp; this.mouseOver()) {
+        this.trigger();
+    }
+    this.selected = false;
+};
+
+GUI_Component.prototype.trigger = function() {
+    // To be over-written
+};
+
+GUI_Component.prototype.fade = function() {
+    if (this.selected || this.mouseOver()) {
+        this.transition = min(10, this.transition + 1);
+    } else {
+        this.transition = max(0, this.transition - 1);
+    }
+};
+}
+/*************************************************
+ *      GUI Button
+**************************************************/
+{
+var Button = function(x, y, w, h, params) {
+    GUI_Component.call(this, x, y, w, h, params.name, params.trigger);
+    this.defaultCol = color(230, 230, 230, 200);
+    this.highlightCol = params.highlightCol || color(210, 210, 210, 250);
+    if (params.filled) {
+        this.makeFilled();
+    }
+};
+Button.prototype = Object.create(GUI_Component.prototype);
+
+Button.prototype.draw = function() {
+    this.fade();
+    
+    if (this.disabled) {
+        fill(180);
+        noStroke();
+    } else {
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        strokeWeight(1);
+        stroke(200);
+    }
+    
+    rect(this.x, this.y - 1, this.w, this.h + 3, 12);
+    
+    if (this.disabled) {
+        fill(120);
+    } else {
+        fill(TEXTCOL);
+    }
+    
+    textFont(sansFont, 15);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2 + 1);
+};
+
+Button.prototype.drawFilled = function() {
+    this.fade();
+    
+    if (this.disabled) {
+        fill(180);
+        noStroke();
+    } else {
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        strokeWeight(1);
+        stroke(this.highlightCol);
+    }
+    
+    rect(this.x, this.y - 1, this.w, this.h + 3, 19);
+    
+    if (this.disabled) {
+        fill(120);
+    } else {
+        fill(lerpColor(this.highlightCol, color(255, 255, 255), this.transition / 10));
+    }
+    
+    textFont(sansFont, 16);
+    textAlign(CENTER, CENTER);
+    text(this.name, this.x + this.w / 2, this.y + this.h/2);
+};
+
+Button.prototype.makeFilled = function() {
+    this.draw = this.drawFilled;
+    this.defaultCol = color(0, 0, 0, 1);
+};
+
+var CheckBox = function(x, y, w, h, name) {
+    Button.call(this, x, y, w, h, { name: name });
+    this.box = this.h - 6;
+    this.bx = this.x + 5;
+    this.by = this.y + 3;
+};
+CheckBox.prototype = Object.create(Button.prototype);
+
+CheckBox.prototype.trigger = function() {
+    //showing[this.name] = !showing[this.name];  
+};
+
+CheckBox.prototype.draw = function() {
+    this.fade();
+    
+    if (this.transition) {
+        noStroke();
+        fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+        rect(this.x, this.y, this.w, this.h + 1, 4);
+    }
+    
+    fill(20);
+    textFont(sansFont, 15);
+    textAlign(LEFT, CENTER);
+    text(this.name, this.x + this.box + 9, this.y + this.h/2 + 1);
+    
+    noFill();
+    stroke(10);
+    strokeWeight(1);
+    rect(this.bx, this.y + 3, this.box, this.box);
+
+/*
+    if (showing[this.name]) {
+        line(this.bx + 1, this.by + 1, this.bx + this.box, this.by + this.box);
+        line(this.bx + this.box, this.by + 1, this.bx + 1, this.by + this.box);
+    }
+    */
+};
+
+// Button to set a colour
+var Swatch = function(x, y, w, h, params) {
+    params.trigger = function() {
+        this.showSwatch = !this.showSwatch;
+    };
+    
+    Button.call(this, x, y, w, h, params);
+    this.color = params.color || color(255, 0, 0);
+    this.hue = hue(this.color) / 255;
+    this.sat = saturation(this.color) / 255;
+    this.bri = brightness(this.color) / 255;
+
+    this.defaultCol = color(250);
+    this.updateFunction = params.update;
+    
+    if (this.updateFunction) { this.updateFunction(); }
+    
+    this.showSwatch = false;
+    this.sx = this.x + this.w + 16;
+    this.sy = this.y - 4;
+    this.sx2 = this.sx + SWATCHSIZE;
+    this.sy2 = this.sy + SWATCHSIZE;
+};
+Swatch.prototype = Object.create(Button.prototype);
+
+Swatch.prototype.draw = function() {
+    this.fade();
+    
+    fill(lerpColor(this.defaultCol, this.highlightCol, this.transition / 10));
+    noStroke();
+    
+    rect(this.x, this.y - 1, this.w, this.h + 3, 8);
+    
+    var my = this.y + this.h / 2;
+    
+    fill(20);
+    textFont(sansFont, 15);
+    textAlign(LEFT, CENTER);
+    var txt = this.name + ":";
+    text(txt, this.x + 3, my + 1);
+    
+    strokeWeight(1);
+    stroke(20);
+    fill(this.color);
+    rect(this.x + textWidth(txt) + 8, my - 8, 16, 16);
+    
+    if (!swatch) { swatch = createSwatch(SWATCHSIZE, 0.8); }
+    
+    // TODO: make a swatch object
+    if (this.showSwatch) {
+        noStroke();
+        fill(0, 0, 0, 50);
+        rect(this.sx + 2, this.sy + 2, SWATCHSIZE + 2, SWATCHSIZE + 29);
+        fill(0);
+        //rect(this.sx, this.sy, SWATCHSIZE, SWATCHSIZE + 30);
+        image(swatch, this.sx, this.sy);
+        
+        noFill();
+        strokeWeight(1);
+        stroke(255);
+        ellipse(this.sx + this.hue * SWATCHSIZE, this.sy + this.sat * SWATCHSIZE, 5, 5);
+        
+        strokeWeight(2);
+        stroke(240);
+        rect(this.sx - 1, this.sy - 1, SWATCHSIZE + 2, SWATCHSIZE + 2);
+        
+        if (this.mouseOverSwatch()) {
+            colorMode(HSB);
+            var hue = norm(mouseX, this.sx, this.sx2);
+            var sat = norm(mouseY, this.sy, this.sy2);
+            fill(hue * 255, sat * 255, this.bri * 255);
+            rect(this.sx - 1, this.sy2 + 1, SWATCHSIZE + 2, 24);
+            colorMode(RGB);
+        } else {
+            textAlign(CENTER, CENTER);
+            fill(0);
+            rect(this.sx - 1, this.sy2 + 1, SWATCHSIZE + 2, 24);
+            fill(255);
+            text("Pick a color", this.sx + SWATCHSIZE / 2, this.sy2 + 12);
+        }
+    }
+};
+
+Swatch.prototype.setColor = function() {
+    colorMode(HSB);
+    this.color = color(this.hue * 255, this.sat * 255, this.bri * 255);
+    colorMode(RGB);
+};
+
+Swatch.prototype.findColor = function() {
+    this.hue = norm(mouseX, this.sx, this.sx2);
+    this.sat = norm(mouseY, this.sy, this.sy2);
+};
+
+Swatch.prototype.mouseOverSwatch = function() {
+    return mouseX &gt;= this.sx &amp;&amp; mouseX &lt;= this.sx2 &amp;&amp;
+           mouseY &gt;= this.sy &amp;&amp; mouseY &lt;= this.sy2;
+};
+
+Swatch.prototype.mousePressed = function() {
+    this.selected = this.mouseOver();
+    if (this.showSwatch &amp;&amp; !this.mouseOverSwatch()) {
+        this.showSwatch = false;
+    }
+};
+
+Swatch.prototype.mouseReleased = function() {
+    if (this.selected &amp;&amp; this.mouseOver()) {
+        this.trigger();
+    } else if (this.showSwatch) {
+        if (this.mouseOverSwatch()) {
+            this.findColor();
+            this.setColor();
+            if (this.updateFunction) {
+                this.updateFunction(this.color);
+            }
+        } else {
+            this.showSwatch = false;
+        }
+    }
+    this.selected = false;
+};
+}
+/*************************************************
+ *      GUI Slider
+**************************************************/
+{
+var Slider = function(x, y, w, h, params) {
+    // Size of ball
+    this.ballR = 12;
+    this.ballD = this.ballR * 2;
+    
+    x += this.ballR;
+    w -= this.ballR * 2;
+    
+    var h = this.ballD + (params.name ? 16 : 0);
+    y += h - this.ballR;
+    
+    GUI_Component.call(this, x, y, w, h, params.name, params.trigger);
+    
+    this.x2 = x + w;
+    this.fill = params.fill || color(240);
+    this.stroke = params.stroke || color(180);
+    
+    this.min = params.min || 0;
+    this.max = params.max === undefined ? 1 : params.max;
+    this.val = params.now === undefined ? this.min : params.now;
+    this.decimalPlaces = params.decimalPlaces === undefined ? 0 : params.decimalPlaces;
+    this.setValue(this.val);
+    this.trigger();
+};
+Slider.prototype = Object.create(GUI_Component.prototype);
+
+Slider.prototype.draw = function() {
+    if (this.name) {
+        fill(20);
+        textSize(13);
+        textAlign(CENTER, BASELINE);
+        text(this.name,  this.x + this.w / 2, this.y - 16);
+        //text(this.name + ": " + this.val,  this.x + this.w / 2, this.y - 14);
+    }
+    
+    this.fade();
+    fill(lerpColor(color(this.fill), color(this.stroke), this.transition / 10));
+    stroke(this.stroke);
+    strokeWeight(3);
+    line(this.x, this.y, this.x2, this.y);
+    ellipse(this.bx, this.y, this.ballD, this.ballD);
+    
+    fill(20);
+    textSize(11);
+    textAlign(CENTER, CENTER);
+    text("" + this.val, this.bx, this.y);
+};
+
+Slider.prototype.mouseOver = function() {
+    return dist(mouseX, mouseY, this.bx, this.y) &lt; this.ballR;
+};
+
+Slider.prototype.mousePressed = function() {
+    if (this.mouseOver()) {
+        this.selected = true;
+        return true;
+    }
+};
+
+Slider.prototype.mouseDragged = function() {
+    if (this.selected) {
+        this.bx = constrain(mouseX, this.x, this.x2);
+        var p = pow(10, this.decimalPlaces);
+        this.val = round(map(this.bx, this.x, this.x2, this.min, this.max) * p) / p;
+        this.trigger();
+        return true;
+    }
+};
+
+Slider.prototype.setValue = function(v) {
+    this.val = constrain(v, this.min, this.max);
+    this.bx = map(this.val, this.min, this.max, this.x, this.x2);
+    this.trigger();
+};
+
+var ColorSlider = function(x, y, w, h, params) {
+    Slider.call(this, x, y, w, h, params);
+    this.saturation = params.saturation || 180;
+    this.brightness = params.brightness || 180;
+    this.setColor();
+};
+ColorSlider.prototype = Object.create(Slider.prototype);
+
+ColorSlider.prototype.setColor = function() {
+    colorMode(HSB);
+    this.color = color(this.val, this.saturation, this.brightness);
+    colorMode(RGB);
+    this.R = red(this.color);
+    this.G = green(this.color);
+    this.B = blue(this.color);
+};
+
+ColorSlider.prototype.draw = function() {
+    if (this.name) {
+        fill(20);
+        textSize(13);
+        textAlign(CENTER, BASELINE);
+        text(this.name,  this.x + this.w / 2, this.y - 15);
+        //text(this.name + ": " + this.val,  this.x + this.w / 2, this.y - 14);
+    }
+    
+    this.fade();
+    fill(this.color);
+    strokeWeight(4);
+    stroke(this.stroke);
+    line(this.x, this.y, this.x2, this.y);
+    stroke(250);
+    strokeWeight(1);
+    ellipse(this.bx, this.y, this.ballD, this.ballD);
+};
+
+ColorSlider.prototype.trigger = function() {
+    this.setColor();
+};
+}
+/*************************************************
+ *      GUI Label
+**************************************************/
+{
+var Label = function(x, y, w, h, name) {
+    this.x = x + w / 2;
+    this.x1 = x + 8;
+    this.x2 = x + w - 8;
+    this.y = y + h - 4;
+    this.name = name;
+};
+
+Label.prototype.draw = function() {
+    fill(40);
+    textFont(sansFont, 16);
+    textAlign(CENTER, BASELINE);
+    text(this.name, this.x, this.y - 2);
+    
+    strokeWeight(1);
+    stroke(40);
+    line(this.x1, this.y, this.x2, this.y);
+};
+}
+/*************************************************
+ *      Toolbar
+**************************************************/
+{
+var Toolbar = function(x, y, w) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = 8;
+    this.components = [];
+    this.labels = [];
+};
+
+Toolbar.prototype.draw = function() {
+    fill(250);
+    strokeWeight(1);
+    stroke(180);
+    rect(this.x, this.y, this.w, this.h, 8);
+   
+    this.components.forEach(function(p) { p.draw(); });
+    this.labels.forEach(function(p) { p.draw(); });
+};
+
+Toolbar.prototype.add = function(type, params) {
+    params = params || {};
+    var h = params.h || 24;
+    var component = new type(this.x + 5, this.y + this.h, this.w - 10, h, params);
+    this.components.push(component);
+    this.h += component.h + 8;
+};
+
+Toolbar.prototype.addLabel = function(name) {
+    var h = 20;
+    this.labels.push(new Label(this.x, this.y + this.h, this.w, h, name));
+    this.h += h + 8;
+};
+
+Toolbar.prototype.addOptions = function(options) {
+    var x = this.x + 3;
+    var y = this.y + this.h + 2;
+    var w = this.w - 6;
+    var h = 22;
+    
+    for (var opt in options) {
+        var button = new CheckBox(x, y, w, h, opt);
+        this.components.push(button);
+        y += h + 5;
+        this.h += h + 5;
+    }
+    
+    this.h += 2;
+};
+
+Toolbar.prototype.addSwatch = function(name, colour, trigger) {
+    var h = 20;
+    var button = new Swatch(this.x + 5, this.y + this.h, this.w - 10, h, name, colour, trigger);
+    this.components.push(button);
+    this.h += h + 8;
+    return button;
+};
+
+Toolbar.prototype.mousePressed = function() {
+    this.components.forEach(function(p) { p.mousePressed(); });
+};
+
+Toolbar.prototype.mouseReleased = function() {
+    this.components.forEach(function(p) { p.mouseReleased(); });
+};
+
+Toolbar.prototype.mouseDragged = function() {
+    this.components.forEach(function(p) { p.mouseDragged(); });
+};
+}
+/*************************************************
+ *      Tabbed Toolbar
+**************************************************/
+{
+var TabbedToolbar = function(x, y, w) {
+    this.x = x;
+    this.tx = x;
+    this.y = y;
+    this.w = w;
+    this.h = 24;
+    
+    this.toolbars = [];
+    this.tabs = [];
+    this.currentTab = -1;
+    this.components = [];
+    this.labels = [];
+};
+
+TabbedToolbar.prototype = Object.create(Toolbar.prototype);
+
+TabbedToolbar.prototype.draw = function() {
+    // Background
+    noStroke();
+    fill(250);
+    rect(this.x, this.y, this.w, this.h, 8);
+    
+    // Tab background
+    fill(200);
+    rect(this.x, this.y, this.w, 24, 8);
+    rect(this.x, this.y + 12, this.w, 12);
+    
+    textFont(sansFont, 13);
+    textAlign(LEFT, BASELINE);
+    var tx = this.x;
+    var ty = this.y + 22;
+    
+    // Draw tab
+    if (this.currentTab !== -1) {
+        var tab = this.tabs[this.currentTab];
+        fill(250);
+        noStroke();
+        var x = max(this.x, tab.x - 1);
+        rect(x, tab.y, tab.w + 1, 30, 8);
+    }
+
+    this.components.forEach(function(p) { p.draw(); });
+    this.labels.forEach(function(p) { p.draw(); });
+};
+
+TabbedToolbar.prototype.changeTab = function(n) {
+    this.currentTab = n;
+    this.components = this.tabs.concat(this.toolbars[n].components);
+    this.labels = this.toolbars[n].labels;
+    this.h = this.toolbars[n].h + 24;
+};
+
+TabbedToolbar.prototype.addTab = function(name) {
+    textFont(sansFont, 14);
+    var w = textWidth(name) + 8;
+    var index = this.tabs.length;
+    var self = this;
+    
+    this.tabs.push(
+        new GUI_Component(this.tx, this.y + 1, w, 18,
+            name, function() {
+                self.changeTab(index);
+            }
+        )
+    );
+    
+    this.toolbars.push(new Toolbar(this.x, this.y + 24, this.w));
+    this.tx += w;
+};
+
+TabbedToolbar.prototype.addTabs = function(names) {
+    for (var i = 0; i &lt; names.length; i++) {
+        this.addTab(names[i]);
+    }
+    this.changeTab(0);
+};
+
+TabbedToolbar.prototype.addTo = function(name, element, params) {
+    var index = -1;
+    
+    for (var i = 0; i &lt; this.tabs.length; i++) {
+        if (this.tabs[i].name === name) {
+            index = i;
+            break;
+        }
+    }
+    
+    if (index === -1) { return; }
+    
+    var toolbar = this.toolbars[index];
+    toolbar.add(element, params);
+    
+    this.changeTab(0);
+};
+
+}
+/*************************************************
+ *      Particle object
+**************************************************/
+{
+var Particle = function() {};
+
+Particle.prototype.init = function(system, x, y, speed, angle, size, col1, col2) {
+    this.system = system;
+    this.x = x;
+    this.y = y;
+    this.vx = speed * cos(angle);
+    this.vy = speed * sin(angle);
+    this.size = size;
+    this.age = 0;
+    this.isDead = false;
+
+    if (col1) {
+        this.exploder = false;
+        this.windEffect = 1;
+        this.maxAge = system.explosionLifetime;
+        this.startColor = col1;
+        this.endColor = col2;
+        this.color = col1;
+    } else {
+        this.exploder = true;
+        this.windEffect = 0.2;
+        this.color = color(200, 200, 220);
+    }
+};
+
+
+Particle.prototype.update = function(dx, dy) {
+    // Wind
+    this.vx += dx * this.windEffect;
+    this.vy += dy * this.windEffect + gravity;
+    this.vx *= dragFactor;
+    this.vy *= dragFactor;
+    this.x += this.vx;
+    this.y += this.vy;
+};
+
+Particle.prototype.draw = function() {
+    fill(this.color);
+    ellipse(this.x, this.y, this.size, this.size);
+};
+
+Particle.prototype.testForDeath = function() {
+    if (this.exploder) {
+        // Only age when falling
+        if (this.vy &gt; 0) {
+            this.age++;
+        }
+        
+        if (this.age &gt; 5) {
+            this.isDead = true;
+            // Explode
+            for (var i = 0, len = this.system.explodingParticles; i &lt; len; i++) {
+                this.system.addParticle(this.x, this.y);
+            }
+        }
+    } else {
+        this.age++;
+        // What proporition of our life are we through?
+        var pLife = this.age / this.maxAge;
+        this.color = lerpColor(this.startColor, this.endColor,  pLife);
+        
+        this.isDead = (pLife &gt;= 1 || this.y &gt; GROUND_Y);
+    }
+};
+}
+/*************************************************
+ *  Holds all the particles
+**************************************************/
+var ParticleSystem = {
+    particles: [],
+    deadParticles: [],
+    timeBetweenLaunches: 12,
+    launchSpeed: 12,
+    launchSpeedVariation: 0,
+    launchAngleVariation: 1,
+    explodingParticles: 50,
+    explosionSpeed: 10,
+    explosionVariation: 0.1,
+    explosionLifetime: 80,
+    startColor1: color(200, 0, 0),
+    startColor2: color(255, 162, 0),
+    endColor1: color(150, 160, 240, 0),
+    endColor2: color(60, 200, 240, 0),
+    
+    init: function(x, y) {
+        this.x = x;
+        this.y = y;
+    },
+    
+    update: function() {
+        if (frameCount % this.timeBetweenLaunches === 0) {
+            this.addExploder();
+        }
+        
+        noStroke();
+        for (var i = this.particles.length; i--;) {
+            var p = this.particles[i];
+            p.update(this.windDX, this.windDY);
+            p.testForDeath();
+            
+            if (p.isDead) {
+                // Move particle to dead particle array
+                this.particles.splice(i, 1);
+                this.deadParticles.push(p);
+            } else {
+                p.draw();
+            }
+        }
+    },
+    
+    addExploder: function() {
+        // Random upward velocity
+        var speed = this.launchSpeed * (1 - random(this.launchSpeedVariation / 100));
+        var angle = -90 + this.launchAngleVariation * random(-0.5, 0.5);
+
+        var p = this.deadParticles.length &gt; 0 ? this.deadParticles.pop() : new Particle();
+        p.init(this, this.x, this.y, speed, angle, EXPLODER_SIZE);
+        this.particles.push(p);
+    },
+    
+    addParticle: function(x, y) {
+        var angle = random(360);
+        var speed = this.explosionSpeed * (1 - random(this.explosionVariation));
+        var col1 = lerpColor(this.startColor1, this.startColor2, random());
+        var col2 = lerpColor(this.endColor1, this.endColor2, random());
+
+        var p = this.deadParticles.length &gt; 0 ? this.deadParticles.pop() : new Particle();
+        p.init(this, x, y, speed, angle, PARTICLE_SIZE, col1, col2);
+        this.particles.push(p);
+    },
+    
+    getWind: function() {
+        this.windDX = this.windStrength * cos(this.windAngle);
+        this.windDY = this.windStrength * sin(this.windAngle);
+    }
+};
+
+ParticleSystem.init(360, GROUND_Y);
+
+/*************************************************
+ *  Create toolbar
+**************************************************/
+
+var toolbar = new TabbedToolbar(5, 5, 177);
+toolbar.addTabs(['Physics', 'Launch', 'Explosion']);
+
+toolbar.addTo('Physics', Slider, {
+    name: "Gravity",
+    min: 1,
+    now: 9.8,
+    max: 50,
+    decimalPlaces: 1,
+    trigger: function() {
+        gravity = this.val / 100;
+    }
+});
+toolbar.addTo('Physics', Slider, {
+    name: "Air resistance",
+    min: 0,
+    now: 20,
+    max: 100,
+    decimalPlaces: 1,
+    trigger: function() {
+        dragFactor = 1 - this.val / 1000;
+    }
+});
+toolbar.addTo('Physics', Slider, {
+    name: "Wind strength",
+    min: 0,
+    now: 10,
+    max: 100,
+    trigger: function() {
+        ParticleSystem.windStrength = this.val / 100;
+        ParticleSystem.getWind();
+    }
+});
+toolbar.addTo('Physics', Slider, {
+    name: "Wind angle (°)",
+    max: 360,
+    trigger: function() {
+        ParticleSystem.windAngle = this.val;
+        ParticleSystem.getWind();
+    }
+});
+toolbar.addTo('Physics', Button, {
+    name: "Restart",
+    trigger: function() {
+        Program.restart();
+    }
+});
+
+toolbar.addTo('Launch', Slider, {
+    name: "Launch rate",
+    min: 1,
+    now: 3,
+    max: 6,
+    trigger: function() {
+        ParticleSystem.timeBetweenLaunches = 256 &gt;&gt; (this.val);
+    }
+});
+toolbar.addTo('Launch', Slider, {
+    name: "Launch speed",
+    min: 1,
+    now: 12,
+    max: 40,
+    trigger: function() {
+        ParticleSystem.launchSpeed = this.val;
+    }
+});
+toolbar.addTo('Launch', Slider, {
+    name: "Speed variation (%)",
+    min: 0,
+    max: 100,
+    trigger: function() {
+        ParticleSystem.launchSpeedVariation = this.val;
+    }
+});
+toolbar.addTo('Launch', Slider, {
+    name: "Angle variation (°)",
+    min: 0,
+    now: 10,
+    max: 90,
+    trigger: function() {
+        ParticleSystem.launchAngleVariation = this.val;
+    }
+});
+
+toolbar.addTo('Explosion', Slider, {
+    name: "Number of particles",
+    min: 1,
+    now: 40,
+    max: 100,
+    trigger: function() {
+        ParticleSystem.explodingParticles = this.val;
+    }
+});
+toolbar.addTo('Explosion', Slider, {
+    name: "Particle speed",
+    min: 1,
+    now: 5,
+    max: 20,
+    trigger: function() {
+        ParticleSystem.explosionSpeed = this.val;
+    }
+});
+toolbar.addTo('Explosion', Slider, {
+    name: "Speed variation (%)",
+    min: 0,
+    now: 50,
+    max: 100,
+    trigger: function() {
+        ParticleSystem.explosionVariation = this.val / 100;
+    }
+});
+toolbar.addTo('Explosion', Slider, {
+    name: "Particle lifetime",
+    min: 10,
+    now: 80,
+    max: 300,
+    trigger: function() {
+        ParticleSystem.explosionLifetime = this.val;
+    }
+});
+
+toolbar.addTo('Explosion', Swatch, {
+    name: "Start color 1",
+    color: color(200, 0, 0),
+    update: function() {
+        ParticleSystem.startColor1 = this.color;
+    }
+});
+toolbar.addTo('Explosion', Swatch, {
+    name: "Start color 2",
+    color: color(255, 162, 0),
+    update: function() {
+        ParticleSystem.startColor2 = this.color;
+    }
+});
+toolbar.addTo('Explosion', Swatch, {
+    name: "End color 1",
+    color: color(150, 160, 240),
+    update: function() {
+        ParticleSystem.endColor1 = this.color + (1 &lt;&lt; 24);
+    }
+});
+toolbar.addTo('Explosion', Swatch, {
+    name: "End color 2",
+    color: color(54, 87, 235),
+    update: function() {
+        ParticleSystem.endColor2 = this.color + (1 &lt;&lt; 24);
+    }
+});
+
+/*************************************************
+ *      Main loop
+**************************************************/
+
+draw = function() {
+    background(10);
+    ParticleSystem.update();
+    
+    noStroke();
+    fill(160, 160, 170);
+    ellipse(ParticleSystem.x, ParticleSystem.y, 15, 8);
+    
+    // Ground
+    fill(120, 110, 100);
+    rect(0, GROUND_Y, width, 40);
+    
+    // fill(255);
+    // textAlign(LEFT, BASELINE);
+    // text(ParticleSystem.particles.length, 4, height - 6);
+    
+    toolbar.draw();
+};
+
+/*************************************************
+ *      Event handling
+**************************************************/
+{
+keyPressed = function() {
+    //running = !running;
+};
+
+mousePressed = function() {
+    toolbar.mousePressed();
+};
+
+mouseDragged = function() {
+    toolbar.mouseDragged();
+};
+
+mouseReleased = function() {
+    toolbar.mouseReleased();
+};
+
+mouseOut = mouseReleased;
+}
+</pre></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> Animators use tools like this to fine-tune their special effects. Pixar has their own in-house 3D animation software that they've custom built for their movies, but anyone can use free open-source software such as Blender to create simular effects.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Research simulations</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Quantum mechanics is a field in physics that attempts to explain the natural forces at the atomic and subatomic level. Not only are those forces invisible; they're also too minuscule for us to observe. Quantum physicists can use simulations to test out theories about the interaction of subatomic particles, such as quarks and gluons.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">This animation is from a simulation of a quark-antiquark pair inside a vacuum of empty space:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 500px; max-height: 375px;"><img alt="Animated GIF with two particles separating from each other and colors indicating a field of energy emanating from the separation." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/01a94a44ed17d562c61c68829e0881cfe3707b3e.gif" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Animated GIF with two particles separating from each other and colors indicating a field of energy emanating from the separation.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><em>Image source: <a class="_8gcxk83" href="http://www.physics.adelaide.edu.au/theory/staff/leinweber/VisualQCD/Nobel/index.html" rel="noopener noreferrer" tabindex="0" target="_blank">Derek B. Leinweber</a></em></div></div></div></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer—just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

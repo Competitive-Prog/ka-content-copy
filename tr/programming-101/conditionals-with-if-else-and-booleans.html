@@ -1,0 +1,158 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>if / else ve Booleans | ile koşullular AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>if / else ve Booleans | ile koşullular AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">İnsanlar olarak, öğle yemeğinde ne yiyeceğimiz veya yağmurluk giyip giymeyeceğimiz gibi her gün kararlar alıyoruz. Bu kararları verirken, öğle yemeği kararı için buzdolabımızın içeriği veya yağmurluk kararı için dışarıdaki hava durumu gibi dünyamızın birçok koşulunu göz önünde bulundururuz.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bilgisayar programları ayrıca <strong>koşulluların</strong> (if/else) içindeki <strong>Boole ifadelerini</strong> (true/false) kullanarak kararlar verir. Koşullular sayesinde, programlar farklı girdilere ve parametrelere göre farklı yanıt verebilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Basit bir koşullu</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Her gün dışarıda ne giyeceğimize karar vermemize yardımcı olacak bir program yazdığımızı hayal edin. Bu programla bulabileceğimiz birçok koşul var, ancak basit başlayalım: sıcaklık donma noktasının altındaysa, program bizi kar ceketi giymemiz konusunda uyarmalıdır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">İşte bir akış şemasındaki bu mantık:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt='Flowchart that starts with diamond that says "Is temperature less than or equal to 32?". Diamond has arrow labeled "TRUE" that leads to rectangle that says "Display: "Wear a snow jacket!".' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/80448a77385ce822e4ca230445302ed8f1ee924e.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">"Sıcaklık 32'den küçük mü yoksa ona eşit mi?" yazan elmas ile başlayan akış şeması. Diamond, "Ekran: "Kar ceketi giy!" yazan dikdörtgene yol açan "TRUE" etiketli oka sahiptir.</div></div></div></span></div></div>
+<div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Bir akış şemasını nasıl okursunuz?]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu akışı JavaScript'te bir <strong>if ifadesi</strong> kullanarak programlayabiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>if (temperature &lt; 32) {
+  println("Wear a snow jacket!");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu sözdizimini parçalayalım. Her if ifadesinin genel yapısı şöyle görünür:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>if (&lt;condition&gt;) {
+  &lt;instructions&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Durum ve talimatlar farklı olan şeydir; sihrin gerçekleştiği yer burasıdır.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Koşul bir <strong>Boole ifadesidir</strong>: ya <code>false</code>da <code>true</code> . Boole değerleri, programlama dillerinde başka bir veri türüdür ve yalnızca true veya false'u tutabilirler.<div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Bitleri hatırlıyor musun?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Örneğin, bu Boole ifadesinin sonuçlarını bir değişkende depolayabiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><pre><code>var belowFreezing = temperature &lt; 32;</code></pre></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Geçerli değerine <code>temperature</code>bağlı olarak, <code>belowFreezing</code> değişken şimdi ya <code>false</code>da <code>true</code> .</div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">Koşulu değişkenle bile değiştirebiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="10"><pre><code>var belowFreezing = temperature &lt; 32;
+if (belowFreezing) {
+  println("Wear a snow jacket!");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">Nasıl kodlarsak, koşulun ya da <code>true</code> <code>false</code>, çünkü bu, bilgisayara kıvırcık parantezlerin içindeki talimatları uygulayıp uygulamayacağına dair bir değerlendirme yapması gerekir.</div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">Talimatlar, programınızın yapabileceği <em>herhangi bir şey</em> olabilir ve gerektiği kadar uzun olabilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">✏️ Aşağıdaki programdaki değeri <code>temperature</code> değiştirmeyi deneyin ve ne olduğunu görün. Koşulu veya talimatları da değiştirebilirsiniz.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var sıcaklık = 30;
+if (sıcaklık &lt; 32) {
+    println("BRRR dışarıdaki soğuğu!");
+    println("Kardan adam yapmak ister misin?");
+    println("☃☃☃☃☃☃☃☃");
+    println("Ya da biraz kar tanesi suşisi yiyin?");
+    println(" ❆ ❆ ❄ ❄ ❄ ❅ ❄ "❄);}
+
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/QLJt1JoQDiq32hVSMfZSD4W3oaoN1mdi7_TNLsIsY20/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditionals%3A%20Freezing%20Temp&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalsFreezingTemp" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Not: Tipik olarak, bunun gibi bir program bir sensörden veya başka bir giriş cihazından <code>temperature</code> değerini okur, ancak basitlik için değeri programa kodluyoruz.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Karşılaştırma işleçleri</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Yukarıdaki Boole ifademiz, bir sayının başka bir sayıdan küçük veya ona eşit olup olmadığını belirlemek için karşılaştırma işlecini <code>&lt;=</code> kullandı. Programlama dillerinde değerler arasındaki farklı ilişkileri, özellikle sayıları belirlemek için birçok karşılaştırma işleci vardır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">JavaScript'teki ilişkisel işleçler şunlardır:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><table class='table'><thead><tr><th scope="col">İşleç</th><th scope="col">Anlamı</th><th scope="col">Doğru ifadeler</th><th scope="col"><span style="white-space: nowrap;">
+  <span></span>
+  <span>
+    <span></span>
+    <span aria-hidden="false" style="white-space: nowrap;"><span class="katex">
+      <span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics>
+        <mrow><mtext> </mtext></mrow>
+        <annotation encoding="application/x-tex">\,</annotation>
+      </semantics></math></span>
+      <span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span></span></span>
+    </span></span>
+    <span style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+  </span>
+  <span></span>
+</span></th></tr></thead><tbody><tr><td><code>&gt;</code></td><td>Daha büyük</td><td><code>60 &gt; 32</code></td><td></td></tr><tr><td><code>&gt;=</code></td><td>Büyük veya eşit</td><td><code>60 &gt;= 32</code></td><td><code>32 &gt;= 32</code></td></tr><tr><td><code>&lt;</code></td><td>Daha az</td><td><code>20 &lt; 32</code></td><td></td></tr><tr><td><code>&lt;=</code></td><td>Daha küçük veya eşit</td><td><code>20 &lt;= 32</code></td><td><code>32 &lt;= 32</code></td></tr><tr><td><code>===</code></td><td>Sıkı eşitlik</td><td><code>32 === 32</code></td><td></td></tr><tr><td><code>==</code></td><td>Eşitlik</td><td><code>32 == 32</code></td><td><code>"32" == 32</code></td></tr><tr><td><code>!==</code></td><td>Katı eşitsizlik</td><td><code>30 !== 32</code></td><td><code>"32" !== 32</code></td></tr><tr><td><code>!=</code></td><td>Eşitsizlik</td><td><code>30 != 32</code></td><td></td></tr></tbody></table></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">JavaScript burada biraz zor bir dildir, çünkü hem eşitlik işleçlerine hem de "katı" eşitlik işleçlerine sahiptir. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Eşitlik işleçleri önce ifadenin her iki tarafını da aynı türde olmaya zorlamaya çalışacak (her ikisini de sayılara dönüştürerek olduğu gibi) ve <em>ardından</em> eşitliği denetleyecektir. Katı eşitlik operatörü, iki değerin farklı türler olduğunu görecek ve hemen birbirlerine eşit olamayacaklarına karar verecektir. Daha öngörülebilir kodlara yol açtıkları için katı işleçleri kullanmanızı öneririz.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Çoğu programlama dilinde her iki tür eşitlik işleci de yoktur, ancak dillerin iki değişkenin eşit olup olmadığına karar verme biçiminde başka farklılıklarla karşılaşabilirsiniz.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">✏️ Aşağıdaki program, değişkene göre <code>yourAge</code> her türlü mesajı görüntüler. Hangi çıktının görüntülendiğini görmek için bunu farklı değerlerle değiştirmeyi deneyin. Programa daha fazla <code>if</code> deyim de ekleyebilirsiniz.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var yourAge = 15;
+
+if (yourAge &gt;= 0) {
+    println("Tebrikler, doğdunuz!");
+}
+
+if (yourAge === 0) {
+    println("Sen sadece bir bebeksin!");
+}
+
+if (yourAge &lt; 3) {
+    println("Henüz konuşamıyorsun bile! Nasıl kodlayabilirsiniz?");
+}
+
+if (yourAge === 5) {
+    println("Okulun ilk gününe hazır ol!");
+}
+
+if (yourAge &gt;= 16) {
+    println("Araba kullanabilirsiniz! Belki! Eyalet yasalarınızı kontrol edin.");
+}
+
+if (yourAge &gt;= 18) {
+    println("Oy kullanabilirsiniz!");
+}
+
+if (yourAge &gt;= 21) {
+    println("Kamu görevi için uygunsunuz!");
+}
+
+if (yourAge &gt;= 35) {
+    println("Şimdi başkanlığa aday olabilirsiniz!");
+}
+
+if (yourAge &gt;= 65) {
+    println("Şimdi emekli olabilirsiniz!");
+}</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/MwRa_nh0DEaRIqzRr-ZLayFioW0FDkQH-1Z5MbtlbOE/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditionals%3A%20Age&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalsAge" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Else ifadesi</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">if ifadeleriyle, programlarımız yalnızca koşul doğruysa bir dizi talimatı yürütebilir. Programlarımızın, koşul yanlış olduğunda <em>farklı</em> bir talimat kümesi yürütmesini istiyorsak, <strong>else bir deyim</strong> kullanabiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Süper basit bir şifre kontrol programı hayal edin. Mantık akışı şöyle görünür:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 428px; max-height: 321px;"><img alt="Flowchart that starts with diamond that says &quot;Is password equal to TOPSECRET?&quot;. First arrow is labeled &quot;TRUE&quot; and leads from diamond to rectangle that says &quot;Display: 'You got it!'&quot;. Second arrow is labeled &quot;FALSE&quot; and leads from diamond to rectangle that says &quot;Display: 'Try again!'&quot;." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/86b8339692d40c121dddc83808c1f3fac5be57fa.svg" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">"Parola TOPSECRET'a eşit mi?" yazan elmas ile başlayan akış şeması. İlk ok "TRUE" olarak etiketlenir ve elmastan "Ekran: 'Anladın!'" yazan dikdörtgene götürür. İkinci ok "YANLIŞ" olarak etiketlenir ve elmastan "Görüntüle: 'Yeniden dene!'" yazan dikdörtgene götürür.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bunu bir ifadeyi ve ardından <code>else</code> bir <code>if</code> ifadeyi kullanarak programlayabiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>if (password === "TOPSECRET") {
+   println("You got it!");
+} else {
+   println("Try again!");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/OesN3TTxw4ac9NWFkBjG30dkeEGm8elum_qskSz2lBw/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditionals%3A%20Password%20checker&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalsPasswordChecker" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Programımızın her zaman iki yoldan birinden geçmesi garanti edilir: ya koşul doğrudur ve ilk yoldan aşağı iner ya da yanlıştır ve ikinci yoldan gider.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">✏️ Aşağıdaki program, her yere ifadeler ekleyen <code>else</code> erken yaş kontrol programına dayanmaktadır. Artık her yaşta neler <em>yapabileceğinizi</em> ve <em>yapamayacağınızı</em> kolayca görebilirsiniz. Değişkenle uğraşın <code>yourAge</code> ve çıktının nasıl değiştiğini görün.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var yourAge = 15;
+
+if (yourAge &gt;= 0) {println("Tebrikler, doğdunuz!");} else {
+    
+    println("Henüz :( yoksunuz");}
+
+
+
+if (yourAge &lt; 3) {
+    println("Henüz konuşamıyorsun bile! Nasıl kodlayabilirsiniz?");
+} else {
+    println("Yay, yürüyebilir ve konuşabilirsin!");
+}
+
+if (yourAge &gt;= 16) {
+    println("Araba kullanabilirsiniz! Belki! Eyalet yasalarınızı kontrol edin.");
+} else {
+    println("Sorrrry, henüz senin için sürüş yok.");
+}
+
+if (yourAge &gt;= 18) {println("Oy kullanabilirsiniz!");} else {
+    
+    println("Henüz oylama yok, belki ebeveynlerinizi etkileyebilirsiniz.");}
+
+
+
+if (yourAge &gt;= 21) {println("Kamu görevi için uygunsunuz!");} else {
+    
+    println("Henüz kamu görevine aday olamazsınız, üzgünüz!");}
+
+
+
+if (yourAge &gt;= 35) {println("Şimdi başkanlığa aday olabilirsiniz!");} else {
+    
+    println("Sizin için başkan adayı yok, üzgünüm!");}
+
+
+
+if (yourAge &gt;= 65) {println("Şimdi emekli olabilirsiniz!");} else {
+    
+    println("Henüz emeklilik yaşında değilsiniz, ne yazık ki!");
+   
+}</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/FtBunIX13Q83rX8IIRLxt2O1ejtIVgGuIVDN8mnMvDk/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditionals%3A%20Age%20Else&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalsAgeElse" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Sözde koddaki koşullular</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Sözde kod nedir?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu sözde kod tek <code>if</code> bir ifadeyi temsil eder:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>IF (&lt;condition&gt;)
+{
+     &lt;instructions&gt;
+</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bu sözde kod, bunun yerine yürütülebilecek ikinci bir yönerge kümesi içeren bir ifade içerir <code>else</code> :</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>IF (&lt;condition&gt;)
+{
+     &lt;instructions 1&gt;
+} 
+ELSE 
+{
+     &lt;instructions 2&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Bunlar, sözde koddaki ilişkisel işleçlerdir:</div></div><div class="paragraph" data-perseus-paragraph-index="7"><table class='table'><thead><tr><th scope="col">Operatör</th><th scope="col">Anlamı</th></tr></thead><tbody><tr><td><code>a = b</code></td><td>Eşitlik</td></tr><tr><td><code>a ≠ b</code></td><td>Eşitsizlik</td></tr><tr><td><code>a &gt; b</code></td><td>Daha büyük</td></tr><tr><td><code>a &lt; b</code></td><td>Daha az</td></tr><tr><td><code>a ≥ b</code></td><td>Büyük veya eşit</td></tr><tr><td><code>a ≤ b</code></td><td>Daha küçük veya eşit</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">İşte sözde koddaki parola denetleyicisi mantığı:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="9"><pre><code>IF (password = "TOPSECRET")
+{
+   DISPLAY("You got it!")
+}
+ELSE {
+   DISPLAY("Try again!");
+}</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

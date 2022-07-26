@@ -1,0 +1,94 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Veri kümelerini depolama | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Veri kümelerini depolama | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Dijital dünya verilerle dolu. Sosyal medya uygulamaları, yayınlarımız ve beğenilerimiz hakkında veri toplar. Çevrimiçi mağazalar, görüntülediğimiz ürünler hakkında veri toplar. Reklam ajansları, tıkladıklarımız hakkında veri toplar. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Tüm bu veriler nasıl saklanır? Değişkenlerin verileri bellekte depoladığı bir bilgisayar programında başlayabilir, ancak sonunda kalıcı bir depolama biçiminde depolanması gerekir. Program çalışmayı durdurduktan sonra verilere erişilebilmesi ve ideal olarak analiz edilmesi kolay olmalıdır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Basit metin dosyalarından karmaşık veritabanlarına kadar veri depolamak için birkaç seçeneğe bakalım.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Metin dosyaları</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Hiç bilgisayarda oyun oynadınız mı? Birçok bilgisayar oyunu, kişisel ilerlemenizi ölçmenize yardımcı olmak için yüksek puanlarınızı takip eder. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir oyun, yüksek puanlarınızı bilgisayardaki bir metin dosyasında saklayabilir. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Dosya şu "yüksek puanlar" kadar basit olabilir.txt:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>73
+82
+83
+99</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Oyun aynı zamanda yüksek puanın tarihini ve ulaşılan seviyeyi de saklamak isterse ne olur? Dosyadaki her satırın birden çok ilgili bilgi parçası depolaması gerekir. Buna "tablolu" veri diyoruz, çünkü her satır bir tablonun satırı gibidir ve her satırın birden çok sütunu vardır.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Metin dosyalarında tablosal verileri depolamak için yaygın bir biçim <strong>virgülle ayrılmış değerlerdir (CSV).</strong></div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">"Yüksek puanlar.csv" içinde saklanabilecek olan şey budur:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code>date,level,score
+01/11/2019,9,73
+02/13/2019,10,82
+02/14/2019,10,83
+03/11/2019,11,99</code></pre></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">Dosyadaki ilk satır "tarih", "seviye" ve "puan" sütunlarını bildirir. Sonraki satırlar, önce tarih, sonra düzey, sonra puan, hepsi virgülle ayrılmış gerçek veri satırlarını içerir.</div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">CSV dosyaları yaygın bir biçimdir, bu nedenle CSV dosyalarını okuyabilen ve yazabilen birçok araç vardır. Bu araçlardan bazıları, elektronik tablo uygulamaları gibi kullanıcıya yöneliktir. Geliştiriciler için, uygulamalarından CSV dosyalarını okumak ve yazmak için programlama dillerinde kütüphaneler vardır. </div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">Bununla birlikte, CSV dosyalarının kesin dezavantajları vardır:</div></div><div class="paragraph" data-perseus-paragraph-index="12"><ul><li>Tek bir dosyadır, bu nedenle boyutu bilgisayarın sabit disk alanı ve büyük bir dosyayı açmak için gereken süre ile sınırlıdır.</li><li>Verileri sorgulamak için bir sütuna göre sıralama veya bir sütunun en yüksek değerini hesaplama gibi yerleşik araçlarla birlikte gelmez. Verileri analiz etmek için CSV'yi bir elektronik tablo uygulamasında açmamız veya veriler arasında yinelenen programlar yazmamız gerekir.</li></ul></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h4>Elektronik tablo</h4></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Elektronik tablo uygulaması, verileri depolamak, düzenlemek ve analiz etmek için kullanılan bir araçtır. Elektronik tablo uygulamaları genellikle çeşitli popüler metin dosyası biçimlerini (CSV, TSV ve XLS gibi) açabilir ve verileri bu biçimlere geri kaydedebilir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><a class="_8gcxk83" href="https://docs.google.com/spreadsheets/d/15yEMKUdUiT_3bGwLmu2Ayr_6a4uSTAOGJpJNZPEiwQ4/edit#gid=0" rel="noopener noreferrer" tabindex="0" target="_blank">Google e-tablolarına</a> aktarılan "yüksek puanlar.csv" aşağıda verilmiştir:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 767px; max-height: 302px;"><img alt="Screenshot of Google spreadsheets interface, showing this data:
+
+date | level | score
+- | - | -
+01/11/2019 | 9 | 73
+02/13/2019 | 10 | 82
+02/14/2019 | 10 | 83
+03/11/2019 | 11 | 99" aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/ac4daa656a417a6ec89bc16a68b903090469e01a.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu verileri gösteren Google e-tabloları arayüzünün ekran görüntüsü:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">tarih</th><th scope="col">düzeyi</th><th scope="col">puanı</th></tr></thead><tbody><tr><td>01/11/2019</td><td>9</td><td>73</td></tr><tr><td>02/13/2019</td><td>10</td><td>82</td></tr><tr><td>02/14/2019</td><td>10</td><td>83</td></tr><tr><td>03/11/2019</td><td>11</td><td>99</td></tr></tbody></table></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Çok çeşitli insanlar elektronik tabloları kullanır, çünkü herhangi bir programlama becerisine ihtiyaç duymadan verileri analiz edebilirler. </div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Ancak, elektronik tablo uygulaması programlar için değil, insanlar için bir araç olduğundan, uygulamalar veri depolama mekanizması olarak elektronik tabloları <em>kullanmaz</em> .</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Veritaban -ları</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Çoğu uygulama verileri, bilgisayarda kolayca erişilebilen, güncelleştirilebilen, sorgulanabilen ve silinebilen bir şekilde depolayan bir sistem olan <strong>veritabanında</strong> depolar. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Perde arkasında, bir veritabanı da verileri dosyalarda depolar. Bununla birlikte, veritabanı yönetim sistemi, verileri uygun boyutta dosyalara bölmek ve her dosyada hangi verilerin depolandığını hatırlamak gibi bizim için tüm ayrıntılarla ilgilenir.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Veritabanıyla etkileşim kurmak için, programcılar veya veri analistleri olarak, genellikle bir <strong>sorgu dili</strong> kullanırız. En popüler sorgu dili SQL'dir (Yapılandırılmış Sorgu Dili). </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Verileri bir veritabanında nasıl depolayacağınız ve analiz edeceğiniz konusunda size bir fikir vermek için burada bazı SQL'leri tanıtacağız. SQL'i kendiniz yazabilmek istiyorsanız, Khan Academy'deki <a class="_8gcxk83" href="/computing/computer-programming/sql" rel="noopener noreferrer" tabindex="0" target="_blank">SQL'e Giriş</a> kursumuzda bunu öğrenebilirsiniz.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Aşağıdaki SQL örneği, yüksek puanları depolamak için bir veritabanı tablosu oluşturur. Sol taraf SQL'i içerirken, sağ taraf veritabanı şemasını ve tablodaki tüm satırları görüntüler:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>TABLO high_scores OLUŞTURUN (
+    TARIH METNI, PUAN TAMSAYISI,
+    
+    DÜZEY TAMSAYI);
+    
+
+high_scores DEĞERLERE EKLEYIN 
+    ("01/11/2019", 9, 73);
+high_scores DEĞERLERE EKLEYIN
+    ("02/13/2019", 10, 82);
+high_scores DEĞERLERE EKLEYIN
+    ("02/14/2019", 10, 83);
+high_scores DEĞERLERE EKLEYIN
+    ("03/11/2019", 11, 99);
+
+* FROM high_scores;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Gördüğünüz gibi, bir sorgu dili bir programlama diline benzer. , ve , gibi <code>CREATE</code>komutları çağırarak işlerin gerçekleşmesini sağlıyoruz ve bu komutları oluşturmak, <code>INSERT</code>eklemek ve <code>SELECT</code>seçmek istediklerimizle ilgili ek ayrıntılarla özelleştiriyoruz.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir veritabanı genellikle toplanan verilerin farklı türlerini depolamak için birden çok tablo içerir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Örneğin, bir çevrimiçi oyunun kullanıcı profilleri için bir tablo <em>ve</em> tüm kullanıcılar arasında yüksek puanlar için bir tablo depolaması gerekir.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu SQL örneği, biri kullanıcılar ve diğeri yüksek puanlar için olmak üzere iki tablo oluşturur ve her birinde satırları görüntüler:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>TABLO kullanıcıları OLUŞTUR (
+    kullanıcı adı TEXT, date_joined TEXT,
+    
+    avatar TEXT);
+
+
+
+    TABLO OLUŞTUR high_scores (
+    kullanıcı adı METNİ,
+    tarih METİNİ, puan TAMSAYISI,
+    
+    DÜZEY TAMSAYI);
+    
+    
+KULLANICILARA DEĞERLER EKLEYİN
+    ("GameGuru", "01/11/2019", "ayı");
+KULLANICI DEĞERLERİNE EKLE
+    ("Tetriser", "13.02.2019", "warthog");
+KULLANICI DEĞERLERİNE EKLE
+    ("BlockBuster", "14.02.2019", "kanguru");
+KULLANICILARA EKLEYİN DEĞERLERİ
+    ("LadyGameGame", "03/11/2019", "unicorn");
+
+high_scores DEĞERLERİNİZE EKLEYİN
+    ("GameGuru", "01/11/2019", 9, 73);
+high_scores DEĞERLERE EKLEYİN
+    ("Tetriser", "13.02.2019", 10, 82);
+high_scores DEĞERLERE EKLE
+    ("BlockBuster", "14.02.2019", 10, 83);
+high_scores DEĞERLERİNİZE EKLEYİN
+    ("LadyGameGame", "03/11/2019", 11, 99);
+
+* KULLANICILARDAN SEÇİN;
+* FROM high_scores;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Artık veritabanı toplanan verileri tablolarda depoladığına göre, yararlı içgörüler elde etmek için verileri analiz edebiliriz. Bundan sonra buna dalacağız.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

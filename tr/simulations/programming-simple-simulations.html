@@ -1,0 +1,201 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Basit bir simülasyon | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Basit bir simülasyon | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Kaplumbağa ve tavşan hakkındaki masalı hiç duydunuz mu? </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir tavşan, bu kadar yavaş hareket ettiği için bir kaplumbağayla dalga geçer ve kaplumbağayı bir yarışa davet eder. Tavşan yarışta hızla ilerliyor, ama sonra çok ileride olduğunu görünce kestiriyor. Tavşan, kaplumbağanın yavaş ama emin adımlarla onu yendiğini keşfetmek için uyanır. &gt;  !</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 639px; max-height: 480px;"><img alt="An illustration of a tortoise walking past a hare that is asleep in the bushes." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/7ad0aa68014f570e70fc2c092a25b12e057d3e52.jpg" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Çalılıklarda uyuyan bir tavşanın yanından geçen bir kaplumbağanın bir örneği.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bir çocuk kitabından illüstrasyon. <em>Görüntü kaynağı: <a class="_8gcxk83" href="https://commons.wikimedia.org/wiki/File:The_Tortoise_and_the_Hare_-_Project_Gutenberg_etext_19993.jpg" rel="noopener noreferrer" tabindex="0" target="_blank">Project Gutenberg</a></em></div></div></div></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Masal, insanlara kaplumbağalar ve tavşanlar arasında gerçek yarışlar koşmaları için ilham verdi. Elimde böyle bir hayvan yok, ama bunun gerçekten mümkün olup olmadığını merak ediyorum: Bir kaplumbağa uykulu bir tavşanı yenebilir mi? Kaplumbağa ne kadar hızlı olmalı ve tavşan ne kadar uykulu olmalı? </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir simülasyon programlayarak soruları inceleyelim. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Basit başlangıç</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir kaplumbağa ile <em>kestirmeyen</em> bir tavşan arasındaki yarışı simüle ederek başlayacağız. Bence ikimiz de bu yarışın sonuçlarını biliyoruz, ancak programlama yaparken, daha basit bir problemle başlamaya ve ardından karmaşıklık eklemeye yardımcı oluyor.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">İlk önce bazı başlangıç koşulları oluşturmamız gerekiyor:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><ul><li>Yarışın uzunluğu</li><li>Kaplumbağanın ortalama hızı</li><li>Tavşanın ortalama hızı</li></ul></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Ayrıca yarış sırasında değişen bazı değerleri de takip etmemiz gerekiyor:</div></div><div class="paragraph" data-perseus-paragraph-index="5"><ul><li>Kaplumbağanın mevcut konumu</li><li>Tavşanın mevcut konumu</li></ul></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Hem başlangıç koşullarını hem de değişken değerleri değişkenlerde saklayabiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">İşte bu değişkenleri başlatan JavaScript kodu:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code>var tortoiseSpeed = 1;
+var hareSpeed = 2;
+var raceDistance = 350;
+
+var tortoisePos = 0;
+var harePos = 0;</code></pre></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">Ardından, kaplumbağanın ve tavşanın konumunu güncelleyen ve yalnızca biri bitiş çizgisine ulaştığında duran bir döngü kullanabiliriz.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="10"><pre><code>while (tortoisePos &lt; raceDistance &amp;&amp; harePos &lt; raceDistance) {
+    tortoisePos += tortoiseSpeed;
+    harePos += hareSpeed;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">İşte bu kodla çalışan simülasyon:</div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var kaplumbağa hızı = 1;
+var hareSpeed = 2;
+var raceDistance = 350;
+
+var kaplumbağaPos = 0;
+var harePos = 0;
+
+iken (tortoisePos &lt; raceDistance &amp; harePos &lt; raceDistance) {
+    tortoisePos += tortoiseSpeed;
+    harePos += hareSpeed;
+}
+
+println("Kaplumbağa pozisyonu: " + kaplumbağaPos);
+println("Tavşan konumu: " + harePos);
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/RznDBdQKUi0GLiCX7lVlZvd5mFtI6G0_HMTrUAGJ7VU/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snap/snap.html#present:Username=pamela-ka&amp;ProjectName=Simple%20simulation%3A%20Tortoise%20vs.%20Hare%20No%20Naps&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/SimpleSimulationTortoiseHareNoNaps" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="14"><div class="paragraph">Tavşan kaplumbağadan daha hızlı olduğu sürece, o yarışı <em>kazanacaktır</em> . Şimdi bunu işe yaradığına göre, daha ilginç hale getirmenin zamanı geldi.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Karmaşıklık ekleme</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Simülasyonumuzun tembel bir tavşanın davranışını modellemesi gerekiyor. Tembelliği hakkında bazı başlangıç özellikleri belirleyerek başlayabiliriz:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><ul><li>Şekerlemeler arasında tipik olarak ne kadar süre uyanıktır?</li><li>Kestirdiğinde, kestirmeler ne kadar sürer?</li></ul></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">İşte bu özellikleri değişken olarak depolayan JavaScript kodu:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>var minsBetweenNaps = 30; 
+var napLength = 20;</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Tavşanı naptime için ne zaman durduracağımızı bulmak için, bazı değerleri de takip etmemiz gerekir:</div></div><div class="paragraph" data-perseus-paragraph-index="6"><ul><li>Son şekerlemeden bu yana ne kadar zaman geçti?</li><li>Şu anda uyukluyorsa, şekerlemenin başlamasından bu yana ne kadar zaman geçti?</li></ul></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Bu kod, bu değişkenler için başlangıç değerlerini depolar:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code>var minsSinceLastNap = 0;
+var minsSinceNapStart = 0;</code></pre></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">Tavşan uyanık ve çalışır durumda başlar, böylece her iki değişken de 0'dan başlar.</div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">Son olarak, tavşanın kestirmesini sağlamak için döngünün içine mantık eklememiz gerekir. </div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">Tavşanın henüz kestirmesi gerekmiyorsa, kod tavşan konumunu (daha önce olduğu gibi) güncelleştirir ve artar <code>minsSinceLastNap</code>:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="12"><pre><code>if (minsSinceLastNap &lt;= minsBetweenNaps) {
+    harePos += hareSpeed;
+    minsSinceLastNap++;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph">Tavşanın uyukluyor olması gerekiyorsa, kod artar <code>minsSinceNapStart</code>ve tavşan uyuklamayı bitirdiğinde, kod sıfırlanır <code>minsSinceLastNap</code> ve <code>minsSinceNapStart</code> 0'a ayarlanır:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="14"><pre><code>else {
+     if (minsSinceNapStart &lt; napLength) {
+          minsSinceNapStart++;
+      } else {
+          minsSinceLastNap = 0;
+          minsSinceNapStart = 0;
+      }
+}</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Aşağıdaki çalışan simülasyonda kodu hep birlikte inceleyin. Hangi yarışçı kazanır? Bunun yerine diğer yarışçının kazanmasını sağlamak için parametreleri nasıl değiştirebilirsiniz?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var kaplumbağa hızı = 1;
+var hareSpeed = 2;
+var raceDistance = 350;
+var minsBetweenNaps = 30; 
+var napLength = 20;
+
+var kaplumbağaPos = 0;
+var harePos = 0;
+var minsSinceLastNap = 0;
+var minsSinceNapStart = 0;
+
+iken (tortoisePos &lt; raceDistance &amp; harePos &lt; raceDistance) {
+    tortoisePos += tortoiseSpeed;
+    if (minsSinceLastNap &lt;= minsBetweenNaps) {
+        harePos += hareSpeed;
+        minsSinceLastNap++;
+    } else {if (minsSinceNapStart &lt; napLength) {minsSinceNapStart++;} else {
+         
+              
+              minsSinceLastNap = 0;
+          
+              minsSinceNapStart = 0;
+          }}}
+    
+
+
+println("Kaplumbağa pozisyonu: " + kaplumbağaPos);
+println("Tavşan konumu: " + harePos);
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/K_V_nKnRWs-RaDeIAdgZjFmWYMHfffhnMuWp35OL6v8/edit" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snap/snap.html#present:Username=pamela-ka&amp;ProjectName=Simple%20simulation%3A%20Tortoise%20vs.%20Hare%20With%20Naps&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/SimpleSimulationTortoiseHairNaps" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Değişiklikleri görselleştirme</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir simülasyonun görsel bir çıktısı olması <em>gerekmez</em> ; yukarıdaki simülasyonlar gibi sadece metinsel veya sayısal bir çıktıya sahip olabilir. Ancak görselleştirme, simülasyon kullanıcılarının çıktıyı daha sezgisel bir şekilde anlamalarına yardımcı olabilir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir bilgisayar simülasyonuna görsel bir bileşen ekleme şeklimiz, kullandığımız dile ve hangi kütüphanelere sahip olduğumuza bağlıdır. Khan Academy kodlama ortamında, şekilleri ekrana çizmek ve canlandırmak için ProcessingJS kütüphanesini kullanabiliriz, bu nedenle bu simülasyonu görselleştirmek için mükemmel bir seçimdir.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu simülasyon öncekiyle aynı mantığı çalıştırır ancak bir görselleştirme ekler:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>/*
+Her kare bir "dakikayı" ve her piksel bir "metre"
+yi temsil eder*/
+frameRate(30);
+
+Başlangıç koşulları
+var tortoiseSpeed = 1;
+var hareSpeed = 2;
+var raceDistance = 350;
+var minsBetweenNaps = 30;
+var napLength = 20;
+
+Yarış
+sırasında izleme durumu var kaplumbağaPos = 20;
+var harePos = 20;
+var minsSinceLastNap = 0;
+var minsSinceNapStart = 0;
+
+Bu koda her kare
+çizimi = function() {if (tortoisePos &lt; raceDistance &amp; harePos &lt; raceDistance) {
+
+    
+        tortoisePos += tortoiseSpeed;
+        if (minsSinceLastNap &lt;= minsBetweenNaps) {
+            harePos += hareSpeed;
+            minsSinceLastNap++;
+        } else {if (minsSinceNapStart &lt; napLength) {minsSinceNapStart++;} else {
+            
+                
+                minsSinceLastNap = 0;
+             
+                minsSinceNapStart = 0;
+            }}}
+        
+    
+    
+    Sahne arka planı çizin
+    (194, 160, 101);
+    noStroke();
+    doldurma(255, 247, 0);
+    rect(0, 9, genişlik, 15);
+    doldur(0, 0, 0);
+    metin("BAŞLANGIÇ", 181, 21);
+    noStroke();
+    doldurma(255, 247, 0);
+    rect(0, 341, genişlik, 15);
+    doldur(0, 0, 0);
+    metin("FINISH", 181, 352);
+    
+    Yarışçıları dolguyla
+    çizin(0, 255, 72);
+    text("", 156, kaplumbağaPos);
+    doldurma(0, 255, 72);
+    text("", 228, harePos);};
+
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/mG1ALBLYfmCLBcCoyUjpdaodEtFpBzoqOl_efYh8hGE/edit" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snap/snap.html#present:Username=pamela-ka&amp;ProjectName=Simple%20simulation%3A%20Tortoise%20vs.%20Hare%20Visualized&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/TortoiseHareSimulationTurtleVisualized" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Değişkenlik ekleme</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Gerçek dünya çeşitlilikle doludur. Kaplumbağalar ve tavşanlar hızlarına göre değişir; en yavaş kaplumbağa 0,3 km/s hızla hareket ederken, en hızlı kaplumbağa 5 km/saat hızla hareket eder.  Ayrıca, bir yarış içinde, kaplumbağa ve tavşan her zaman tam olarak aynı hızda hareket etmeyecektir; hızlı anlarına ve yavaş anlarına sahip olacaklar.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir simülasyona varyasyon eklemenin bir yolu, rastgele sayılar üretmektir. Gerçek dünyada bir değerin beklenen aralıklarını bulabilir ve bu aralıklarda değerler üretebiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Simülasyonun bu sürümünde rastgele oluşturulmuş sayıları kullanan tüm yerleri bulmaya çalışın ve ardından nelerin değiştiğini görmek için yeniden başlatın:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>/*
+Her karenin bir "dakika" ve her pikselin bir "metre
+"*/
+frameRate(30) olduğunu düşünüyoruz;
+
+/* Başlangıç koşulları */
+var tortoiseSpeed = rastgele(0.5, 5);
+var hareSpeed = rastgele(30, 50); 
+var raceDistance = 350; 
+var minsBetweenNaps = 30; 
+var napLength = 20;
+
+/* Yarış sırasında takip durumu */
+var kaplumbağaPos = 20;
+var harePos = 20;
+var minsSinceLastNap = 0;
+var minsSinceNapStart = 0;
+
+draw = function() {if (tortoisePos &lt; raceDistance &amp; harePos &lt; raceDistance) {
+
+    
+        tortoisePos += tortoiseSpeed + random(-1, 1);
+        if (minsSinceLastNap &lt;= minsBetweenNaps) {
+            harePos += hareSpeed + random(-2, 2);
+            minsSinceLastNap++;
+        } else {if (minsSinceNapStart &lt; napLength) {minsSinceNapStart++;} else {
+            
+                
+                minsSinceLastNap = 0;
+             
+                minsSinceNapStart = 0;
+            }}}
+        
+    
+    
+    Sahne
+    arka planı (194, 160, 101);
+    noStroke();
+    doldurma(255, 247, 0);
+    rect(0, 9, genişlik, 15);
+    doldur(0, 0, 0);
+    metin("BAŞLANGIÇ", 181, 21);
+    noStroke();
+    doldurma(255, 247, 0);
+    rect(0, 341, genişlik, 15);
+    doldur(0, 0, 0);
+    metin("FINISH", 181, 352);
+    
+    Yarışçılar
+    doldurur(0, 255, 72);
+    text("", 156, kaplumbağaPos);
+    doldurma(0, 255, 72);
+    text("", 228, harePos);};
+
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/stsFsk0SmgxsxPEWCMHD50Pq8Wt9y-G0lUaaINWxPXA/edit" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snap/snap.html#present:Username=pamela-ka&amp;ProjectName=Simple%20simulation%3A%20Tortoise%20vs.%20Hare%20Randomized&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/TortoiseHareSimulationTurtleRandomized" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Bu simülasyonun tavşanın kaplumbağaya karşı hızı için daha gerçekçi sayılar kullandığını unutmayın, bu nedenle sonuçlardan biraz şok olabilirsiniz. Kaplumbağaya yarışı kazanmak için bir şans verip veremeyeceğinizi görmek için şekerleme parametreleriyle oynayın.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Neler hariç tutulur?</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu simülasyon, gerçek bir dünya senaryosunun soyutlamasıdır. Senaryoyla ilgili en önemli parametreleri dahil etmeye çalışır, ancak her şeyi içeremez.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Aşağıda, yarışı etkileyebilecek hariç tutulan ayrıntılarla ilgili bazı fikirler verilmiştir:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><ul><li>Her yarışçının düz bir yolda mı yoksa mendereslerde mi hareket ettiği</li><li>Her yarışçının yarışa devam etmek için gerekli kaloriye sahip olup olmadığı</li><li>Her iki yarışçının da yarış sırasında aşırı ısınma riski olup olmadığı</li></ul></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"> Simülasyonda başka neler eksik? Simülasyon nasıl daha gerçekçi olabilir? Hangi parametreler daha fazla olasılığı araştırmamıza izin verir?  <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Tartışma]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

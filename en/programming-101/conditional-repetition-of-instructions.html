@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Conditional repetition in programs | AP CSP (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Conditional repetition in programs | AP CSP (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sometimes we don't know how many times we want to repeat an instruction, but we do know that we want to stop it when a certain condition is true. In a case like that, programmers repeat code using a programming construct like the <strong>while loop</strong>.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>The while loop</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">This is the general template of a <code>while</code> loop in the JavaScript language:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><pre><code>while ( &lt;condition&gt; ) {
+    &lt;instructions&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">While the <code>&lt;condition&gt;</code> is true, the computer keeps repeating the <code>&lt;instructions&gt;</code>. </div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Conceptually, a <code>while</code> loop is very similar to an <code>if</code> conditional, except that a <code>while</code> is continually executed until it's no longer true and an <code>if</code> is only executed once. </div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">We sometimes visualize a <code>while</code> loop using flow charts, similar to how we visualize conditionals:</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt='Flowchart that starts with diamond that says "condition". Arrow labeled "TRUE" goes from diamond to rectangle that says "instructions". Arrow labeled "FALSE" goes from diamond to rectangle that says "exit loop". Unlabeled arrow goes from "instructions" rectangle back to "condition" diamond.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/f20588c480be39012222a7c8951b945a711d1441.svg" tabindex="0"/><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Flowchart that starts with diamond that says "condition". Arrow labeled "TRUE" goes from diamond to rectangle that says "instructions". Arrow labeled "FALSE" goes from diamond to rectangle that says "exit loop". Unlabeled arrow goes from "instructions" rectangle back to "condition" diamond.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Let's see a simple <code>while</code> loop:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>var i = 1;
+while (i &lt;= 10) {
+    println(i);
+    i++;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">📝 See similar code in: 
+<a class="_8gcxk83" href="https://studio.code.org/projects/applab/V5EWAIR6Ap3hCW3kIgPMmYP5sy8RHAc6fBy1A0zZZ9A/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | 
+<a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditional%20repetition%3A%20While&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | 
+<a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalRepetitionWhile" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">That code will print out the numbers 1 to 10, and then once <code>i</code> becomes 11 and is thus no longer less than or equal to 10, the computer will stop printing out the value of <code>i</code>.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">This example is simple but is also very similar to all uses of <code>while</code> loops.  Our code often starts off by initializing a variable (or more than one) before the <code>while</code>, then references that variable (or a related one) in the condition, and then modifies that variable in some way in the instructions. </div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">This particular <code>while</code> loop example would typically be programmed as a <code>for</code> loop, since we know ahead of time how often we want the code to repeat. There are many times when we don't know an exact number of times to repeat the code. Let's explore one of those now.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>The rabbit reproducer</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Imagine that a farmer decides to raise rabbits, but she's worried that the rabbits will reproduce too quickly. The farmer only has room for 100 rabbits and wants to know much time will pass before her 2 rabbits become too many rabbits for the pen.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">We can build a program that continually simulates rabbits reproducing as long as the population is under 100 and keeps track of how many years it takes.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Here's a first draft of that program:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>var numRabbits = 2;
+var numYears = 0;
+while (numRabbits &lt;= 100) {
+    numRabbits += (numRabbits/2 * 30);
+    numYears++;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">📝 See similar code in: 
+<a class="_8gcxk83" href="https://studio.code.org/projects/applab/pEBI7bDVvUidyfpIWX9VOszOXhEAdYtxuQKskVJbheA/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | 
+<a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditional%20repetition%3A%20Rabbit%20start&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | 
+<a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalRepetitionRabbitStart" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">This program starts off by initializing the rabbit population to 2 (a mating pair) and the number of years passed to 0. The <code>while</code> loop checks if the number of rabbits is less than 100. As long as that condition is true, the code inside the loop increments the number of rabbits (according to an estimate of how many babies the females can have each year), and then increments the number of years.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">After <a class="_8gcxk83" href="/computer-programming/ap-cs-p-example-rabbit-reproducer-v1/6032648022949888" rel="noopener noreferrer" tabindex="0" target="_blank">running the program</a>, we can see that it's estimated to only take 2 years, and after those 2 years, there will be 512 rabbits. Yeesh! The farmer better build a bigger pen or consider some cute furry sheep. </div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">✏️ We can also combine <code>while</code> loops with our other programming skills. The program below is a more advanced rabbit reproducer that uses a nested <code>for</code> loop and an <code>if</code> to randomly decide whether a rabbit has a female or a male baby. Play around with it and see how the numbers change each time!</div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var numFemales = 1;
+var numMales = 1;
+var numYears = 0;
+while ((numFemales + numMales) &lt; 100) {
+    
+    // Simulate females having 30 babies each year
+    var numFemaleBabies = 0;
+    var numMaleBabies = 0;
+    for (var i = 0; i &lt; numFemales * 30; i++) {
+        if (Math.random() &lt; 0.5) {
+            numFemaleBabies++;
+        } else {
+            numMaleBabies++;
+        }
+    }
+    
+    // Grow babies grow!
+    numFemales += numFemaleBabies;
+    numMales += numMaleBabies;
+    
+    numYears++;
+}
+
+println("In just " + numYears + " years...");
+println(numFemales + " females");
+println(numMales + " males");
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">📝 See similar code in: 
+<a class="_8gcxk83" href="https://studio.code.org/projects/applab/BZBK_uKc88ERnqUv8uliwzmPGemRf3UqAmBstVASopM/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | 
+<a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditional%20repetition%3A%20Rabbit%20sim&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | 
+<a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ConditionalRepetitionRabbitSim" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Beware the infinite loop</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The computer will only exit a loop once the condition inside the <code>while</code> loop is false. But what if it never becomes false? </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Take a look at the program below:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>var i = 0;
+while (i &lt; 100) {
+   println("It's the loop that never ends.");
+   println("Oh yes, it goes on and on, my friends…");
+   println("A computer started running it, not knowing what it was...");
+   println("And it will continue running it forever just because...");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">What do you think will happen? Try it yourself! No, wait, don't! That's an infinite loop right there, and it's hard to know how a computer will handle it. We try to detect and prevent infinite loops in the KA programming environment—but we don't always succeed—so it's best to avoid them.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Why is that loop infinite? The program starts by initializing <code>i</code> to 0 and the <code>while</code> loop checks if <code>i</code> is less than 100. While that's true, it displays the lyrics to a rather catchy song. Nothing inside the loop <em>ever</em> changes the value of <code>i</code>, so that condition will be true forever.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">You will likely program at least one infinite loop in your journey as a programmer. When you do find yourself staring at a long stream of output while listening to an increasingly loud computer fan, you can celebrate the milestone of your first infinite loop. After you're done celebrating (and nursing your computer back to health), you can take note of what not to do in the future. 😉</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Check your understanding</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">See if you can spot the infinite loops. Which of these programs has one?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">Choose all answers that apply:</legend><div class="instructions _125m8j1">Choose all answers that apply:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-0" name="perseus_radio_9" type="checkbox"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0">
+</div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>var x = 4;
+var y = 2;
+while (y &lt; x) {
+   x--;
+   y++;
+}</code></pre></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-1" name="perseus_radio_9" type="checkbox"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><pre><code>var x = 4;
+var y = 2;
+while (y &lt; x) {
+   x++;
+   y++;
+}</code></pre></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-2" name="perseus_radio_9" type="checkbox"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><pre><code>var x = 4;
+var y = 2;
+while (y &lt; x) {
+   x++;
+   y--;
+}</code></pre></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-3" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-3" name="perseus_radio_9" type="checkbox"/><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Choice D)</div><div aria-hidden="true">D</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><pre><code>var x = 4;
+var y = 2;
+while (y &lt; x) {
+   x++;
+   y += 2;
+}</code></pre></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p></p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Check</span></button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Conditional loops in pseudo-code</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[What's pseudocode?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">The AP CSP exam pseudocode does not include a <code>while</code> loop, but instead includes a construct that's very similar: <code>REPEAT UNTIL</code>.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>REPEAT UNTIL (condition)
+{ 
+    &lt;instructions&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">This code will repeat the instructions <em>until</em> the condition is finally true. </div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">To port from a <code>while</code> to a <code>REPEAT UNTIL</code>, we typically just need to invert the condition.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Here's a port of the simple loop that displays the numbers 1 to 10:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><pre><code>i ← 1
+REPEAT UNTIL (i ≥ 11)
+{
+    DISPLAY(i)
+    i ← i + 1
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">When it was a <code>while</code>, we checked whether <code>i</code> was less than or equal to 10. Now that we're using <code>UNTIL</code>, we check whether <code>i</code> is greater than or equal to 11. In this case, we could even simplify that to just checking if it's equal to 11, since there's no way for <code>i</code> to become greater than 11 in this code.</div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">Let's see the rabbit reproducer in pseudocode now:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="10"><pre><code>numRabbits ← 2
+numYears ← 0
+REPEAT UNTIL (numRabbits &gt; 100) 
+{
+    numRabbits ← numRabbits + (numRabbits/2 * 30)
+    numYears ← numYears + 1
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">With the while loop, our condition checked for <code>numRabbits &lt;= 100</code>. Now that we're using <code>UNTIL</code>, we're checking that <code>numRabbits &gt; 100</code>.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer— just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

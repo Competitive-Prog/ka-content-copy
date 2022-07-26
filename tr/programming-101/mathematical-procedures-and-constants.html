@@ -1,0 +1,158 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Matematik prosedürleri ve sabitleri ile programlama | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Matematik prosedürleri ve sabitleri ile programlama | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sadece temel aritmetik işlemlerle (+, -, *, /), basit bir hesap makinesinin hesaplayabileceği her şeyi hesaplamak için programlar yazabiliriz. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Sinüsleri, üsleri ve günlükleri hesaplama yeteneği ile bilimsel bir hesap makinesinin gücüne eşit olmaya ne dersiniz? Programlama dilleri genellikle bu tür gelişmiş matematiksel işlevler için yerleşik <strong>prosedürler</strong> ve <strong>sabitler</strong> sağlar.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Matematiksel prosedürler</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">En basit örnekle başlayalım: bir sayının mutlak değerini hesaplamak.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">JavaScript'te yerleşik prosedürü <code>Math.abs()</code>kullanabiliriz :</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>var abs1 = Math.abs(-5);
+println(Math.abs(-5));</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Komuta tek bir parametre, işlenecek sayı geçiririz ve komut bu sayının mutlak değerini döndürür. Bu sonucu bir değişkende saklayabilir veya ekrana görüntüleyebiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Tabii ki, negatif 5'in mutlak değerini hesaplayabilmemiz çok heyecan verici değil: 5 olduğunu zaten biliyoruz. Heyecan verici olan şey, <em>herhangi bir</em> ifadeyi bu prosedüre geçirebilmemiz ve sonucu hesaplayacağıdır.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="6"><pre><code>var result = Math.abs( (33 * 1/2) - (40 * 0.75) );</code></pre></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Sonuç 13.5 ve bilgisayardan bunu benim için hesaplamasını istediğim için mutluyum.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">JavaScript dili 36 yerleşik matematik yordamı sağlar. Kendi programlarınızda kullanmanız muhtemel olanlardan bazıları şunlardır:</div></div><div class="paragraph" data-perseus-paragraph-index="9"><table class='table'><thead><tr><th scope="col">Prosedür Açıklaması</th><th scope="col"></th></tr></thead><tbody><tr><td><code>Math.pow(base, exp)</code></td><td>'nin <code>exp</code>gücüne geri döner<code>base</code>.</td></tr><tr><td><code>Math.min(x, y, z…)</code></td><td>Verilen sayıların minimumunu döndürür.</td></tr><tr><td><code>Math.max(x, y, z…)</code></td><td>Verilen sayıların maksimum değerini döndürür.</td></tr><tr><td><code>Math.round(num)</code></td><td>En yakın tamsayıya yuvarlanmış olarak döner <code>num</code> .</td></tr><tr><td><code>Math.floor(num)</code></td><td>En büyük tamsayıyı .<code>num</code></td></tr><tr><td><code>Math.ceil(num)</code></td><td>'den büyük veya 'ye eşit olan en küçük tamsayıyı <code>num</code>döndürür.</td></tr><tr><td><code>Math.sin(num)</code></td><td>'nin <code>num</code>sinüsünü döndürür, radyanlarda belirtilen bir açı.</td></tr><tr><td><code>Math.cos(num)</code></td><td>'nin kosinüsünü <code>num</code>döndürür, radyanlarda belirtilen bir açı.</td></tr><tr><td><code>Math.tan(num)</code></td><td>Radyanlarda belirtilen bir açı olan , teğetini <code>num</code>döndürür.</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">✏️ Hepsini aşağıdaki programda kontrol edin ve farklı numaralar takmayı deneyin. Ayrıca <a class="_8gcxk83" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math#Methods" rel="noopener noreferrer" tabindex="0" target="_blank">Matematik belgelerinden</a> diğer mevcut prosedürlere bakabilir ve bunları burada deneyebilirsiniz.</div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>println("Math.abs(-32):");
+println(Math.abs(-32));
+println("Math.pow(4, 2):");
+println(Math.pow(4, 2));
+println("Math.min(-5, -20, 5, 30):");
+println(Math.min(-5, -20, 5, 30));
+println("Matematik.max(-5, -20, 5, 30):");
+println(Matematik.max(-5, -20, 5, 30));
+println("Math.round(3.5):");
+println(Math.round(3.5));
+println("Math.floor(3.5):");
+println(Math.floor(3.5));
+println("Math.ceil(3.5):");
+println(Math.ceil(3.5));
+println("Math.sin(1):");
+println(Math.sin(1));
+println ("Math.cos(1):");
+println(Math.cos(1));
+println("Math.tan(1):");
+println(Math.tan(1));
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph"> Eşdeğer kodu şurada görün: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/nAuClpvEuPQTi7dQKYZBNBKpu7l2b_FGiJcc80qDVPo/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Mathematical%20procedures&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/MathematicalProcedures" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Matematik sabitleri</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Matematik alanı bir dizi özel sayı içerir. En ünlüsü muhtemelen <span style="white-space: nowrap;"><span></span><span><span></span> π <span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><annotation encoding="application/x-tex">\</annotation>pi<mrow><mi></mi></mrow> π pi
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span>'dir, çünkü dairesel olan her şeyde ortaya çıkar. <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--2-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi π pi</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--2-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>'nin<span></span>
+    
+    
+    
+  </span><span></span> ilk düzine basamağını ezberlediyseniz, devam edip programlarınıza yazabilirsiniz...<span></span>
+  
+  
+  
+</span> Geri kalanımız için sadece ölümlüler, bu rakamları bizim için ezberlemek için programlama dillerine güvenebiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">JavaScript'te, referans vererek <code>Math.PI</code><span style="white-space: nowrap;"><span>yaklaşık π\pi <span aria-describedby="katex-uid--3-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi></mi></mrow><annotation encoding="application/x-tex"></annotation>π pi
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--3-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span><span></span>
+    
+    
+    
+  </span><span></span> değerini<span></span>
+  
+  
+  
+</span> elde edebiliriz , her JS programında zaten tanımlanmış bir değişken.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Örneğin, bu ifade yarıçapı 12 olan bir dairenin çevresini hesaplar:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>var circumference = 2 * Math.PI * 12;</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Değişken <code>Math.PI</code> bir <strong>sabittir</strong>, yani yeniden atanamaz. <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--4-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi π pi</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord mathdefault" style="margin-right:0.03588em;"></span>'<span class="strut" style="height:0.43056em;vertical-align:0em;"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span>nin <span id="katex-uid--4-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span><span></span>
+    
+    
+    
+  </span><span></span> her zaman pi π pi π olacağını bildiğimizde matematiğimize daha fazla güvenebiliriz.<span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span><span id="katex-uid--5-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span><span aria-describedby="katex-uid--5-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi></mi></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">JavaScript'in diğer matematik sabitleri hakkında <a class="_8gcxk83" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math#Properties" rel="noopener noreferrer" tabindex="0" target="_blank">Matematik başvurusunda</a> bilgi edinebilirsiniz. Çoğu dil benzer sabitler sağlar, bu nedenle başka bir dildeyseniz, çevrimiçi olarak "[programlama dili] 'nde Pi" için arama yapabilirsiniz.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">✏️Aşağıdaki program eski soruyu cevaplamamıza yardımcı olmak için kullanır <code>Math.PI</code> <code>Math.pow()</code> : hangi pizza boyutunu satın almalısınız? Yerel pizza ekleminizin fiyatlarını yansıtacak şekilde değiştirin ve sonuçların nasıl değiştiğini görün.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>Hangi pizza daha iyi bir anlaşma?
+
+Orta boy pizza (12")
+var medPizzaRadius = 6;
+var medPizzaCost = 15.99;
+var medPizzaArea = Math.PI * Math.pow(medPizzaRadius, 2);
+println("Orta pizza alanı:");
+println(medPizzaArea);
+println("İnç kare başına maliyet:");
+println(medPizzaCost/medPizzaArea); 
+
+X-Large pizza (16")
+var xlargePizzaRadius = 8;
+var xlargePizzaCost = 20.99;
+var xlargePizzaArea = Math.PI * Math.pow(xlargePizzaRadius, 2);
+println("x-large pizza alanı:");
+println(xlargePizzaArea);
+println("İnç kare başına maliyet:");
+println(xlargePizzaCost/xlargePizzaArea); 
+
+
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph"> Eşdeğer kodu şurada görün: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/xsb7PPPzXpQfj-s3mXoBplHIw2n3SiZGtsKjW9uW4Mk/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Mathematical%20constants&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/MathematicalConstants" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Sözde kodda matematik</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Sözde kod nedir?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Sözde kodda, muhtemelen aşağıdaki gibi açıklanan yerleşik bir matematiksel prosedür göreceksiniz:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><table class='table'><thead><tr><th scope="col">Sözde kod</th><th scope="col">açıklaması</th></tr></thead><tbody><tr><td><code>ABS(num)</code></td><td>Mutlak değerini döndürür <code>num</code></td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bu sözde kod şu şekilde kullanılabilir:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>abs1 ← ABS(-5)
+DISPLAY( ABS(-5) )</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Sözde kodda, sabitler sabit <code>PI</code>gibi tüm büyük harflerle yazılır.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Çevreyi hesaplamak için bir ifade şöyle yazılabilir:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code>circumference ← 2 * PI * radius</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

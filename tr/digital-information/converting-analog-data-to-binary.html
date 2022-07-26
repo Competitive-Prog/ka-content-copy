@@ -1,0 +1,2139 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Analog verileri ikili (makale) | dönüştürme Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Analog verileri ikili (makale) | dönüştürme Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Gerçek dünya <strong>analogdur</strong>, değişen verilerin sürekli bir akışıdır. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Sadece etrafınıza, bilgisayarınızın veya telefonunuzun ötesine bakın. Sonsuz miktarda görsel bilgi var. Görsel alanınızın bir bölümünü yakınlaştırırsanız, giderek daha fazla ayrıntı fark edebilirsiniz. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Şimdi kendinize küçük bir şarkı söyleyin. Bu sonsuz bir ses bilgisi akışıdır. Sesiniz sürekli olarak büyük ve küçük şekillerde, mikrosaniyeden mikrosaniyeye değişiyor.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Analog veriler sonsuz ayrıntılıdır. Bilgisayarlar yalnızca dijital verileri, sonlu verileri ikili bir gösterimde saklayabilir.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Peki duyularımızın muhteşem analog dünyasını nasıl yakalayabilir ve dijital verilere dönüştürebiliriz? Örnekleme, nicelleştirme ve ikili kodlama işlemlerini kullanabiliriz. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Analog sinyal</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Basit bir analog sinyalle, bir sesi temsil eden bir dalga formuyla başlayalım:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> <div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 and a y-axis labeled "v" that goes from -100 to 100. A curvy line goes up and down across the graph.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/38ea1efb1016370a71de597c33a47e16b028e7d4.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">0'dan 330'a giden "t" etiketli bir x eksenine ve -100'den 100'e giden "v" etiketli bir y eksenine sahip bir grafik. Kıvrımlı bir çizgi grafik boyunca yukarı ve aşağı gider.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Tüm analog sinyaller hem zaman alanında (x ekseni) hem de genlik alanında (y ekseni) süreklidir. Bu, "1.2345 saniye" kadar spesifik olsa bile, zamanın olası her değeri için kesin bir değer olduğu ve bu değerin "47.8291824806423964 volt" kadar kesin olabileceği anlamına gelir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Örnekleme</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">İlk adım, düzenli zaman aralıklarında bir örnek aldığımız <strong>örneklemedir</strong>. Bu adım, sürekli zaman alanını bir dizi ayrı aralığa indirger.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Zamanın 0 ila 330 milisaniye arasında değiştiği bu sinyalde, her 30 milisaniyede bir örnek alabiliriz:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 and a y-axis labeled "v" that goes from -100 to 100. A curvy line goes up and down across the graph. A series of straight lines intercept the curvy line every 30 units on the x-axis.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/7d949cd063a816e1b9aaa8f64e80379d71f52f12.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">0'dan 330'a giden "t" etiketli bir x eksenine ve -100'den 100'e giden "v" etiketli bir y eksenine sahip bir grafik. Kıvrımlı bir çizgi grafik boyunca yukarı ve aşağı gider. Bir dizi düz çizgi, x eksenindeki her 30 birimde bir kıvrımlı çizgiyi keser.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu bize 0 ila 330 milisaniye arasındaki sinyalin 12 örneğini verir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Şimdi sinyali bir dizi örneklenmiş nokta olarak ifade edebiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="2"><pre><code>(0, 7)
+(30, 95.98676803710936)
+(60, -71.43289186523432)
+(90, -106.55949554687498)
+(120, -97.21617085937501)
+(150, -70)
+(180, -29.045472375000003)
+(210, 6.171340345703143)
+(240, 24.439022283203116)
+(270, -74.45763529492186)
+(300, -31.31245312500002)
+(330, 24)</code></pre></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Y değerleri yalnızca bilgisayarımızın depolayabileceği kadar kesindir; bilgisayarlarda depolanan sayılar sonsuz derecede kesin değildir ve <a class="_8gcxk83" href="/a/number-limits-overflow-and-roundoff" rel="noopener noreferrer" tabindex="0" target="_blank">yuvarlanabilir</a>.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"> 12 örnek yeterli mi? Aşağıdaki etkileşimli örnekleme aralığıyla oynayın ve farklı aralıklar seçmenin etkisini gözlemleyin:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;! DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Analogdan Dijitale Dönüştürücü: Örnekleme&lt;/title&gt;&lt;!-- WonderBlocks stilleri --&gt;
+
+      
+  &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;&lt;style&gt;
+  
+    
+  
+  body {
+      font-family: "Lato", sans-serif;
+      maksimum genişlik: 375 piksel;
+  }
+  . konteyner {
+    display:flex;
+    esnek yön: satır;
+  }
+
+  . form-controls {
+    background: #efefef;
+    kenar boşluğu-alt: 12px;
+  }
+  . aralık-kontrolleri {
+    liste-stil-türü: yok;
+    marj: 0;
+    dolgu: 0;
+    dolgu-sol: 6 piksel;
+    kenarlık-yarıçap: 3px;
+  }
+  fieldset {
+      border: none;
+      kenar boşluğu-üst: 0px;
+      dolgu-sol: 6px;
+  }
+  . form-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+  . form-row &gt; etiketi {
+    dolgu: .5em 1em .1em 0;
+    esnek: 6;
+  }
+  . form-row &gt; input {
+    flex: 2;
+  }
+  . form-row &gt; span {
+    flex: 1;
+    sol kenar boşluğu: 6 piksel;
+    align-self: center;
+  }
+  . form-row &gt; input,
+  .form-row &gt; düğmesi {
+    doldurma: .5em;
+  }
+  . form-row &gt; düğmesi {
+   arka plan: gri;
+   renk: beyaz;
+   kenarlık: 0;
+  }
+
+  . left-side, .right-side {
+      flex-grow: 1;
+      esnek temel: %100;
+  }
+
+  . sağ taraf {
+    dolgu-üst:8px;
+    sol kenar boşluğu: 20 piksel;
+    ekran: esnek;
+    esnek yön: sütun;
+  }
+  . sağ taraf:ilk-alt {
+      kenar boşluğu-alt: 10px;
+  }
+  . sağ taraftaki metin alanı {
+    kenar boşluğu-üst: 6 piksel;
+    yükseklik: 150 piksel;
+    genişlik: 65 piksel;
+  }
+  &lt;/style&gt;&lt;
+  /head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;&lt;div class="left-side"&gt;&lt;div class="form-controls"&gt;&lt;ul class="range-controls"&gt;&lt;li class="form-row" id="sampleRangeRow"&gt;&lt;label for="sampleRange"&gt;Örnekleme aralığı:
+                        &lt;/label&gt;&lt;input type="range" min="2" max="150" value="30" id="sampleRange"/&gt;
+                        
+                        
+                        
+            &lt;span id="sampleRangeVal"&gt;30&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class="form-row" id="quantizationRangeRow"&gt;&lt;label for="quantizationRange"&gt;Quantization interval:&lt;/label&gt;&lt;input type="range" min="2" max="120" value="25" id="quantizationRange"/&gt;&lt;span id="quantizationRangeVal"&gt;50&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;fieldset&gt;Show:&lt;br/&gt;
+                    
+                        &lt;label&gt;&lt;
+                
+                    
+                    
+                        input type="checkbox" id="showCurve"&gt;original
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showSamples"&gt;samples
+                    &lt;/label&gt;&lt;label id="showQuantizedLabel"&gt;&lt;input type="checkbox" id="showQuantized"&gt;quantized
+                    &lt;/label&gt;
+                    
+                    &lt;label id="showReconstructedLabel"&gt;&lt;input type="checkbox" id="showReconstructed"&gt;reconstructed
+                    &lt;/label&gt;&lt;/fieldset&gt;&lt;/div&gt;
+            &lt;div style="position:relative;" &gt;
+            &lt;canvas id="mycanvas" style="width:400px; height: 260px; background: #ccc; border:0px none;" &gt;&lt;/canvas&gt;
+            &lt;img id="placeholder" style="position:absolute; z-index: 2;top:0;left:0;" src="https://www.kasandbox.org/programming-images/avatars/questionmark.png"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="right-side"&gt;&lt;div id="pointsOutput"&gt;Points:&lt;textarea id="pointsPre"&gt;&lt;/textarea&gt;&lt;
+            /div&gt;
+        
+                
+                &lt;div id="encodedOutput"&gt;
+        
+                
+                    
+                    Encoded:
+                    
+                    &lt;textarea id=" encodedPre" salt okunur&gt;&lt;/textarea&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;
+  
+  &lt;script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js&gt;&lt;&gt;script&lt;https://cdn.jsdelivr.net/gh/gdenisov/cardinal-spline-js@master/curve_calc.min.js script src="&gt;&lt;&gt;/script&lt;
+                
+    
+        &gt;
+  
+  script STEP_ANALOG
+// UI'
+de neler gösterilmeli var = 0;
+var STEP_SAMPLING = 1;
+var STEP_QUANTIZING = 2;
+var STEP_ENCODING = 3;
+var STEP_RECONSTRUCTING = 4;
+var processStep = STEP_SAMPLING;
+
+Grafikte
+gösterilecek var showCurve = false;
+var showSamples = false;
+var showQuantized = false;
+var updateGraph = true;
+
+var sampleInterval = 20;
+var qInterval = 50;
+var numBits = 2;
+var binaryCodes = [];
+
+var convertToBinary = function(ondalık) {
+  var quotient = ondalık;
+  var kalan;
+  var kalanlar = [];
+
+  do {
+    kalan = bölüm % 2;
+    bölüm = Math.floor(bölüm / 2);
+    remainders.push(remainder);
+  } iken (bölüm &gt; 0);
+
+  return remainders.reverse().join("");};
+
+
+var padBinaryNum = function(binaryStr, numDigits) {
+  var digitsDiff = numDigits - binaryStr.length;
+  for (var i = 0; i &lt; digitsDiff;i++) {
+    binaryStr = "0" + binaryStr;
+  }
+  return binaryStr;};
+
+
+var generateBinarySequence = function(maxVal, numBits) {
+    var minVal = 0;
+    var binaryNums = [];
+    for (var num = minVal; num &lt; maxVal; num++) {
+        var binaryNum = padBinaryNum(convertToBinary(num), numBits);
+        binaryNums.push(binaryNum);
+    }
+    return binaryNums;};
+
+
+var findMinY = fonksiyon(samples) {
+    var minY = 99999;
+    for (var i = 0; i &lt; samples.length; i++) {if (samples[i].y &lt; minY) {
+        
+            minY = samples[i].y;
+        }}
+    
+    dönüş minY;};
+
+
+var findMaxY = fonksiyon(samples) {
+    var maxY = - 99999;
+    for (var i = 0; i &lt; samples.length; i++) {if (samples[i].y &gt; maxY) {
+        
+            maxY = samples[i].y;
+        }}
+    
+    maxY dönüşü;};
+
+
+var programCode = function(processingInstance) {with(processingInstance) {
+    
+        size(400, 260);
+        noLoop();
+        var yAxis = 50;
+        var curvePoints;
+
+        arka plan(255, 255, 255);
+
+        Örnekleme
+        için çizim ızgarası var gridColor = renk(214, 214, 214);
+        if (processStep &gt;= STEP_SAMPLING) {
+            stroke(gridColor);
+            for (var x = yEkseni; x &lt; genişlik; x += sampleInterval) {
+                line(x, 0, x, height);
+            }}
+        
+
+        Eğer (processStep &gt;= STEP_QUANTIZING) {// (var y = yükseklik/2; y &lt; yükseklik; y += qInterval) {
+            
+                line(yAxis, y, width, y);
+            }
+            için negatif aralıklar
+            varsa, niceleme aralığına
+        dayalı ızgara çizin (var y = yükseklik/2 - qInterval; y &gt; 0; y -= qInterval) {
+                line(yAxis, y, width, y);
+            }}
+
+        
+        için pozitif aralıklar
+            y ekseni - genlik
+        dolgusu (0, 0, 0);
+        inme(8, 8, 8);
+        inmeAğırlık(3);
+        çizgi(yEksen, 0, yEksen, yükseklik);
+        line(yAxis, 0, yAxis - 8, 10);
+        line(yAxis, 0, yAxis + 8, 10);
+        çizgi(yEksen, yükseklik, yEkseni - 8, yükseklik - 10);
+        çizgi(yEkseni, yükseklik, yEkseni + 8, yükseklik - 10);
+        textSize(20);
+        textFont(createFont("monospace"));
+        text("v", yAxis + 6, 36);
+        if (processStep &lt; STEP_ENCODING) {
+            text("100", yAxis + -43, height/2 - 100);
+            text("0", yAxis + -21, yükseklik/2);
+            text("-100", yAxis + -53, yükseklik/2 + 100);
+        }
+
+        x ekseni -zaman
+        çizgisi (y Ekseni, yükseklik / 2, genişlik, yükseklik / 2);
+        çizgi (genişlik, yükseklik / 2, genişlik - 8, yükseklik / 2 - 10);
+        çizgi (genişlik, yükseklik / 2, genişlik - 8, yükseklik / 2 + 10);
+        metin("t", genişlik - 15, yükseklik/2 + -18);
+        if (processStep &lt; STEP_ENCODING) {
+            text(330, width - 25 - 10, height/2 + 36);
+        }
+
+        noFill();
+        strokeWeight(2);
+        var originalColor = renk(218,165,32);
+        if (showCurve) {stroke(originalColor);} else {
+            
+            noStroke();}
+        
+        
+        
+        var eğrisi1 = [200, 200, 33, 383, 139, -191, yEkseni, 123];
+        bezier(curve1[0], curve1[1], curve1[2], curve1[3], curve1[4], curve1[5], curve1[6], curve1[7]);
+        var eğrisi2 = [380, 106, 222, 409, 399, -90, 200, 200];
+        bezier(curve2[0], curve2[1], curve2[2], curve2[3], curve2[4], curve2[5], curve2[6], curve2[7]);
+
+        var yToGraph = function(yPoint) {
+            return -1 * (yPoint - height/2);};
+        
+        var yToCanvas = function(yPoint) {
+            return (-1 * yPoint) + height/2;};
+        
+        var xToGraph = function(xPoint) {
+            return xPoint - yAxis;};
+        
+        var xToCanvas = function(xPoint) {
+            return xPoint + yAxis;};
+        
+
+        Her x değeri
+        için bir tane olacak şekilde yeterli puanı saklayın if (!curvePoints) {
+            curvePoints = [];
+            var adımları = 800;
+            for (var i = 0; i &lt;= steps; i++) {
+                var t = i / steps;
+                var x1 = bezierPoint(curve1[0], curve1[2], curve1[4], curve1[6], t);
+                var y1 = bezierPoint(curve1[1], curve1[3], curve1[5], curve1[7], t);
+                curvePoints[xToGraph(Math.round(x1))] = yToGraph(y1);
+                var x2 = bezierPoint(curve2[0], curve2[2], curve2[4], curve2[6], t);
+                var y2 = bezierPoint(curve2[1], curve2[3], curve2[5], curve2[7], t);
+                curvePoints[xToGraph(Math.round(x2))] = yToGraph(y2);
+            }}
+        
+        
+        Şimdi verilen örneklem hızında
+        örnekleme var örnekleri = [];
+        for (var i = 0; i &lt;= curvePoints.length; i += sampleInterval) {samples.push({
+            x: i, y: curvePoints[i]});
+        }
+
+        Şimdi verilen aralıkta
+        quantize var quantizeY = function(y, qInterval) {
+            return Math.round(y/qInterval) * qInterval;};
+        
+
+        var quantizedSamples = [];
+        for (var i = 0; i &lt; samples.length; i++) {quantizedSamples.push({
+            x: samples[i].x, y: quantizeY(samples[i].y, qInterval)});
+        }
+
+        var formatPoints = function(points) {
+            var pointsStr = [];
+            for (var i = 0; i &lt; points.length; i++) {
+                pointsStr.push("(" + points[i].x + ", " + points[i].y + ")");
+            }
+            dönüş noktalarıStr.join("\n");};
+        
+        
+        window.setTimeout(function() {// Örnekleri
+        çizin if (showSamples) {
+           
+        
+            stroke(255, 128, 0);
+            doldurma(255, 128, 0);
+            for (var i = 0; i &lt; samples.length;i++) {
+                var x = xToCanvas(samples[i].x);
+                var y = yToCanvas(samples[i].y);
+                line(x, height/2, x, y);
+                elips(x, y, 10, 10);
+            }}
+        
+        
+        quantization
+        var quantizedColor = color(100, 0, 140);
+        if (showQuantized) {
+            noFill();
+            inme (quantizedColor);
+            var currentSample;
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                currentSample = quantizedSamples[i];
+                var x = xToCanvas(currentSample.x);
+                var y = yToCanvas(currentSample.y);
+                elips(x, y, 10, 10);
+                var lineY = currentSample.y &gt; 0 ? y + 5 : y - 5;
+                line(xToCanvas(currentSample.x), height/2, xToCanvas(currentSample.x), lineY);
+            }}
+        
+
+        Yeniden yapılandırılmış eğriyi
+
+        çizin if (processStep &gt;= STEP_ENCODING) {
+
+            // İlk olarak, y değerlerindeki aralık nedir?
+            (Aralık yerine benzersiz seviyelere de bakabilir)
+            var minY = findMinY(quantizedSamples);
+            var maxY = findMaxY(quantizedSamples);
+            var seviyeleri = ((maxY - minY) / qInterval) + 1;
+            Seviye sayısını sunmak için kaç bit gereklidir?
+            var bitsNeeded = Math.ceil(Math.log2(levels));
+            binaryCodes = generateBinarySequence(levels, bitsRequired);
+
+            Negatif aralıklar
+            var yToCode = {};
+            doldur(0, 0, 0);
+            for (var y = minY, binaryCodeI = 0; y &lt;= maxY; y += qInterval, binaryCodeI++) {
+                textSize(12);
+                text(binaryCodes[binaryCodeI], yAxis - 40, yToCanvas(y));
+                yToCode[y] = binaryCodes[binaryCodeI];
+            }
+            var binaryStr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                var binaryCode = yToCode[quantizedSamples[i].y];
+                binaryStr.push(binaryCode);
+            }
+            document.getElementById("encodedPre").value = binaryStr.join("\n");
+        }
+
+        Draw rebuilt curve
+        if (showReconstructed) {
+            var pointsArr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                pointsArr.push(xToCanvas(quantizedSamples[i].x));
+                pointsArr.push(yToCanvas(quantizedSamples[i].y));
+            }
+            var splinePoints = getCurvePoints(pointsArr, 0.5, 20);
+
+            var reconstructedColor = renk(0, 128, 128);
+            noFill();
+            inme (reconstructedColor);
+            beginShape();
+            for (var i = 0; i &lt; splinePoints.length; i += 2) {
+                curveVertex(splinePoints[i], splinePoints[i + 1])}endShape()
+            ;
+        }
+            
+
+        if (processStep === STEP_SAMPLING) {document.getElementById("pointsPre").value = formatPoints(samples);} else if (processStep &gt;= STEP_QUANTIZING) {
+            
+            document.getElementById("pointsPre").value = formatPoints(quantizedSamples);}
+        
+        
+        Ekran görüntüleri için:
+        //var img    = document.getElementById("mycanvas").toDataURL("image/png");
+        document.getElementById("pointsPre").value=(img);}, 100);}};
+        
+        
+    
+
+
+Görünür alanları
+güncelleştir var placeholderImg = document.getElementById("placeholder");
+if (processStep &lt; STEP_QUANTIZING) {
+    document.getElementById("quantizationRangeRow").style.display = "hiçbiri";
+    document.getElementById("showQuantizedLabel").style.display = "hiçbiri";
+}
+if (processStep &lt; STEP_ENCODING) {
+    document.getElementById("pointsPre").style.height = "318px";
+    document.getElementById("encodedOutput").style.display = "hiçbiri";
+}
+if (processStep &lt; STEP_RECONSTRUCTING) {
+    document.getElementById("showReconstructedLabel").style.display = "none";
+}
+(processStep === STEP_ANALOG) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/38ea1efb1016370a71de597c33a47e16b028e7d4.png";
+}
+if (processStep === STEP_SAMPLING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showSamples").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/7d949cd063a816e1b9aaa8f64e80379d71f52f12.png";
+    document.getElementById("pointsPre").value = "(0, 7)\n(30, 95.) 98676803710936)\n(60, -71.43289186523432)\n(90, -106.55949554687498)\n(120, -97.21617085937501)\n(150, -70)\n(180, -29.045472375000003)\n(210, 6.171340345703143)\n(240, 24.439022283203116)\n(270, -74.45763529492186)\n(300, -31.31245312500002)\n(330, 24)";
+}
+if (processStep === STEP_QUANTIZING) {
+    document.getElementById("showSamples").setAttribute("checked", true);
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/dca943fa67ab49a5edfeafad9eb0389f93290be2.png";
+}
+if (processStep === STEP_ENCODING) {
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/52fe7646cf89ba456090b51b5116473d65d2b7d3.png";
+}
+if (processStep === STEP_RECONSTRUCTING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showReconstructed").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/12822e856c9f2d5923004c48649f0f91678585ec.png";
+}
+
+if (processStep &gt;= STEP_QUANTIZING) {
+    document.getElementById("pointsPre").value = "(0, 0)\n(30, 100)\n(60, -75)\n(90, -100)\n(120, -100)\n(150, -75)\n(180, -25)\n(210, 0)\n(240, 25)\n(270, -75)\n(300, -25)\n(330, 25)";
+}
+if (processStep &gt;= STEP_ENCODING) {
+    document.getElementById("encodedPre").value = "0100\n1000\n0001\n0000\n0000\n0001\n0011\n0100\n0101\n0001\n0011\n0101";
+}
+
+var updateSampleInterval = function(e) {
+    var sampleRangeVal = document.getElementById("sampleRange").value;
+    document.getElementById("sampleRangeVal").innerText = sampleRangeVal;
+    sampleInterval = parseInt(sampleRangeVal, 10);
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("sampleRange").addEventListener("change", updateSampleInterval);
+
+var updateQuantizationInterval = function(e) {
+    var quantizationRangeVal = document.getElementById("quantizationRange").value;
+    document.getElementById("quantizationRangeVal").innerText = quantizationRangeVal;
+    qInterval = parseInt(quantizationRangeVal, 10);
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("quantizationRange").addEventListener("change", updateQuantizationInterval);
+
+
+var updateShowCurve = function(e) {
+    showCurve = document.getElementById("showCurve").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showCurve").addEventListener("tıklayın", updateShowCurve);
+
+
+var updateShowSamples = function(e) {
+    showSamples = document.getElementById("showSamples").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showSamples").addEventListener("tıklayın", updateShowSamples);
+
+var updateShowQuantized = function(e) {
+    showQuantized = document.getElementById("showQuantized").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showQuantized").addEventListener("click", updateShowQuantized);
+
+
+var updateShowRebuilt = function(e) {
+    showRebuilt = document.getElementById("showReconstructed").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showReconstructed").addEventListener("click", updateShowReconstructed);
+
+var canvas = document.getElementById("mycanvas");
+var renderCanvas = function() {
+    document.getElementById("placeholder").style.display = "none";
+    var processingInstance = new Processing(canvas, programCode);};
+    
+
+
+Görselleştirme
+penceresini işleyin.setTimeout(function() {
+    updateSampleInterval();
+    updateQuantizationInterval();
+    updateShowCurve();
+    updateShowSamples();
+    updateShowQuantized();
+    updateShowReconstructed();
+}, 100);
+
+
+
+
+
+  &lt;/script&gt;
+&lt;/html&gt;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Örnekleme aralığının tersi <strong>örnekleme hızıdır</strong>: bir saniyedeki (veya başka bir zaman birimindeki) numune sayısı. Örneğin, 30 milisaniyelik bir örnekleme aralığı, saniyede 33,33 örnekleme hızına karşılık gelir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Nyquist-Shannon örnekleme teoremine göre, yeterli bir örnekleme oranı, sinyaldeki en yüksek frekansın iki katından daha büyük bir şeydir.  Frekans, saniyedeki döngü sayısıdır ve Hz (hertz) cinsinden ölçülür. Bir sinyalin maksimum frekansı 500 Hz'dir, yeterli örnekleme hızı 1000 Hz'den büyük bir şeydir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Müzik kayıtları için tipik bir örnekleme hızı 48 kHz'dir (saniyede 48.000 örnek). Bu, insanların duyabileceği en yüksek frekansın iki katından biraz fazla, 20 kHz. Ses yalnızca insan konuşması içeriyorsa, telefon görüşmelerinde sıklıkla olduğu gibi, 4kHz çoğu konuşmada en yüksek frekans olduğundan, 8 kHz'lik çok daha küçük bir örnekleme hızı kullanılabilir. <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>1</mn>
+          
+          
+        </msup></mrow><annotation encoding="application/x-tex">^1</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span>
+            
+            
+          </span></span></span></span></span>
+          
+          
+        </span>
+        
+        
+      </span></span>
+      
+      
+    </span></span> başlangıç üst simgesi, <span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">1, bitiş üst simgesi</span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Nicemleme</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Örneklemeden sonra, genlik alanında, y değerlerinde hala geniş bir aralıkla kalırız. Kuantizasyonun bir sonraki adımı, bu sürekli genlik alanını ayrık seviyelere indirir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Genliğin -100 ila 100 volt arasında değiştiği basit sinyalimiz için, 25 voltluk bir niceleme aralığı uygulayabiliriz:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 and a y-axis labeled "v" that goes from -100 to 100. Sampled points are shown as orange circles. Lines go from the x-axis to near each of the sampled points, at an intersection with horizontal grid lines.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/dca943fa67ab49a5edfeafad9eb0389f93290be2.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">0'dan 330'a giden "t" etiketli bir x eksenine ve -100'den 100'e giden "v" etiketli bir y eksenine sahip bir grafik. Örneklenen noktalar turuncu daireler olarak gösterilir. Çizgiler, x ekseninden örneklenen noktaların her birinin yakınında, yatay ızgara çizgileriyle kesişen bir noktada gider.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Şimdi 12 noktanın hepsi, 25'in katları olan y değerlerine sahiptir:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>(0, 0)
+(30, 100)
+(60, -75)
+(90, -100)
+(120, -100)
+(150, -75)
+(180, -25)
+(210, 0)
+(240, 25)
+(270, -75)
+(300, -25)
+(330, 25)</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"> En iyi niceleme aralığı nedir? Aşağıdaki farklı niceleme aralıklarıyla oynayın ve nicelleştirilmiş noktaların örneklenen noktalardan ne kadar uzakta olduğunu gözlemleyin:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;! DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Analogdan Dijitale Dönüştürücü: Quantizing&lt;/title&gt;&lt;!-- WonderBlocks stilleri --&gt;&lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;&lt;style&gt;
+
+  
+  
+    
+      
+  body {
+      font-family: "Lato", sans-serif;
+      
+  maksimum genişlik: 375 piksel;
+  }
+  . konteyner {
+    display:flex;
+    esnek yön: satır;
+  }
+
+  . form-controls {
+    background: #efefef;
+    kenar boşluğu-alt: 12px;
+  }
+  . aralık-kontrolleri {
+    liste-stil-türü: yok;
+    marj: 0;
+    dolgu: 0;
+    dolgu-sol: 6 piksel;
+    kenarlık-yarıçap: 3px;
+  }
+  fieldset {
+      border: none;
+      kenar boşluğu-üst: 0px;
+      dolgu-sol: 6px;
+  }
+  . form-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+  . form-row &gt; etiketi {
+    dolgu: .5em 1em .1em 0;
+    esnek: 6;
+  }
+  . form-row &gt; input {
+    flex: 2;
+  }
+  . form-row &gt; span {
+    flex: 1;
+    sol kenar boşluğu: 6 piksel;
+    align-self: center;
+  }
+  . form-row &gt; input,
+  .form-row &gt; düğmesi {
+    doldurma: .5em;
+  }
+  . form-row &gt; düğmesi {
+   arka plan: gri;
+   renk: beyaz;
+   kenarlık: 0;
+  }
+
+  . left-side, .right-side {
+      flex-grow: 1;
+      esnek temel: %100;
+  }
+
+  . sağ taraf {
+    dolgu-üst:8px;
+    sol kenar boşluğu: 20 piksel;
+    ekran: esnek;
+    esnek yön: sütun;
+  }
+  . sağ taraf:ilk-alt {
+      kenar boşluğu-alt: 10px;
+  }
+  . sağ taraftaki metin alanı {
+    kenar boşluğu-üst: 6 piksel;
+    yükseklik: 150 piksel;
+    genişlik: 65 piksel;
+  }
+  &lt;/style&gt;&lt;
+  /head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;&lt;div class="left-side"&gt;&lt;div class="form-controls"&gt;&lt;ul class="range-controls"&gt;&lt;li class="form-row" id="sampleRangeRow"&gt;&lt;label for="sampleRange"&gt;Örnekleme aralığı:
+                        &lt;/label&gt;&lt;input type="range" min="2" max="150" value="30" id="sampleRange"/&gt;
+                        
+                        
+                        
+            &lt;span id="sampleRangeVal"&gt;30&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class="form-row" id="quantizationRangeRow"&gt;&lt;label for="quantizationRange"&gt;Quantization interval:&lt;/label&gt;&lt;input type="range" min="2" max="120" value="25" id="quantizationRange"/&gt;&lt;span id="quantizationRangeVal"&gt;50&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;fieldset&gt;Show:&lt;br/&gt;
+                    
+                        &lt;label&gt;&lt;
+                
+                    
+                    
+                        input type="checkbox" id="showCurve"&gt;original
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showSamples"&gt;samples
+                    &lt;/label&gt;&lt;label id="showQuantizedLabel"&gt;&lt;input type="checkbox" id="showQuantized"&gt;quantized
+                    &lt;/label&gt;
+                    
+                    &lt;label id="showReconstructedLabel"&gt;&lt;input type="checkbox" id="showReconstructed"&gt;reconstructed
+                    &lt;/label&gt;&lt;/fieldset&gt;&lt;/div&gt;
+            &lt;div style="position:relative;" &gt;
+            &lt;canvas id="mycanvas" style="width:400px; height: 260px; background: #ccc; border:0px none;" &gt;&lt;/canvas&gt;
+            &lt;img id="placeholder" style="position:absolute; z-index: 2;top:0;left:0;" src="https://www.kasandbox.org/programming-images/avatars/questionmark.png"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="right-side"&gt;&lt;div id="pointsOutput"&gt;Points:&lt;textarea id="pointsPre"&gt;&lt;/textarea&gt;&lt;
+            /div&gt;
+        
+                
+                &lt;div id="encodedOutput"&gt;
+        
+                
+                    
+                    Encoded:
+                    
+                    &lt;textarea id=" encodedPre" salt okunur&gt;&lt;/textarea&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;
+  
+  &lt;script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js&gt;&lt;&gt;script&lt;https://cdn.jsdelivr.net/gh/gdenisov/cardinal-spline-js@master/curve_calc.min.js script src="&gt;&lt;&gt;/script&lt;
+                
+    
+        &gt;
+  
+  script STEP_ANALOG
+// UI'
+de neler gösterilmeli var = 0;
+var STEP_SAMPLING = 1;
+var STEP_QUANTIZING = 2;
+var STEP_ENCODING = 3;
+var STEP_RECONSTRUCTING = 4;
+var processStep = STEP_QUANTIZING;
+
+Grafikte
+gösterilecek var showCurve = false;
+var showSamples = false;
+var showQuantized = false;
+var updateGraph = true;
+
+var sampleInterval = 20;
+var qInterval = 50;
+var numBits = 2;
+var binaryCodes = [];
+
+var convertToBinary = function(ondalık) {
+  var quotient = ondalık;
+  var kalan;
+  var kalanlar = [];
+
+  do {
+    kalan = bölüm % 2;
+    bölüm = Math.floor(bölüm / 2);
+    remainders.push(remainder);
+  } iken (bölüm &gt; 0);
+
+  return remainders.reverse().join("");};
+
+
+var padBinaryNum = function(binaryStr, numDigits) {
+  var digitsDiff = numDigits - binaryStr.length;
+  for (var i = 0; i &lt; digitsDiff;i++) {
+    binaryStr = "0" + binaryStr;
+  }
+  return binaryStr;};
+
+
+var generateBinarySequence = function(maxVal, numBits) {
+    var minVal = 0;
+    var binaryNums = [];
+    for (var num = minVal; num &lt; maxVal; num++) {
+        var binaryNum = padBinaryNum(convertToBinary(num), numBits);
+        binaryNums.push(binaryNum);
+    }
+    return binaryNums;};
+
+
+var findMinY = fonksiyon(samples) {
+    var minY = 99999;
+    for (var i = 0; i &lt; samples.length; i++) {if (samples[i].y &lt; minY) {
+        
+            minY = samples[i].y;
+        }}
+    
+    dönüş minY;};
+
+
+var findMaxY = fonksiyon(samples) {
+    var maxY = - 99999;
+    for (var i = 0; i &lt; samples.length; i++) {if (samples[i].y &gt; maxY) {
+        
+            maxY = samples[i].y;
+        }}
+    
+    maxY dönüşü;};
+
+
+var programCode = function(processingInstance) {with(processingInstance) {
+    
+        size(400, 260);
+        noLoop();
+        var yAxis = 50;
+        var curvePoints;
+
+        arka plan(255, 255, 255);
+
+        Örnekleme
+        için çizim ızgarası var gridColor = renk(214, 214, 214);
+        if (processStep &gt;= STEP_SAMPLING) {
+            stroke(gridColor);
+            for (var x = yEkseni; x &lt; genişlik; x += sampleInterval) {
+                line(x, 0, x, height);
+            }}
+        
+
+        Eğer (processStep &gt;= STEP_QUANTIZING) {// (var y = yükseklik/2; y &lt; yükseklik; y += qInterval) {
+            
+                line(yAxis, y, width, y);
+            }
+            için negatif aralıklar
+            varsa, niceleme aralığına
+        dayalı ızgara çizin (var y = yükseklik/2 - qInterval; y &gt; 0; y -= qInterval) {
+                line(yAxis, y, width, y);
+            }}
+
+        
+        için pozitif aralıklar
+            y ekseni - genlik
+        dolgusu (0, 0, 0);
+        inme(8, 8, 8);
+        inmeAğırlık(3);
+        çizgi(yEksen, 0, yEksen, yükseklik);
+        line(yAxis, 0, yAxis - 8, 10);
+        line(yAxis, 0, yAxis + 8, 10);
+        çizgi(yEksen, yükseklik, yEkseni - 8, yükseklik - 10);
+        çizgi(yEkseni, yükseklik, yEkseni + 8, yükseklik - 10);
+        textSize(20);
+        textFont(createFont("monospace"));
+        text("v", yAxis + 6, 36);
+        if (processStep &lt; STEP_ENCODING) {
+            text("100", yAxis + -43, height/2 - 100);
+            text("0", yAxis + -21, yükseklik/2);
+            text("-100", yAxis + -53, yükseklik/2 + 100);
+        }
+
+        x ekseni -zaman
+        çizgisi (y Ekseni, yükseklik / 2, genişlik, yükseklik / 2);
+        çizgi (genişlik, yükseklik / 2, genişlik - 8, yükseklik / 2 - 10);
+        çizgi (genişlik, yükseklik / 2, genişlik - 8, yükseklik / 2 + 10);
+        metin("t", genişlik - 15, yükseklik/2 + -18);
+        if (processStep &lt; STEP_ENCODING) {
+            text(330, width - 25 - 10, height/2 + 36);
+        }
+
+        noFill();
+        strokeWeight(2);
+        var originalColor = renk(218,165,32);
+        if (showCurve) {stroke(originalColor);} else {
+            
+            noStroke();}
+        
+        
+        
+        var eğrisi1 = [200, 200, 33, 383, 139, -191, yEkseni, 123];
+        bezier(curve1[0], curve1[1], curve1[2], curve1[3], curve1[4], curve1[5], curve1[6], curve1[7]);
+        var eğrisi2 = [380, 106, 222, 409, 399, -90, 200, 200];
+        bezier(curve2[0], curve2[1], curve2[2], curve2[3], curve2[4], curve2[5], curve2[6], curve2[7]);
+
+        var yToGraph = function(yPoint) {
+            return -1 * (yPoint - height/2);};
+        
+        var yToCanvas = function(yPoint) {
+            return (-1 * yPoint) + height/2;};
+        
+        var xToGraph = function(xPoint) {
+            return xPoint - yAxis;};
+        
+        var xToCanvas = function(xPoint) {
+            return xPoint + yAxis;};
+        
+
+        Her x değeri
+        için bir tane olacak şekilde yeterli puanı saklayın if (!curvePoints) {
+            curvePoints = [];
+            var adımları = 800;
+            for (var i = 0; i &lt;= steps; i++) {
+                var t = i / steps;
+                var x1 = bezierPoint(curve1[0], curve1[2], curve1[4], curve1[6], t);
+                var y1 = bezierPoint(curve1[1], curve1[3], curve1[5], curve1[7], t);
+                curvePoints[xToGraph(Math.round(x1))] = yToGraph(y1);
+                var x2 = bezierPoint(curve2[0], curve2[2], curve2[4], curve2[6], t);
+                var y2 = bezierPoint(curve2[1], curve2[3], curve2[5], curve2[7], t);
+                curvePoints[xToGraph(Math.round(x2))] = yToGraph(y2);
+            }}
+        
+        
+        Şimdi verilen örneklem hızında
+        örnekleme var örnekleri = [];
+        for (var i = 0; i &lt;= curvePoints.length; i += sampleInterval) {samples.push({
+            x: i, y: curvePoints[i]});
+        }
+
+        Şimdi verilen aralıkta
+        quantize var quantizeY = function(y, qInterval) {
+            return Math.round(y/qInterval) * qInterval;};
+        
+
+        var quantizedSamples = [];
+        for (var i = 0; i &lt; samples.length; i++) {quantizedSamples.push({
+            x: samples[i].x, y: quantizeY(samples[i].y, qInterval)});
+        }
+
+        var formatPoints = function(points) {
+            var pointsStr = [];
+            for (var i = 0; i &lt; points.length; i++) {
+                pointsStr.push("(" + points[i].x + ", " + points[i].y + ")");
+            }
+            dönüş noktalarıStr.join("\n");};
+        
+        
+        window.setTimeout(function() {// Örnekleri
+        çizin if (showSamples) {
+           
+        
+            stroke(255, 128, 0);
+            doldurma(255, 128, 0);
+            for (var i = 0; i &lt; samples.length;i++) {
+                var x = xToCanvas(samples[i].x);
+                var y = yToCanvas(samples[i].y);
+                line(x, height/2, x, y);
+                elips(x, y, 10, 10);
+            }}
+        
+        
+        quantization
+        var quantizedColor = color(100, 0, 140);
+        if (showQuantized) {
+            noFill();
+            inme (quantizedColor);
+            var currentSample;
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                currentSample = quantizedSamples[i];
+                var x = xToCanvas(currentSample.x);
+                var y = yToCanvas(currentSample.y);
+                elips(x, y, 10, 10);
+                var lineY = currentSample.y &gt; 0 ? y + 5 : y - 5;
+                line(xToCanvas(currentSample.x), height/2, xToCanvas(currentSample.x), lineY);
+            }}
+        
+
+        Yeniden yapılandırılmış eğriyi
+
+        çizin if (processStep &gt;= STEP_ENCODING) {
+
+            // İlk olarak, y değerlerindeki aralık nedir?
+            (Aralık yerine benzersiz seviyelere de bakabilir)
+            var minY = findMinY(quantizedSamples);
+            var maxY = findMaxY(quantizedSamples);
+            var seviyeleri = ((maxY - minY) / qInterval) + 1;
+            Seviye sayısını sunmak için kaç bit gereklidir?
+            var bitsNeeded = Math.ceil(Math.log2(levels));
+            binaryCodes = generateBinarySequence(levels, bitsRequired);
+
+            Negatif aralıklar
+            var yToCode = {};
+            doldur(0, 0, 0);
+            for (var y = minY, binaryCodeI = 0; y &lt;= maxY; y += qInterval, binaryCodeI++) {
+                textSize(12);
+                text(binaryCodes[binaryCodeI], yAxis - 40, yToCanvas(y));
+                yToCode[y] = binaryCodes[binaryCodeI];
+            }
+            var binaryStr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                var binaryCode = yToCode[quantizedSamples[i].y];
+                binaryStr.push(binaryCode);
+            }
+            document.getElementById("encodedPre").value = binaryStr.join("\n");
+        }
+
+        Draw rebuilt curve
+        if (showReconstructed) {
+            var pointsArr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                pointsArr.push(xToCanvas(quantizedSamples[i].x));
+                pointsArr.push(yToCanvas(quantizedSamples[i].y));
+            }
+            var splinePoints = getCurvePoints(pointsArr, 0.5, 20);
+
+            var reconstructedColor = renk(0, 128, 128);
+            noFill();
+            inme (reconstructedColor);
+            beginShape();
+            for (var i = 0; i &lt; splinePoints.length; i += 2) {
+                curveVertex(splinePoints[i], splinePoints[i + 1])}endShape()
+            ;
+        }
+            
+
+        if (processStep === STEP_SAMPLING) {document.getElementById("pointsPre").value = formatPoints(samples);} else if (processStep &gt;= STEP_QUANTIZING) {
+            
+            document.getElementById("pointsPre").value = formatPoints(quantizedSamples);}
+        
+        
+        Ekran görüntüleri için:
+        //var img    = document.getElementById("mycanvas").toDataURL("image/png");
+        document.getElementById("pointsPre").value=(img);}, 100);}};
+        
+        
+    
+
+
+Görünür alanları
+güncelleştir var placeholderImg = document.getElementById("placeholder");
+if (processStep &lt; STEP_QUANTIZING) {
+    document.getElementById("quantizationRangeRow").style.display = "hiçbiri";
+    document.getElementById("showQuantizedLabel").style.display = "hiçbiri";
+}
+if (processStep &lt; STEP_ENCODING) {
+    document.getElementById("pointsPre").style.height = "318px";
+    document.getElementById("encodedOutput").style.display = "hiçbiri";
+}
+if (processStep &lt; STEP_RECONSTRUCTING) {
+    document.getElementById("showReconstructedLabel").style.display = "none";
+}
+(processStep === STEP_ANALOG) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/38ea1efb1016370a71de597c33a47e16b028e7d4.png";
+}
+if (processStep === STEP_SAMPLING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showSamples").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/7d949cd063a816e1b9aaa8f64e80379d71f52f12.png";
+    document.getElementById("pointsPre").value = "(0, 7)\n(30, 95.) 98676803710936)\n(60, -71.43289186523432)\n(90, -106.55949554687498)\n(120, -97.21617085937501)\n(150, -70)\n(180, -29.045472375000003)\n(210, 6.171340345703143)\n(240, 24.439022283203116)\n(270, -74.45763529492186)\n(300, -31.31245312500002)\n(330, 24)";
+}
+if (processStep === STEP_QUANTIZING) {
+    document.getElementById("showSamples").setAttribute("checked", true);
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/dca943fa67ab49a5edfeafad9eb0389f93290be2.png";
+}
+if (processStep === STEP_ENCODING) {
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/52fe7646cf89ba456090b51b5116473d65d2b7d3.png";
+}
+if (processStep === STEP_RECONSTRUCTING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showReconstructed").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/12822e856c9f2d5923004c48649f0f91678585ec.png";
+}
+
+if (processStep &gt;= STEP_QUANTIZING) {
+    document.getElementById("pointsPre").value = "(0, 0)\n(30, 100)\n(60, -75)\n(90, -100)\n(120, -100)\n(150, -75)\n(180, -25)\n(210, 0)\n(240, 25)\n(270, -75)\n(300, -25)\n(330, 25)";
+}
+if (processStep &gt;= STEP_ENCODING) {
+    document.getElementById("encodedPre").value = "0100\n1000\n0001\n0000\n0000\n0001\n0011\n0100\n0101\n0001\n0011\n0101";
+}
+
+var updateSampleInterval = function(e) {
+    var sampleRangeVal = document.getElementById("sampleRange").value;
+    document.getElementById("sampleRangeVal").innerText = sampleRangeVal;
+    sampleInterval = parseInt(sampleRangeVal, 10);
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("sampleRange").addEventListener("change", updateSampleInterval);
+
+var updateQuantizationInterval = function(e) {
+    var quantizationRangeVal = document.getElementById("quantizationRange").value;
+    document.getElementById("quantizationRangeVal").innerText = quantizationRangeVal;
+    qInterval = parseInt(quantizationRangeVal, 10);
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("quantizationRange").addEventListener("change", updateQuantizationInterval);
+
+
+var updateShowCurve = function(e) {
+    showCurve = document.getElementById("showCurve").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showCurve").addEventListener("tıklayın", updateShowCurve);
+
+
+var updateShowSamples = function(e) {
+    showSamples = document.getElementById("showSamples").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showSamples").addEventListener("tıklayın", updateShowSamples);
+
+var updateShowQuantized = function(e) {
+    showQuantized = document.getElementById("showQuantized").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showQuantized").addEventListener("click", updateShowQuantized);
+
+
+var updateShowRebuilt = function(e) {
+    showRebuilt = document.getElementById("showReconstructed").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showReconstructed").addEventListener("click", updateShowReconstructed);
+
+var canvas = document.getElementById("mycanvas");
+var renderCanvas = function() {
+    document.getElementById("placeholder").style.display = "none";
+    var processingInstance = new Processing(canvas, programCode);};
+    
+
+
+Görselleştirme
+penceresini işleyin.setTimeout(function() {
+    updateSampleInterval();
+    updateQuantizationInterval();
+    updateShowCurve();
+    updateShowSamples();
+    updateShowQuantized();
+    updateShowReconstructed();
+}, 100);
+  &lt;/script&gt;
+&lt;/html&gt;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">İdeal niceleme aralığı, kullanım örneğimize ve fiziksel kısıtlamalarımıza bağlıdır. Binlerce farklı y değerini temsil etmek için yeterli alan varsa, çok küçük bir niceleme aralığı kullanabiliriz. Sınırlı alan varsa, o zaman büyük bir aralık kullanabiliriz. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Niceleme adımı her zaman, gerçek sinyal değerini örneklenen her noktadaki nicelleştirilmiş değerle karşılaştırarak ölçülen bir miktar niceleme hatası getirir. Bununla birlikte, bir bilgisayarın belleğinin sonlu doğası ve <a class="_8gcxk83" href="/computing/ap-computer-science-principles/x2d2f703b37b450a3:digital-information/x2d2f703b37b450a3:from-analog-to-digital-data/a/a/number-limits-overflow-and-roundoff" rel="noopener noreferrer" tabindex="0" target="_blank">sayısal hassasiyeti</a> nedeniyle, analog verileri dijital biçimde depolamak için her zaman bir miktar niceleme gereklidir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>İkili kodlama</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu bizi son adıma getiriyor: ikili kodlama. Sınırlı sayıda nicelleştirilmiş y değeri kümesi varsa, bilgisayarın gerçek değeri depolaması gerekmez. Bunun yerine, nicelleştirilmiş y değerini temsil eden çok daha küçük bir değer depolayabilir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu sinyal için, 25'lik bir niceleme aralığı 9 olası y değeri ile sonuçlandı. 9 değerini ikili sayılarla <code>0000</code> eşleyebiliriz - <code>1001</code>:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 milliseconds and a y-axis labeled "v" that goes from -100 to 100. A series of lines are shown every 30 milliseconds, with each line ending at a circle that intersects a horizontal grid line.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/52fe7646cf89ba456090b51b5116473d65d2b7d3.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">0 ila 330 milisaniye arasında değişen "t" etiketli bir x eksenine ve -100 ila 100 arasında değişen "v" etiketli bir y eksenine sahip bir grafik. Her 30 milisaniyede bir, her çizgi yatay bir ızgara çizgisiyle kesişen bir daireyle biten bir dizi çizgi gösterilir.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Daha sonra sinyali bu ikili diziye kodlayabiliriz: </div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>0100 1000 0001 0000 0000 0001 0011 0100 0101 0001 0011 0101</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Bir bilgisayarın bu diziyi anlaması için, sayısallaştırılmış sürümümüzün dizinin nasıl örneklendiğine ve kodlandığına dair bir açıklama da içermesi gerekir.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Bu kodlama örnek başına 4 bit kullanır. Örnek başına bit sayısı, <strong>bit derinliği</strong> olarak da bilinir. En düşük bit derinliği 1'dir ve yalnızca 2 değeri (0 veya 1) tanımlayabilir. Telefon görüşmeleri için standart bit derinliği 8 bittir (256 değer) ve YouTube müzik videoları için önerilen bit derinliği 24 bittir (16 milyondan fazla değer).</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Diğer kodlama seçenekleri nelerdir?]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"> Niceleme aralığı ile tekrar oynayın ve bit derinliğinin nasıl değiştiğini gözlemleyin. Hangi aralıklar sadece 2 bit gerektirir? 4 bit? 6 bit?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;! DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Analogdan Dijitale Dönüştürücü: Kodlama&lt;/title&gt;&lt;!-- WonderBlocks stilleri --&gt;&lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+      
+  
+  &lt;style&gt;
+
+    
+  
+  body {
+      font-family: "Lato", sans-serif;
+      maksimum genişlik: 375 piksel;
+  }
+  . konteyner {
+    display:flex;
+    esnek yön: satır;
+  }
+
+  . form-controls {
+    background: #efefef;
+    kenar boşluğu-alt: 12px;
+  }
+  . aralık-kontrolleri {
+    liste-stil-türü: yok;
+    marj: 0;
+    dolgu: 0;
+    dolgu-sol: 6 piksel;
+    kenarlık-yarıçap: 3px;
+  }
+  fieldset {
+      border: none;
+      kenar boşluğu-üst: 0px;
+      dolgu-sol: 6px;
+  }
+  . form-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+  . form-row &gt; etiketi {
+    dolgu: .5em 1em .1em 0;
+    esnek: 6;
+  }
+  . form-row &gt; input {
+    flex: 2;
+  }
+  . form-row &gt; span {
+    flex: 1;
+    sol kenar boşluğu: 6 piksel;
+    align-self: center;
+  }
+  . form-row &gt; input,
+  .form-row &gt; düğmesi {
+    doldurma: .5em;
+  }
+  . form-row &gt; düğmesi {
+   arka plan: gri;
+   renk: beyaz;
+   kenarlık: 0;
+  }
+
+  . left-side, .right-side {
+      flex-grow: 1;
+      esnek temel: %100;
+  }
+
+  . sağ taraf {
+    dolgu-üst:8px;
+    sol kenar boşluğu: 20 piksel;
+    ekran: esnek;
+    esnek yön: sütun;
+  }
+  . sağ taraf:ilk-alt {
+      kenar boşluğu-alt: 10px;
+  }
+  . sağ taraftaki metin alanı {
+    kenar boşluğu-üst: 6 piksel;
+    yükseklik: 150 piksel;
+    genişlik: 65 piksel;
+  }
+  &lt;/style&gt;&lt;
+  /head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;&lt;div class="left-side"&gt;&lt;div class="form-controls"&gt;&lt;ul class="range-controls"&gt;&lt;li class="form-row" id="sampleRangeRow"&gt;&lt;label for="sampleRange"&gt;Örnekleme aralığı:
+                        &lt;/label&gt;&lt;input type="range" min="2" max="150" value="30" id="sampleRange"/&gt;
+                        
+                        
+                        
+            &lt;span id="sampleRangeVal"&gt;30&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class="form-row" id="quantizationRangeRow"&gt;&lt;label for="quantizationRange"&gt;Quantization interval:&lt;/label&gt;&lt;input type="range" min="2" max="120" value="25" id="quantizationRange"/&gt;&lt;span id="quantizationRangeVal"&gt;50&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;fieldset&gt;Show:&lt;br/&gt;
+                    
+                        &lt;label&gt;&lt;
+                
+                    
+                    
+                        input type="checkbox" id="showCurve"&gt;original
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showSamples"&gt;samples
+                    &lt;/label&gt;&lt;label id="showQuantizedLabel"&gt;&lt;input type="checkbox" id="showQuantized"&gt;quantized
+                    &lt;/label&gt;
+                    
+                    &lt;label id="showReconstructedLabel"&gt;&lt;input type="checkbox" id="showReconstructed"&gt;reconstructed
+                    &lt;/label&gt;&lt;/fieldset&gt;&lt;/div&gt;
+            &lt;div style="position:relative;" &gt;
+            &lt;canvas id="mycanvas" style="width:400px; height: 260px; background: #ccc; border:0px none;" &gt;&lt;/canvas&gt;
+            &lt;img id="placeholder" style="position:absolute; z-index: 2;top:0;left:0;" src="https://www.kasandbox.org/programming-images/avatars/questionmark.png"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="right-side"&gt;&lt;div id="pointsOutput"&gt;Points:&lt;textarea id="pointsPre"&gt;&lt;/textarea&gt;&lt;
+            /div&gt;
+        
+                
+                &lt;div id="encodedOutput"&gt;
+        
+                
+                    
+                    Encoded:
+                    
+                    &lt;textarea id=" encodedPre" salt okunur&gt;&lt;/textarea&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;
+  
+  &lt;script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js&gt;&lt;&gt;script&lt;https://cdn.jsdelivr.net/gh/gdenisov/cardinal-spline-js@master/curve_calc.min.js script src="&gt;&lt;&gt;/script&lt;
+                
+    
+        &gt;
+  
+  script STEP_ANALOG
+// UI'
+de neler gösterilmeli var = 0;
+var STEP_SAMPLING = 1;
+var STEP_QUANTIZING = 2;
+var STEP_ENCODING = 3;
+var STEP_RECONSTRUCTING = 4;
+var processStep = STEP_ENCODING;
+
+Grafikte
+gösterilecek var showCurve = false;
+var showSamples = false;
+var showQuantized = false;
+var updateGraph = true;
+
+var sampleInterval = 20;
+var qInterval = 50;
+var numBits = 2;
+var binaryCodes = [];
+
+var convertToBinary = function(ondalık) {
+  var quotient = ondalık;
+  var kalan;
+  var kalanlar = [];
+
+  do {
+    kalan = bölüm % 2;
+    bölüm = Math.floor(bölüm / 2);
+    remainders.push(remainder);
+  } iken (bölüm &gt; 0);
+
+  return remainders.reverse().join("");};
+
+
+var padBinaryNum = function(binaryStr, numDigits) {
+  var digitsDiff = numDigits - binaryStr.length;
+  for (var i = 0; i &lt; digitsDiff;i++) {
+    binaryStr = "0" + binaryStr;
+  }
+  return binaryStr;};
+
+
+var generateBinarySequence = function(maxVal, numBits) {
+    var minVal = 0;
+    var binaryNums = [];
+    for (var num = minVal; num &lt; maxVal; num++) {
+        var binaryNum = padBinaryNum(convertToBinary(num), numBits);
+        binaryNums.push(binaryNum);
+    }
+    return binaryNums;};
+
+
+var findMinY = fonksiyon(samples) {
+    var minY = 99999;
+    for (var i = 0; i &lt; samples.length; i++) {if (samples[i].y &lt; minY) {
+        
+            minY = samples[i].y;
+        }}
+    
+    dönüş minY;};
+
+
+var findMaxY = fonksiyon(samples) {
+    var maxY = - 99999;
+    for (var i = 0; i &lt; samples.length; i++) {if (samples[i].y &gt; maxY) {
+        
+            maxY = samples[i].y;
+        }}
+    
+    maxY dönüşü;};
+
+
+var programCode = function(processingInstance) {with(processingInstance) {
+    
+        size(400, 260);
+        noLoop();
+        var yAxis = 50;
+        var curvePoints;
+
+        arka plan(255, 255, 255);
+
+        Örnekleme
+        için çizim ızgarası var gridColor = renk(214, 214, 214);
+        if (processStep &gt;= STEP_SAMPLING) {
+            stroke(gridColor);
+            for (var x = yEkseni; x &lt; genişlik; x += sampleInterval) {
+                line(x, 0, x, height);
+            }}
+        
+
+        Eğer (processStep &gt;= STEP_QUANTIZING) {// (var y = yükseklik/2; y &lt; yükseklik; y += qInterval) {
+            
+                line(yAxis, y, width, y);
+            }
+            için negatif aralıklar
+            varsa, niceleme aralığına
+        dayalı ızgara çizin (var y = yükseklik/2 - qInterval; y &gt; 0; y -= qInterval) {
+                line(yAxis, y, width, y);
+            }}
+
+        
+        için pozitif aralıklar
+            y ekseni - genlik
+        dolgusu (0, 0, 0);
+        inme(8, 8, 8);
+        inmeAğırlık(3);
+        çizgi(yEksen, 0, yEksen, yükseklik);
+        line(yAxis, 0, yAxis - 8, 10);
+        line(yAxis, 0, yAxis + 8, 10);
+        çizgi(yEksen, yükseklik, yEkseni - 8, yükseklik - 10);
+        çizgi(yEkseni, yükseklik, yEkseni + 8, yükseklik - 10);
+        textSize(20);
+        textFont(createFont("monospace"));
+        text("v", yAxis + 6, 36);
+        if (processStep &lt; STEP_ENCODING) {
+            text("100", yAxis + -43, height/2 - 100);
+            text("0", yAxis + -21, yükseklik/2);
+            text("-100", yAxis + -53, yükseklik/2 + 100);
+        }
+
+        x ekseni -zaman
+        çizgisi (y Ekseni, yükseklik / 2, genişlik, yükseklik / 2);
+        çizgi (genişlik, yükseklik / 2, genişlik - 8, yükseklik / 2 - 10);
+        çizgi (genişlik, yükseklik / 2, genişlik - 8, yükseklik / 2 + 10);
+        metin("t", genişlik - 15, yükseklik/2 + -18);
+        if (processStep &lt; STEP_ENCODING) {
+            text(330, width - 25 - 10, height/2 + 36);
+        }
+
+        noFill();
+        strokeWeight(2);
+        var originalColor = renk(218,165,32);
+        if (showCurve) {stroke(originalColor);} else {
+            
+            noStroke();}
+        
+        
+        
+        var eğrisi1 = [200, 200, 33, 383, 139, -191, yEkseni, 123];
+        bezier(curve1[0], curve1[1], curve1[2], curve1[3], curve1[4], curve1[5], curve1[6], curve1[7]);
+        var eğrisi2 = [380, 106, 222, 409, 399, -90, 200, 200];
+        bezier(curve2[0], curve2[1], curve2[2], curve2[3], curve2[4], curve2[5], curve2[6], curve2[7]);
+
+        var yToGraph = function(yPoint) {
+            return -1 * (yPoint - height/2);};
+        
+        var yToCanvas = function(yPoint) {
+            return (-1 * yPoint) + height/2;};
+        
+        var xToGraph = function(xPoint) {
+            return xPoint - yAxis;};
+        
+        var xToCanvas = function(xPoint) {
+            return xPoint + yAxis;};
+        
+
+        Her x değeri
+        için bir tane olacak şekilde yeterli puanı saklayın if (!curvePoints) {
+            curvePoints = [];
+            var adımları = 800;
+            for (var i = 0; i &lt;= steps; i++) {
+                var t = i / steps;
+                var x1 = bezierPoint(curve1[0], curve1[2], curve1[4], curve1[6], t);
+                var y1 = bezierPoint(curve1[1], curve1[3], curve1[5], curve1[7], t);
+                curvePoints[xToGraph(Math.round(x1))] = yToGraph(y1);
+                var x2 = bezierPoint(curve2[0], curve2[2], curve2[4], curve2[6], t);
+                var y2 = bezierPoint(curve2[1], curve2[3], curve2[5], curve2[7], t);
+                curvePoints[xToGraph(Math.round(x2))] = yToGraph(y2);
+            }}
+        
+        
+        Şimdi verilen örneklem hızında
+        örnekleme var örnekleri = [];
+        for (var i = 0; i &lt;= curvePoints.length; i += sampleInterval) {samples.push({
+            x: i, y: curvePoints[i]});
+        }
+
+        Şimdi verilen aralıkta
+        quantize var quantizeY = function(y, qInterval) {
+            return Math.round(y/qInterval) * qInterval;};
+        
+
+        var quantizedSamples = [];
+        for (var i = 0; i &lt; samples.length; i++) {quantizedSamples.push({
+            x: samples[i].x, y: quantizeY(samples[i].y, qInterval)});
+        }
+
+        var formatPoints = function(points) {
+            var pointsStr = [];
+            for (var i = 0; i &lt; points.length; i++) {
+                pointsStr.push("(" + points[i].x + ", " + points[i].y + ")");
+            }
+            dönüş noktalarıStr.join("\n");};
+        
+        
+        window.setTimeout(function() {// Örnekleri
+        çizin if (showSamples) {
+           
+        
+            stroke(255, 128, 0);
+            doldurma(255, 128, 0);
+            for (var i = 0; i &lt; samples.length;i++) {
+                var x = xToCanvas(samples[i].x);
+                var y = yToCanvas(samples[i].y);
+                line(x, height/2, x, y);
+                elips(x, y, 10, 10);
+            }}
+        
+        
+        quantization
+        var quantizedColor = color(100, 0, 140);
+        if (showQuantized) {
+            noFill();
+            inme (quantizedColor);
+            var currentSample;
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                currentSample = quantizedSamples[i];
+                var x = xToCanvas(currentSample.x);
+                var y = yToCanvas(currentSample.y);
+                elips(x, y, 10, 10);
+                var lineY = currentSample.y &gt; 0 ? y + 5 : y - 5;
+                line(xToCanvas(currentSample.x), height/2, xToCanvas(currentSample.x), lineY);
+            }}
+        
+
+        Yeniden yapılandırılmış eğriyi
+
+        çizin if (processStep &gt;= STEP_ENCODING) {
+
+            // İlk olarak, y değerlerindeki aralık nedir?
+            (Aralık yerine benzersiz seviyelere de bakabilir)
+            var minY = findMinY(quantizedSamples);
+            var maxY = findMaxY(quantizedSamples);
+            var seviyeleri = ((maxY - minY) / qInterval) + 1;
+            Seviye sayısını sunmak için kaç bit gereklidir?
+            var bitsNeeded = Math.ceil(Math.log2(levels));
+            binaryCodes = generateBinarySequence(levels, bitsRequired);
+
+            Negatif aralıklar
+            var yToCode = {};
+            doldur(0, 0, 0);
+            for (var y = minY, binaryCodeI = 0; y &lt;= maxY; y += qInterval, binaryCodeI++) {
+                textSize(12);
+                text(binaryCodes[binaryCodeI], yAxis - 40, yToCanvas(y));
+                yToCode[y] = binaryCodes[binaryCodeI];
+            }
+            var binaryStr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                var binaryCode = yToCode[quantizedSamples[i].y];
+                binaryStr.push(binaryCode);
+            }
+            document.getElementById("encodedPre").value = binaryStr.join("\n");
+        }
+
+        Draw rebuilt curve
+        if (showReconstructed) {
+            var pointsArr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                pointsArr.push(xToCanvas(quantizedSamples[i].x));
+                pointsArr.push(yToCanvas(quantizedSamples[i].y));
+            }
+            var splinePoints = getCurvePoints(pointsArr, 0.5, 20);
+
+            var reconstructedColor = renk(0, 128, 128);
+            noFill();
+            inme (reconstructedColor);
+            beginShape();
+            for (var i = 0; i &lt; splinePoints.length; i += 2) {
+                curveVertex(splinePoints[i], splinePoints[i + 1])}endShape()
+            ;
+        }
+            
+
+        if (processStep === STEP_SAMPLING) {document.getElementById("pointsPre").value = formatPoints(samples);} else if (processStep &gt;= STEP_QUANTIZING) {
+            
+            document.getElementById("pointsPre").value = formatPoints(quantizedSamples);}
+        
+        
+        Ekran görüntüleri için:
+        //var img    = document.getElementById("mycanvas").toDataURL("image/png");
+        document.getElementById("pointsPre").value=(img);}, 100);}};
+        
+        
+    
+
+
+Görünür alanları
+güncelleştir var placeholderImg = document.getElementById("placeholder");
+if (processStep &lt; STEP_QUANTIZING) {
+    document.getElementById("quantizationRangeRow").style.display = "hiçbiri";
+    document.getElementById("showQuantizedLabel").style.display = "hiçbiri";
+}
+if (processStep &lt; STEP_ENCODING) {
+    document.getElementById("pointsPre").style.height = "318px";
+    document.getElementById("encodedOutput").style.display = "hiçbiri";
+}
+if (processStep &lt; STEP_RECONSTRUCTING) {
+    document.getElementById("showReconstructedLabel").style.display = "none";
+}
+(processStep === STEP_ANALOG) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/38ea1efb1016370a71de597c33a47e16b028e7d4.png";
+}
+if (processStep === STEP_SAMPLING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showSamples").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/7d949cd063a816e1b9aaa8f64e80379d71f52f12.png";
+    document.getElementById("pointsPre").value = "(0, 7)\n(30, 95.) 98676803710936)\n(60, -71.43289186523432)\n(90, -106.55949554687498)\n(120, -97.21617085937501)\n(150, -70)\n(180, -29.045472375000003)\n(210, 6.171340345703143)\n(240, 24.439022283203116)\n(270, -74.45763529492186)\n(300, -31.31245312500002)\n(330, 24)";
+}
+if (processStep === STEP_QUANTIZING) {
+    document.getElementById("showSamples").setAttribute("checked", true);
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/dca943fa67ab49a5edfeafad9eb0389f93290be2.png";
+}
+if (processStep === STEP_ENCODING) {
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/52fe7646cf89ba456090b51b5116473d65d2b7d3.png";
+}
+if (processStep === STEP_RECONSTRUCTING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showReconstructed").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/12822e856c9f2d5923004c48649f0f91678585ec.png";
+}
+
+if (processStep &gt;= STEP_QUANTIZING) {
+    document.getElementById("pointsPre").value = "(0, 0)\n(30, 100)\n(60, -75)\n(90, -100)\n(120, -100)\n(150, -75)\n(180, -25)\n(210, 0)\n(240, 25)\n(270, -75)\n(300, -25)\n(330, 25)";
+}
+if (processStep &gt;= STEP_ENCODING) {
+    document.getElementById("encodedPre").value = "0100\n1000\n0001\n0000\n0000\n0001\n0011\n0100\n0101\n0001\n0011\n0101";
+}
+
+var updateSampleInterval = function(e) {
+    var sampleRangeVal = document.getElementById("sampleRange").value;
+    document.getElementById("sampleRangeVal").innerText = sampleRangeVal;
+    sampleInterval = parseInt(sampleRangeVal, 10);
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("sampleRange").addEventListener("change", updateSampleInterval);
+
+var updateQuantizationInterval = function(e) {
+    var quantizationRangeVal = document.getElementById("quantizationRange").value;
+    document.getElementById("quantizationRangeVal").innerText = quantizationRangeVal;
+    qInterval = parseInt(quantizationRangeVal, 10);
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("quantizationRange").addEventListener("change", updateQuantizationInterval);
+
+
+var updateShowCurve = function(e) {
+    showCurve = document.getElementById("showCurve").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showCurve").addEventListener("tıklayın", updateShowCurve);
+
+
+var updateShowSamples = function(e) {
+    showSamples = document.getElementById("showSamples").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showSamples").addEventListener("tıklayın", updateShowSamples);
+
+var updateShowQuantized = function(e) {
+    showQuantized = document.getElementById("showQuantized").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showQuantized").addEventListener("click", updateShowQuantized);
+
+
+var updateShowRebuilt = function(e) {
+    showRebuilt = document.getElementById("showReconstructed").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showReconstructed").addEventListener("click", updateShowReconstructed);
+
+var canvas = document.getElementById("mycanvas");
+var renderCanvas = function() {
+    document.getElementById("placeholder").style.display = "none";
+    var processingInstance = new Processing(canvas, programCode);};
+    
+
+
+Görselleştirme
+penceresini işleyin.setTimeout(function() {
+    updateSampleInterval();
+    updateQuantizationInterval();
+    updateShowCurve();
+    updateShowSamples();
+    updateShowQuantized();
+    updateShowReconstructed();
+}, 100);
+  &lt;/script&gt;
+&lt;/html&gt;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Rekonstrüksiyonu</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Genellikle analog sinyalleri dijital depolamada saklarız, böylece bir ses dosyasını çalmak veya bir görüntüyü görüntülemek gibi daha sonra yeniden üretebiliriz. Bir cihaz sayısallaştırılmış bir sinyali tekrar analog sinyale dönüştürmek istediğinde, orijinal sürekli sinyali yeniden yapılandırmaya çalışacaktır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu sinyal için, basit bir yeniden yapılanma stratejisi, nicelleştirilmiş noktalar boyunca düzgün bir eğriyi interpolasyon yapabilir:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 milliseconds and a y-axis labeled "v" that goes from -100 to 100. A series of lines are shown every 30 milliseconds, with each line ending at a circle that intersects a horizontal grid line. A curve is overlaid on top that joins those circles.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/6d46b795849b48b3050ac3277cc0ac5000788728.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">0 ila 330 milisaniye arasında değişen "t" etiketli bir x eksenine ve -100 ila 100 arasında değişen "v" etiketli bir y eksenine sahip bir grafik. Her 30 milisaniyede bir, her çizgi yatay bir ızgara çizgisiyle kesişen bir daireyle biten bir dizi çizgi gösterilir. Üstüne bu daireleri birleştiren bir eğri bindirilir.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu orijinalle ne kadar iyi eşleşiyor? Farkı görsel olarak görmek için eğrileri üst üste bindirebiliriz:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 260px;"><img alt='A graph with an x-axis labeled "t" that goes from 0 to 330 milliseconds and a y-axis labeled "v" that goes from -100 to 100. A curvy line goes across the graph and is overlaid with another similar curvy line.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/12822e856c9f2d5923004c48649f0f91678585ec.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">0 ila 330 milisaniye arasında değişen "t" etiketli bir x eksenine ve -100 ila 100 arasında değişen "v" etiketli bir y eksenine sahip bir grafik. Kıvrımlı bir çizgi grafik boyunca ilerler ve başka bir benzer kıvrımlı çizgi ile kaplanır.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Yeniden yapılandırılan sinyal orijinaline çok yakın görünüyor, ancak birkaç ayrıntıyı kaçırıyor. Örnekleme aralığını azaltabilir ve niceleme hatasını azaltabilirsek, yeniden yapılandırılmış eğriyi orijinal sinyale yaklaştırabiliriz. Sinyali yeniden yapılandırmak için farklı stratejiler de kullanabiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"> Farklı örnekleme oranları ve niceleme aralıkları ile aşağıda oynayın. Orijinal eğriye ne kadar yaklaşabilirsiniz? </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>&lt;! DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Analogdan Dijitale Dönüştürücü: Yeniden Yapılandırma&lt;/başlık&gt;&lt;!-- WonderBlocks stilleri --&gt;
+    
+  
+      
+  &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;&lt;style&gt;
+  
+  
+body {
+      font-family: "Lato", sans-serif;
+      maksimum genişlik: 375 piksel;
+  }
+  . konteyner {
+    display:flex;
+    esnek yön: satır;
+  }
+
+  . form-controls {
+    background: #efefef;
+    kenar boşluğu-alt: 12px;
+  }
+  . aralık-kontrolleri {
+    liste-stil-türü: yok;
+    marj: 0;
+    dolgu: 0;
+    dolgu-sol: 6 piksel;
+    kenarlık-yarıçap: 3px;
+  }
+  fieldset {
+      border: none;
+      kenar boşluğu-üst: 0px;
+      dolgu-sol: 6px;
+  }
+  . form-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+  . form-row &gt; etiketi {
+    dolgu: .5em 1em .1em 0;
+    esnek: 6;
+  }
+  . form-row &gt; input {
+    flex: 2;
+  }
+  . form-row &gt; span {
+    flex: 1;
+    sol kenar boşluğu: 6 piksel;
+    align-self: center;
+  }
+  . form-row &gt; input,
+  .form-row &gt; düğmesi {
+    doldurma: .5em;
+  }
+  . form-row &gt; düğmesi {
+   arka plan: gri;
+   renk: beyaz;
+   kenarlık: 0;
+  }
+
+  . left-side, .right-side {
+      flex-grow: 1;
+      esnek temel: %100;
+  }
+
+  . sağ taraf {
+    dolgu-üst:8px;
+    sol kenar boşluğu: 20 piksel;
+    ekran: esnek;
+    esnek yön: sütun;
+  }
+  . sağ taraf:ilk-alt {
+      kenar boşluğu-alt: 10px;
+  }
+  . sağ taraftaki metin alanı {
+    kenar boşluğu-üst: 6 piksel;
+    yükseklik: 150 piksel;
+    genişlik: 65 piksel;
+  }
+  &lt;/style&gt;&lt;
+  /head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;&lt;div class="left-side"&gt;&lt;div class="form-controls"&gt;&lt;ul class="range-controls"&gt;&lt;li class="form-row" id="sampleRangeRow"&gt;&lt;label for="sampleRange"&gt;Örnekleme aralığı:
+                        &lt;/label&gt;&lt;input type="range" min="2" max="150" value="30" id="sampleRange"/&gt;
+                        
+                        
+                        
+            &lt;span id="sampleRangeVal"&gt;30&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class="form-row" id="quantizationRangeRow"&gt;&lt;label for="quantizationRange"&gt;Quantization interval:&lt;/label&gt;&lt;input type="range" min="2" max="120" value="25" id="quantizationRange"/&gt;&lt;span id="quantizationRangeVal"&gt;50&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;fieldset&gt;Show:&lt;br/&gt;
+                    
+                        &lt;label&gt;&lt;
+                
+                    
+                    
+                        input type="checkbox" id="showCurve"&gt;original
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type="checkbox" id="showSamples"&gt;samples
+                    &lt;/label&gt;&lt;label id="showQuantizedLabel"&gt;&lt;input type="checkbox" id="showQuantized"&gt;quantized
+                    &lt;/label&gt;
+                    
+                    &lt;label id="showReconstructedLabel"&gt;&lt;input type="checkbox" id="showReconstructed"&gt;reconstructed
+                    &lt;/label&gt;&lt;/fieldset&gt;&lt;/div&gt;
+            &lt;div style="position:relative;" &gt;
+            &lt;canvas id="mycanvas" style="width:400px; height: 260px; background: #ccc; border:0px none;" &gt;&lt;/canvas&gt;
+            &lt;img id="placeholder" style="position:absolute; z-index: 2;top:0;left:0;" src="https://www.kasandbox.org/programming-images/avatars/questionmark.png"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="right-side"&gt;&lt;div id="pointsOutput"&gt;Points:&lt;textarea id="pointsPre"&gt;&lt;/textarea&gt;&lt;
+            /div&gt;
+        
+                
+                &lt;div id="encodedOutput"&gt;
+        
+                
+                    
+                    Encoded:
+                    
+                    &lt;textarea id=" encodedPre" salt okunur&gt;&lt;/textarea&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;
+  
+  &lt;script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js&gt;&lt;&gt;script&lt;https://cdn.jsdelivr.net/gh/gdenisov/cardinal-spline-js@master/curve_calc.min.js script src="&gt;&lt;&gt;/script&lt;
+                
+    
+        &gt;
+  
+  script STEP_ANALOG
+// UI'
+de neler gösterilmeli var = 0;
+var STEP_SAMPLING = 1;
+var STEP_QUANTIZING = 2;
+var STEP_ENCODING = 3;
+var STEP_RECONSTRUCTING = 4;
+var processStep = STEP_RECONSTRUCTING;
+
+Grafikte
+gösterilecek var showCurve = false;
+var showSamples = false;
+var showQuantized = false;
+var updateGraph = true;
+
+var sampleInterval = 20;
+var qInterval = 50;
+var numBits = 2;
+var binaryCodes = [];
+
+var convertToBinary = function(ondalık) {
+  var quotient = ondalık;
+  var kalan;
+  var kalanlar = [];
+
+  do {
+    kalan = bölüm % 2;
+    bölüm = Math.floor(bölüm / 2);
+    remainders.push(remainder);
+  } iken (bölüm &gt; 0);
+
+  return remainders.reverse().join("");};
+
+
+var padBinaryNum = function(binaryStr, numDigits) {
+  var digitsDiff = numDigits - binaryStr.length;
+  for (var i = 0; i &lt; digitsDiff;i++) {
+    binaryStr = "0" + binaryStr;
+  }
+  return binaryStr;};
+
+
+var generateBinarySequence = function(maxVal, numBits) {
+    var minVal = 0;
+    var binaryNums = [];
+    for (var num = minVal; num &lt; maxVal; num++) {
+        var binaryNum = padBinaryNum(convertToBinary(num), numBits);
+        binaryNums.push(binaryNum);
+    }
+    return binaryNums;};
+
+
+var findMinY = fonksiyon(samples) {
+    var minY = 99999;
+    for (var i = 0; i &lt; samples.length; i++) {if (samples[i].y &lt; minY) {
+        
+            minY = samples[i].y;
+        }}
+    
+    dönüş minY;};
+
+
+var findMaxY = fonksiyon(samples) {
+    var maxY = - 99999;
+    for (var i = 0; i &lt; samples.length; i++) {if (samples[i].y &gt; maxY) {
+        
+            maxY = samples[i].y;
+        }}
+    
+    maxY dönüşü;};
+
+
+var programCode = function(processingInstance) {with(processingInstance) {
+    
+        size(400, 260);
+        noLoop();
+        var yAxis = 50;
+        var curvePoints;
+
+        arka plan(255, 255, 255);
+
+        Örnekleme
+        için çizim ızgarası var gridColor = renk(214, 214, 214);
+        if (processStep &gt;= STEP_SAMPLING) {
+            stroke(gridColor);
+            for (var x = yEkseni; x &lt; genişlik; x += sampleInterval) {
+                line(x, 0, x, height);
+            }}
+        
+
+        Eğer (processStep &gt;= STEP_QUANTIZING) {// (var y = yükseklik/2; y &lt; yükseklik; y += qInterval) {
+            
+                line(yAxis, y, width, y);
+            }
+            için negatif aralıklar
+            varsa, niceleme aralığına
+        dayalı ızgara çizin (var y = yükseklik/2 - qInterval; y &gt; 0; y -= qInterval) {
+                line(yAxis, y, width, y);
+            }}
+
+        
+        için pozitif aralıklar
+            y ekseni - genlik
+        dolgusu (0, 0, 0);
+        inme(8, 8, 8);
+        inmeAğırlık(3);
+        çizgi(yEksen, 0, yEksen, yükseklik);
+        line(yAxis, 0, yAxis - 8, 10);
+        line(yAxis, 0, yAxis + 8, 10);
+        çizgi(yEksen, yükseklik, yEkseni - 8, yükseklik - 10);
+        çizgi(yEkseni, yükseklik, yEkseni + 8, yükseklik - 10);
+        textSize(20);
+        textFont(createFont("monospace"));
+        text("v", yAxis + 6, 36);
+        if (processStep &lt; STEP_ENCODING) {
+            text("100", yAxis + -43, height/2 - 100);
+            text("0", yAxis + -21, yükseklik/2);
+            text("-100", yAxis + -53, yükseklik/2 + 100);
+        }
+
+        x ekseni -zaman
+        çizgisi (y Ekseni, yükseklik / 2, genişlik, yükseklik / 2);
+        çizgi (genişlik, yükseklik / 2, genişlik - 8, yükseklik / 2 - 10);
+        çizgi (genişlik, yükseklik / 2, genişlik - 8, yükseklik / 2 + 10);
+        metin("t", genişlik - 15, yükseklik/2 + -18);
+        if (processStep &lt; STEP_ENCODING) {
+            text(330, width - 25 - 10, height/2 + 36);
+        }
+
+        noFill();
+        strokeWeight(2);
+        var originalColor = renk(218,165,32);
+        if (showCurve) {stroke(originalColor);} else {
+            
+            noStroke();}
+        
+        
+        
+        var eğrisi1 = [200, 200, 33, 383, 139, -191, yEkseni, 123];
+        bezier(curve1[0], curve1[1], curve1[2], curve1[3], curve1[4], curve1[5], curve1[6], curve1[7]);
+        var eğrisi2 = [380, 106, 222, 409, 399, -90, 200, 200];
+        bezier(curve2[0], curve2[1], curve2[2], curve2[3], curve2[4], curve2[5], curve2[6], curve2[7]);
+
+        var yToGraph = function(yPoint) {
+            return -1 * (yPoint - height/2);};
+        
+        var yToCanvas = function(yPoint) {
+            return (-1 * yPoint) + height/2;};
+        
+        var xToGraph = function(xPoint) {
+            return xPoint - yAxis;};
+        
+        var xToCanvas = function(xPoint) {
+            return xPoint + yAxis;};
+        
+
+        Her x değeri
+        için bir tane olacak şekilde yeterli puanı saklayın if (!curvePoints) {
+            curvePoints = [];
+            var adımları = 800;
+            for (var i = 0; i &lt;= steps; i++) {
+                var t = i / steps;
+                var x1 = bezierPoint(curve1[0], curve1[2], curve1[4], curve1[6], t);
+                var y1 = bezierPoint(curve1[1], curve1[3], curve1[5], curve1[7], t);
+                curvePoints[xToGraph(Math.round(x1))] = yToGraph(y1);
+                var x2 = bezierPoint(curve2[0], curve2[2], curve2[4], curve2[6], t);
+                var y2 = bezierPoint(curve2[1], curve2[3], curve2[5], curve2[7], t);
+                curvePoints[xToGraph(Math.round(x2))] = yToGraph(y2);
+            }}
+        
+        
+        Şimdi verilen örneklem hızında
+        örnekleme var örnekleri = [];
+        for (var i = 0; i &lt;= curvePoints.length; i += sampleInterval) {samples.push({
+            x: i, y: curvePoints[i]});
+        }
+
+        Şimdi verilen aralıkta
+        quantize var quantizeY = function(y, qInterval) {
+            return Math.round(y/qInterval) * qInterval;};
+        
+
+        var quantizedSamples = [];
+        for (var i = 0; i &lt; samples.length; i++) {quantizedSamples.push({
+            x: samples[i].x, y: quantizeY(samples[i].y, qInterval)});
+        }
+
+        var formatPoints = function(points) {
+            var pointsStr = [];
+            for (var i = 0; i &lt; points.length; i++) {
+                pointsStr.push("(" + points[i].x + ", " + points[i].y + ")");
+            }
+            dönüş noktalarıStr.join("\n");};
+        
+        
+        window.setTimeout(function() {// Örnekleri
+        çizin if (showSamples) {
+           
+        
+            stroke(255, 128, 0);
+            doldurma(255, 128, 0);
+            for (var i = 0; i &lt; samples.length;i++) {
+                var x = xToCanvas(samples[i].x);
+                var y = yToCanvas(samples[i].y);
+                line(x, height/2, x, y);
+                elips(x, y, 10, 10);
+            }}
+        
+        
+        quantization
+        var quantizedColor = color(100, 0, 140);
+        if (showQuantized) {
+            noFill();
+            inme (quantizedColor);
+            var currentSample;
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                currentSample = quantizedSamples[i];
+                var x = xToCanvas(currentSample.x);
+                var y = yToCanvas(currentSample.y);
+                elips(x, y, 10, 10);
+                var lineY = currentSample.y &gt; 0 ? y + 5 : y - 5;
+                line(xToCanvas(currentSample.x), height/2, xToCanvas(currentSample.x), lineY);
+            }}
+        
+
+        Yeniden yapılandırılmış eğriyi
+
+        çizin if (processStep &gt;= STEP_ENCODING) {
+
+            // İlk olarak, y değerlerindeki aralık nedir?
+            (Aralık yerine benzersiz seviyelere de bakabilir)
+            var minY = findMinY(quantizedSamples);
+            var maxY = findMaxY(quantizedSamples);
+            var seviyeleri = ((maxY - minY) / qInterval) + 1;
+            Seviye sayısını sunmak için kaç bit gereklidir?
+            var bitsNeeded = Math.ceil(Math.log2(levels));
+            binaryCodes = generateBinarySequence(levels, bitsRequired);
+
+            Negatif aralıklar
+            var yToCode = {};
+            doldur(0, 0, 0);
+            for (var y = minY, binaryCodeI = 0; y &lt;= maxY; y += qInterval, binaryCodeI++) {
+                textSize(12);
+                text(binaryCodes[binaryCodeI], yAxis - 40, yToCanvas(y));
+                yToCode[y] = binaryCodes[binaryCodeI];
+            }
+            var binaryStr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                var binaryCode = yToCode[quantizedSamples[i].y];
+                binaryStr.push(binaryCode);
+            }
+            document.getElementById("encodedPre").value = binaryStr.join("\n");
+        }
+
+        Draw rebuilt curve
+        if (showReconstructed) {
+            var pointsArr = [];
+            for (var i = 0; i &lt; quantizedSamples.length; i++) {
+                pointsArr.push(xToCanvas(quantizedSamples[i].x));
+                pointsArr.push(yToCanvas(quantizedSamples[i].y));
+            }
+            var splinePoints = getCurvePoints(pointsArr, 0.5, 20);
+
+            var reconstructedColor = renk(0, 128, 128);
+            noFill();
+            inme (reconstructedColor);
+            beginShape();
+            for (var i = 0; i &lt; splinePoints.length; i += 2) {
+                curveVertex(splinePoints[i], splinePoints[i + 1])}endShape()
+            ;
+        }
+            
+
+        if (processStep === STEP_SAMPLING) {document.getElementById("pointsPre").value = formatPoints(samples);} else if (processStep &gt;= STEP_QUANTIZING) {
+            
+            document.getElementById("pointsPre").value = formatPoints(quantizedSamples);}
+        
+        
+        Ekran görüntüleri için:
+        //var img    = document.getElementById("mycanvas").toDataURL("image/png");
+        document.getElementById("pointsPre").value=(img);}, 100);}};
+        
+        
+    
+
+
+Görünür alanları
+güncelleştir var placeholderImg = document.getElementById("placeholder");
+if (processStep &lt; STEP_QUANTIZING) {
+    document.getElementById("quantizationRangeRow").style.display = "hiçbiri";
+    document.getElementById("showQuantizedLabel").style.display = "hiçbiri";
+}
+if (processStep &lt; STEP_ENCODING) {
+    document.getElementById("pointsPre").style.height = "318px";
+    document.getElementById("encodedOutput").style.display = "hiçbiri";
+}
+if (processStep &lt; STEP_RECONSTRUCTING) {
+    document.getElementById("showReconstructedLabel").style.display = "none";
+}
+(processStep === STEP_ANALOG) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/38ea1efb1016370a71de597c33a47e16b028e7d4.png";
+}
+if (processStep === STEP_SAMPLING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showSamples").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/7d949cd063a816e1b9aaa8f64e80379d71f52f12.png";
+    document.getElementById("pointsPre").value = "(0, 7)\n(30, 95.) 98676803710936)\n(60, -71.43289186523432)\n(90, -106.55949554687498)\n(120, -97.21617085937501)\n(150, -70)\n(180, -29.045472375000003)\n(210, 6.171340345703143)\n(240, 24.439022283203116)\n(270, -74.45763529492186)\n(300, -31.31245312500002)\n(330, 24)";
+}
+if (processStep === STEP_QUANTIZING) {
+    document.getElementById("showSamples").setAttribute("checked", true);
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/dca943fa67ab49a5edfeafad9eb0389f93290be2.png";
+}
+if (processStep === STEP_ENCODING) {
+    document.getElementById("showQuantized").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/52fe7646cf89ba456090b51b5116473d65d2b7d3.png";
+}
+if (processStep === STEP_RECONSTRUCTING) {
+    document.getElementById("showCurve").setAttribute("checked", true);
+    document.getElementById("showReconstructed").setAttribute("checked", true);
+    placeholderImg.src = "https://ka-perseus-images.s3.amazonaws.com/12822e856c9f2d5923004c48649f0f91678585ec.png";
+}
+
+if (processStep &gt;= STEP_QUANTIZING) {
+    document.getElementById("pointsPre").value = "(0, 0)\n(30, 100)\n(60, -75)\n(90, -100)\n(120, -100)\n(150, -75)\n(180, -25)\n(210, 0)\n(240, 25)\n(270, -75)\n(300, -25)\n(330, 25)";
+}
+if (processStep &gt;= STEP_ENCODING) {
+    document.getElementById("encodedPre").value = "0100\n1000\n0001\n0000\n0000\n0001\n0011\n0100\n0101\n0001\n0011\n0101";
+}
+
+var updateSampleInterval = function(e) {
+    var sampleRangeVal = document.getElementById("sampleRange").value;
+    document.getElementById("sampleRangeVal").innerText = sampleRangeVal;
+    sampleInterval = parseInt(sampleRangeVal, 10);
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("sampleRange").addEventListener("change", updateSampleInterval);
+
+var updateQuantizationInterval = function(e) {
+    var quantizationRangeVal = document.getElementById("quantizationRange").value;
+    document.getElementById("quantizationRangeVal").innerText = quantizationRangeVal;
+    qInterval = parseInt(quantizationRangeVal, 10);
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("quantizationRange").addEventListener("change", updateQuantizationInterval);
+
+
+var updateShowCurve = function(e) {
+    showCurve = document.getElementById("showCurve").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showCurve").addEventListener("tıklayın", updateShowCurve);
+
+
+var updateShowSamples = function(e) {
+    showSamples = document.getElementById("showSamples").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showSamples").addEventListener("tıklayın", updateShowSamples);
+
+var updateShowQuantized = function(e) {
+    showQuantized = document.getElementById("showQuantized").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showQuantized").addEventListener("click", updateShowQuantized);
+
+
+var updateShowRebuilt = function(e) {
+    showRebuilt = document.getElementById("showReconstructed").checked;
+    e &amp;&amp; renderCanvas();};
+
+document.getElementById("showReconstructed").addEventListener("click", updateShowReconstructed);
+
+var canvas = document.getElementById("mycanvas");
+var renderCanvas = function() {
+    document.getElementById("placeholder").style.display = "none";
+    var processingInstance = new Processing(canvas, programCode);};
+    
+
+
+Görselleştirme
+penceresini işleyin.setTimeout(function() {
+    updateSampleInterval();
+    updateQuantizationInterval();
+    updateShowCurve();
+    updateShowSamples();
+    updateShowQuantized();
+    updateShowReconstructed();
+}, 100);
+
+
+
+
+
+  &lt;/script&gt;
+&lt;/html&gt;
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Özet</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Örneklemenin ilk adımı sonsuz bir akışı sonlu bir diziye dönüştürdü. Nicelemede, bu dizideki değerler yaklaşık olarak hesaplandı. Son olarak, değerler bir bilgi işlem cihazında depolanmak üzere bitler halinde kodlandı. Daha sonraki bir noktada, bir cihaz bu bitleri yorumlayarak orijinal sonsuz sürekli değer akışının yeniden yapılandırılmasını deneyebilir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Analog verileri ister işitsel ister görsel olsun, dijital verilere dönüştürdüğümüzde, amacımız verileri daha sonra istenen kalite düzeyinde yeniden oluşturabilmemiz ancak veri depolama kapasitemizi aşmamak için yeterli hassasiyetle örneklemektir. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Sabit hatlı telefonlar nispeten düşük örnekleme hızları ve bit derinlikleri kullanır, çünkü verilerin telefon hatları üzerinden geçmesi gerekirken, film yönetmenleri filmi çok yüksek örnekleme hızlarında ve bit derinliklerinde kaydeder, böylece daha sonra dev ekranlarda tekrar oynatabilirler.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"> Analog verileri dijital verilere dönüştüren yakınınızda bir cihaz bulun. Verileri depolamak veya aktarmak için ne tür alan kısıtlamaları vardır? Dijitalleştirilmiş versiyonda ne tür detaylar kayboluyor?</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Referanslar]</a></div></div></div></div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><hr></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Parametreli prosedürler | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Parametreli prosedürler | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Programlama yaparken, kodumuzu daha yeniden kullanılabilir hale getirmek ve kodumuzu daha iyi düzenlemek için prosedürler kullanırız. Çoğu zaman, <strong>parametreleri</strong> , kodun çıktısını değiştirebilmemiz için bir prosedüre geçiririz.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><h2>Parametrelere duyulan ihtiyaç</h2></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Şu JavaScript kodunu göz önünde bulundurun:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>var greeting1 = "Hello, Jackson, how are you?";
+println(greeting1);
+var greeting2 = "Hello, Mr. H, how are you?";
+println(greeting2);
+var greeting3 = "Hello, Stranger, how are you?";
+println(greeting3);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bu kodda çok fazla tekrar var: sürekli olarak birini selamlayan ve ardından ekranda görüntüleyen bir değişkenin içinde bir dize saklar. Bununla birlikte, kodda da <em>farklılık</em> vardır: ad her seferinde değişir.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Hem tekrarı hem de varyansı işlemek için parametrelerle bir prosedür oluşturabiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">JavaScript'te parametreleri belirtmek için, işlev adından sonra gelen parantez içine parametrenin (veya parametrelerin) adını yazarız. Daha sonra işlevin içindeki bu parametre adına başvururuz.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><pre><code>function sayHello(person) {
+  var greeting = "Hello," + person + ", how are you?";
+  println(greeting);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Şimdi bu işlevi çağırabilir ve parametre için istediğimiz değeri iletebiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="9"><pre><code>sayHello("Jackson");
+sayHello("Mr. H");
+sayHello("Stranger");</code></pre></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">Bu sözdizimi tanıdık gelmelidir, çünkü en başından beri parametrelerle bir işlevi çağırıyoruz: <code>println()</code>!</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="11"><pre><code>println("Hello");
+println("World");</code></pre></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">Artık parametreleri kendi kullanıcı tanımlı işlevlerimizde kullanmaya başlayabilir ve bunları çok daha özelleştirilebilir hale getirebiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph">✏️ Aşağıdaki program, tek bir parametre alan bir işlevi kullanarak komik adlar üretir. İşlevi daha fazla kez çağırmayı ve nelerin değiştiğini görmek için işlevin içindeki kodu değiştirmeyi deneyin.</div></div><div class="paragraph" data-perseus-paragraph-index="14"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>function genName(word) {
+    var firstName = word + "y";
+    var lastName = "Mc" + kelime + "erFace";
+    var fullName = firstName + " " + lastName;
+    println(fullName.toUpperCase());
+}
+
+genName("test");
+genName("mısır");
+genName("kaktüs");</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="15"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/W_6Rvun9FlLlN1z5wf1ENYI69Yds3OlFmjFG-o9SgYQ/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20parameters%3A%20Name%20generator&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresParametersNameGenerator" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Birden fazla parametre</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Prosedürümüzü istediğimiz gibi özelleştirmek için bir parametre yeterli değilse ne olur? Bu sorun değil, sadece daha fazla parametre belirleyebiliriz!</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">JavaScript'te, parantez içinde virgülle ayrılmış bir liste bulunan birden fazla parametre belirtebilir ve her parametreye benzersiz bir ad verdiğimizden emin olabiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Aşağıdaki kodda, işlev iki parametreyi <code>reportGrade</code> kabul eder ve bunları 30 soruluk bir testte bir öğrencinin puanını bildirmek için kullanır:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>function reportGrade(studentName, numCorrect) {
+  var score  = (numCorrect/30) * 100;
+  var report = studentName + " earned: " + score;
+  println(report);
+}
+
+reportGrade("Sally", 27);
+reportGrade("Wilbur", 24);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/88t4uFUCTXumPgFFI7uSn3aPV2KGwH7KTVAtElGKSCc/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20parameters%3A%20Grade%20reporter&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresParametersGradeReporter" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Parametreleri olan yordamları yazarken, parametre adlarınıza dikkat edin, çünkü bu adlara tam olarak yordamın içinde başvurmanız gerekir. İsimleri çok açıklayıcı hale getirmeye yardımcı olur.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">✏️ Hiç Mad Libs oynadın mı? Aşağıdaki program, bir hikaye oluşturmak için <em>on</em> bir parametreli bir prosedür kullanır. Bir sınıf arkadaşınızdan parametre değerlerini isteyin ve hangi hikayenin ortaya çıktığını görün!</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>function tellStory(creature, place, verb, object, sıfat, isim, duygu, job, sıfat2, verb2, timeOfDay) {
+    println("Bir zamanlar, bir " + yaratık + ".");
+    println("Her gün, " + yaratık + " " + yer + " ve " + fiil + ".");
+    println("Bir güne kadar, bir " + nesne + " üzerine bastılar ve " + sıfat + " " " + isim + ".");
+    println("Bu nedenle, " + duygu + " hissettiler ve " + iş + "" oldular);
+    println("Böylece sonunda herkes " + sıfat2 + "!");
+    println("Hikayenin ahlakı: her zaman " + fiil2 + " içinde " + timeOfDay + ".");
+}
+
+tellStory("mors", "DisneyLand", "sörf", "Noel ağacı", "kabarık", "çiçek", "kızgın", "avukat", "dikenli", "scuttle", "sabah");
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/Hv6nB-0BSMkzQR3BcDvkKgMfRh9ENhJOiDDz83UadFU/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20parameters%3A%20Mad%20Libs&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresParametersMadLibs" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Değişkenleri parametre olarak iletme</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Yukarıdaki örneklerde, parametre olarak değişmez dizeleri ve sayı değerlerini "Sally" ve 27 gibi aktarıyoruz. Aslında bir değişken gibi bir değere değerlendiren herhangi bir programatik ifadeyi geçebiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu yordam, iki sayının çarpılmasının sonucunu görüntüler:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>function showMathFact(num1, num2) {
+   var multiplied = num1 * num2;
+   println(num1 + " x " + num2 + " = " + multiplied);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">İlk sayıyı bir değişkende depolayarak ve bunu her zaman ilk parametre olarak geçirerek belirli bir sayının katlarını kolayca gösterebilirim: </div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>var firstNum = 9;
+showMathFact(firstNum, 1);
+showMathFact(firstNum, 2);
+showMathFact(firstNum, 3);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">✏️ Aşağıdaki programda değişkenin <code>firstNum</code> değerini değiştirmeyi deneyin ve bunun altındaki her işlev çağrısını nasıl etkilediğine dikkat edin.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>function showMathFact(num1, num2) {
+   var multiplied = num1 * num2;
+   println(num1 + " x " + num2 + " = " + çarpılmış);
+}
+
+var firstNum = 9;
+showMathFact(firstNum, 1);
+showMathFact(firstNum, 2);
+showMathFact(firstNum, 3);
+showMathFact(firstNum, 4);
+showMathFact(firstNum, 5);
+showMathFact(firstNum, 6);
+showMathFact(firstNum, 7);
+showMathFact(firstNum, 8);
+showMathFact(firstNum, 9);
+showMathFact(firstNum, 10);</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/dg1nKqPgo-Y9CE2Z6nDG1i1DMY330TNofTtDtaySzlY/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Procedures%20with%20parameters%3A%20Math%20facts&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/ProceduresParametersMathFacts" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Sözde koddaki parametreler</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Sözde kod nedir?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu sözde kod, ve <code>parameter1</code> <code>parameter2</code>:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>PROCEDURE name (parameter1, parameter2)
+{
+     &lt;instructions&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">İşte yordam ve çağrılar <code>reportGrade</code> için sözde kod:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>PROCEDURE reportGrade (studentName, numCorrect) {
+    score ← ( numCorrect / 30 ) * 100
+    report ← CONCAT(CONCAT(studentName, " earned: "), score)
+    DISPLAY(report))
+}
+
+reportGrade("Sally", 27)
+reportGrade("Wilbur", 24)
+</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

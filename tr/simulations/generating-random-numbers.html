@@ -1,0 +1,232 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Rastgele sayılar | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Rastgele sayılar | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Hiç bozuk para çevirdin mi veya zar attın mı? Öyleyse, <strong>rastgele bir değer</strong> oluşturdunuz ve muhtemelen karar vermek için bu değeri kullandınız. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Ayrıca bilgisayar programlarımızda rastgele değerler üretebilir ve bunları karar vermek ve doğal süreçleri simüle etmek için kullanabiliriz.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Rastgele değerler üretme</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bilgisayarlar doğal olarak rastgelelikte çok iyi değildir. Güçleri, programlanmış işlemlerin dizilerini gerçekleştirerek öngörülebilir çıktı üretmektir. Bu rastgeleliğin tam tersi.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Gerçekten rastgele bir sayı üretmek için, bir bilgisayarın bir uranyum parçacığının nükleer bozunması gibi doğal olarak meydana gelen deterministik olmayan bir süreci izlemesi gerekir. Bu hem pahalı hem de yavaştır, bu nedenle çoğu kişisel bilgisayarda gerçek rastgele sayı üreteçleri yoktur.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bununla birlikte, bilgisayar bilimcileri bilgisayar yazılımında "sözde rastgele" sayılar üretmenin yollarını bulmuşlardır ve sözde rastgele sayılar çoğu amaç için yeterince iyidir.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Programlama dilleri ve kütüphaneler, bu sözde rastgele sayıları üretmek için prosedürler sağlar.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">JavaScript'te, <code>Math.random()</code> 0 (dahil) ile 1 (özel) arasında sözde rastgele bir sayı oluşturur. </div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Aşağıdaki program, <code>Math.random()</code>. Her seferinde nasıl değiştiğini görmek için "Yeniden Başlat" a basın.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>println(Math.random());
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Yeterli kez çağrıldığında, <code>Math.random()</code> sonunda 0 sayısını üretecektir. Ancak, <em>asla</em> 1 üretmez. Bu yüzden 0'ın "dahil" ve 1'in "özel" olduğunu söylüyoruz. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu sayı çizgisi, oluşturulan tüm olası değerleri mavi renkte görselleştirir:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 380px; max-height: 80px;"><img alt="Number line with filled in circle at 0 and empty circle at 1, and filled in line between the circles." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/02eabafe719b1d244940c87e047a62b06c149249.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ 0 0 </svg><span class="graphie-label" data-math-formula="0" data-math-type="katex" style="position: absolute; padding: 7px; color: rgb(17, 172, 205); left: 7.89474%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex">0</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+ 1 1 1 </span><span class="graphie-label" data-math-formula="1" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 91.2716%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex">1</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">0'da daire doldurulmuş ve 1'de boş daire bulunan sayı satırı ve daireler arasındaki çizgiyi doldurur.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Ya daha büyük bir sayıya ihtiyacımız olursa? Belki de programımız bir ağaç çiziyor ve onu 0 ila 6 feet yükseklikte çizmeyi seçiyor. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bunu sonucu <code>Math.random()</code> 6 ile çarparak yapabiliriz. Aşağıda deneyin.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>println(Math.random() * 6);
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu program 0 (dahil) ile 6 (özel) arasında değerler üretir:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 380px; max-height: 80px;"><img alt="Number line with filled in circle at 0 and empty circle at 6, and filled in line between the circles." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/6cac1322d52cb7bef2128a4fb8703b0dd4dcaf7d.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ 0 0 </svg><span class="graphie-label" data-math-formula="0" data-math-type="katex" style="position: absolute; padding: 7px; color: rgb(17, 172, 205); left: 7.89474%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex">0</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+ 6 6 6 </span><span class="graphie-label" data-math-formula="6" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 91.9653%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex">6</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">0'da daire doldurulmuş ve 6'da boş daire doldurulmuş ve daireler arasında satır doldurulmuş sayı satırı.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Rastgele tamsayılar oluşturma</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Rastgele değerleri yalnızca tamsayılarla sınırlamaya ne dersiniz? Bir zar rulosunu simüle ediyorsak, "1.267" veya "5.431" gibi sayılarla sonuçlanmak istemeyiz. Sadece kalıbın her iki tarafını temsil eden tamsayıları görmek istiyoruz.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bunun için sonucu <code>Math.floor()</code>yuvarlamamız gerekiyor . Prosedür <code>floor()</code> <em>, değeri en</em> yakın tamsayıya yuvarlar. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Aşağıda deneyin. Aralıktaki tüm olası tamsayıları oluşturabilir misiniz?</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>println(Math.floor(Math.random() * 6));
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu programı yeterince yeniden başlattıktan sonra, sonunda 0'dan 5'e kadar olan tüm tamsayıları görüntülediğini görmelisiniz:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 380px; max-height: 80px;"><img alt="Number line with filled circles at 0, 1, 2, 3, 4, 5." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/75d178515b34c4eb00fb269eea19d87007a3752b.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ 0 0 </svg><span class="graphie-label" data-math-formula="0" data-math-type="katex" style="position: absolute; padding: 7px; color: rgb(17, 172, 205); left: 7.89474%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex">0</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+ 1 1 </span><span class="graphie-label" data-math-formula="1" data-math-type="katex" style="position: absolute; padding: 7px; color: rgb(17, 172, 205); left: 21.9065%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex">1</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="2" data-math-type="katex" style="position: absolute; padding: 7px; color: rgb(17, 172, 205); left: 35.9182%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span> 2 <span aria-hidden="true" class="katex-html"><span class="base"><span class="mord">2</span><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+ 3 3 </span><span class="graphie-label" data-math-formula="3" data-math-type="katex" style="position: absolute; padding: 7px; color: rgb(17, 172, 205); left: 49.93%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex">3</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="4" data-math-type="katex" style="position: absolute; padding: 7px; color: rgb(17, 172, 205); left: 63.9416%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span> 4 <span aria-hidden="true" class="katex-html"><span class="base"><span class="mord">4</span><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+ 5 5 </span><span class="graphie-label" data-math-formula="5" data-math-type="katex" style="position: absolute; padding: 7px; color: rgb(17, 172, 205); left: 77.9534%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex">5</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="6" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 91.9653%; top: 76.5%; fill: none; font-size: 100%; margin-left: -10px; margin-top: -17px;"> 6 <span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span> 6<span class="mord">6</span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">0, 1, 2, 3, 4, 5 değerlerinde doldurulmuş dairelere sahip sayı satırı.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bir kalıbın yuvarlanmasını simüle etmeye çok yakınız, ama tam olarak orada değiliz. Programımız 0-5 sayılarını üretir, ancak standart bir 6 taraflı kalıp 1-6 sayılarına karşılık gelir:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Illustration of 6 dice, from 1 dot to 6 dots." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/0a76e7fd30ac153ec09f1c0e12c36bb9bda2c046.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">1 noktadan 6 noktaya kadar 6 zarın çizimi.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu kolay bir düzeltmedir. Yuvarlak sonuca sadece 1 ekleyeceğiz ve presto, zar yuvarlama simülasyonumuz var! </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>println(Math.floor(Math.random() * 6) + 1);
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sık sık iki değer arasında rastgele tamsayılar üretmek istediğimizi görebiliriz. Kodu yukarıdan kopyalayıp yapıştırabiliriz... ya da daha iyisi, kendi yeniden kullanılabilir prosedürümüzü yapabiliriz!</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Prosedür <code>randomInt()</code> üstünde <code>Math.random()</code>kullanışlı bir soyutlamadır , ayrıntılar hakkında endişelenmeden rastgele tamsayılar oluşturmamıza izin verir:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>fonksiyon randomInt(start, end) {
+  var range = (end - start) + 1;
+  return Math.floor(Math.random() * aralık) + start;
+}
+
+println(randomInt(1, 3));
+println(randomInt(1, 10));  
+println(randomInt(50, 60));  
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Rastgele değerleri koşullularla denetleme</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Artık birçok aralık ve rastgele sayı türünü nasıl oluşturacağımızı bildiğimize göre, aslında bu sayıları kullanalım.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Rastgele bir sayının değerini kontrol etmek için bir koşullu kullanabilir ve değere göre yürütülecek farklı bir kod seçebiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Örneğin, bu kod rastgele bir jeton çevirme işlemini simüle eder:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>if (Math.random() &lt; 0.5) {
+  println("heads!");
+} else {
+  println("tails!");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/HIn9RMp-SWNHgWzzr1kIwhgwuhEmiyx6CKnfNEdaUjs/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Random%20numbers%3A%20Coin%20flip&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/CompoundBooleansCoinFlip" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Rastgele bir değeri denetlemek için koşullu kullanırken, koşulumuzun olayın gerçekleşme olasılığına karşılık geldiğinden emin olmamız gerekir. Yukarıdaki kodda, 0 ile 1 arasında değerler üretir, <code>Math.random()</code> böylece koşul değerin bu aralığın ilk yarısında olup olmadığını denetler.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">"4'te 1" gibi şansları simüle ediyorsak, zincirlenmiş <code>if</code>/<code>else</code> yukarıdan <code>randomInt()</code> prosedürle kullanmak için harika bir zaman:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code>var val = randomInt(1, 4);
+if (val === 1 ) {
+  println("1");
+} else if (val === 2 ) {
+  println("2");
+} else if (val === 3 ) {
+  println("3");
+} else {
+  println("4");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/wI--TYhIqiAFseOIPhhue6iYZaqm5oOJ6kYpcTjJ7BY/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Random%20numbers%3A%201%20in%204&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/RandomNumbers1in4" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">Bunun gibi bir kodun beklendiği gibi çalıştığından emin olmak için kontrol ederken, yalnızca bir kez çalıştıramayız; yalnızca bir değer ve bir kod yolu gösterir. Bilgisayarın sonunda mümkün olan her yolu seçtiğinden emin olmak için birden çok kez çalıştırmamız gerekir.</div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">Daha fazla güven istiyorsak, bunu binlerce kez çalıştırabilir ve kod yollarının dağıtımının beklentilerimize uygun olduğunu doğrulayabiliriz. Yukarıdaki kod için, her yolun zamanın yaklaşık% 25'inde seçildiğini görürüz. Tam olarak% 25 olmazdı, ama yakın olurdu.</div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">✏️ Aşağıdaki program, 7 farklı yanıta sahip bir Magic 8-Ball oyuncağını simüle ediyor. Mesajları istediğiniz gibi değiştirin ve tüm mesajlarınızın görüntülendiğinden emin olmak için programı yeterince yeniden başlatın.</div></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>fonksiyon randomInt(start, end) {
+    var range = (end - start) + 1;
+    return Math.floor(Math.random() * aralık) + start;
+}
+
+var val = randomInt(1, 7);
+if (val === 1 ) {println("İşaretler evet'e işaret eder.");} else if (val === 2 ) {println("Outlook good.");} else if (val === 3 ) {println("Kesinlikle öyle.");} else if (val === 4 ) {println("Reply pusy, ask again.");} else if (val === 5 ) {println("Konsantre ol ve tekrar sor.");} else if (val === 6 ) {println("Kaynaklarım hayır diyor.");} else {println("Don't count on it.");} else {
+    
+    
+    
+    
+    
+    
+    println("Don't count on it.");}
+
+
+
+
+
+
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="14"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/wBKdbt7bcTGHw0Gkp1RVX4CcjzmZGcDUGUlbFHFZWjA/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Random%20numbers%3A%208-ball&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/RandomNumbers8Ball" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Sahte koddaki rastgele sayılar</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Sözde kod nedir?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Programlama dilleri ve kütüphaneler arasında rastgele sayı üretme prosedürlerinde çok fazla farklılık vardır.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu sözde kod, ve arasında <code>start</code> bir sayı üretmenin yaygın durumunu temsil eder (her ikisi ve <code>end</code> her ikisi de <code>start</code> <code>end</code>dahil):</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>RANDOM(start, end)</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">İşte kodun 4 şanstan 1'ini oluşturan sözde kod sürümü:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="6"><pre><code>val ← RANDOM(1, 4)
+IF (val = 1 )
+{
+  DISPLAY("1")
+} 
+ELSE IF (val = 2 )
+{
+  DISPLAY("2")
+} 
+ELSE IF (val = 3 )
+{
+  DISPLAY("3")
+} 
+ELSE 
+{
+  DISPLAY("4")
+</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,262 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Algoritma | doğrulama AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Algoritma | doğrulama AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Herhangi bir algoritmanın önemli bir yönü <strong>doğru</strong> olmasıdır: her zaman girdi aralığı için beklenen çıktıyı üretir ve sonunda sona erer.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Görünüşe göre, bir algoritmanın doğru olduğunu kanıtlamak zor. Programcılar genellikle bir algoritmadaki hataları bulmak için <strong>ampirik analiz</strong> kullanırlar, ancak yalnızca <strong>resmi akıl yürütme</strong> toplam doğruluğu kanıtlayabilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Ampirik analiz</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">"Ampirik" bir analiz, sonuçların gerçek deneylerine ve gözlemlerine dayanan bir analizdir. Algoritmalar dünyasında bu, algoritmanın aslında bir programlama diline çevrilmesi ve bir bilgisayarda yürütülmesi gerektiği anlamına gelir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir sayı listesinde maksimum değeri bulan bir algoritmanın ampirik bir analizini yapalım. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">İşte bu algoritmayı ifade eden sözde kod:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>maxNum ← -1
+FOR num IN numbers {
+  if (num &gt; maxNum) {
+    maxNum ← num
+  }
+}</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Daha sonra, bunu JavaScript diline çevireceğiz, çünkü bunu Khan Academy'deki etkileşimli editörümüzde uygulayabiliriz.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>var maxNum = -1;
+for (var i = 0; i &lt; numbers.length; i++) { 
+  if (numbers[i] &gt; maxNum) {
+    maxNum = numbers[i];
+  }
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">O zaman girdileri algoritmaya beslememiz ve nasıl performans gösterdiğini gözlemlememiz gerekir. İlk denememiz için, ona 4 sayıdan oluşan bir dizi verelim ve maksimum, <code>[13, 4, 24, 7]</code> 24 çıktısı verip vermediğine bakalım.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var sayıları = [13, 4, 24, 7];
+var maxNum = -1;
+for (var i = 0; i &lt; numbers.length; i++) {if (numbers[i] &gt; maxNum) { 
+  
+    maxNum = numbers[i];
+  }}
+
+println(maxNum);
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Yaşasın, işe yaradı! Bunun tamamen doğru bir algoritma olduğunu ilan edebilir ve hayata devam edebilir miyiz? Korkarım o kadar kolay değil...</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Deney #2'nin zamanı geldi. Bu sefer dizideki tüm sayıları negatif <code>[-13, -4, -24, -7]</code>yapalım. Bu kez, maksimum değer, listedeki en küçük negatif sayı olan -4 olmalıdır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var sayıları = [-13, -4, -24, -7];
+var maxNum = -1;
+for (var i = 0; i &lt; numbers.length; i++) {if (numbers[i] &gt; maxNum) { 
+  
+    maxNum = numbers[i];
+  }}
+
+println(maxNum);
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Uh-oh, kod -4 yerine -1 çıktısı aldı. Bunun nedeni, başlangıç değerinin <code>maxNum</code> -1 olması ve döngünün listede hiçbir zaman bundan daha büyük bir değer bulamamasıdır. Algoritmamız negatif sayılar için kesinlikle doğru <em>çalışmıyor</em> .</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu noktada, algoritmamızı değiştirmemiz ve (umarım) geliştirilmiş algoritma üzerinde ampirik analiz yapmamız gerekiyor. Listedeki ilk sayıya başlayan <code>maxNum</code> algoritmanın bir sürümünü deneyelim:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var sayıları = [-13, -4, -24, -7];
+var maxNum = sayılar[0];
+for (var i = 0; i &lt; numbers.length; i++) {if (numbers[i] &gt; maxNum) { 
+  
+    maxNum = numbers[i];
+  }}
+
+println(maxNum);
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu işe yarıyor! Ya da en azından, negatif sayıların bir listesi üzerinde çalışır. Hala pozitif sayılar listesinde çalışıyor mu? Peki ya pozitif ve negatif sayıların karışık bir listesi? Peki ya kesirler? Yoksa irrasyonel sayılar mı? Test etmek için çok fazla olasılık var!</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Algoritmamızı bir prosedüre sararak ve prosedürlerden elde edilen çıktının beklediğimizle eşleştiğini iddia etmek için bir test kitaplığı kullanarak testi daha kolay yapabiliriz. Khan Academy'de, <code>Program.assertEqual(actual, expected)</code> gerçek çıktı beklenene eşit olmadığında bir hata görüntüleyen basit bir test prosedürüdür. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">İşte dört farklı listede ampirik bir analiz:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>fonksiyon findMaxVal(numbers) {
+    var maxNum = numbers[0];
+    for (var i = 0; i &lt; numbers.length; i++) {if (numbers[i] &gt; maxNum) { 
+      
+        maxNum = numbers[i];
+      }}
+    
+    maxNum;
+}
+değerini döndür Program.assertEqual(findMaxVal(
+    [-13, -4, -24, -7]),
+    -4);
+Program.assertEqual(findMaxVal(
+    [13, 4, 24, 7]),
+    24);
+Program.assertEqual(findMaxVal(
+    [13, -4, 24, -7]),
+    24);
+Program.assertEqual(findMaxVal(
+    [5/2, -2.22, Math.PI, 99]),
+    99);
+</pre></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Orada hata yok! Yeni algoritma eskisinden daha doğru görünüyor. Ama gerçekten doğru mu? Aslında bunu kesin olarak bilmiyoruz. Aslında, daha birçok deney yapabiliriz ve <em>hala</em> bilmiyoruz.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Ampirik analiz, yalnızca çıktının beklenmedik olduğu girdileri keşfederek, uygulanan bir algoritmanın doğru <em>olmadığını</em> kanıtlamak için kullanılabilir. Ancak, bir algoritmanın doğru <em>olduğunu</em> kanıtlayamaz.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Resmi akıl yürütme</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir algoritmanın doğruluğunu tüm olası girdiler üzerinde kanıtlamanın tek yolu, resmi veya matematiksel olarak akıl yürütmektir. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir akıl yürütme biçimi, matematikçiler tarafından sayısal dizilerin özelliklerini kanıtlamak için de kullanılan bir teknik olan "indüksiyonla kanıt" tır. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><strong>Sınav ipucu</strong>: AP CSP <em>sınavı,</em> algoritmaların indüksiyonla nasıl kanıtlanacağının anlaşılmasını gerektirmez. Resmi akıl yürütmenin neye benzeyebileceği konusunda size bir fikir vermek için burada yürüyoruz, ancak AP öğrencilerin bu ileri matematik akıl yürütme seviyesini anlamalarını beklemiyor.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bir metafor, indüksiyonu anlamada yardımcı olabilir. Mükemmel aralıklarla yerleştirilmiş bir milyon domino hattımız olduğunu hayal edin. İlkini devirdiğimizde her domino taşının düşeceğini nasıl bilebiliriz? Aslında her bir dominoyu kontrol etmek zorunda değiliz. Sadece 1) ilk dominonun düşeceğini ve 2) herhangi bir domino taşının üzerine devrilmenin bir sonraki dominoyu devireceğini kanıtlamamız gerekiyor. Sadece bu iki şey kanıtlandığında, tıpkı bunun gibi, bir milyon domino taşları devrilecek! </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Şimdi bir algoritmaya indüksiyon uygulayalım. İşte pozitif bir tamsayının faktöriyelini hesaplayan bir algoritmanın sözde kodu:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>PROCEDURE calcFactorial(n) {
+    factorial ← 1
+    i ← 1
+    REPEAT UNTIL (i &gt; n) {
+        factorial ← factorial * i
+        i ← i + 1
+    }
+    RETURN factorial
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir sayının faktöriyeli, o sayının ürünüdür ve tüm sayılar ondan daha azdır, 1'e kadardır. Örneğin, <span style="white-space: nowrap;"><span>genellikle 4 <span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>olarak</mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span>yazılan 4 4 4 4<span class="strut" style="height:0.64444em;vertical-align:0em;"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> faktöriyeli<span></span>
+    
+    
+    
+  </span><span></span>!<span></span>
+  
+  
+  
+</span><span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--2-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mo stretchy="false"></mo>
+          
+          
+        </mrow> <annotation encoding="application/x-tex">4!</annotation>
+        
+        
+      </semantics></math></span> <span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mclose">!</span>
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span> <span id="katex-uid--2-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">4, !</span>
+    
+    
+    
+  </span><span></span>,
+  
+  
+  
+</span><span style="white-space: nowrap;"><span></span> 4×3×2×1=24 4 \times 3 \times 2 <span>\times 1 = 24 4×3×2×1=<span></span><span aria-describedby="katex-uid--3-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mo></mo><mn></mn><mo></mo><mn></mn><mo></mo><mn></mn><mo></mo><mn></mn>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mbin"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span>
+          
+          
+          
+          
+          
+        </span><span class="base"><span class="mrel"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span>
+          
+          
+          
+          
+          
+        </span><span class="base"><span class="mord"></span><span class="mbin"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span>
+          
+          
+          
+          
+          
+        </span><span class="base"><span class="mord"></span><span class="mbin"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span>
+          
+          
+          
+          
+          
+        </span> <span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">4</span>
+          
+          
+          
+        </span>
+        
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span> 4, kez, 3, kez, <span id="katex-uid--3-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">2, kez, 1, eşittir, 24</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span>.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu algoritmayı kanıtlama yoluna girmeden önce <span style="white-space: nowrap;">n!<span></span><span><span></span><span aria-describedby="katex-uid--4-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi></mi><mo stretchy="false"></mo>
+          
+          
+        </mrow> <annotation encoding="application/x-tex">n!</annotation>
+        
+        
+      </semantics></math></span> <span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mclose">!</span>
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span> <span id="katex-uid--4-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">n, !</span>
+    
+    
+    
+  </span><span></span>,
+  
+  
+  
+</span> aslında 4 <span style="white-space: nowrap;"><span>4 4 <span aria-describedby="katex-uid--6-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--6-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>'ün<span></span>
+    
+    
+    
+  </span><span></span> n n n n için deneyelim.<span></span>
+  
+  
+  
+</span><span style="white-space: nowrap;"><span><span id="katex-uid--5-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span><span aria-describedby="katex-uid--5-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi></mi></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> Algoritma çalışıyorsa, 24 <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--7-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24</mn></mrow><annotation encoding="application/x-tex">2 4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span><span class="mord">24</span>
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--7-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">döndürmelidir</span><span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span>.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><ul><li>Değişkenler <code>factorial</code> ve <code>i</code> her ikisi de <code>1</code>.</li><li>() (<code>1</code>)'den<code>4</code><code>n</code> büyük olmadığından <code>i</code> , döngüye gireriz.</li><li>Yineleme #1: (gönderen<code>1 * 1</code>) olarak <code>1</code> ayarlanır ve <code>i</code> <code>2</code>. <code>factorial</code></li><li>Yineleme #2: (gönderen<code>1 * 2</code>) olarak <code>2</code> ayarlanır ve <code>i</code> <code>3</code>. <code>factorial</code></li><li>Yineleme #3: (gönderen<code>2 * 3</code>) olarak <code>6</code> ayarlanır ve <code>i</code> <code>4</code>. <code>factorial</code></li><li>Yineleme #4: (gönderen<code>6 * 4</code>) olarak <code>24</code> ayarlanır ve <code>i</code> <code>5</code>. <code>factorial</code></li><li>Bu noktada, <em>() (</em><code>5</code>)'den <code>n</code><code>4</code>büyüktür, <code>i</code> bu yüzden döngüden çıkarız.</li><li>Yordam <code>24</code>.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Harika, algoritmanın tek bir tamsayı için doğru sonucu hesapladığını doğruladık. </div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Şimdi <em>tüm pozitif tamsayılar</em> için algoritmanın tamsayının faktöriyelini hesapladığını kanıtlayalım. </div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Öncelikle, algoritmanın sonunda sona erdiğini kanıtlamamız gerekir, çünkü bir algoritma sonsuza dek devam ederse doğru kabul edilemez. Bu algoritmada, <code>i</code> 'den <code>1</code> başlar ve olana <code>n + 1</code>kadar artar<code>1</code>. Böylece, algoritma döngü tekrarlarından sonra <code>n</code> her zaman durur.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Daha sonra, bu algoritmanın faktöriyeli çıktıyı verdiğini kanıtlamak için, döngünün her zaman doğru olması gereken bir özelliği olan "döngü değişmezliğini" daha spesifik olarak kanıtlayacağız. Bu algoritmada, döngü <code>n</code> sürelerinden geçtikten sonra, <code>factorial</code> eşit olmalı ve <code>i</code> eşit <code>n!</code> <code>n + 1</code>olmalıdır. Bu, , kılavuzumuzda <code>factorial(4)</code>doğruydu ve şimdi bunun herhangi bir pozitif tamsayı için genel olarak doğru olduğunu kanıtlamaya çalışacağız.</div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">Bu, 1) temel durumu ve 2) indüksiyon hipotezini kanıtlamayı gerektirir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><strong>Temel durum:</strong> Algoritmanın olası girişler aralığındaki ilk sayı için geçerli olduğunu doğruladığımız yer burasıdır.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu algoritma için, tüm pozitif tamsayılar için kanıtlıyoruz, bu yüzden temel durum ne zaman <code>n</code> <code>1</code>. Döngü değişmezimize göre, döngü <code>1</code> sürelerinden geçtikten sonra, <code>factorial</code> eşit () ve <code>i</code> eşit <code>1!</code> <code>1 + 1</code> (<code>1</code><code>2</code>) olmalıdır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Algoritmamızı, sayı <code>4</code>için <code>calcFactorial(1)</code>nasıl yaptığımıza benzer şekilde inceleyebiliriz:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><ul><li>Değişkenler <code>factorial</code> ve  <code>i</code> her ikisi de <code>1</code>.</li><li>(<code>1</code>) ()'den <code>n</code><code>1</code>büyük olmadığından <code>i</code> , algoritma döngüye girer.</li><li>Yineleme #1: (gönderen<code>1 * 1</code>) olarak <code>1</code> ayarlanır ve <code>i</code> <code>2</code>. <code>factorial</code></li><li>Bu noktada, <code>i</code> () (<code>2</code><code>1</code>)'den <code>n</code> büyüktür<em>,</em> bu nedenle algoritma döngüden çıkar.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Döngü değişmezimiz tutar: <code>factorial</code> mağazalar ve <code>i</code> mağazalar <code>1</code> <code>2</code>.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Temel dava kanıtlandıktan sonra, devam edelim!</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><strong>İndüksiyon adımı:</strong> Burası, herhangi bir rastgele sayı için çalışıyorsa, hemen arkasındaki sayı için de çalıştığını gösterdiğimiz yerdir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Endüktif hipotezle başlıyoruz: döngü değişmezinin bazı pozitif tamsayılar için doğru olduğu varsayımı <code>k</code>. Döngü <code>k</code> sürelerinden geçtikten sonra, <code>factorial</code> eşit olmalı ve <code>i</code> eşit <code>k!</code> <code>k + 1</code>olmalıdır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu varsayımdan yola çıkarak, döngü değişmezinin de doğru <code>k + 1</code>olduğunu kanıtlayacağız , hemen sonraki <code>k</code>sayı . Döngü <code>k + 1</code> sürelerinden geçtikten sonra, <code>factorial</code> eşit olmalı ve <code>i</code> eşit <code>(k + 1)!</code> <code>(k + 1) + 1</code>olmalıdır.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bunu yapmak için, hadi yürüyelim <code>calcFactorial(k + 1)</code>. Endüktif hipotezimiz sayesinde ilk <code>k</code> tekrarlarda hızlı bir şekilde ilerleyebiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><ul><li>Tekrarlardan sonra<code>k</code>, mağazalar ve <code>i</code> mağazalar <code>k!</code> <code>k + 1</code>. <code>factorial</code></li><li>Yineleme #<code>k+1</code>: olarak ayarlanır <code>k! * (k + 1)</code> ve <code>i</code> <code>k + 2</code>. <code>factorial</code></li><li>Bu noktada, (değeri <code>k + 2</code>olan) (değerleri <em>olan) '</em>dan <code>n</code> büyüktür, <code>i</code> <code>k + 1</code>bu nedenle algoritma döngüden çıkar.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Döngü değişmezi doğru muydu? Evet, oldu! Değişken <code>factorial</code> depolar , 'ye eşdeğer olan ve değişken <code>i</code> depolar <code>k! * (k + 1)</code><code>k + 2</code>, 'ye <code>(k + 1)!</code> <code>(k + 1) + 1</code>eşdeğerdir.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Döngü değişmezinin tüm pozitif tamsayılar <code>k</code>için doğru olduğunu güvenle söyleyebiliriz.  </div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Daha önce döngünün tekrarlardan sonra durduğunu gösterdiğimizden, sonra <code>n</code> <code>calcFactorial(n)</code> her zaman geri döner <code>n!</code>. Algoritmamız doğrudur, çünkü sona erdiğinde hem sonlandırır hem de doğru cevabı üretir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">İndüksiyonla kanıt, tamsayılar üzerinde döngü yapan algoritmalar için iyi çalışan ve bir algoritmanın her zaman doğru çıktı ürettiğini kanıtlayabilen bir tekniktir. Diğer kanıt stilleri, çelişkili kanıt veya tükenme ile kanıt gibi diğer algoritma türleri için doğruluğu doğrulayabilir. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu biçimsel akıl yürütme düzeyinin kesinlikle dezavantajları vardır: Birincisi, çoğu bilgisayar programcısı kanıtlarla doğrulamak için matematiksel arka plandan yoksundur ve ikincisi, kanıt kodun dışında yapılır, bu nedenle algoritmanın uygulanması algoritmanın kanıtlanmış sürümünden ayrılabilir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Doğru kod yazmak için en popüler resmi teknik, hedef olarak kanıtlanabilirlik ile özel olarak oluşturulmuş bir programlama dili kullanmaktır. Amazon ve Microsoft gibi bulut bilişim şirketleri, algoritmalarındaki bir hata tarafından düşürülmeyi göze alamadıkları için kritik altyapıları için doğrulanabilir diller kullanıyorlar.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Gerçekçi olarak, yazılımın çoğunluğu ampirik analiz ile doğrulanır. Bu kısmen, çoğu programcının algoritmaların doğruluğunu kanıtlamak için teorik altyapıdan yoksun olmasından kaynaklanmaktadır. Ancak aynı zamanda ampirik analizin kolaylığı ve iyi düşünülmüş bir test paketinin bir algoritmanın neredeyse kesinlikle doğru olduğunu kanıtlayabilmesi gerçeğinden de kaynaklanmaktadır - ve bu genellikle yeterince iyidir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

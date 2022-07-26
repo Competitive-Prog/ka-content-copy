@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>The problems with packets (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>The problems with packets (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">The Internet Protocol (IP) describes how to split messages into multiple <a class="_8gcxk83" href="/a/ip-packets" rel="noopener noreferrer" tabindex="0" target="_blank">IP packets</a> and route packets to their destination by <a class="_8gcxk83" href="/a/internet-routing" rel="noopener noreferrer" tabindex="0" target="_blank">hopping from router to router</a>.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">IP does not handle all the consequences of packets, however. For example:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">A computer might send <strong>multiple messages</strong> to a destination, and the destination needs to identify which packets belong to which message.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Packets can arrive <strong>out of order</strong>. That can happen especially if two packets follow different paths to the destination.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Packets can be <strong>corrupted</strong>, which means that for some reason, the received data no longer matches the originally sent data.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Packets can be <strong>lost</strong> due to problems in the physical layer or in routers' forwarding tables. If even one packet of a message is lost, it may be impossible to put the message back together in a way that makes sense.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Similarly, packets might be <strong>duplicated</strong> due to accidental retransmission of the same packet.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Fortunately, there are higher level protocols in the Internet protocol stack that can deal with these problems. <strong>Transmission Control Protocol (TCP)</strong> is the data transport protocol that's most commonly used on top of IP and it includes strategies for packet ordering, retransmission, and data integrity. <strong>User Datagram Protocol (UDP)</strong> is an alternative protocol that solves fewer problems but offers faster data transport.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Internet applications can choose the data transport protocol that makes the most sense for their application. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">In the next articles, we'll explore <a class="_8gcxk83" href="/a/transmission-control-protocol--tcp" rel="noopener noreferrer" tabindex="0" target="_blank">TCP</a> and <a class="_8gcxk83" href="/a/user-datagram-protocol-udp" rel="noopener noreferrer" tabindex="0" target="_blank">UDP</a> in more detail.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer—just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Programlama | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Programlama | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Dünya tekrarlarla doludur: bir deneyi 100 kez tekrarlayan ve sonuçları kaydeden bir bilim adamı, 2 inç aralıklarla düzgün marul kafası sıraları diken bir bahçıvan, tekrar tekrar katman katman baskı yapan bir 3D yazıcı.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bilgisayar programları da tekrarlarla doludur, çünkü programlarımız çevremizdeki dünyayı otomatikleştirir ve simüle eder. Programcılar, bir dizi talimatı belirli bir sayıda tekrarlamak için <strong>döngüler için</strong> kullanırlar.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Döngülere duyulan ihtiyaç</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">9 sayısı için çarpım tablosunun çıktısını veren bir program yaptığımızı düşünün.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">İlk 13 katını şöyle kodlayabiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>println(9 * 0);
+println(9 * 1);
+println(9 * 2);
+println(9 * 3);
+println(9 * 4);
+println(9 * 5);
+println(9 * 6);
+println(9 * 7);
+println(9 * 8);
+println(9 * 9);
+println(9 * 10);
+println(9 * 11);
+println(9 * 12);</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bu işe yarıyor, ancak bu yaklaşımın bazı dezavantajları var. İlk <em>100</em> katını görüntülemek istersek ne olur? Bu başka bir 87 satır kod! Daha sonra ekranların her birine biraz metin eklemeye karar verirsek ne olur? 100 satırlık kodu değiştirmemiz gerekecekti! </div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Bir <strong>for döngüsü</strong> ile, bilgisayara bir talimatı tekrarlamasını söyleyebiliriz, böylece kodda tekrarlamamıza gerek kalmaz.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Bu kodu JavaScript'teki bir <code>for</code> döngüyü kullanarak şöyle yeniden yazabiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><pre><code>for (var i = 0; i &lt; 13; i++) {
+  println(9 * i);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Her <code>for</code> döngü, parantez içinde 3 parçalı bir üstbilgi ile başlar. Üstbilgi şu şablonu izler:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="9"><div class="paragraph"><code>for (initialization; condition; increment/decrement)</code></div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">Bu parçalar boyunca bir sayaç değişkeni kullanılır. Bu değişken geçerli tekrarı izler ve tipik olarak adlandırılır <code>i</code>.</div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph"><strong>Başlatma</strong> bölümü, sayaç değişkenini bir başlangıç değerine başlatır.</div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">Bu durumda (<code>var i = 0</code>), başlangıç değeri 0'dır, çünkü önce 9'u 0 ile çarpılmış olarak görüntüleriz. </div></div><div class="paragraph" data-perseus-paragraph-index="13"><div class="paragraph"><strong>Koşul</strong> kısmı bilgisayara tekrarlamaya devam edip etmeyeceğini söyler. Bilgisayar her seferinde koşulu değerlendirir ve ifade doğruysa, içerideki yönergeleri yürütür. Değilse, döngüden tamamen çıkar.</div></div><div class="paragraph" data-perseus-paragraph-index="14"><div class="paragraph">Bu durumda (<code>i &lt; 13</code>), koşul sayaç değişkeninin 13'ten küçük olup olmadığını denetler, çünkü son katımızın 12 olmasını isteriz.</div></div><div class="paragraph" data-perseus-paragraph-index="15"><div class="paragraph"><strong>Artım/azalma kısmı,</strong> her tekrardan sonra sayaç değişkenini değiştirir.</div></div><div class="paragraph" data-perseus-paragraph-index="16"><div class="paragraph">Bu durumda (<code>i++</code>), değişkene bir tane eklemek istiyoruz, çünkü 0 ile 12 arasındaki tamsayı değerlerinde adım ilerliyoruz. <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">['++' ne anlama geliyor?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="17"><div class="paragraph">Döngü başlığından <code>for</code> sonra, bilgisayarın her seferinde yürütmesi için talimatlar içeren kıvırcık parantezler her zaman vardır. Talimatlar genellikle sayaç değişkenine başvurur, ancak her zaman değil. </div></div><div class="paragraph" data-perseus-paragraph-index="18"><div class="paragraph">✏️ Aşağıdaki program 0'dan 5'e kadar olan sayıların karelerini görüntüler. Daha fazla kare görüntülemek ve bunun yerine her sayının küplerini görüntülemek için değiştirmeyi deneyin.</div></div><div class="paragraph" data-perseus-paragraph-index="19"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>for (var i = 0; i &lt; 6; i++) {
+    var ürün = i * i;
+    println(i + " squared  = " + product);
+}
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="20"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/HgH_fPdQEcb8ZyBt-8leC-OTrVxr7t5ZQ6vCDbqeNk8/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Numbered%20repetition%3A%20Squares&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/NumberedRepetitionSquares" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Döngü varyasyonları</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Programlamada göreceğiniz en yaygın döngü 0'da başlayacak, belirli bir sayıdan önce duracak ve her seferinde bir kat artacaktır. Bununla birlikte, döngünün parçalarını değiştirerek, başka birçok şekilde de tekrarlanan döngüler oluşturabiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Örneğin, bu program 10'dan 1'e geri sayım yapmak için bir <code>for</code> döngü kullanır:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>for (var i = 10; i &gt; 0; i--) {
+   println(i);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Farklılıklara dikkat edin: </div></div><div class="paragraph" data-perseus-paragraph-index="5"><ul><li>Başlatmada, sayaç değişkenini 10 olarak ayarladık.</li><li>Koşulda, sayaç değişkeninin 0'dan <em>büyük</em> olup olmadığını kontrol ediyoruz. Bu, son tekrarın sayaç değişkeni 1 olduğunda olacağı ve bilgisayarın döngüden çıkacağı anlamına gelir.</li><li>Son bölümde, karşı değişkenden 1'i çıkarıyoruz.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">İşte başka bir örnek, 0'dan 20'ye kadar çift sayıları görüntüleyen bir <code>for</code> döngü:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="7"><pre><code>for (var i = 0; i &lt;= 20; i += 2) {
+    println(i);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Bu döngü 0'dan başlar, ancak aksi takdirde farklılık gösterir:</div></div><div class="paragraph" data-perseus-paragraph-index="9"><ul><li>Koşul, sayaç değişkeninin 20'den küçük <em>veya 20'ye eşit</em> olup olmadığını denetler. Bu, bu döngünün 20 <em>göstereceği</em> anlamına gelir. Sadece  <em>daha az olsaydı,</em> 19'da dururdu.</li><li>Son bölüm, karşı değişkene her zamanki gibi 1 değil, 2 ekler.</li></ul></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">Döngünün <code>for</code> esnekliği, onunla birçok tekrarlama türünü programlayabileceğimiz anlamına gelir. Esnekliğin hata yapmayı da kolaylaştırdığı konusunda dikkatli olun! Bu örneklerdeki hataları tespit edip edemeyeceğinize bakın.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Anlayışınızı kontrol edin</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu <code>for</code> döngü 1 ile 10 arasındaki sayıları görüntülemelidir:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>for (var i = 0; i &lt; 10; i++) {
+    println(i);
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Ancak kod tam olarak doğru değil.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu kod parçacıklarından hangisi 1'den 10'a kadar olan sayıları doğru şekilde görüntüler?</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">Geçerli olan tüm yanıtları seçin:</legend><div class="instructions _125m8j1">Geçerli olan tüm yanıtları seçin:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-0" name="perseus_radio_9" type="checkbox"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><pre><code>for (var i = 0; i &lt;= 10; i++) {
+    println(i);
+}</code></pre></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-1" name="perseus_radio_9" type="checkbox"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><pre><code>for (var i = 1; i &lt; 10; i++) {
+    println(i);
+}</code></pre></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-2" name="perseus_radio_9" type="checkbox"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><pre><code>for (var i = 1; i &lt;= 10; i++) {
+    println(i);
+}</code></pre></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-3" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-3" name="perseus_radio_9" type="checkbox"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek D)</div><div aria-hidden="true">D</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><pre><code>for (var i = 0; i &lt; 11; i++) {
+    println(i);
+}</code></pre></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-4" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-4" name="perseus_radio_9" type="checkbox"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek E)</div><div aria-hidden="true">Ve</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><pre><code>for (var i = 1; i &lt; 11; i++) {
+    println(i);
+}</code></pre></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>İç içe döngüler</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">İç <strong>içe geçmiş bir döngü,</strong> iki boyut boyunca tekrarlamamıza izin verir. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bunu bir kodlama örneğinde inceleyelim. Daha önce 9 sayısı için bir çarpım tablosu yapmıştık. Ya diğer tüm sayıları 1-10'dan öğrenmemiz gerekirse? İç içe geçmiş döngüler kurtarmaya!</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu JavaScript kodu, 1-10 arasındaki sayıların çarpım tablolarını görüntülemek için iç içe geçmiş <code>for</code> bir döngü kullanır:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>for (var i = 1; i &lt;= 10; i++) {
+  for (var j = 1; j &lt;= 10; j++) {
+    println(i * j);
+  }
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">⬈ <a class="_8gcxk83" href="/computer-programming/ap-cs-p-example-nested-for-loops-with-multiplication-tables/5879064299995136" rel="noopener noreferrer" tabindex="0" target="_blank">Kod | çalıştır</a>  Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/IKXTTW0y137eflF_ZSOwrYQW4OVf8F4VgMlRM4wIzTY/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Numbered%20repetition%3A%20Multiples&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/NumberedRepetitionMultiples" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Döngünün dış kısmı 1'de başlar, 10'da durur ve her seferinde 1 ekler. İç <code>for</code> döngü de aynı şeyi yapar, ancak farklı bir sayaç değişkeni adıyla. Talimatlar iki karşı değişkenin ürününü görüntüler.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Bilgisayarın döngülü talimatları yürütme sırasını anlamak önemlidir. Dış <code>for</code> döngünün her yinelemesi için, bilgisayar iç <code>for</code> döngünün 10 yinelemesinden geçer. Bu ilk 10 yinelemede, dış sayaç değişkeni <code>i</code> tüm zaman boyunca 1 olacak ve yalnızca iç değişken <code>j</code> değişerek 1'den 10'a yükselecektir.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Daha ayrıntılı bir açıklama için, <a class="_8gcxk83" href="https://www.youtube.com/watch?v=E5fTu7mjivE" rel="noopener noreferrer" tabindex="0" target="_blank">bu video</a> iç içe geçmiş döngüyü yürüten bilgisayarın görselleştirilmesi üzerinden konuşuyor. <a class="_8gcxk83" href="http://pythontutor.com/javascript.html#code=for%20%28var%20i%20%3D%201%3B%20i%20%3C%3D%2010%3B%20i%2B%2B%29%20%7B%0A%20%20for%20%28var%20j%20%3D%201%3B%20j%20%3C%3D%2010%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20console.log%28i%20*%20j%29%3B%0A%20%20%7D%0A%7D&amp;curInstr=45&amp;mode=display&amp;origin=opt-frontend.js&amp;py=js&amp;rawInputLstJSON=%5B%5D" rel="noopener noreferrer" tabindex="0" target="_blank">JSTutor</a>'da görselleştirme ile kendiniz oynayabilirsiniz.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Anlayışınızı kontrol edin</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Yukarıdaki örnekte, kaç kez çağrılacak <code>println()</code> ?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline-block"><div><span><div><input aria-describedby="input-with-examples-bnVtZXJpYy1pbnB1dCAx" aria-label="Your answer:" autocapitalize="off" autocomplete="off" autocorrect="off" class="perseus-input perseus-interactive perseus-input-size-normal" spellcheck="false" type="text" value=""></div><div style="position: relative; height: 0px; display: none;"><div class="tooltipContainer" style="position: absolute; left: 0px;"><div style="display: block; position: relative; visibility: visible; left: 0px; top: -1px; width: 12px; height: 11px; margin-top: -1px; margin-bottom: -2px; z-index: 10;"><div style="display: block; height: 0px; width: 0px; position: absolute; left: 0px; top: -1px; border-right: 12px solid transparent; border-bottom: 12px solid rgb(204, 204, 204);"></div><div style="display: block; height: 0px; width: 0px; position: absolute; left: 1px; top: 1px; border-right: 10px solid transparent; border-bottom: 10px solid white;"></div></div><div class="perseus-formats-tooltip preview-measure" style="position: relative; top: 0px; left: 0px; border: 1px solid rgb(204, 204, 204); box-shadow: rgb(204, 204, 204) 0px 1px 3px; z-index: 9;"><div id="input-with-examples-bnVtZXJpYy1pbnB1dCAx"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><ul><li><strong>Cevabınız şöyle olmalıdır:</strong></li><li>6 6 6 <span style="white-space: nowrap;">6 6 gibi<span></span><span><span></span><span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span> bir tamsayı
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li><span style="white-space: nowrap;">3/5 3<span>/5 3/<span aria-describedby="katex-uid--2-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn>3<mn></mn><mi mathvariant="normal">/</mi>5
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--2-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 5</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygun bir kesir</em></li><li><span style="white-space: nowrap;">7/4 7/4 7/<span><span aria-describedby="katex-uid--3-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn> <mn>7</mn><mi mathvariant="normal">/</mi>
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex">4</annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--3-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">, eğik çizgi, 4</span><span></span>
+    
+    
+    
+  </span><span></span> gibi<span></span>
+  
+  
+  
+</span><em> basitleştirilmiş uygunsuz bir kesir</em></li><li>1 3/4 1\ 3/4 1 <span style="white-space: nowrap;">3/4 1, boşluk, 3, eğik çizgi, 4 gibi<span></span> <span><span></span><span aria-describedby="katex-uid--4-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mn></mn><mi mathvariant="normal"></mi><mn></mn>karışık bir sayı <mtext> </mtext>
+          
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--4-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  
+  
+  
+</span><span></span></span></li><li>0,75 <em></em> <span style="white-space: nowrap;">0,75 0 gibi<span></span> tam ondalık<span>.<span></span><span aria-describedby="katex-uid--5-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span> <span class="mord">7</span><span class="mord">5</span>
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--5-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, puan, 75</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li><li>pi'nin katı, örneğin 12 pi 12\ \text{pi}1 2 pi 12, boşluk, başlangıç metni, <span style="white-space: nowrap;"><span><span id="katex-uid--6-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">p, i, bitiş metni</span> <span aria-describedby="katex-uid--6-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>veya 2/3 pi 2/3\ \text{pi}<span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span>2/3 pi 2 <span class="mspace"> </span>
+        
+        
+        
+        
+        
+      </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mtext> </mtext>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span>
+      
+      
+    </span></span>, eğik çizgi, 3, boşluk,<span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span aria-describedby="katex-uid--7-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi mathvariant="normal"></mi><mn></mn><mtext> </mtext>
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span><span class="mord"></span><span class="mspace"> </span><span class="strut" style="height:1em;vertical-align:-0.25em;"></span>
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span></span><span id="katex-uid--7-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"> başlangıç metni, p, i, bitiş metni</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span></li></ul></div></div></div></div></div></div></span></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bilgisayar her iki döngüyü de yürütmeyi tamamladığında, değişkenler <code>i</code> ve <code>j</code> hangi değerleri saklar?</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">1 cevap seçin:</legend><div class="instructions _125m8j1">1 cevap seçin:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-0" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><code>i</code> 10 depolayacak, <code>j</code> 10 depolayacak</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-1" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><code>i</code> 11 depolayacak, <code>j</code> 11 depolayacak</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-2" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><code>i</code> 1 depolayacak, <code>j</code> 1 depolayacak</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-3" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-3" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek D)</div><div aria-hidden="true">D</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><code>i</code> 11 depolayacak, <code>j</code> 10 depolayacak</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-4" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-4" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek E)</div><div aria-hidden="true">Ve</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><code>i</code> 10 depolayacak, <code>j</code> 11 depolayacak</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-5" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-5" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(F Seçeneği)</div><div aria-hidden="true">F</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><code>i</code> 10 depolayacak, <code>j</code> 1 depolayacak</div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Satır ve sütunlar halinde gelen verileri görselleştirmek ve bunlar üzerinde çalışmak için genellikle iç içe döngüler kullanırız.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Marul kafası sıraları olan bir alan hayal edin: her sıranın tekrar tekrar ekilmiş bir marul başı vardır ve daha sonra tüm alanı doldurmak için sıralar tekrarlanır. Bir sıra marul kafası tek bir ilmektir; bütün bir satır alanı iç içe geçmiş bir döngüdür.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">✏️Aşağıdaki program 5 x 5 kardan adam tarlası ekiyor. 5 sıra 10 kardan adam ve ardından 10 sıra 5 kardan adam olarak değiştirin. </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>for (was i = 0; in &lt; 5; i++) {
+    var row = "";
+    for (var j = 0, j &lt; 5, j++) {
+        satır += " "☃;
+    }
+    println(satır);
+}
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/7ahdEKVW2laOpJbjh6DjiLd0EIbbfsKAl2L0s0G996U/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Numbered%20repetition%3A%20Snowmen&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/NumberedRepetitionSnowman" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Sözde koddaki döngüler</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Sözde kod nedir?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Döngülerin <code>for</code> sözdizimi dillere göre değişir ve tüm dillerin döngüleri yoktur <code>for</code> . Ancak, tüm dillerin kodu belirli sayıda tekrarlamanın bir yolu vardır.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu sözde kod, yinelenen talimatları <code>n</code> kaç kez temsil eder:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>REPEAT n TIMES
+{
+   &lt;instructions&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Bu, 1'den 12'ye kadar 9'un katlarını görüntülemek için eşdeğer sözde koddur:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="6"><pre><code>i ← 1
+REPEAT 12 TIMES 
+{ 
+   DISPLAY(9 * i)
+   i ← i + 1
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph"><code>REPEAT</code> 3 parçalı bir üstbilgisi olmadığı için sayaç değişkenini üstbilgiden önce <code>REPEAT</code> başlatmamız ve gövdenin sonundaki sayaç değişkenini artırmamız gerekiyor.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Bir örnek daha vermek gerekirse, 10'dan 1'e kadar geri sayımı görüntülemek için kullanılan sözde kod aşağıda verilmiştir:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="9"><pre><code>i ← 10
+REPEAT 10 TIMES
+{
+   DISPLAY(i)
+      i ← i - 1
+}</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

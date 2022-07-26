@@ -1,0 +1,165 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>İç içe koşullular (if/else/if) | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>İç içe koşullular (if/else/if) | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bilgisayar programları, bir programın aşağı inmesi için doğru yolu seçmek üzere koşulluları kullanır. Bir program yalnızca iki yoldan birini seçtiğinde, basit bir koşullu (if/else) kullanabilir. Bir program birçok yoldan birini seçtiğinde, <strong>iç içe geçmiş</strong> veya <strong>zincirlenmiş</strong> koşullular kullanabilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>İç içe koşullular</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir sayının pozitif, negatif veya sıfır olup olmadığını bildiren bir program düşünün. Bu programın 3 yol arasından seçim yapması gerekir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Mantığın akış şeması şöyle görünebilir:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt='Flowchart with 2 diamonds, 3 rectangles, and 4 arrows.
+
+* Top diamond contains question "Is number larger than 0?"
+* From top diamond, an arrow marked true leads to rectangle with text "sign is positive."
+* From top diamond, an arrow marked false leads to diamond with question "Is number smaller than 0?"
+* From second diamond, an arrow marked true leads to rectangle with text "sign is negative."
+* From second diamond, an arrow marked false leads to rectangle with text "sign is neutral".' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/5a9c5aa808aebee57536296b29fdc27b885e4a5a.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">2 elmas, 3 dikdörtgen ve 4 oklu akış şeması.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><ul><li>Üst elmas "Sayı 0'dan büyük mü?" sorusunu içerir.</li><li>Üst elmastan, doğru olarak işaretlenmiş bir ok, "işaret pozitif" metniyle dikdörtgene yol açar.</li><li>Üst elmastan, yanlış işaretli bir ok, "Sayı 0'dan küçük mü?" sorusuyla elmasa yol açar.</li><li>İkinci elmastan, doğru olarak işaretlenmiş bir ok, "işaret negatif" metniyle dikdörtgene yol açar.</li><li>İkinci elmastan, yanlış işaretli bir ok, "işaret nötrdür" metniyle dikdörtgene yol açar.</li></ul></div></div></span></div></div>
+<div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Bir akış şemasını nasıl okursunuz?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bunu iç içe koşullular kullanarak JavaScript'e çevirebiliriz. İşte eşdeğer JS:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>var numberSign;
+
+if (number &gt; 0) {
+  numberSign = "positive";
+} else {
+  if (number &lt; 0) {
+    numberSign = "negative";
+  } else {
+    numberSign = "neutral";
+  }
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/70MtR9aeMrh936VdXOiUPzpuvaK7qv0PI_-W_qJbP9Q/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Conditionals%3A%20Number%20sign&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/NestedConditionalsNumberSign" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Dış koşulumuz, akış şemasındaki üst elmasa karşılık gelen basit <code>if</code>bir /<code>else</code>'dir. Sonra diğerinin içinde, akış şemasındaki ikinci elmasa karşılık gelen bir iç koşul yerleştiririz.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">JavaScript gibi metin tabanlı dillerde, iç içe geçmiş koşullularınızın sözdizimine ve biçimlendirmesine dikkat etmeniz önemlidir. Her talimat kümesinin etrafında kıvırcık parantezleri nasıl kullandığıma dikkat edin ve iç koşulluyu <code>else</code>. Bu, diğer programcıların (gelecekteki ben de dahil!) mantığın akışını daha iyi anlamalarına yardımcı olur.</div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">✏️ Aşağıdaki program iki oyuncunun puanlarını karşılaştırır ve kimin kazandığını, kaybettiğini veya berabere kaldığını belirler. Her oyuncunun kazanması için etrafındaki değerleri değiştirmeyi deneyin.</div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>var player1Score = 30;
+var player2Score = 30;
+if (player1Score &gt; player2Score) {println("player1 won!");} else {if (player2Score &gt; player1Score) {println("player2 won!");} else {println("it's a tie!");}} else {
+    
+    
+        
+        println("it's a tie!");
+    
+
+    }}
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/CQOQN8XrcNJpjU64OTPrUGp1NYvb57oeAifB0FI6IAY/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Nested%20conditionals%3A%20Scores&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/NestedConditionalsScores" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Alternatif iç içe geçme akışları</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">İç içe geçmiş şartlıların çoğu için, çeşitli koşulların sırası için birçok olasılık vardır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir sayının pozitif/negatif/nötr olup olmadığına karar vermek için, bu akış şemasında olduğu gibi, sayının sıfıra eşit olup olmadığını sorarak da başlayabiliriz:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt='Flowchart with 2 diamonds, 3 rectangles, and 4 arrows.
+
+* Top diamond contains question "Is number equal to 0?"
+* From top diamond, an arrow marked true leads to rectangle with text "sign is neutral."
+* From top diamond, an arrow marked false leads to diamond with question "Is number larger than 0?"
+* From second diamond, an arrow marked true leads to rectangle with text "sign is positive."
+* From second diamond, an arrow marked false leads to rectangle with text "sign is negative".' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/ef36745418046505b83e648a4c768ae5d964cb71.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">2 elmas, 3 dikdörtgen ve 4 oklu akış şeması.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><ul><li>Üst elmas "Sayı 0'a eşit mi?" sorusunu içerir.</li><li>Üst elmastan, doğru olarak işaretlenmiş bir ok, "işaret nötrdür" metniyle dikdörtgene yol açar.</li><li>Üst elmastan, yanlış işaretli bir ok, "Sayı 0'dan büyük mü?" sorusuyla elmasa yol açar.</li><li>İkinci elmastan, doğru olarak işaretlenmiş bir ok, "işaret pozitif" metniyle dikdörtgene yol açar.</li><li>İkinci elmastan, yanlış olarak işaretlenmiş bir ok, "işaret negatif" metniyle dikdörtgene yol açar.</li></ul></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">JavaScript'e çevrildiğinde, bu akış şöyle görünür:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>var numberSign;
+
+if (number === 0) {
+  numberSign = "neutral";
+} else {
+  if (number &gt; 0) {
+    numberSign = "positive";
+  } else {
+    numberSign = "negative";
+  }
+}</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu akış, diğer akış kadar <em>doğrudur</em> ve girişler için ilk akışla aynı değer kümesini çıkarır.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Aslında, aynı sonucu elde etmek için en az dört olası akış daha vardır. <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Daha fazla akışa bakın]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Programınız hangi akışı izlemelidir? Her biri aynı sonucu elde ettiği sürece, en doğal ve sezgisel görünen akışa gidin. Akışı programladıktan sonra, beklendiği gibi çalıştığından emin olmak için programınızı her zaman bir dizi değerle test edin.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Daha derin iç içe geçme</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Dünyadaki her şeyin düzgün bir şekilde üç kategoriye ayrılması düzgün olurdu, ama dünya bundan daha dağınık bir yer. Neyse ki, koşulluları gerektiği kadar seviyeyi iç içe geçirebiliriz ve programımız birçok farklı yoldan gidebilir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Örneğin, bir salsa'yı biberlerinin Scoville derecelendirmesine dayanarak hafif, orta, sıcak veya aşırı olarak sınıflandırmak için bir program yazabiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu akış şeması istenen mantığı açıklar:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt='Flowchart with 3 diamonds, 4 rectangles, and 6 arrows.
+
+* Top diamond contains question "Is rating less than 5,000?"
+* From top diamond, an arrow marked true leads to rectangle with text "level is mild"
+* From top diamond, an arrow marked false leads to diamond with question "Is rating less than 20,000?"
+* From second diamond, an arrow marked true leads to rectangle with text "level is medium"
+* From second diamond, an arrow marked false leads to diamond with question "Is rating less than 70,000?"
+* From third diamond, an arrow marked true leads to rectangle with text "level is hot"
+* From third diamond, an arrow marked false leads to rectangle with text "level is extreme"' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/0e6398ae6114c247f954b4f35ff25f94c4728955.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">3 elmas, 4 dikdörtgen ve 6 ok içeren akış şeması.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><ul><li>En iyi elmas "Derecelendirme 5.000'den az mı?" sorusunu içerir.</li><li>Üst elmastan, doğru olarak işaretlenmiş bir ok, "seviye hafif" metniyle dikdörtgene yol açar.</li><li>Üst elmastan, yanlış işaretli bir ok, "Derecelendirme 20.000'den az mı?" sorusuyla elmasa yol açar.</li><li>İkinci elmastan, true olarak işaretlenmiş bir ok, "seviye orta" metniyle dikdörtgene yol açar.</li><li>İkinci elmastan, yanlış işaretli bir ok, "Derecelendirme 70.000'den az mı?" sorusuyla elmasa yol açar.</li><li>Üçüncü elmastan, doğru olarak işaretlenmiş bir ok, "seviye sıcak" metniyle dikdörtgene yol açar</li><li>Üçüncü elmastan, yanlış işaretli bir ok, "seviye aşırı" metniyle dikdörtgene yol açar.</li></ul></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bunu JavaScript'te daha önce olduğu gibi /<code>else</code> ifadeleriyle, ancak ek bir iç içe geçme seviyesiyle <code>if</code>uygulayabiliriz.</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="1"><pre><code>var level;
+
+if (rating &lt; 5000) {
+  level = "mild";
+} else {
+  if (rating &lt; 20000) {
+    level = "medium";
+  } else {
+    if (rating &lt; 70000) {
+      level = "hot";
+    } else {
+      level = "extreme";
+    }
+  }
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/u8a525NB8d3FxySWyJxaE3rjv8DSdPY2MxmSI-Uvj3U/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Nested%20conditionals%3A%20Scoville&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/NestedConditionalsScoville" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Artık programımız, hangi yolun seçildiğine bağlı olarak dört farklı değerden birine atayabilir <code>level</code> . </div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Buradaki sıralama konusunda daha dikkatli olmamız gerekiyor, çünkü her iç içe geçmiş programın önceki koşulu zaten kontrol ettiğini <code>if</code> varsayar. Olumlu/olumsuz/nötr program için koşulları elimizden geldiğince karıştıramayız. Bir kez daha, koşullularınızı yapılandırırken siparişinizi her zaman dikkatlice düşünün.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">✏️ Aşağıdaki program kediler ve köpekler için basit bir günlük kalori hesaplayıcısıdır. En iyi değişkenleri, varsa kendi evcil hayvanınızı veya bir arkadaşınızın evcil hayvanını yansıtacak şekilde değiştirmeyi deneyin. Ayrıca, evcil hayvanınızın aşırı kilolu mu yoksa iç / dış mekan mı olduğu gibi faktörleri dahil ederek hesap makinesini daha doğru hale getirebilirsiniz. İç içe koşullularla, her şeyi kontrol edebilirsiniz!</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>Evcil hayvanınızın
+kalorik ihtiyaçlarını hesaplamak için bunları değiştirin var isNeutered = true;
+var isDog = false;
+var ağırlıkLB = 16;
+
+KG ve RER (Dinlenme Enerjisi Gereksinimi)
+cinsinden ağırlığı hesaplayınKG = ağırlıkLB / 2.2;
+var restingEnergyReq = 70 * Math.pow(weightKG, 0.75);
+
+Output daily caloric needs
+if (isDog) {if (isNeutered) {println(1.6 * restingEnergyReq);} else {println(1.8 * restingEnergyReq);
+    
+    }}
+else {
+        
+    
+        // Cat!
+    if (isNeutered) {println(1.2 * restingEnergyReq);} else {
+        
+        println(1.4 * restingEnergyReq);
+    
+    }}
+
+
+Bu aşırı basitleştirilmiştir, lütfen bu hesaplamaları kendi evcil hayvanınız için kullanmadan önce ek araştırma yapın ve bir veterinere danışın. =^_^=</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/gL39EmTNcRux4nEpTnOw0MhTCANSGjlO9gXaKMvPPZU/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Nested%20conditionals%3A%20Pet%20diet&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/NestedConditionalsPetDiet" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Zincirleme koşullular</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Programlama yaparken, kendimizi genellikle tek bir değişkenin olası değerlerini kontrol etmek için koşulluları kullanırken buluruz. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bunun iki örneğini zaten gördük ve her birini bir tabloda özetleyebiliriz:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><table class='table'><thead><tr><th scope="col">koşul</th><th scope="col">çıkışı</th></tr></thead><tbody><tr><td><code>number &gt; 0</code></td><td><code>"positive"</code></td></tr><tr><td><code>number &lt; 0</code></td><td><code>"negative"</code></td></tr><tr><td><code>number === 0</code></td><td><code>"neutral"</code></td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="4"><table class='table'><thead><tr><th scope="col">koşul</th><th scope="col">çıkışı</th></tr></thead><tbody><tr><td><code>rating &lt; 5000</code></td><td><code>"mild"</code></td></tr><tr><td><code>rating &lt; 20000</code></td><td><code>"medium"</code></td></tr><tr><td><code>rating &lt; 70000</code></td><td><code>"hot"</code></td></tr><tr><td><code>rating &gt;= 70000</code></td><td><code>"extreme"</code></td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Birçok programlama dili, bu değerleri kontrol etmenin daha iyi bir yolu olan "zincirlenmiş" koşullular yazmanın bir yolunu içerir. </div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">JavaScript dilinde, ifadeleri kullanarak <code>else if</code> koşulluları zincirleyebiliriz. </div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Sayı işareti denetleyicisini zincirleme koşullularla nasıl yazabiliriz:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="8"><pre><code>var numberSign;
+
+if (number &gt; 0) {
+  numberSign = "positive";
+} else if (number &lt; 0) {
+  numberSign = "negative";
+} else {
+  numberSign = "neutral";
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/y6vyATUOFoqT1JKW11a8Z-urKOC9rn85gl2GvbhwCXI/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/NestedConditionalsNumberSignChained" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">Bu kod orijinal koda çok benzer, ancak içinde bir <code>else if</code> iç içe geçmiş <code>else</code> yerine bir <code>if</code> kullanır. </div></div><div class="paragraph" data-perseus-paragraph-index="11"><div class="paragraph">Zincirlenmiş bir koşullu, özellikle koşulların sayısı arttıkça ve genellikle biraz daha kısakça okunması genellikle daha kolaydır.</div></div><div class="paragraph" data-perseus-paragraph-index="12"><div class="paragraph">İşte zincirleme koşullularla yazılmış salsa seviyesi hesaplayıcısı:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="13"><pre><code>var level;
+
+if (rating &lt; 5000) {
+  level = "mild";
+} else if (rating &lt; 20000) {
+  level = "medium";
+} else if (rating &lt; 70000) {
+  level = "hot";
+} else {
+  level = "extreme";
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="14"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/S5kPz_9_ubq5CcOVkcg_Vif2ccTemaavCoRL9ejdx0Y/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/NestedConditionalsScovilleChained" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="15"><div class="paragraph">Bunu iç içe koşullu orijinal sürümle karşılaştırın. Çok daha iyi akar, değil mi?</div></div><div class="paragraph" data-perseus-paragraph-index="16"><div class="paragraph">Tüm diller koşulluları zincirleme yeteneği sağlamaz, ancak özelliği içeren JS veya Python gibi bir dilde programlama yapıyorsanız, bu gibi durumlar için bundan yararlanın.</div></div><div class="paragraph" data-perseus-paragraph-index="17"><div class="paragraph"><strong>Sınav İpucu</strong>: AP CSP sınavı zincirleme koşullular <em>içermez</em> . Her durumda iç içe koşullular kullanır.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Sözde kodda iç içe koşullular</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Sözde kod nedir?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu sözde kod, bir dış <code>IF</code>/ ve bir iç /<code>ELSE</code><code>ELSE</code> ile basit bir iç <code>IF</code>içe koşullu gösterir:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>IF (&lt;condition 1&gt;)
+{
+     &lt;instructions 1&gt;
+} 
+ELSE 
+{
+    IF (&lt;condition 2&gt;)
+    {
+         &lt;instructions 2&gt;
+    } 
+    ELSE 
+    {
+        &lt;instructions 3&gt;
+    }
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">İşte sözde koddaki işaret kontrol programı:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>IF (number &gt; 0)
+{
+    numberSign ← "positive";
+}
+ELSE
+{
+    IF (number &lt; 0)
+    {
+        numberSign ← "negative";
+    }
+    ELSE
+    {
+        numberSign ← "neutral";
+    }
+}</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

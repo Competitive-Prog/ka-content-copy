@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Public key encryption (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Public key encryption (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">On the Internet, two computers often want to exchange secure data with each other. When I type my password into the Khan Academy login screen, I want my computer to send that data safely to the Khan Academy servers. I do <em>not</em> want to worry that an attacker might be monitoring my Internet traffic and watching the password go across the wires. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 725px; max-height: 246px;"><img alt="Illustrator of an attacker stealing password data. A laptop is shown with a browser and a password input field. An arrow goes from the laptop to a server. Above the arrow, there's a pouch that contains the text &quot;Be3tP@ssw0rd3ver&quot; and a smiling attacker looking at the text." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/850bd82076969173551d38dbe09fe9bcc2249bc4.svg" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Illustrator of an attacker stealing password data. A laptop is shown with a browser and a password input field. An arrow goes from the laptop to a server. Above the arrow, there's a pouch that contains the text "Be3tP@ssw0rd3ver" and a smiling attacker looking at the text.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Symmetric encryption techniques rely on both the sender and receiver using the <em>same key</em> to encrypt and decrypt the data. How can my computer and the Khan Academy server exchange the key securely? If an attacker can see my password go across the wires, then they can also see an encryption key!</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Illustrator of an attacker stealing an encryption key. A laptop is shown with a browser and a password input field. An arrow goes from the laptop to a server. Above the arrow, there's a pouch that contains the text &quot;TOP_SECRET_KEY&quot; and a smiling attacker looking at the text." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/9b19c11936ad7139d706ea875e86fa578d36ac10.svg" tabindex="0"/><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Illustrator of an attacker stealing an encryption key. A laptop is shown with a browser and a password input field. An arrow goes from the laptop to a server. Above the arrow, there's a pouch that contains the text "TOP_SECRET_KEY" and a smiling attacker looking at the text.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><strong>Public key encryption</strong> to the rescue! It's an asymmetric encryption technique which uses <em>different keys</em> for encryption and decryption, allowing computers over the Internet to securely communicate with each other.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Let's step through the high-level process of public key encryption.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Step 1: Key generation</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Each person (or their computer) must generate a pair of keys that identifies them: a <strong>private key</strong> and a <strong>public key</strong>.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">You can generate a pair below, using the same RSA algorithm that's used by your computer:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;RSA Key Generator&lt;/title&gt;
+        &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+    &lt;style&gt;
+    body {
+        font-family: "Lato", sans-serif;
+        height: 290px;
+    }
+    button.primary {
+        -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        margin: 0px !important;
+        position: relative !important;
+        display: -webkit-inline-box !important;
+        display: -moz-inline-box !important;
+        display: -ms-inline-flexbox !important;
+        display: -webkit-inline-flex !important;
+        display: inline-flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        -webkit-justify-content: center !important;
+        justify-content: center !important;
+        height: 40px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        border: none !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        outline: none !important;
+        text-decoration: none !important;
+        -moz-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        -ms-touch-action: manipulation !important;
+        touch-action: manipulation !important;
+        background: #1865f2 !important;
+        color: #ffffff !important;
+        margin-right: 10px !important;
+    }
+    button.primary:hover {
+        box-shadow: 0 0 0 1px #FFF, 0 0 0 3px #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        font-family: Lato, sans-serif !important;
+        font-size: 16px !important;
+        line-height: 20px !important;
+        display: -webkit-box !important;
+        display: -moz-box !important;
+        display: -ms-flexbox !important;
+        display: -webkit-flex !important;
+        display: flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        font-weight: bold !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        pointer-events: none !important;
+    }
+    
+    .key-textarea {
+        width:100%;
+        margin-top: 6px;
+        background: #eee;
+        font-family:monospace;
+    }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+    &lt;button id="generateButton" class="primary"&gt;&lt;span&gt;Generate&lt;/span&gt;&lt;/button&gt;
+    &lt;span id="timeReport" style="font-style:italic"&gt;&lt;/span&gt;
+    &lt;div style="margin-top:10px;"&gt;
+    &lt;label&gt;Private key:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="privateKey" readonly rows="6" class="key-textarea"&gt;⬆ Click generate to see your private key.&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;div style="margin-top:10px;"&gt;
+    &lt;label&gt;Public key:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="publicKey" readonly rows="4" class="key-textarea"&gt;⬆ Click generate to see your public key.&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+// Code based on http://travistidwell.com/jsencrypt/demo/
+var generateKeys = function () {
+    var timeReport = document.getElementById("timeReport");
+    var crypt = new JSEncrypt({default_key_size: 1024});
+    var dt = new Date();
+    var time = -(dt.getTime());
+    timeReport.innerHTML = "Generating..";
+    var loadTimer = setInterval(function () {
+        timeReport.innerHTML += ".";
+    }, 500);
+    crypt.getKey(function () {
+        clearInterval(loadTimer);
+        dt = new Date();
+        time += (dt.getTime());
+        timeReport.innerHTML = 'Generated in ' + time + ' ms';
+        document.getElementById("privateKey").value = crypt.getPrivateKey();
+        document.getElementById("publicKey").value = crypt.getPublicKey();
+    });
+};
+
+document.getElementById("generateButton").addEventListener("click", generateKeys);
+
+    &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Did you notice it takes a few seconds to generate the keys? That's due to the math involved. The keys are generated by multiplying together two incredibly large primes. The algorithm repeatedly generates random large numbers and checks if they're prime, until it finally finds two random large primes. All that checking for primes can take a while, and these keys are only 512 bits long. The current nationally recommended key length is 2048, or even 3072 bits.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Step 2: Key exchange</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The sending and receiving computers exchange <em>public keys</em> with each other via a reliable channel, like TCP/IP. The private keys are <em>never</em> exchanged.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt='Key exchange diagram with a laptop and a server. The laptop screen shows a browser with a password input field. An arrow goes from the server to the laptop and is labeled with "SERVER_PUBLIC_KEY". Under that, an arrow goes from the laptop to the server and is labeled with "CLIENT_PUBLIC_KEY."' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/c986525446ea71df85a7a170cd803c07dfa7ac10.svg" tabindex="0"/><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Key exchange diagram with a laptop and a server. The laptop screen shows a browser with a password input field. An arrow goes from the server to the laptop and is labeled with "SERVER_PUBLIC_KEY". Under that, an arrow goes from the laptop to the server and is labeled with "CLIENT_PUBLIC_KEY."</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Step 3: Encryption</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The sending computer encrypts the secret data using the receiving computer's <em>public</em> key and a mathematical operation.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">The power of public key encryption is in that mathematical operation. It's a "one-way function", which means it's incredibly difficult for a computer to reverse the operation and discover the original data. Even the public key cannot be used to decrypt the data.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">You can try it out below, with the public key you generated above:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;RSA Encrypter&lt;/title&gt;
+        &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+    &lt;style&gt;
+    body {
+        font-family: "Lato", sans-serif;
+        width: 95%;
+    }
+    button.primary {
+        -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        margin: 0px !important;
+        position: relative !important;
+        display: -webkit-inline-box !important;
+        display: -moz-inline-box !important;
+        display: -ms-inline-flexbox !important;
+        display: -webkit-inline-flex !important;
+        display: inline-flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        -webkit-justify-content: center !important;
+        justify-content: center !important;
+        height: 40px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        border: none !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        outline: none !important;
+        text-decoration: none !important;
+        -moz-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        -ms-touch-action: manipulation !important;
+        touch-action: manipulation !important;
+        background: #1865f2 !important;
+        color: #ffffff !important;
+        margin-right: 10px !important;
+    }
+    button.primary:hover {
+        box-shadow: 0 0 0 1px #FFF, 0 0 0 3px #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        font-family: Lato, sans-serif !important;
+        font-size: 16px !important;
+        line-height: 20px !important;
+        display: -webkit-box !important;
+        display: -moz-box !important;
+        display: -ms-flexbox !important;
+        display: -webkit-flex !important;
+        display: flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        font-weight: bold !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        pointer-events: none !important;
+    }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+    &lt;span id="timeReport" style="font-style:italic"&gt;&lt;/span&gt;
+    &lt;div style="margin-top:10px;"&gt;
+    &lt;label&gt;Public key:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="publicKey" rows="6" style="width:100%; margin-top: 6px; font-family:monospace;"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    
+    &lt;div style="margin-top:10px; margin-bottom: 10px;"&gt;
+    &lt;label&gt;Plain text:&lt;/label&gt;&lt;br&gt;
+    &lt;input id="plainText" rows="2" maxlength="116" style="width:100%; margin-top: 6px;"&gt;
+    &lt;/div&gt;
+    
+    &lt;button id="encryptButton" class="primary"&gt;&lt;span&gt;Encrypt&lt;/span&gt;&lt;/button&gt;
+    &lt;div id="encryptedText" style="margin-top: 10px; word-wrap:break-word;  font-family: monospace;"&gt;&lt;/div&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+// Code based on http://travistidwell.com/jsencrypt/demo/
+var encryptText = function () {
+    
+    // Create the encryption object.
+    var crypt = new JSEncrypt();
+
+    // Set the public key.
+    var publicKey = document.getElementById("publicKey").value;
+    crypt.setPublicKey(publicKey);
+    
+    var plainText = document.getElementById("plainText").value;
+    var encryptedText = crypt.encrypt(plainText);
+    document.getElementById("encryptedText").innerHTML = encryptedText;
+};
+
+document.getElementById("encryptButton").addEventListener("click", encryptText);
+
+    &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Step 4: Sending encrypted data</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">The sender can now safely transmit the encrypted data over the Internet without worry of onlookers.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Key exchange diagram with a laptop and a server. The laptop screen shows a browser with a password input field. An arrow goes from the server to the laptop and is labeled with string of encrypted text. An attacker looks unhappily at the text. " aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/25d4f1a6e81ac85cb5101a423c57bcadfa8ff074.svg" tabindex="0"/><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Key exchange diagram with a laptop and a server. The laptop screen shows a browser with a password input field. An arrow goes from the server to the laptop and is labeled with string of encrypted text. An attacker looks unhappily at the text. </div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Step 5: Decryption</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Now the receiver can decrypt the message, using their <em>private key</em>. That's the only key that can be used to decrypt the message (in the world!). </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Try it out below, with the encrypted message and <em>private</em> key from above:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;RSA Decrypter&lt;/title&gt;
+        &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;
+    &lt;style&gt;
+    body {
+        font-family: "Lato", sans-serif;
+    }
+    button.primary {
+        -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        margin: 0px !important;
+        position: relative !important;
+        display: -webkit-inline-box !important;
+        display: -moz-inline-box !important;
+        display: -ms-inline-flexbox !important;
+        display: -webkit-inline-flex !important;
+        display: inline-flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        -webkit-justify-content: center !important;
+        justify-content: center !important;
+        height: 40px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        border: none !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        outline: none !important;
+        text-decoration: none !important;
+        -moz-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        -ms-touch-action: manipulation !important;
+        touch-action: manipulation !important;
+        background: #1865f2 !important;
+        color: #ffffff !important;
+        margin-right: 10px !important;
+    }
+    button.primary:hover {
+        box-shadow: 0 0 0 1px #FFF, 0 0 0 3px #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        font-family: Lato, sans-serif !important;
+        font-size: 16px !important;
+        line-height: 20px !important;
+        display: -webkit-box !important;
+        display: -moz-box !important;
+        display: -ms-flexbox !important;
+        display: -webkit-flex !important;
+        display: flex !important;
+        -webkit-align-items: center !important;
+        align-items: center !important;
+        font-weight: bold !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        pointer-events: none !important;
+    }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+    &lt;span id="timeReport" style="font-style:italic"&gt;&lt;/span&gt;
+    &lt;div style="margin-top:10px;"&gt;
+    &lt;label data-string-key="PRIVATE_KEY"&gt;Private key:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="privateKey" rows="4" style="width:100%; margin-top: 6px; font-family:monospace;"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    
+    &lt;div style="margin-top:10px; margin-bottom: 10px;"&gt;
+    &lt;label data-string-key="ENCRYPTED_TEXT"&gt;Encrypted text:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="encryptedText" rows="4" style="width:100%; margin-top: 6px; font-family:monospace;"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    
+    &lt;button id="decryptButton" class="primary"&gt;&lt;span data-string-key="DECRYPT"&gt;Decrypt&lt;/span&gt;&lt;/button&gt;
+    &lt;div id="plainText" style="margin-top: 10px; word-wrap:break-word;"&gt;&lt;/div&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+// Code based on http://travistidwell.com/jsencrypt/demo/
+var decryptText = function () {
+    
+    var crypt = new JSEncrypt();
+
+    var privateKey = document.getElementById("privateKey").value;
+    crypt.setPrivateKey(privateKey);
+    
+    var encryptedText = document.getElementById("encryptedText").value;
+    var plainText = crypt.decrypt(encryptedText);
+    document.getElementById("plainText").innerHTML = plainText;
+};
+
+document.getElementById("decryptButton").addEventListener("click", decryptText);
+
+var translateStrings = function() {
+    var parentUrl = window.parent &amp;&amp; window.parent.location &amp;&amp; window.location.href;
+    var urlParams = {};
+    parentUrl.replace(/[?&amp;]+([^=&amp;]+)=([^&amp;]*)/gi, function(m, key, value) {
+        urlParams[key] = value;
+    });
+    var strings = {
+        PRIVATE_KEY: {
+            "es": "Llave privada",
+            "cs": "Soukromý klíč:"
+        },
+        ENCRYPTED_TEXT: {
+            "es": "Texto cifrado",
+            "cs": "Zašifrovaný text:"
+        },
+        DECRYPT: {
+            "es": "Descifrar",
+            "cs": "Odšifrovat"
+        }
+    }
+    var language = urlParams.lang;
+    if (!language || language === "en") {
+        return;
+    }
+    for (var stringKey in strings) {
+        var translatedString = strings[stringKey][language];
+        if (translatedString) {
+            var targetDom = document.querySelector("[data-string-key=" + stringKey + "]");
+            if (targetDom) {
+                targetDom.innerText = translatedString;
+            }
+        }
+    }
+    
+}
+translateStrings();
+    &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Once you successfully decrypt the message, try decrypting it with the <em>public</em> key. It won't work; only the private key can decrypt it.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>But how is that possible?</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">It may sound too good to be true; that it's possible to encrypt something with one key that can only then be decrypted by a different key. For a long time, mathematicians weren't sure if it was possible, but fortunately they discovered a way in the 1970s. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">The math of the one-way function relies on prime numbers, the difficulty of factoring large primes, and modular arithmetic. If you'd like to dig deeper into the math, check out the Khan Academy <a class="_8gcxk83" href="/computing/computer-science/cryptography/modern-crypt/v/the-fundamental-theorem-of-arithmetic-1" rel="noopener noreferrer" tabindex="0" target="_blank">tutorials on modern cryptography</a>.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Fortunately, all of us can use and benefit from public key cryptography without needing to understand the complicated math behind it. In fact, we likely use public key cryptography everyday as we use computers and the Internet. Just imagine, what would the world be without it?</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[References]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer—just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

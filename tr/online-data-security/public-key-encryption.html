@@ -1,0 +1,408 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Ortak anahtar şifreleme (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Ortak anahtar şifreleme (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Internet'te, iki bilgisayar genellikle birbirleriyle güvenli veri alışverişinde bulunmak ister. Khan Academy giriş ekranına şifremi yazdığımda, bilgisayarımın bu verileri Khan Academy sunucularına güvenli bir şekilde göndermesini istiyorum. Bir saldırganın Internet trafiğimi izliyor ve parolanın tellerden geçmesini izliyor olabileceğinden <em>endişelenmek istemiyorum</em> . </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 725px; max-height: 246px;"><img alt="Illustrator of an attacker stealing password data. A laptop is shown with a browser and a password input field. An arrow goes from the laptop to a server. Above the arrow, there's a pouch that contains the text &quot;Be3tP@ssw0rd3ver&quot; and a smiling attacker looking at the text." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/850bd82076969173551d38dbe09fe9bcc2249bc4.svg" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Parola verilerini çalan bir saldırganın Illustrator'ı. Bir dizüstü bilgisayar bir tarayıcı ve parola giriş alanı ile gösterilir. Bir ok dizüstü bilgisayardan sunucuya gider. Okun üstünde, "Be3tP@ssw0rd3ver" metnini içeren bir kese ve metne bakan gülümseyen bir saldırgan var.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Simetrik şifreleme teknikleri, verileri şifrelemek ve şifresini çözmek için <em>aynı anahtarı</em> kullanan hem gönderene hem de alıcıya dayanır. Bilgisayarım ve Khan Academy sunucusu anahtarı güvenli bir şekilde nasıl değiştirebilir? Bir saldırgan şifremin tellerden geçtiğini görebiliyorsa, bir şifreleme anahtarı da görebilir!</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Illustrator of an attacker stealing an encryption key. A laptop is shown with a browser and a password input field. An arrow goes from the laptop to a server. Above the arrow, there's a pouch that contains the text &quot;TOP_SECRET_KEY&quot; and a smiling attacker looking at the text." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/9b19c11936ad7139d706ea875e86fa578d36ac10.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Şifreleme anahtarını çalan bir saldırganın Illustrator'ı. Bir dizüstü bilgisayar bir tarayıcı ve parola giriş alanı ile gösterilir. Bir ok dizüstü bilgisayardan sunucuya gider. Okun üstünde, "TOP_SECRET_KEY" metnini içeren bir kese ve metne bakan gülümseyen bir saldırgan var.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><strong>Kurtarmaya açık anahtar şifrelemesi</strong> ! Şifreleme ve şifre çözme için <em>farklı anahtarlar</em> kullanan ve İnternet üzerinden bilgisayarların birbirleriyle güvenli bir şekilde iletişim kurmasını sağlayan asimetrik bir şifreleme tekniğidir.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Üst düzey ortak anahtar şifreleme sürecini adım adım inceleyelim.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>1. Adım: Anahtar oluşturma</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Her kişi (veya bilgisayarı) kendilerini tanımlayan bir çift anahtar oluşturmalıdır: <strong>özel</strong> anahtar ve <strong>ortak anahtar</strong>.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bilgisayarınız tarafından kullanılan RSA algoritmasını kullanarak aşağıda bir çift oluşturabilirsiniz:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>&lt;! DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;RSA Key Generator&lt;/title&gt;
+        
+        &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;&lt;style&gt;
+
+    
+        
+    
+    body {
+        font-family: "Lato", sans-serif;
+        yükseklik: 290 piksel;
+    }
+    button.primary {
+        -webkit-box-pack: merkez !önemli;
+        -ms-flex-pack: merkez !önemli;
+        -webkit-box-align: merkez !önemli;
+        -ms-flex-align: merkez !önemli;
+        marj: 0px !önemli;
+        pozisyon: göreceli !önemli;
+        display: -webkit-inline-box !important;
+        ekran: -moz-inline-box !important;
+        ekran: -ms-inline-flexbox !important;
+        ekran: -webkit-inline-flex !important;
+        ekran: inline-flex !important;
+        -webkit-align-items: merkez !önemli;
+        hizalama öğeleri: merkez !önemli;
+        -webkit-justify-content: merkez !önemli;
+        gerekçelendirme-içerik: merkez !önemli;
+        yükseklik: 40 piksel !önemli;
+        dolgu-üst: 0px !önemli;
+        dolgu-alt: 0px !önemli;
+        dolgu-sol: 16 piksel !önemli;
+        dolgu-sağ: 16px !önemli;
+        sınır: hiçbiri !önemli;
+        kenarlık-yarıçap: 4px !önemli;
+        imleç: işaretçi !önemli;
+        taslak: hiçbiri !önemli;
+        metin-dekorasyon: hiçbiri !önemli;
+        -moz-box-sizeing: border-box !important;
+        kutu boyutlandırma: kenarlık-kutu !önemli;
+        -ms-touch-action: manipülasyon !önemli;
+        dokunma-eylem: manipülasyon !önemli;
+        arka plan: #1865f2 !önemli;
+        renk: #ffffff !önemli;
+        marj-sağ: 10px !important;
+    }
+    button.primary:hover {
+        kutu-gölge: 0 0 0 1 piksel #FFF, 0 0 0 3 piksel #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: merkez !önemli;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: gri tonlamalı !önemli;
+        yazı tipi ailesi: Lato, sans-serif !important;
+        yazı tipi boyutu: 16 piksel !önemli;
+        çizgi yüksekliği: 20 piksel !önemli;
+        ekran: -webkit-box !important;
+        ekran: -moz-box !important;
+        ekran: -ms-flexbox !important;
+        ekran: -webkit-flex !important;
+        ekran: esnek !önemli;
+        -webkit-align-items: merkez !önemli;
+        hizalama öğeleri: merkez !önemli;
+        yazı tipi ağırlığı: kalın !önemli;
+        -webkit-user-select: hiçbiri !önemli;
+        -moz-user-select: hiçbiri !önemli;
+        -ms-user-select: hiçbiri !önemli;
+        kullanıcı seçimi: hiçbiri !önemli;
+        beyaz boşluk: nowrap !important;
+        taşma: gizli !önemli;
+        metin taşması: üç nokta !önemli;
+        işaretçi-olaylar: hiçbiri !önemli;
+    }
+    
+    . key-textarea {
+        genişlik:%100;
+        kenar boşluğu-üst: 6 piksel;
+        arka plan: #eee;
+        font-family:monospace;
+    }
+    &lt;/style&gt;
+    &lt;/head&gt;&lt;
+    body&gt;
+
+    &lt;button id="generateButton" class="primary"&gt;&lt;span&gt;Generate&lt;/span&gt;&lt;/button&gt;
+    &lt;span id="timeReport" style="font-style:italic"&gt;&lt;/span&gt;
+    &lt;div style="margin-top:10px;" &gt;
+    &lt;label&gt;Private key:&lt;/label&gt;&lt;br&gt;&lt;textarea id="privateKey" readonly rows="6" class="key-textarea"&gt; Özel anahtarınızı görmek için Oluştur'u tıklayın.&lt;/textarea&gt;
+    
+    ⬆&lt;/div&gt;
+    &lt;div style="margin-top:10px;" &gt;
+    &lt;label&gt;Public key:&lt;/label&gt;&lt;br&gt;&lt;textarea id="publicKey" readonly rows="4" class="key-textarea"&gt; ⬆ Ortak anahtarınızı görmek için Oluştur'u tıklayın.&lt;textarea&gt;&lt;/div&gt;&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.min.js&gt;&lt;/script&gt;&lt;
+    script&gt;
+    
+    
+
+    // http://travistidwell.com/jsencrypt/demo/
+var generateKeys = function () {
+    var timeReport = document.getElementById("timeReport");
+    var crypt = yeni JSEncrypt({default_key_size: 1024});
+    var dt = yeni Tarih();
+    var zamanı = -(dt.getTime());
+    timeReport.innerHTML = "Oluşturma..";
+    var loadTimer = setInterval(function () {
+        timeReport.innerHTML += ".";
+    }, 500);
+    crypt.getKey(function () {
+        clearInterval(loadTimer);
+        dt = yeni Tarih();
+        zaman += (dt.getTime());
+        timeReport.innerHTML = ' + zaman + ' ms' cinsinden oluşturulur;
+        document.getElementById("privateKey").value = crypt.getPrivateKey();
+        document.getElementById("publicKey").value = crypt.getPublicKey();});};
+    
+
+
+document.getElementById("generateButton").addEventListener("click", generateKeys);
+
+    &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Anahtarların oluşturulmasının birkaç saniye sürdüğünü fark ettiniz mi? Bu, ilgili matematikten kaynaklanıyor. Anahtarlar, inanılmaz derecede büyük iki asalın birlikte çarpılmasıyla oluşturulur. Algoritma tekrar tekrar rastgele büyük sayılar üretir ve sonunda iki rastgele büyük asal bulana kadar asal olup olmadıklarını kontrol eder. Asal değerleri kontrol etmek biraz zaman alabilir ve bu anahtarlar yalnızca 512 bit uzunluğundadır. Mevcut ulusal olarak önerilen anahtar uzunluğu 2048, hatta 3072 bittir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>2. Adım: Anahtar değişimi</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Gönderen ve alan bilgisayarlar, TCP/IP gibi güvenilir bir kanal aracılığıyla <em>ortak anahtarları</em> birbirleriyle değiştirir. Özel anahtarlar <em>asla</em> değiştirilmez.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt='Key exchange diagram with a laptop and a server. The laptop screen shows a browser with a password input field. An arrow goes from the server to the laptop and is labeled with "SERVER_PUBLIC_KEY". Under that, an arrow goes from the laptop to the server and is labeled with "CLIENT_PUBLIC_KEY."' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/c986525446ea71df85a7a170cd803c07dfa7ac10.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bir dizüstü bilgisayar ve sunucu ile anahtar değişimi diyagramı. Dizüstü bilgisayar ekranında, parola giriş alanına sahip bir tarayıcı gösterilir. Bir ok sunucudan dizüstü bilgisayara gider ve "SERVER_PUBLIC_KEY" ile etiketlenir. Bunun altında, bir ok dizüstü bilgisayardan sunucuya gider ve "CLIENT_PUBLIC_KEY" ile etiketlenir.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>3. Adım: Şifreleme</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Gönderen bilgisayar, alıcı bilgisayarın <em>ortak</em> anahtarını ve matematiksel bir işlemi kullanarak gizli verileri şifreler.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Ortak anahtar şifrelemesinin gücü bu matematiksel işlemdedir. Bu bir "tek yönlü işlev"dir, yani bir bilgisayarın işlemi tersine çevirmesi ve orijinal verileri keşfetmesi inanılmaz derecede zordur. Verilerin şifresini çözmek için ortak anahtar bile kullanılamaz.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Yukarıda oluşturduğunuz açık anahtarla aşağıdan deneyebilirsiniz:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>&lt;! DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;RSA Encrypter&lt;/title&gt;
+        
+        &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;&lt;style&gt;
+
+    
+        
+    
+    body {
+        font-family: "Lato", sans-serif;
+        genişlik: %95;
+    }
+    button.primary {
+        -webkit-box-pack: merkez !önemli;
+        -ms-flex-pack: merkez !önemli;
+        -webkit-box-align: merkez !önemli;
+        -ms-flex-align: merkez !önemli;
+        marj: 0px !önemli;
+        pozisyon: göreceli !önemli;
+        display: -webkit-inline-box !important;
+        ekran: -moz-inline-box !important;
+        ekran: -ms-inline-flexbox !important;
+        ekran: -webkit-inline-flex !important;
+        ekran: inline-flex !important;
+        -webkit-align-items: merkez !önemli;
+        hizalama öğeleri: merkez !önemli;
+        -webkit-justify-content: merkez !önemli;
+        gerekçelendirme-içerik: merkez !önemli;
+        yükseklik: 40 piksel !önemli;
+        dolgu-üst: 0px !önemli;
+        dolgu-alt: 0px !önemli;
+        dolgu-sol: 16 piksel !önemli;
+        dolgu-sağ: 16px !önemli;
+        sınır: hiçbiri !önemli;
+        kenarlık-yarıçap: 4px !önemli;
+        imleç: işaretçi !önemli;
+        taslak: hiçbiri !önemli;
+        metin-dekorasyon: hiçbiri !önemli;
+        -moz-box-sizeing: border-box !important;
+        kutu boyutlandırma: kenarlık-kutu !önemli;
+        -ms-touch-action: manipülasyon !önemli;
+        dokunma-eylem: manipülasyon !önemli;
+        arka plan: #1865f2 !önemli;
+        renk: #ffffff !önemli;
+        marj-sağ: 10px !important;
+    }
+    button.primary:hover {
+        kutu-gölge: 0 0 0 1 piksel #FFF, 0 0 0 3 piksel #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: merkez !önemli;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: gri tonlamalı !önemli;
+        yazı tipi ailesi: Lato, sans-serif !important;
+        yazı tipi boyutu: 16 piksel !önemli;
+        çizgi yüksekliği: 20 piksel !önemli;
+        ekran: -webkit-box !important;
+        ekran: -moz-box !important;
+        ekran: -ms-flexbox !important;
+        ekran: -webkit-flex !important;
+        ekran: esnek !önemli;
+        -webkit-align-items: merkez !önemli;
+        hizalama öğeleri: merkez !önemli;
+        yazı tipi ağırlığı: kalın !önemli;
+        -webkit-user-select: hiçbiri !önemli;
+        -moz-user-select: hiçbiri !önemli;
+        -ms-user-select: hiçbiri !önemli;
+        kullanıcı seçimi: hiçbiri !önemli;
+        beyaz boşluk: nowrap !important;
+        taşma: gizli !önemli;
+        metin taşması: üç nokta !önemli;
+        işaretçi-olaylar: hiçbiri !önemli;
+    }
+    &lt;/style&gt;
+    &lt;/head&gt;&lt;
+    body&gt;
+
+    &lt;span id="timeReport" style="font-style:italic"&gt;&lt;/span&gt;
+    &lt;div style="margin-top:10px;" &gt;
+    &lt;label&gt;Public key:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="publicKey" rows="6" style="width:%100; margin-top: 6px; font-family:monospace;" &gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    
+    &lt;div style="margin-top:10px; margin-bottom: 10px;" &gt;
+    &lt;label&gt; Düz metin:&lt;/label&gt;&lt;br&gt;
+    &lt;input id="plainText" rows="2" maxlength="116" style="width:%100; margin-top: 6px;" &gt;
+    &lt;/div&gt;
+    
+    &lt;button id="encryptButton" class="primary"&gt;&lt;span&gt;Encrypt&lt;/span&gt;&lt;/button&gt;
+    &lt;div id="encryptedText" style="margin-top: 10px; word-wrap:break-word;  yazı tipi ailesi: monospace;" &gt;&lt;/div&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.min.js"&gt;&lt;/script&gt;&lt;script&gt;
+
+    // http://travistidwell.com/jsencrypt/demo/
+var encryptText = function () {
+    
+    // Şifreleme nesnesini oluşturun.
+    var crypt = yeni JSEncrypt();
+
+    Ortak anahtarı ayarlayın.
+    var publicKey = document.getElementById("publicKey").value;
+    crypt.setPublicKey(publicKey);
+    
+    var plainText = document.getElementById("plainText").value;
+    var encryptedText = crypt.encrypt(plainText);
+    document.getElementById("encryptedText").innerHTML = encryptedText;};
+
+
+document.getElementById("encryptButton").addEventListener("click", encryptText);
+
+    &lt;/script&gt;
+    &lt;/body&gt;&lt;
+/html&gt;
+</pre></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>4. Adım: Şifrelenmiş verileri gönderme</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Gönderen artık şifrelenmiş verileri izleyicilerin endişesi olmadan İnternet üzerinden güvenli bir şekilde iletebilir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><img alt="Key exchange diagram with a laptop and a server. The laptop screen shows a browser with a password input field. An arrow goes from the server to the laptop and is labeled with string of encrypted text. An attacker looks unhappily at the text. " aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/25d4f1a6e81ac85cb5101a423c57bcadfa8ff074.svg" tabindex="0"><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bir dizüstü bilgisayar ve sunucu ile anahtar değişimi diyagramı. Dizüstü bilgisayar ekranında, parola giriş alanına sahip bir tarayıcı gösterilir. Bir ok sunucudan dizüstü bilgisayara gider ve şifrelenmiş metin dizesiyle etiketlenir. Bir saldırgan mutsuz bir şekilde metne bakar. </div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>5. Adım: Şifre çözme</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Artık alıcı, <em>özel anahtarını</em> kullanarak mesajın şifresini çözebilir. Mesajın şifresini çözmek için kullanılabilecek tek anahtar budur (dünyada!). </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Yukarıdan şifrelenmiş mesaj ve <em>özel</em> anahtarla aşağıdan deneyin:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><pre>&lt;! DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;RSA Decrypter&lt;/title&gt;
+
+        
+        &lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"&gt;&lt;style&gt;
+        
+    
+    
+    body {
+        font-family: "Lato", sans-serif;}
+    
+    button.primary {
+        -webkit-box-pack: merkez !önemli;
+        -ms-flex-pack: merkez !önemli;
+        -webkit-box-align: merkez !önemli;
+        -ms-flex-align: merkez !önemli;
+        marj: 0px !önemli;
+        pozisyon: göreceli !önemli;
+        display: -webkit-inline-box !important;
+        ekran: -moz-inline-box !important;
+        ekran: -ms-inline-flexbox !important;
+        ekran: -webkit-inline-flex !important;
+        ekran: inline-flex !important;
+        -webkit-align-items: merkez !önemli;
+        hizalama öğeleri: merkez !önemli;
+        -webkit-justify-content: merkez !önemli;
+        gerekçelendirme-içerik: merkez !önemli;
+        yükseklik: 40 piksel !önemli;
+        dolgu-üst: 0px !önemli;
+        dolgu-alt: 0px !önemli;
+        dolgu-sol: 16 piksel !önemli;
+        dolgu-sağ: 16px !önemli;
+        sınır: hiçbiri !önemli;
+        kenarlık-yarıçap: 4px !önemli;
+        imleç: işaretçi !önemli;
+        taslak: hiçbiri !önemli;
+        metin-dekorasyon: hiçbiri !önemli;
+        -moz-box-sizeing: border-box !important;
+        kutu boyutlandırma: kenarlık-kutu !önemli;
+        -ms-touch-action: manipülasyon !önemli;
+        dokunma-eylem: manipülasyon !önemli;
+        arka plan: #1865f2 !önemli;
+        renk: #ffffff !önemli;
+        marj-sağ: 10px !important;
+    }
+    button.primary:hover {
+        kutu-gölge: 0 0 0 1 piksel #FFF, 0 0 0 3 piksel #1865f2;
+    }
+    button.primary span {
+        -webkit-box-align: center !important;
+        -ms-flex-align: merkez !önemli;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: gri tonlamalı !önemli;
+        yazı tipi ailesi: Lato, sans-serif !important;
+        yazı tipi boyutu: 16 piksel !önemli;
+        çizgi yüksekliği: 20 piksel !önemli;
+        ekran: -webkit-box !important;
+        ekran: -moz-box !important;
+        ekran: -ms-flexbox !important;
+        ekran: -webkit-flex !important;
+        ekran: esnek !önemli;
+        -webkit-align-items: merkez !önemli;
+        hizalama öğeleri: merkez !önemli;
+        yazı tipi ağırlığı: kalın !önemli;
+        -webkit-user-select: hiçbiri !önemli;
+        -moz-user-select: hiçbiri !önemli;
+        -ms-user-select: hiçbiri !önemli;
+        kullanıcı seçimi: hiçbiri !önemli;
+        beyaz boşluk: nowrap !important;
+        taşma: gizli !önemli;
+        metin taşması: üç nokta !önemli;
+        işaretçi-olaylar: hiçbiri !önemli;
+    }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+    &lt;span id="timeReport" style="font-style:italic"&gt;&lt;/span&gt;
+    &lt;div style="margin-top:10px;" &gt;
+    &lt;label data-string-key="PRIVATE_KEY"&gt;Private key:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="privateKey" rows="4" style="width:100%; margin-top: 6px; font-family:monospace;" &gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    
+    &lt;div style="margin-top:10px; margin-bottom: 10px;" &gt;
+    &lt;label data-string-key="ENCRYPTED_TEXT"&gt;&lt;Encrypted text:&gt;&lt;/label&gt;br&lt;
+    textarea id="encryptedText" rows="4" style="width:100%; margin-top: 6px; font-family:monospace;" &gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    
+    button id="decryptButton" class="primary"&lt;span data-string-key="DECRYPT"&gt;&lt;&gt;Decrypt"&lt;/span&gt;&lt;/button&gt;
+    &lt;div id="plainText" style="margin-top: 10px; word-wrap:break-word;" &gt;&lt;/div&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.min.js"&gt;&lt;/script&gt;&lt;script&gt;
+
+    // http://travistidwell.com/jsencrypt/demo/
+var decryptText = function () {
+    
+    var crypt = new JSEncrypt();
+
+    var privateKey = document.getElementById("privateKey").value;
+    crypt.setPrivateKey(privateKey);
+    
+    var encryptedText = document.getElementById("encryptedText").value;
+    var plainText = crypt.decrypt(encryptedText);
+    document.getElementById("plainText").innerHTML = plainText;};
+
+
+document.getElementById("decryptButton").addEventListener("click", decryptText);
+
+var translateStrings = function() {
+    var parentUrl = window.parent &amp; window.parent.location &amp;&amp; window.location.href;
+    var urlParams = {};
+    parentUrl.replace(/[?&amp;]+([^=&amp;]+)=([^&amp;]*)/gi, function(m, anahtar, değer) {
+        urlParams[anahtar] = değer;
+    });
+    var strings = {PRIVATE_KEY: {"es": "Llave privada","cs": "Soukromý klíč:"},ENCRYPTED_TEXT: {"es": "Texto cifrado","cs": "Zašifrovaný text:"},DECRYPT: {
+        
+            
+            
+            "es": "Descifrar",
+        
+            
+        
+            
+            "cs": "Odšifrovat"
+        
+        
+        }}
+    
+    var language = urlParams.lang;
+    if (!language || language === "en") {
+        return;
+    }
+    for (var stringKey in strings) {
+        var translatedString = strings[stringKey][language];
+        if (translatedString) {
+            var targetDom = document.querySelector("[data-string-key=" + stringKey + "]");
+            if (targetDom) {
+                targetDom.innerText = translatedString;
+            }}}}
+    
+        
+    
+
+translateStrings();
+    &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">İletinin şifresini başarıyla çözdükten sonra, <em>ortak</em> anahtarla şifresini çözmeyi deneyin. İşe yaramayacak; yalnızca özel anahtar şifresini çözebilir.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Ama bu nasıl mümkün olabilir?</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Gerçek olamayacak kadar iyi gelebilir; Bir şeyi ancak o zaman farklı bir anahtarla şifresi çözülebilecek bir anahtarla şifrelemenin mümkün olduğunu. Uzun bir süre boyunca, matematikçiler bunun mümkün olup olmadığından emin değillerdi, ama neyse ki 1970'lerde bir yol keşfettiler. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Tek yönlü fonksiyonun matematiği, asal sayılara, büyük asal sayıları faktoring zorluğuna ve modüler aritmetiğe dayanır. Matematiğin derinliklerine inmek isterseniz, Khan Academy'nin <a class="_8gcxk83" href="/computing/computer-science/cryptography/modern-crypt/v/the-fundamental-theorem-of-arithmetic-1" rel="noopener noreferrer" tabindex="0" target="_blank">modern kriptografi hakkındaki eğitimlerine</a> göz atın.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Neyse ki, hepimiz arkasındaki karmaşık matematiği anlamaya gerek kalmadan açık anahtar kriptografisini kullanabilir ve yararlanabiliriz. Aslında, bilgisayarları ve interneti kullandığımız için her gün ortak anahtar şifrelemesi kullanıyoruz. Sadece hayal edin, onsuz dünya ne olurdu?</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Referanslar]</a></div></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

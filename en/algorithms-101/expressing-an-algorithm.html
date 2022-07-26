@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Expressing an algorithm | AP CSP (article) | Khan Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Expressing an algorithm | AP CSP (article) | Khan Academy</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">We can express an algorithm many ways, including natural language, flow charts, pseudocode, and of course, actual programming languages.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Natural language is a popular choice, since it comes so naturally to us and can convey the steps of an algorithm to a wide audience. When we're developing algorithms, we are often working both with people who know programming and those who don't—but they all know natural language.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">However, natural language has its drawbacks. It has a tendency to be ambiguous and too vaguely defined, since it has no imposed structure. That makes it difficult for others to follow the algorithm and feel confident in its correctness. Flow charts and pseudocode are more structured formats that can more precisely express an algorithm, and are popular with computer scientists and programmers.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Let's try out the more structured formats by expressing the Pig Latin algorithm from the previous article.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Flow charts</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">A more formal way to express an algorithm is with a <strong>flow chart</strong>, a diagram with boxes connected by arrows.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">To start simple, here's a flow chart for the basic version of the Pig Latin algorithm:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 180px; max-height: 421px;"><div style="padding-bottom: 233.89%;"></div><img alt='Flow chart for basic Pig Latin algorithm, with 6 nodes flowing from one to the next:
+
+* "Start"
+* "Append "-""
+* "Append first letter"
+* "Append "ay""
+* "Remove first letter"
+* "End"' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/181efe2a4c09aea4aed03f73997e25c28088fc63.svg" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Flow chart for basic Pig Latin algorithm, with 6 nodes flowing from one to the next:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><ul><li>"Start"</li><li>"Append "-""</li><li>"Append first letter"</li><li>"Append "ay""</li><li>"Remove first letter"</li><li>"End"</li></ul></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Each rectangle represents a step in the sequence, and the arrows flow from one step to the next.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">This next flow chart is for the improved algorithm and uses a diamond to represent the selection phase:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 536px; max-height: 932px;"><div style="padding-bottom: 173.88%;"></div><img alt='Flow chart for improved Pig Latin algorithm. It starts with 3 nodes flowing from one to the next:
+
+* "Start"
+* "Append "-""
+* "Store first letter"
+
+Then a diamond node has condition "first letter = vowel?". 
+
+An arrow labeled "true" leads to:
+
+* "Append "yay""
+* "End"
+
+An arrow labeled "false" leads to:
+
+* "Append first letter"
+* "Append "ay""
+* "Remove first letter"
+* "End"' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/8bfcbf872e0101bb3a7c040b84bbd6a811cd7403.svg" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Flow chart for improved Pig Latin algorithm. It starts with 3 nodes flowing from one to the next:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><ul><li>"Start"</li><li>"Append "-""</li><li>"Store first letter"</li></ul></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Then a diamond node has condition "first letter = vowel?". </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">An arrow labeled "true" leads to:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><ul><li>"Append "yay""</li><li>"End"</li></ul></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">An arrow labeled "false" leads to:</div></div><div class="paragraph" data-perseus-paragraph-index="6"><ul><li>"Append first letter"</li><li>"Append "ay""</li><li>"Remove first letter"</li><li>"End"</li></ul></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Finally, this flow chart visualizes the complete algorithm with iteration:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 864px; max-height: 959px;"><img alt='Flow chart for final Pig Latin algorithm. It starts with 3 nodes flowing from one to the next:
+
+* "Start"
+* "Store words"
+* "For word in words"
+
+An arrow labeled "word" flows from there to a nested flow chart that starts with:
+
+* "Start"
+* "Append "-""
+* "Store first letter"
+
+Then a diamond node has condition "first letter = vowel?". 
+
+An arrow labeled "true" leads to:
+
+* "Append "yay""
+* "End"
+
+An arrow labeled "false" leads to:
+
+* "Append first letter"
+* "Append "ay""
+* "Remove first letter"
+* "End"
+
+An arrow flows from "End" of the nested flow chart back to "For word in words".
+
+An arrow labeled "end of words" flows from "For word in words" leading to an "End" node.' aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/602a4ef0a135fa18cac140b507d91474092882b9.svg" tabindex="0"/></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Flow chart for final Pig Latin algorithm. It starts with 3 nodes flowing from one to the next:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><ul><li>"Start"</li><li>"Store words"</li><li>"For word in words"</li></ul></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">An arrow labeled "word" flows from there to a nested flow chart that starts with:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><ul><li>"Start"</li><li>"Append "-""</li><li>"Store first letter"</li></ul></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Then a diamond node has condition "first letter = vowel?". </div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">An arrow labeled "true" leads to:</div></div><div class="paragraph" data-perseus-paragraph-index="6"><ul><li>"Append "yay""</li><li>"End"</li></ul></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">An arrow labeled "false" leads to:</div></div><div class="paragraph" data-perseus-paragraph-index="8"><ul><li>"Append first letter"</li><li>"Append "ay""</li><li>"Remove first letter"</li><li>"End"</li></ul></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">An arrow flows from "End" of the nested flow chart back to "For word in words".</div></div><div class="paragraph" data-perseus-paragraph-index="10"><div class="paragraph">An arrow labeled "end of words" flows from "For word in words" leading to an "End" node.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Expressing an algorithm in a flow chart allows us to visualize the algorithm at a high level, plus it forces us to think very carefully about sequencing and selection. Which arrow goes to what node? Are there missing arrows? Those are the kinds of valuable questions that can come up while translating an algorithm into a flow chart.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Pseudocode</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Ultimately, most algorithms become code that actually runs on a computer. Before that happens, programmers often like to express an algorithm in <strong>pseudocode</strong>: code that uses all the constructs of a programming language, but doesn't actually run anywhere. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Here's the Pig Latin algorithm written in the style of AP CSP pseudocode:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>FOR EACH word IN words
+{
+  APPEND(word, "-")
+  letter ← FIRST_LETTER(word)
+  IF (IS_VOWEL(letter)) {
+    APPEND(word, "yay")
+  } ELSE {
+    APPEND(word, letter)
+    APPEND(word, "ay")
+    REMOVE_FIRST(word)
+  }
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Every programmer writes pseudocode differently, since there is no official standard, so you may run into pseudo-code that looks very different. </div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Expressing an algorithm in pseudocode helps a programmer think in familiar terms without worrying about syntax and specifics. It also gives computer scientists a language-independent way to express an algorithm, so that programmers from any language can come along, read the pseudo-code, and translate it into their language of choice.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Programming languages</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Once we've planned our algorithm, whether in natural language, flow charts, pseudocode, or a combination, it's time to turn it into running code. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">We'll translate the Pig Latin algorithm to JavaScript, since that's our language of choice on Khan Academy. We can use a <code>for</code> loop for the repetition, an <code>if</code>/<code>else</code> for the selection, and then a mix of string and array operations for the steps.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>// Returns true if the given character is an English vowel
+function isVowel(char) {
+    var vowels = ['a', 'e', 'i', 'o', 'u'];
+    return vowels.indexOf(char.toLowerCase()) !== -1;
+}
+
+// Pig Latin algorithm
+var words = ["peanut", "butter", "and", "jelly"];
+for (var i = 0; i &lt; words.length; i++) {
+    var word = words[i];
+    word += "-";
+    var firstLetter = word.charAt(0);
+    if (isVowel(firstLetter)) {
+        word += "yay";
+    } else {
+        word += firstLetter;
+        word += "ay";
+        word = word.slice(1);
+    }
+    words[i] = word;
+}
+
+// Display magnificent result
+println(words);
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">📝 See similar code in: 
+<a class="_8gcxk83" href="https://studio.code.org/projects/applab/2lIiAte3JOxirjQreL8sHuxqpkx4rlVdDFUQaQOhlOQ/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | 
+<a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Algorithms%3A%20Pig%20Latin&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Snap</a> | 
+<a class="_8gcxk83" href="https://repl.it/@PamelaFox1/AlgorithmsPigLatin" rel="noopener noreferrer" tabindex="0" target="_blank">Python</a></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">An algorithm can be translated into any general purpose programming language.  For proof, just check out <a class="_8gcxk83" href="http://rosettacode.org" rel="noopener noreferrer" tabindex="0" target="_blank">RosettaCode.org</a>, a wiki that lists hundreds of algorithms translated to over 700 languages. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Software is written in a variety of programming languages, depending on what it does and who's making it. Khan Academy currently uses four different languages for different parts of the codebases. Fortunately, we can use the same algorithms everywhere!</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr/></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">🙋🏽🙋🏻‍♀️🙋🏿‍♂️Do you have any questions about this topic? We'd love to answer—just ask in the questions area below! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Where is it?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

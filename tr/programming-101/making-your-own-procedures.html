@@ -1,0 +1,91 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Özel programlama prosedürleri | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Özel programlama prosedürleri | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Karmaşık matematik ifadelerini hesaplamak ve dizeleri her türlü şekilde manipüle etmek gibi programlama ile oldukça düzgün şeyler yapabiliriz. Bazen o kadar düzgün bir kod buluruz ki, onu birden çok kez yeniden kullanmak isteriz. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu nedenle tüm programlama dilleri, alt yordamlar, işlevler veya yöntemler olarak da bilinen kendi <strong>yordamlarınızı</strong> oluşturmanıza olanak tanır. Yordam, ifadelerin yeniden kullanılabilir bir koleksiyonudur. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">JavaScript dilinde, yordamları tanımlamanın birden çok yolu vardır. Bunun bir yolu, içinde ifadeler bulunan bir <code>function</code> tanım oluşturmaktır:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>function singBingo() {
+   println("B!");
+   println("I!");
+   println("N!");
+   println("G!");
+   println("O!");
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bu işlevi tanımladıktan sonra, istediğimiz zaman çağırabiliriz ve bilgisayar bloğun içindeki <code>function</code> ifadeleri (kıvırcık parantezler arasında) yürütür.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">JavaScript'te bir işlevi çağırmak için, işlevin adını, iki parantez ve bir noktalı virgül yazarız. İyi bir önlem almak için üç kez diyelim:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="6"><pre><code>singBingo();
+singBingo();
+singBingo();</code></pre></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/vj5jpVN6uIvpKASmFpUI8zkuniOK0U6ppTSv-1lF0g4/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Defining%20a%20procedure%3A%20Bingo&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/DefiningProcedureBingo" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Bu muhtemelen tanıdık geliyor, çünkü zaten aşağıdaki gibi <code>println()</code> yerleşik işlevleri çağırıyoruz ve <code>Math.sin()</code>. Artık kendi işlevlerimizi de arayabilir ve ihtiyaçlarımıza uyacak yararlı bir prosedür kütüphanesi oluşturabiliriz.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Size başka bir örnek vermek gerekirse, işte birkaç prosedür ve biraz ASCII sanatının yardımıyla en sevdiğim knock-knock şakasını anlatan bir program:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_1vdzrqd"><pre>fonksiyon knock() {
+    println("Knock Knock!");  
+}
+function who's() {
+    println("⚆ _ ⚆ Kim orada?? ");   
+}
+function banana() {
+    println("Muz!"); 
+    println(".            ,#");
+    println("\\ '-.______,-'=/");
+    println(" '._ ----- _,'");
+    println("    '-----'");
+}
+knock();
+who's();
+muz();
+knock();
+who's();
+muz();
+knock();
+who's();
+println("Turuncu!");
+println("⚆ _ ⚆ Turuncu kim??");
+println("Turuncu muz demediğime sevindin mi?");
+</pre></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> Benzer kodu şurada da görebilirsiniz: <a class="_8gcxk83" href="https://studio.code.org/projects/applab/n7y9WcX50-TSfyOXRYiXUXip3bVnfkRcxM563nP74Q0/view" rel="noopener noreferrer" tabindex="0" target="_blank">App Lab</a> | <a class="_8gcxk83" href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=pamela-ka&amp;ProjectName=Defining%20a%20procedure%3A%20KnockKnock&amp;editMode" rel="noopener noreferrer" tabindex="0" target="_blank">Tutturma</a> | <a class="_8gcxk83" href="https://repl.it/@PamelaFox1/DefiningProcedureKnockKnock" rel="noopener noreferrer" tabindex="0" target="_blank">Piton</a></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu şakayı ne kadar acı verici bir şekilde yapabileceğimizi hayal edin, şimdi bu üç işleve sahibiz! Prosedürlerin gücü budur. </div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Programımızda bir prosedür çağırdığımızda, aynı kodu tekrar tekrar yazmak için kendimize zaman ve alan kazandırıyoruz. Ayrıca, işlevin içindeki tüm kodu yeniden yazmamız gerekmediğinden, yeni hatalar ekleme şansımızı da azaltıyoruz.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Bilgisayarın içinde</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bilgisayar bir programdaki yordama çağrı gördüğünde, yordamı adıyla arar, yordamın içindeki deyimleri bulur ve bu deyimleri yürütür. Bilgisayar, bize daha az kod gibi görünse bile, bu ifadeleri yürütmenin tüm işlerini <em>hala yapıyor</em> . </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bazı yönlerden, prosedür adını aramak için ek bir adıma sahip olduğu için <em>daha fazla</em> iş yapıyor. Yine de bu hızlı bir kontrol.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bundan önceki kodu üç kez çağırarak <code>singBingo()</code> hatırlayın:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="4"><pre><code>singBingo();
+singBingo();
+singBingo();</code></pre></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Perde arkasında, bilgisayar hala tüm bu satırları yürütüyordu:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="6"><pre><code>println("B!");
+println("I!");
+println("N!");
+println("G!");
+println("O!");
+println("B!");
+println("I!");
+println("N!");
+println("G!");
+println("O!");
+println("B!");
+println("I!");
+println("N!");
+println("G!");
+println("O!");</code></pre></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Yordamlar, bilgisayarların bir programı çalıştırmasını kolaylaştırmaz, ancak <em>insanların</em> karmaşık programlar yapmasını çok daha kolay hale getirir. </div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Parametreleri ve dönüş değerlerini kullanarak prosedürlerimizi yakında daha da güçlü hale getirmenin yollarını keşfedeceğiz.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h2>Sahte koddaki prosedürler</h2></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Sözde kod nedir?]</a></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu sözde kod, aşağıdaki adı taşıyan <code>name</code>bir yordamı temsil eder:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="3"><pre><code>PROCEDURE name ()
+{
+     &lt;instructions&gt;
+}</code></pre></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">İşte yordam ve çağrılar <code>singBingo</code> için sözde kod:</div></div><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="5"><pre><code>PROCEDURE singBingo () {
+  DISPLAY ("B!")
+  DISPLAY ("I!")
+  DISPLAY ("N!")
+  DISPLAY ("G!")
+  DISPLAY ("O!")
+}
+
+singBingo ()
+singBingo ()
+singBingo ()</code></pre></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>

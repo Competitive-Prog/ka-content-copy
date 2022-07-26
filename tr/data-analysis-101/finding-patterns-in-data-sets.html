@@ -1,0 +1,689 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Veri kümelerindeki desenleri bulma | AP CSP (makale) | Khan Akademisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+.paragraph {
+  margin: 10px 0px;
+}
+img {
+  max-width: 600px;
+}
+.perseus-sr-only {
+  display: none;
+}
+li.perseus-radio-option {
+  list-style-type: none;
+}
+  </style>
+</head>
+<body>
+<div class="container container-md">
+<h1>Veri kümelerindeki desenleri bulma | AP CSP (makale) | Khan Akademisi</h1>
+<div class="framework-perseus perseus-article bibliotron-article"><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Genellikle veri toplarız, böylece verilerde yukarı doğru eğilim gösteren sayılar veya iki sayı kümesi arasındaki korelasyonlar gibi kalıpları bulabiliriz.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Verilere ve desenlere bağlı olarak, bazen bu deseni verilerin basit bir tablo sunumunda görebiliriz. Diğer zamanlarda, zaman serisi, çizgi grafik veya dağılım grafiği gibi bir grafikteki verilerin görselleştirilmesine yardımcı olur.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Çevremizdeki verilerde bulabileceğimiz desen örneklerini inceleyelim.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Eğilimleri tespit etme</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Trend olan miktar, genellikle artan veya azalan bir sayıdır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">1955-2015 yılları arasında Hindistan'da kadın başına düşen bebeklerle ilgili şu verileri göz önünde bulundurun:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><table class='table'><thead><tr><th scope="col">Kadın başına </th><th scope="col">düşen yıllık bebekler</th></tr></thead><tbody><tr><td>1960</td><td>5.91</td></tr><tr><td>1970</td><td>5.59</td></tr><tr><td>1980</td><td>4.83</td></tr><tr><td>1990</td><td>4.05</td></tr><tr><td>2000</td><td>3.31</td></tr><tr><td>2010</td><td>2.60</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><em>Kaynak: <a class="_8gcxk83" href="https://www.gapminder.org/data/documentation/gd008/" rel="noopener noreferrer" tabindex="0" target="_blank">Gapminder, Kadın başına çocuk sayısı (toplam doğurganlık oranı)</a>.</em></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Bu durumda, rakamlar on yıldan on yıla istikrarlı bir şekilde <em>azalmaktadır</em> , bu nedenle bu <strong>düşüş eğilimidir</strong>.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Şimdi 1920-2000 yılları arasında ABD'nin yaşam beklentisi hakkındaki şu verileri düşünün:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><table class='table'><thead><tr><th scope="col">Yıl</th><th scope="col">Yaşam beklentisi</th></tr></thead><tbody><tr><td>1920</td><td>55.38</td></tr><tr><td>1930</td><td>59.57</td></tr><tr><td>1940</td><td>63.24</td></tr><tr><td>1950</td><td>68.07</td></tr><tr><td>1960</td><td>69.86</td></tr><tr><td>1970</td><td>70.86</td></tr><tr><td>1980</td><td>73.91</td></tr><tr><td>1990</td><td>75.4</td></tr><tr><td>2000</td><td>76.9</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><em>Kaynak: <a class="_8gcxk83" href="https://www.gapminder.org/data/documentation/gd004/" rel="noopener noreferrer" tabindex="0" target="_blank">Gapminder, Doğumda yaşam beklentisi</a>.</em></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu durumda, rakamlar on yıldan on yıla istikrarlı bir şekilde artmaktadır, bu yüzden bu <strong>yukarı doğru bir eğilimdir</strong>.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h4>Grafiklerle görselleştirme</h4></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bir zaman serisi grafiği gibi grafiklerdeki yukarı ve aşağı eğilimleri tanımlamayı deneyelim.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><a class="_8gcxk83" href="https://www.gapminder.org/tools/#$state$time$startOrigin=1960&amp;endOrigin=2010&amp;delay:100;&amp;entities$show$country$/$in@=ind;;;;&amp;marker$axis_x$zoomedMin=1960&amp;zoomedMax=2010;&amp;axis_y$which=children_per_woman_total_fertility&amp;scaleType=linear&amp;spaceRef:null;;;&amp;chart-type=linechart" rel="noopener noreferrer" tabindex="0" target="_blank">GapMinder'ın bu grafiği</a>, Hindistan'da kadın başına düşen bebekleri, her on yıl yerine her yıl için veri noktalarına dayanarak görselleştiriyor:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 2060px; max-height: 1047px;"><img alt="A line graph with years on the x axis and babies per woman on the y axis. The x axis goes from 1960 to 2010 and the y axis goes from 2.6 to 5.9. The line starts at 5.9 in 1960 and slopes downward until it reaches 2.5 in 2010." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/80a7f3acae738a6f1a0c5d145d8626df2557f690.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde yılları ve y ekseninde kadın başına bebekleri içeren bir çizgi grafik. X ekseni 1960'tan 2010'a ve y ekseni 2.6'dan 5.9'a gider. Hat 1960'ta 5.9'dan başlar ve 2010'da 2.5'e ulaşana kadar aşağı doğru eğimlidir.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bu grafikte belirgin bir düşüş eğilimi var ve 1968'den itibaren neredeyse düz bir çizgi gibi görünüyor.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph"> Grafik seçenekleri: X ekseni 1960'tan 2010'a ve y ekseni 2,6'dan 5,9'a gider. Farklı eksen seçenekleriyle eğilim az ya da çok net olur mu? Kendiniz görmek için <a class="_8gcxk83" href="https://www.gapminder.org/tools/#$state$time$startOrigin=1960&amp;endOrigin=2010&amp;delay:100;&amp;entities$show$country$/$in@=ind;;;;&amp;marker$axis_x$zoomedMin=1960&amp;zoomedMax=2010;&amp;axis_y$which=children_per_woman_total_fertility&amp;scaleType=linear&amp;spaceRef:null;;;&amp;chart-type=linechart" rel="noopener noreferrer" tabindex="0" target="_blank">GapMinder'daki seçenekleri</a> deneyin.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bu, yine her on yıl yerine her yıl için veri noktalarına dayanan <a class="_8gcxk83" href="https://www.gapminder.org/tools/#$state$time$value=2000&amp;startOrigin=1920&amp;endOrigin=2000&amp;delay:100;&amp;entities$show$country$/$in@=usa;;;;&amp;marker$axis_x$zoomedMin=1920&amp;zoomedMax=2000;&amp;axis_y$which=life_expectancy_years&amp;scaleType=linear&amp;spaceRef:null;;;&amp;chart-type=linechart" rel="noopener noreferrer" tabindex="0" target="_blank">GapMinder'den beklenen yaşam süresinin bir grafiğidir</a>:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 2404px; max-height: 1176px;"><img alt="A line graph with years on the x axis and life expectancy on the x axis. The x axis goes from 1920 to 2000, and the y axis goes from 55 to 77. A line starts at 55 in 1920 and slopes upward (with some variation), ending at 77 in 2000. " aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/35ac1af5c677dda4b78003ddcc34999474b1c74e.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde yılları ve x ekseninde beklenen ömrü içeren bir çizgi grafik. X ekseni 1920'den 2000'e ve y ekseni 55'ten 77'ye gider. Bir çizgi 1920'de 55'te başlar ve yukarı doğru eğimlidir (bazı varyasyonlarla), 2000'de 77'de sona erer. </div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Eğilim, ilk birkaç on yılda, yukarı ve aşağı düştüğünde, açıkça yukarı doğru değil, ancak o zamandan beri on yıllarda belirginleşiyor.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"> Grafik seçenekleri: X ekseni 1920'den 2000'e gider ve y ekseni 55'ten başlar. Bu seçimler grafiği yorumlamamızı nasıl etkiler? Kendiniz görmek için <a class="_8gcxk83" href="https://www.gapminder.org/tools/#$state$time$value=2000&amp;startOrigin=1920&amp;endOrigin=2000&amp;delay:100;&amp;entities$show$country$/$in@=usa;;;;&amp;marker$axis_x$zoomedMin=1920&amp;zoomedMax=2000;&amp;axis_y$which=life_expectancy_years&amp;scaleType=linear&amp;spaceRef:null;;;&amp;chart-type=linechart" rel="noopener noreferrer" tabindex="0" target="_blank">GapMinder'daki seçenekleri</a> değiştirmeyi deneyin.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Anlayışınızı kontrol edin</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Google Analytics, kullanıcı davranışını izlemek için birçok web sitesi (Khan Academy dahil!) tarafından kullanılmaktadır. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Bu Google Analytics grafiği, Ekim 2017'den Haziran 2018'e kadar AP İstatistikleri kursumuzun sayfa görüntülemelerini göstermektedir:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 1870px; max-height: 386px;"><img alt="A line graph with months on the x axis and page views on the y axis. The x axis goes from October 2017 to June 2018. The y axis goes from 0 to 1.5 million. The chart starts at around 250,000 and stays close to that number through December 2017. It then slopes upward until it reaches 1 million in May 2018. After that, it slopes downward for the final month." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/9e1ad3721162023eb3df2048d5e1a9794e2342c0.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde aylar ve y ekseninde sayfa görünümleri içeren bir çizgi grafik. X ekseni Ekim 2017'den Haziran 2018'e kadar uzanır. Y ekseni 0'dan 1,5 milyona çıkar. Grafik yaklaşık 250.000'den başlıyor ve Aralık 2017'ye kadar bu sayıya yakın kalıyor. Daha sonra Mayıs 2018'de 1 milyona ulaşana kadar yukarı doğru eğimlidir. Bundan sonra, son ay boyunca aşağı doğru eğimlidir.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bu grafikte hangi eğilimler belirgindir?</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">1 cevap seçin:</legend><div class="instructions _125m8j1">1 cevap seçin:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-0" name="perseus_radio_9" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Ocak ayından Mayıs ortasına kadar düşüş eğilimi ve Mayıs ortasından Haziran ayına kadar yükseliş eğilimi.</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-1" name="perseus_radio_9" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Ocak ayından Mayıs ortasına kadar yükseliş eğilimi ve Mayıs ortasından Haziran ayına kadar düşüş eğilimi.</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_9-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_9-choice-2" name="perseus_radio_9" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Belirli bir eğilim yok</div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h4>İstatistiksel dalgalanmalar</h4></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><a class="_8gcxk83" href="http://trends.google.com" rel="noopener noreferrer" tabindex="0" target="_blank">Google Trendler, Google arama terimlerinin zaman içindeki popülaritesini görselleştiren bir sitedir.</a></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">İstatistiksel veri analizi ve hesaplama becerilerini birleştiren yeni bir alan olan "veri bilimi"nin popülaritesini araştırmak için Google Trendler'i kullanabiliriz.  </div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Nisan 2014'ten Nisan 2019'a kadar " <a class="_8gcxk83" href="https://trends.google.com/trends/explore?date=today%205-y&amp;geo=US&amp;q=%22data%20science%22" rel="noopener noreferrer" tabindex="0" target="_blank">veri bilimi" için grafikleri</a> :</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 2736px; max-height: 1028px;"><img alt="A line graph with time on the x axis and popularity on the y axis. The x axis goes from April 2014 to April 2019, and the y axis goes from 0 to 100. A very jagged line starts around 12 and increases until it ends around 80." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/3b94b34b2c4d60ef7cd24e1d4d2932c2cce73462.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde zaman ve y ekseninde popülerlik içeren bir çizgi grafik. X ekseni Nisan 2014'ten Nisan 2019'a kadar ve y ekseni 0'dan 100'e gider. Çok pürüzlü bir çizgi 12 civarında başlar ve 80 civarında bitene kadar artar.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Bu grafik, zaman dilimi boyunca büyük miktarda dalgalanma göstermektedir (her yıl Noel'deki büyük düşüşler dahil). Bununla birlikte, zaman içinde oldukça net bir artış göstermektedir. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Bunun gibi dalgalanan verilerle uğraşırken, "trend çizgisini" hesaplayabilir ve grafiğin üzerine yerleştirebiliriz (veya bir grafik uygulamasından <a class="_8gcxk83" href="https://support.google.com/docs/answer/6075154?co=GENIE.Platform%3DDesktop&amp;hl=en" rel="noopener noreferrer" tabindex="0" target="_blank">bizim için eklemesini</a> isteyebiliriz). Bir eğilim çizgisi verileri düzgünleştirir ve bulunacak bir tane varsa, genel eğilimi daha net hale getirir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Aşağıda, trend çizgisi eklenmiş aynı grafik verilmiştir:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 2738px; max-height: 1030px;"><img alt="A line graph with time on the x axis and popularity on the y axis. The x axis goes from April 2014 to April 2019, and the y axis goes from 0 to 100. A very jagged line starts around 12 and increases until it ends around 80. A straight line is overlaid on top of the jagged line, starting and ending near the same places as the jagged line." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/033e257032f64418c742c458ea915b2e53e595f0.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde zaman ve y ekseninde popülerlik içeren bir çizgi grafik. X ekseni Nisan 2014'ten Nisan 2019'a kadar ve y ekseni 0'dan 100'e gider. Çok pürüzlü bir çizgi 12 civarında başlar ve 80 civarında bitene kadar artar. Pürüzlü çizginin üzerine düz bir çizgi bindirilir, pürüzlü çizgiyle aynı yerlere yakın bir yerde başlar ve biter.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Trend çizgisi çok net bir yükseliş eğilimi gösteriyor, beklediğimiz de buydu. Verileri bu kadar uzun bir süre boyunca görselleştirmeyi seçmemize yardımcı olur, çünkü bu veriler yıl boyunca mevsimsel olarak dalgalanmaktadır. </div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Verileri analiz ederken ve görselleştirirken, dalgalanmaları hesaba katacak verileri toplamanın yollarını düşünün. Zamana dayalı veriler için, genellikle hafta içi günlerde (hafta içi ve hafta sonundaki fark nedeniyle) dalgalanmalar ve mevsimler arasında dalgalanmalar vardır. </div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Tahminlerde bulunma</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Verileri analiz etmemizin bir nedeni, tahminler bulmaktır.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bu verileri 4 yıllık özel üniversiteler için ortalama öğrenim ücreti olarak düşünün:</div></div><div class="paragraph" data-perseus-paragraph-index="3"><table class='table'><thead><tr><th scope="col">Okul yılı</th><th scope="col">Öğrenim</th></tr></thead><tbody><tr><td>2011-12</td><td>30.210 Dolar</td></tr><tr><td>2012-13</td><td>30.970 Dolar</td></tr><tr><td>2013-14</td><td>31.570 Dolar</td></tr><tr><td>2014-15</td><td>32.140 Dolar</td></tr><tr><td>2015-16</td><td>33.180 Dolar</td></tr><tr><td>2016-17</td><td>34.100 Dolar</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><em>Kaynak: <a class="_8gcxk83" href="https://trends.collegeboard.org/sites/default/files/2017-trends-in-college-pricing_0.pdf" rel="noopener noreferrer" tabindex="0" target="_blank">College Board: Üniversite Fiyatlandırmasındaki Eğilimler</a></em></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Rakamların 2011'den 2016'ya kadar her yıl arttığını açıkça görebiliyoruz. Bir tahminde bulunmak için, sayıların artma <em>hızını</em> anlamamız gerekir.</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Bunu yapmanın bir yolu, yıldan yıla değişim yüzdesini hesaplamaktır. İşte bu hesaplamayı üçüncü bir sütunla aynı tablo:</div></div><div class="paragraph" data-perseus-paragraph-index="7"><table class='table'><thead><tr><th scope="col">Okul yılı</th><th scope="col">Öğrenim Bir</th><th scope="col">yıllık % değişim</th></tr></thead><tbody><tr><td>2011-12</td><td>30.210 Dolar</td><td></td></tr><tr><td>2012-13</td><td>30.970 Dolar</td><td>2.5%</td></tr><tr><td>2013-14</td><td>31.570 Dolar</td><td>1.9%</td></tr><tr><td>2014-15</td><td>32.140 Dolar</td><td>1.8%</td></tr><tr><td>2015-16</td><td>33.180 Dolar</td><td>3.2%</td></tr><tr><td>2016-17</td><td>34.100 Dolar</td><td>2.8%</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Ayrıca, artan sayıları grafik biçiminde görselleştirmeye yardımcı olabilir:</div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 400px; max-height: 295px;"><img alt="A line graph with years on the x axis and tuition cost on the y axis. The x axis goes from 2011 to 2016, and the y axis goes from 30,000 to 35,000. There are 6 dots for each year on the axis, the dots increase as the years increase. A line connects the dots." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/f36c21e12d10a7f10b7a6a2f9fd7bfa8b53442ec.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ </svg><span class="graphie-label" data-math-formula="\small{2011}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 25.4413%; top: 84.8153%; fill: none; font-size: 100%; margin-left: -19px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>2011</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{2011}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">1</span><span class="mord">1</span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{2012}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 35.7353%; top: 84.8153%; fill: none; font-size: 100%; margin-left: -19px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>2012</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{2012}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">1</span><span class="mord">2</span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{2013}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 46.0295%; top: 84.8153%; fill: none; font-size: 100%; margin-left: -19px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>2013</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{2013}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">1</span><span class="mord">3</span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+ </span><span class="graphie-label" data-math-formula="\small{2014}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 56.3235%; top: 84.8153%; fill: none; font-size: 100%; margin-left: -19px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>2014</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{2014}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">1</span><span class="mord">4</span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{2015}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 66.6178%; top: 84.8153%; fill: none; font-size: 100%; margin-left: -19px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>2015</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{2015}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">1</span><span class="mord">5</span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{2016}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 76.9117%; top: 84.8153%; fill: none; font-size: 100%; margin-left: -19px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>2016</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{2016}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">1</span><span class="mord">6</span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span> <span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{2017}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 87.206%; top: 84.8153%; fill: none; font-size: 100%; margin-left: -19px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>2017</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{2017}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">2</span><span class="mord">0</span><span class="mord">1</span><span class="mord">7</span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{31000}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 15.1471%; top: 68.5627%; fill: none; font-size: 100%; margin-left: -46px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>31000</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{31000}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">3</span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span>0 <span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{32000}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 15.1471%; top: 52.3102%; fill: none; font-size: 100%; margin-left: -46px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>32000</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{32000}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">3</span> <span class="mord">2</span><span class="mord"></span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span>0 0 0 <span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{33000}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 15.1471%; top: 36.0576%; fill: none; font-size: 100%; margin-left: -46px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>33000</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{33000}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">3</span><span class="mord">3</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span>
+        
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{34000}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 15.1471%; top: 19.805%; fill: none; font-size: 100%; margin-left: -46px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>34000</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{34000}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">3</span><span class="mord">4</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0 0</span>
+        
+        
+        
+        
+        
+      </span> 
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{35000}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 15.1471%; top: 3.55237%; fill: none; font-size: 100%; margin-left: -46px; margin-top: -17px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mn>35000</mn></mstyle></mrow><annotation encoding="application/x-tex">\küçük{35000}</annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.579996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">3</span><span class="mord">5</span><span class="mord">0</span><span class="mord">0 0</span><span class="mord">0</span>
+        
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde yılları ve y ekseninde öğrenim ücreti olan bir çizgi grafik. X ekseni 2011'den 2016'ya ve y ekseni 30.000'den 35.000'e gider. Eksende her yıl için 6 nokta vardır, yıllar arttıkça noktalar da artar. Bir çizgi noktaları birbirine bağlar.</div></div></div></span></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Oran tam olarak sabit (ve grafik tam olarak doğrusal) olsaydı, bir sonraki değeri kolayca tahmin edebilirdik. Bununla birlikte, bu durumda, oran% 1.8 ile% 3.2 arasında değişmektedir, bu nedenle tahmin etmek o kadar kolay değildir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">2017-2018 için bir tahminde bulunmanın birkaç yolunu deneyelim:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><table class='table'><thead><tr><th scope="col">Strateji Öngörülen </th><th scope="col">değişim Öngörülen</th><th scope="col">öğrenim</th></tr></thead><tbody><tr><td>En son fiyat</td><td>2.8%</td><td>35.054 Dolar</td></tr><tr><td>Ortalama son 3 fiyat</td><td>2.6%</td><td>34.986,6 TL</td></tr><tr><td>Ortalama tüm fiyatlar</td><td>2.44%</td><td>34.932,04 TL</td></tr></tbody></table></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Sizce en iyi strateji hangisi? Görünüşe göre, 2017-2018 için gerçek öğrenim ücreti 34.740 dolardı. Stratejilerimizin tahmin ettiğinden daha az olan sadece% 1,9 oranında arttı. En yakın olanı, tüm oranların ortalamasını alan stratejiydi.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">İstatistikçiler ve veri analistleri tipik olarak, verilere en uygun çizgiyi bulan <a class="_8gcxk83" href="/math/statistics-probability/describing-relationships-quantitative-data/introduction-to-trend-lines/v/fitting-a-line-to-data" rel="noopener noreferrer" tabindex="0" target="_blank">doğrusal regresyon</a> adı verilen bir teknik kullanır, böylece bu çizgiye dayanarak tahminlerde bulunabiliriz. Bu verilerle doğrusal bir regresyon da %2,44'ü öngörmektedir.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Nasıl daha doğru tahminler yapabiliriz? Daha fazla veri toplamaya çalışabilir ve bunu, genel ekonomik büyümenin artan üniversite harçları üzerindeki etkisini göz önünde bulundurmak gibi modelimize dahil edebiliriz. </div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Nihayetinde, bir tahminin sadece bu olduğunu, bir tahmin olduğunu anlamamız gerekir. Daha fazla veri ve daha iyi teknikler geleceği daha iyi tahmin etmemize yardımcı olur, ancak hiçbir şey mükemmel bir şekilde doğru bir tahmini garanti edemez.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><h3>Korelasyonları bulma</h3></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">Verileri analiz etmenin bir başka amacı, korelasyonu, iki sayı kümesi arasındaki istatistiksel ilişkiyi hesaplamaktır. </div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph">Bir korelasyon pozitif, negatif olabilir veya hiç mevcut olmayabilir.  <a class="_8gcxk83" href="/math/ap-statistics/bivariate-data-ap/scatterplots-correlation/v/constructing-scatter-plot" rel="noopener noreferrer" tabindex="0" target="_blank">Dağılım grafiği</a> , iki sayı kümesi arasındaki korelasyonu görselleştirmenin yaygın bir yoludur.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Sıcaklık ve dondurma satışları arasında <em>pozitif</em> bir korelasyon vardır:</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 265px; max-height: 215px;"><img alt="A scatter plot with temperature on the x axis and sales amount on the y axis. The x axis goes from 0 degrees Celsius to 30 degrees Celsius, and the y axis goes from $0 to $800. 19 dots are scattered on the plot, with the dots generally getting higher as the x axis increases." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/46d8e31e33e8784e08c775007217da0e1cc043b1.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ 6°C\small{6°\text{C}}6°C 13°C\small{13°\text{C}}1 3°C 19</svg><span class="graphie-label" data-math-formula="\small{13°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 45.6634%; top: 88.473%; fill: none; font-size: 100%; margin-left: -20px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord sizing reset-size6 size5"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+        
+      </span>°C\small{19°\text{C}<span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span>
+      
+      
+    </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span>
+    
+    
+  </span></span>}<span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{6°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 30.4424%; top: 88.473%; fill: none; font-size: 100%; margin-left: -17px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{19°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 60.8849%; top: 88.473%; fill: none; font-size: 100%; margin-left: -20px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"> </annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">1</span><span class="mord">9</span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span>°C 26°C\küçük{26°\metin{C}}2 6°C <span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{26°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 76.106%; top: 88.473%; fill: none; font-size: 100%; margin-left: -20px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord sizing reset-size6 size5"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+        
+      </span><span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{$100}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 78.8674%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$200}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 69.2619%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$300}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 59.6563%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$400}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 50.0507%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$500}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 40.4449%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$600}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 30.8392%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$700}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 21.2336%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde sıcaklık ve y ekseninde satış miktarı olan bir dağılım grafiği. X ekseni 0 santigrat dereceden 30 santigrat dereceye çıkar ve y ekseni 0 t o <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--1-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><annotation encoding="application/x-tex">0 ila </annotation><mrow><mn></mn><mi></mi><mi></mi>
+          
+          
+          
+        </mrow>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span> 0 t o <span id="katex-uid--1-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, t, o</span>800 arasında<span></span>
+    
+    
+    
+  </span><span></span> gider. x ekseni arttıkça noktalar genellikle daha da yükselir.<span></span>
+  
+  
+  
+</span></div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sıcaklıklar arttıkça dondurma satışları da artıyor.</div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Sıcaklık ve çorba satışları arasında <em>negatif</em> bir korelasyon vardır:</div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 265px; max-height: 215px;"><img alt="A scatter plot with temperature on the x axis and sales amount on the y axis. The x axis goes from 0 degrees Celsius to 30 degrees Celsius, and the y axis goes from $0 to $800. 19 dots are scattered on the plot, with the dots generally getting lower as the x axis increases." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/1f304f9e939a6358eeb822854ce52622bbce7fee.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ 6°C\small{6°\text{C}}6°C 13°C\small{13°\text{C}}1 3°C 19</svg><span class="graphie-label" data-math-formula="\small{13°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 45.6634%; top: 88.473%; fill: none; font-size: 100%; margin-left: -20px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord sizing reset-size6 size5"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+        
+      </span>°C\small{19°\text{C}<span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span>
+      
+      
+    </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span>
+    
+    
+  </span></span>}<span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{6°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 30.4424%; top: 88.473%; fill: none; font-size: 100%; margin-left: -17px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{19°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 60.8849%; top: 88.473%; fill: none; font-size: 100%; margin-left: -20px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"> </annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">1</span><span class="mord">9</span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span>°C 26°C\küçük{26°\metin{C}}2 6°C <span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{26°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 76.106%; top: 88.473%; fill: none; font-size: 100%; margin-left: -20px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord sizing reset-size6 size5"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+        
+      </span><span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{$100}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 78.8674%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$200}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 69.2619%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$300}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 59.6563%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$400}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 50.0507%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$500}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 40.4449%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$600}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 30.8392%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$700}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 21.2336%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde sıcaklık ve y ekseninde satış miktarı olan bir dağılım grafiği. X ekseni 0 santigrat dereceden 30 santigrat dereceye çıkar ve y ekseni 0 t o <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--2-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><annotation encoding="application/x-tex">0 ila </annotation><mrow><mn></mn><mi></mi><mi></mi>
+          
+          
+          
+        </mrow>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span> 0 t o <span id="katex-uid--2-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">0, t, o</span>800 arasında<span></span>
+    
+    
+    
+  </span><span></span> gider. x ekseni arttıkça noktalar genellikle alçaltılır.<span></span>
+  
+  
+  
+</span></div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sıcaklıklar arttıkça çorba satışları düşer. </div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Sıcaklık ve tuz satışları arasında bir korelasyon <em>yoktur</em> :</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive svg-image" style="max-width: 265px; max-height: 215px;"><img alt="A scatter plot with temperature on the x axis and sales amount on the y axis. The x axis goes from 0 degrees Celsius to 30 degrees Celsius, and the y axis goes from $0 to $800. 19 dots are scattered on the plot, all between $350 and $750. There is no particular slope to the dots, they are equally distributed in that range for all temperature values." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-graphie/279e210cb1e903ef9d396e4d5ba94ed8d80cf400.svg" tabindex="0"><div class="graphie-container"><div class="graphie" style="position: relative; width: 100%; height: 100%;"><svg height="100%" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs> ile oluşturuldu
+  
+  
+ 6°C\small{6°\text{C}}6°C 13°C\small{13°\text{C}}1 3°C 19</svg><span class="graphie-label" data-math-formula="\small{13°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 45.6634%; top: 88.473%; fill: none; font-size: 100%; margin-left: -20px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord sizing reset-size6 size5"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+        
+      </span>°C\small{19°\text{C}<span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span>
+      
+      
+    </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span>
+    
+    
+  </span></span>}<span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{6°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 30.4424%; top: 88.473%; fill: none; font-size: 100%; margin-left: -17px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{19°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 60.8849%; top: 88.473%; fill: none; font-size: 100%; margin-left: -20px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"> </annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span><span class="mord sizing reset-size6 size5"><span class="mord">1</span><span class="mord">9</span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+        
+      </span>
+      
+      
+    </span></span>
+    
+    
+  </span></span>°C 26°C\küçük{26°\metin{C}}2 6°C <span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{26°\text{C}}" data-math-type="katex" style="position: absolute; padding: 7px; color: black; left: 76.106%; top: 88.473%; fill: none; font-size: 100%; margin-left: -20px; margin-top: 0px;"><span class="katex-holder"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="0.9em"><mrow><mn></mn><mi mathvariant="normal"></mi><mtext></mtext>
+        
+        
+        
+      </mrow></mstyle></mrow><annotation encoding="application/x-tex"></annotation>
+      
+      
+    </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord sizing reset-size6 size5"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="mord text"><span class="mord"></span></span>
+        
+        
+        
+        
+      </span><span class="strut" style="height: 0.624996em; vertical-align: 0em;"></span>
+      
+      
+    </span></span>
+    
+    
+  </span></span><span class="mathjax-holder"></span>
+  
+  
+</span><span class="graphie-label" data-math-formula="\small{$100}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 78.8674%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$200}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 69.2619%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$300}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 59.6563%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$400}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 50.0507%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$500}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 40.4449%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$600}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 30.8392%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span><span class="graphie-label" data-math-formula="\small{$700}" style="position: absolute; padding: 7px; color: black; left: 15.2212%; top: 21.2336%; fill: none; font-size: 100%;"><span class="katex-holder"></span><span class="mathjax-holder"></span></span></div></div></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde sıcaklık ve y ekseninde satış miktarı olan bir dağılım grafiği. X ekseni 0 santigrat dereceden 30 santigrat dereceye kadar gider ve y ekseni 0 t o 0 <span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--3-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><annotation encoding="application/x-tex">ila </annotation><mrow><mn></mn><mi></mi><mi></mi>
+          
+          
+          
+        </mrow>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span>
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--3-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>0 t o 0, t, o 800 arasında gider<span></span>
+    
+    
+    
+  </span><span></span>. arsa üzerinde 19 nokta dağılır, hepsi 350 a n d 350 ile 3 5 0 arasındadır <span></span>
+  
+  
+  
+</span><span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--4-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn><mi></mi><mi></mi><mi></mi>
+          
+          
+          
+          
+        </mrow><annotation encoding="application/x-tex"> </annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span><span class="mord"></span><span class="mord"></span><span class="strut" style="height:0.69444em;vertical-align:0em;"></span> <span class="mord mathdefault"></span><span class="mord mathdefault"></span><span class="mord mathdefault"></span>
+        
+        
+        
+        
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span> a n d <span id="katex-uid--4-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">350, a, n, d</span>
+    
+    
+    
+  </span><span></span>750
+  
+  
+  
+</span>. Noktalara belirli bir eğim yoktur, tüm sıcaklık değerleri için bu aralıkta eşit olarak dağıtılırlar.</div></div></div></span><div class="perseus-image-caption"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Sıcaklıktaki artış tuz satışlarıyla ilgili değildir.</div></div></div></div></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="9"><div class="paragraph">İstatistikçiler ve veri analistleri tipik olarak korelasyonu -1-1-1 eksi, 1 ve <span style="white-space: nowrap;"><span></span><span><span></span><span id="katex-uid--6-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>1 1 1 1 1 arasında <span aria-describedby="katex-uid--6-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord"></span>bir sayı olarak ifade eder, burada -1-1<span class="strut" style="height:0.64444em;vertical-align:0em;"></span>
+        
+        
+      </span></span><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span>
+      
+      
+    </span></span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span><span style="white-space: nowrap;"><span><span aria-describedby="katex-uid--5-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo></mo><mn></mn>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord"></span><span class="mord"></span>
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--5-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span><span></span>
+    
+    
+    
+  </span><span></span><span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--7-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo></mo><mn></mn>
+          
+          
+        </mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span> <span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span>
+        
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--7-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">eksi</span>
+    
+    
+    
+  </span>, 1 güçlü bir negatif korelasyondur, <span></span>
+  
+  
+  
+</span> <span style="white-space: nowrap;"><span></span><span><span></span><span aria-describedby="katex-uid--8-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span> 1 1 <span aria-hidden="true" class="katex-html"><span class="base"><span class="mord">1</span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--8-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"></span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> güçlü bir pozitif korelasyondur ve <span style="white-space: nowrap;"><span></span><span><span></span> 0 0 0 <span aria-describedby="katex-uid--9-described-by-id" aria-hidden="true" style="white-space: nowrap;"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn></mn></mrow><annotation encoding="application/x-tex"></annotation>
+        
+        
+      </semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="mord">0 0</span><span class="strut" style="height:0.64444em;vertical-align:0em;"></span>
+        
+        
+      </span></span>
+      
+      
+    </span></span><span id="katex-uid--9-described-by-id" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;">korelasyon</span>
+    
+    
+    
+  </span><span></span>
+  
+  
+  
+</span> değildir. <a class="_8gcxk83" href="/math/ap-statistics/bivariate-data-ap#correlation-coefficient-r" rel="noopener noreferrer" tabindex="0" target="_blank">Korelasyon katsayıları hakkında daha fazla bilgiyi Khan Academy'de</a> bulabilirsiniz.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Dağılım grafiğindeki bir varyasyon, noktaların verilerin üçüncü bir boyutuna göre boyutlandırıldığı bir kabarcık grafiğidir. </div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">İşte <a class="_8gcxk83" href="https://www.gapminder.org/tools/#$state$time$value=2014;;&amp;ui$presentation:true&amp;chart$decorations$enabled:false;;;&amp;chart-type=bubbles" rel="noopener noreferrer" tabindex="0" target="_blank">GapMinder'dan</a> geliri yaşam beklentisiyle karşılaştıran, her nokta bir ülkeyi ve nüfusunu temsil eden bir baloncuk grafiği:</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 2192px; max-height: 1228px;"><img alt="A bubble plot with income on the x axis and life expectancy on the y axis. The x axis goes from 400 to 128,000, using a logarithmic scale that doubles at each tick. The y axis goes from 19 to 86. Bubbles of various colors and sizes are scattered across the middle of the plot, getting generally higher as the x axis increases. " aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/e0c15e335304c06071a6bd77def10a1d47144735.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde geliri ve y ekseninde yaşam beklentisi olan bir kabarcık grafiği. X ekseni, her kene için iki katına çıkan logaritmik bir ölçek kullanarak 400'den 128.000'e çıkar. Y ekseni 19'dan 86'ya çıkar. Çeşitli renk ve boyutlardaki kabarcıklar, grafiğin ortasına dağılır ve x ekseni arttıkça genellikle daha da yükselir. </div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph"> Grafik seçenekleri: Noktalar kıtaya göre renklendirilir, yeşil Amerika'yı temsil eder, sarı Avrupa'yı temsil eder, mavi Afrika'yı temsil eder ve kırmızı Asya'yı temsil eder. Y ekseni 19'dan 86'ya gider ve x ekseni, her kene için iki katına çıkan logaritmik bir ölçek kullanarak 400'den 96.000'e çıkar. Logaritmik ölçek, verilerin bir boyutu bu kadar aşırı değiştiğinde yaygın bir seçimdir.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Ülkeler gelir ekseninde yükselirken, genellikle yaşam beklentisi ekseninde de yükselirler. Gelir ve yaşam beklentisi arasında <em>pozitif</em> bir korelasyon vardır.</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">İşte GapMinder'dan bu sefer CO2 emisyonlarını yaşam beklentisiyle karşılaştıran başka bir <a class="_8gcxk83" href="https://www.gapminder.org/tools/#$state$marker$axis_x$which=co2_emissions_tonnes_per_person&amp;domainMin:null&amp;domainMax:null&amp;zoomedMin:null&amp;zoomedMax:null&amp;scaleType=genericLog&amp;spaceRef:null;;;&amp;chart-type=bubbles" rel="noopener noreferrer" tabindex="0" target="_blank">kabarcık grafiği</a>:</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 2240px; max-height: 1243px;"><img alt="A bubble plot with CO2 emissions on the x axis and life expectancy on the y axis. The x axis goes from 0 to 100, using a logarithmic scale that goes up by a factor of 10 at each tick. The y axis goes from 19 to 86. Bubbles of various colors and sizes are scattered across the middle of the plot, starting around a life expectancy of 60 and getting generally higher as the x axis increases. " aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/ed4f9a6f46dbaf30da68c9afde1706df34f64f11.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde CO2 emisyonları ve y ekseninde yaşam beklentisi olan bir kabarcık grafiği. X ekseni, her kene için 10 kat artan logaritmik bir ölçek kullanarak 0'dan 100'e gider. Y ekseni 19'dan 86'ya çıkar. Çeşitli renk ve boyutlardaki kabarcıklar, arsanın ortasına dağılır, 60'lık bir yaşam beklentisi etrafında başlar ve x ekseni arttıkça genellikle daha da yükselir. </div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"> Grafik seçenekleri: Bu kez, x ekseni, her kene için 10 kat artan logaritmik bir ölçek kullanarak 0,0'dan 250'ye çıkar.</div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Bir kez daha pozitif bir korelasyon görüyoruz: CO2 emisyonları arttıkça, yaşam beklentisi de artıyor.</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph">Bir saniye bekleyin, bu uzun bir ömrü garanti altına almak için daha fazla para kazanmamız ve daha fazla karbondioksit yaymamız gerektiği anlamına mı geliyor? Hayır, mutlaka değil.</div></div><div class="paragraph" data-perseus-paragraph-index="5"><div class="paragraph">Korelasyon nedensellik anlamına <em>gelmez</em> . Bir korelasyon bize iki sayı kümesi arasında bir tür ilişki olduğunu söyler, ancak <em>bize neden</em> bir ilişki olduğunu söylemez. </div></div><div class="paragraph" data-perseus-paragraph-index="6"><div class="paragraph">Bu durumda, korelasyon muhtemelen genel yaşam standardı gibi her iki sayı kümesini de yönlendiren gizli bir nedenden kaynaklanmaktadır.</div></div><div class="paragraph" data-perseus-paragraph-index="7"><div class="paragraph">Diğer durumlarda, bir korelasyon sadece büyük bir tesadüf olabilir. Çevrimiçi olarak <a class="_8gcxk83" href="http://www.tylervigen.com/spurious-correlations" rel="noopener noreferrer" tabindex="0" target="_blank">sahte korelasyonların</a> birçok eğlenceli örneği var.</div></div><div class="paragraph" data-perseus-paragraph-index="8"><div class="paragraph">Bir korelasyon bulmak, verileri anlamanın sadece ilk adımıdır. Size nedenini söyleyemez, ancak sizi daha fazla bilgi edinmek için olası nedenler ve deneyler yönünde <em>yönlendirebilir</em> .</div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-graded-group"><div class="_6pk9ag">Anlayışınızı kontrol edin</div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph"><a class="_8gcxk83" href="https://ourworldindata.org/" rel="noopener noreferrer" tabindex="0" target="_blank">Our World In Data</a> , dünya trendleri hakkında veri toplayan ve görselleştiren kar amacı gütmeyen bir web sitesidir.</div></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph"><a class="_8gcxk83" href="https://ourworldindata.org/working-hours" rel="noopener noreferrer" tabindex="0" target="_blank">Çalışma Saatleri</a> üzerine yaptıkları araştırmalar, üretkenliği (çalışılan saat başına GSYİH) kişi başına çalışılan ortalama saat sayısıyla karşılaştıran bu grafiği içerir.</div></div><div class="paragraph" data-perseus-paragraph-index="2"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="perseus-image-widget"><div class="fixed-to-responsive zoomable svg-image" style="max-width: 1376px; max-height: 922px;"><img alt="A bubble plot with productivity on the x axis and hours worked on the y axis. The x axis goes from \$0/hour to \$100/hour. The y axis goes from 1,400 to 2,400 hours. Bubbles of various colors and sizes are scattered on the plot, starting around 2,400 hours for \$2/hours and getting generally lower on the plot as the x axis increases." aria-hidden="true" src="https://cdn.kastatic.org/ka-perseus-images/83e0c235bf77932c8eae51bbb0139c60bd7c0df2.png" tabindex="0"></div><span class="perseus-sr-only"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">X ekseninde üretkenliğe ve y ekseninde çalışılan saatlere sahip bir kabarcık grafiği. X ekseni $0/saat'ten $100/saat'e çıkar. Y ekseni 1.400 ila 2.400 saat arasındadır. Çeşitli renk ve boyutlardaki kabarcıklar arsa üzerine dağılır, 2 $ / saat için yaklaşık 2.400 saatten başlar ve x ekseni arttıkça genellikle arsa üzerinde daha düşük olur.</div></div></div></span></div></div></div></div><div class="paragraph" data-perseus-paragraph-index="3"><div class="paragraph">Üretkenlik ve çalışma saatleri arasındaki ilişkiyi en iyi tanımlayan nedir?</div></div><div class="paragraph" data-perseus-paragraph-index="4"><div class="paragraph"><div class="perseus-widget-container widget-nohighlight widget-block"><div class="_vq37gq"><fieldset class="perseus-widget-radio-fieldset _c0l5kf"><legend class="perseus-sr-only">1 cevap seçin:</legend><div class="instructions _125m8j1">1 cevap seçin:</div><ul class="perseus-widget-radio perseus-rendered-radio _1cl5r18v"><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-0" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-0" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek A)</div><div aria-hidden="true">A</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Verimlilik ile çalışılan ortalama saatler arasında pozitif bir korelasyon vardır.</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-1" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-1" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek B)</div><div aria-hidden="true">B</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Verimlilik ile çalışılan ortalama saatler arasında negatif bir korelasyon vardır.</div></div></div></div></span></div></div></label></div></div></div></div></li><li class="_umui27s perseus-radio-option"><div><div class="_e7hn5"><div class="_1b7d4h4"><div class="_1rmtpuj"><label class="checkbox-label _dix2bmt" for="perseus_radio_10-choice-2" style="opacity: 1;"><div class="description _psmgei"><div class="checkbox-and-option _tqugjn"><span class="checkbox _92mxo7c"><input class="_19bpjuy" id="perseus_radio_10-choice-2" name="perseus_radio_10" type="radio"><div class="_17y0hv9"><span class="_en36io" style="border-color: transparent;"><div class="_1ytyy5d" data-is-radio-icon="true" style="border-color: rgb(136, 141, 147); color: rgb(136, 141, 147);"><div class="perseus-sr-only">(Seçenek C)</div><div aria-hidden="true">C</div></div></span></div></span><span class="perseus-radio-option-content perseus-interactive" style="cursor: default;"><div class="_uhlm2"></div><div><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph" data-perseus-paragraph-index="0"><div class="paragraph">Verimlilik ile ortalama çalışılan saatler arasında bir ilişki yoktur.</div></div></div></div></span></div></div></label></div></div></div></div></li></ul></fieldset></div></div></div></div></div><p><button aria-disabled="false" class="_qaciyjd" role="button" tabindex="0" type="button"><span class="_1alfwn7n">Çek</span></button><button class="_112g8fo" tabindex="0">Açıklamak</button></div></div></div></div></div></div><div class="clearfix"><div class="perseus-renderer perseus-renderer-responsive"><div class="paragraph perseus-paragraph-centered" data-perseus-paragraph-index="0"><hr></div><div class="paragraph" data-perseus-paragraph-index="1"><div class="paragraph">♀️ ♂️Bu konu hakkında sorularınız mı var? Cevaplamak isteriz - sadece aşağıdaki sorular alanında sorun! <div class="perseus-widget-container widget-nohighlight widget-inline"><div class="_167wsvl"><div class="_pupwzyp"><a aria-expanded="false" class="_13sgcdp7 _7n4oib" href="javascript:void(0)" role="button" tabindex="0">[Nerede?]</a></div></div></div></div></div></div></div></div>
+</div>
+</body>
+</html>
